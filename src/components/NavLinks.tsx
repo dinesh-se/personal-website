@@ -1,31 +1,33 @@
-'use client'
-
-import Link from 'next/link';
 import clsx from 'clsx';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { NavLinks } from '../types/nav-links';
+import { NavLinks as NavLinksType } from '@types';
 
 const NavLinks = ({
-  links,
-  linkActiveState,
-  linkDefaultState,
-  otherStyleClasses
-}: NavLinks) => {
-  const pathname = usePathname();
+	links,
+	linkActiveState,
+	linkDefaultState,
+	otherStyleClasses,
+}: NavLinksType) => {
+	const pathname = usePathname();
 
-  return (
-    <>
-      {links.map(({label, href}) => (
-        <Link 
-          key={href}
-          href={href} 
-          className={clsx(otherStyleClasses, pathname === href ? linkActiveState : linkDefaultState)}>
-          {label}
-        </Link>
-      ))}
-    </>
-  )
+	return (
+		<>
+			{links.map(({ label, href }) => (
+				<Link
+					key={href}
+					href={href}
+					className={clsx(
+						otherStyleClasses,
+						pathname === href ? linkActiveState : linkDefaultState
+					)}
+				>
+					{label}
+				</Link>
+			))}
+		</>
+	);
 };
 
 export default NavLinks;

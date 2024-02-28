@@ -2,7 +2,7 @@
 
 const nextConfig = {
 	reactStrictMode: true,
-  webpack(config) {
+	webpack(config) {
 		config.module.rules.push({
 			test: /\.svg$/,
 			use: ['@svgr/webpack'],
@@ -11,11 +11,13 @@ const nextConfig = {
 		return config;
 	},
 	images: {
-		remotePatterns: [{
-			protocol: 'https',
-			hostname: 'media.graphassets.com'
-		}]
-	}
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'media.graphassets.com',
+			},
+		],
+	},
 };
 
 export default nextConfig;
