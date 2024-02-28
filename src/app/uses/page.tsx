@@ -51,7 +51,7 @@ export default async function Uses() {
         <Link 
           className="text-sky-500 hover:text-sky-600 dark:hover:text-sky-400" 
           href="https://wesbos.com/">
-          Wes Bos's&nbsp;
+          Wes Bos&apos;s&nbsp;
         </Link>
         <Link 
           className="text-sky-500 hover:text-sky-600 dark:hover:text-sky-400" 
