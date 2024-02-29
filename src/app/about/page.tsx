@@ -1,5 +1,4 @@
 import { RichText } from '@graphcms/rich-text-react-renderer';
-import { RichTextContent } from '@graphcms/rich-text-types';
 import Image from 'next/image';
 
 import { getMoreDetails } from '@api/graphql';
@@ -16,6 +15,8 @@ import LogoStorybook from '@root/public/assets/tech/storybook.svg';
 import LogoTailwindCSS from '@root/public/assets/tech/tailwindcss.svg';
 import LogoTS from '@root/public/assets/tech/typescript.svg';
 
+import { Author } from '@types';
+
 export default async function About() {
 	const {
 		profile: {
@@ -26,7 +27,7 @@ export default async function About() {
 				socialMedia: { linkedin, github },
 			},
 		},
-	}: any = await getMoreDetails();
+	}: Author = await getMoreDetails();
 
 	return (
 		<>

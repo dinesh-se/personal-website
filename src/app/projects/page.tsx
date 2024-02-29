@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 import { getRepos } from '@api/github';
 
 import ProjectCard from '@components/ProjectCard';

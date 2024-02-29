@@ -66,7 +66,7 @@ export const getUser = async () => {
 };
 
 export const getMoreDetails = async () => {
-	const moreDetails = await client.request(GET_MORE_DETAILS);
+	const moreDetails = await client.request<Author>(GET_MORE_DETAILS);
 
 	return moreDetails;
 };

@@ -1,14 +1,16 @@
+import { RichTextContent } from '@graphcms/rich-text-types';
+
 export interface Author {
 	profile: Profile;
 }
 
 interface Profile {
 	fullName: string;
-	interests: string[];
 	summary: string;
 	contactDetail: ContactDetail;
 	experience: Experience;
-	testWyswyg: object;
+	displayPicture: DisplayPicture;
+	moreDetails: MoreDetails;
 }
 
 interface ContactDetail {
@@ -38,4 +40,12 @@ interface Organization {
 
 interface OrgLogo {
 	url: string;
+}
+
+interface DisplayPicture {
+	url: string;
+}
+
+interface MoreDetails {
+	raw: RichTextContent;
 }
