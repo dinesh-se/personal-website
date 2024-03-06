@@ -17,6 +17,9 @@ export default async function Home() {
 				socialMedia: { linkedin, github },
 			},
 			experience: { organizations },
+			githubRecentProjects: {
+				repositories: { nodes },
+			},
 		},
 	}: Author = await getUser();
 
@@ -48,7 +51,7 @@ export default async function Home() {
 			</section>
 			<section className="mt-16 flex flex-col justify-between max-lg:space-y-8 lg:flex-row lg:space-x-16">
 				<div className="flex-1">
-					<RecentProjects></RecentProjects>
+					<RecentProjects projects={nodes}></RecentProjects>
 				</div>
 				<div className="space-y-10">
 					<Experience organizations={organizations} />
