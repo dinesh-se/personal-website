@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+<div>
+  <nav
+    class="p-4"
+  >
+    <div
+      class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8"
+    >
+      <div
+        class="relative flex h-16 items-center justify-between"
+      >
+        <div
+          class="flex flex-1 items-center justify-center sm:justify-start"
+        >
+          <div
+            class="flex flex-1 items-center"
+          >
+            <a
+              href="/"
+            >
+              <svg
+                class="svg-icon h-16 w-16"
+              />
+            </a>
+          </div>
+          <div
+            class="sm:flex-auto"
+          >
+            <div
+              class="flex space-x-4"
+            >
+              <a
+                class="rounded-md px-3 py-2 text-sm font-medium hover:text-black dark:hover:bg-gray-700 dark:hover:text-white"
+                href="/about"
+              >
+                About me
+              </a>
+              <a
+                class="rounded-md px-3 py-2 text-sm font-medium hover:text-black dark:hover:bg-gray-700 dark:hover:text-white"
+                href="/projects"
+              >
+                Projects
+              </a>
+              <a
+                class="rounded-md px-3 py-2 text-sm font-medium hover:text-black dark:hover:bg-gray-700 dark:hover:text-white"
+                href="/uses"
+              >
+                Uses
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+`;

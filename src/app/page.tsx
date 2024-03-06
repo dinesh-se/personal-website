@@ -2,9 +2,9 @@ import Link from 'next/link';
 
 import { getUser } from '@api/graphql';
 
-import Contact from '@components/Contact';
-import Experience from '@components/Experience';
-import RecentProjects from '@components/RecentProjects';
+import { Contact } from '@components/Contact';
+import { Experience } from '@components/Experience';
+import { RecentProjects } from '@components/RecentProjects';
 
 import { Author } from '@types';
 

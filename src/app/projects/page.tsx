@@ -1,6 +1,6 @@
 import { getRepos } from '@api/github';
 
-import ProjectCard from '@components/ProjectCard';
+import { ProjectCard } from '@components/ProjectCard';
 
 export default async function Projects() {
 	const params = {

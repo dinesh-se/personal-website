@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import NavLinks from '@components/NavLinks';
+import { NavLinks } from '@components/NavLinks';
 
 import Logo from '@root/public/assets/logo.svg';
 

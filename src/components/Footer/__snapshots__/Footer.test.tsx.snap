@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders correctly 1`] = `
+<div>
+  <footer
+    class="m-auto flex max-w-7xl flex-col items-center justify-between gap-y-4 border-t border-slate-200 p-12 text-sm  sm:flex-row dark:border-slate-700 dark:text-slate-200"
+  >
+    <div
+      class="space-x-4"
+    >
+      <a
+        class="text-neutral-500 hover:text-slate-700 dark:hover:text-white"
+        href="/"
+      >
+        Home
+      </a>
+      <a
+        class="text-neutral-500 hover:text-slate-700 dark:hover:text-white"
+        href="/about"
+      >
+        About me
+      </a>
+      <a
+        class="text-neutral-500 hover:text-slate-700 dark:hover:text-white"
+        href="/projects"
+      >
+        Projects
+      </a>
+      <a
+        class="text-neutral-500 hover:text-slate-700 dark:hover:text-white"
+        href="/uses"
+      >
+        Uses
+      </a>
+    </div>
+    <p
+      class="text-sm text-zinc-500"
+    >
+      © 2024 Dinesh Haribabu. All rights reserved.
+    </p>
+  </footer>
+</div>
+`;

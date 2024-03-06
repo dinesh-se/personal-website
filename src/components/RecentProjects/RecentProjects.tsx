@@ -1,10 +1,28 @@
 import Link from 'next/link';
 
+// import { useEffect, useState } from 'react';
 import { getRepos } from '@api/github';
 
 import IconCode from '@root/public/assets/code.svg';
 
+// import { Repo } from '@types';
+
 const RecentProjects = async () => {
+	// const [repos, setRepos] = useState<Repo[]>([]);
+
+	// useEffect(() => {
+	// 	fetchData();
+	// }, []);
+
+	// const fetchData = async () => {
+	// 	const params = {
+	// 		per_page: '3',
+	// 	};
+	// 	const repos = await getRepos(params);
+
+	// 	setRepos(repos);
+	// };
+
 	const params = {
 		per_page: '3',
 	};

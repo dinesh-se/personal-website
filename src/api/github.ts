@@ -1,6 +1,6 @@
 import { Octokit } from 'octokit';
 
-import { QueryParams, Repos } from '../types/github';
+import { QueryParams, Repos } from '@types';
 
 export const getRepos = async (params: QueryParams) => {
 	const octokit = new Octokit({

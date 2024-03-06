@@ -1,7 +1,4 @@
-import { SocialIcon } from 'react-social-icons/component';
-import 'react-social-icons/email';
-import 'react-social-icons/github';
-import 'react-social-icons/linkedin';
+import { SocialIcon } from 'react-social-icons';
 
 import { Contact as ContactType } from '@types';
 

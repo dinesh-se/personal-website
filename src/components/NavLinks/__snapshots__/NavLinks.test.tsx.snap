@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavLinks renders correctly with a active class 1`] = `
+<div>
+  <a
+    class="other-class active-class"
+    href="/label-1"
+  >
+    label-1
+  </a>
+  <a
+    class="other-class default-class"
+    href="/label-2"
+  >
+    label-2
+  </a>
+</div>
+`;
+
+exports[`NavLinks renders correctly with no active class 1`] = `
+<div>
+  <a
+    class="other-class default-class"
+    href="/label-1"
+  >
+    label-1
+  </a>
+  <a
+    class="other-class default-class"
+    href="/label-2"
+  >
+    label-2
+  </a>
+</div>
+`;

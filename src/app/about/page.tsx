@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 import { getMoreDetails } from '@api/graphql';
 
-import Contact from '@components/Contact';
+import { Contact } from '@components/Contact';
 
 import LogoAngular from '@root/public/assets/tech/angular.svg';
 import LogoCypress from '@root/public/assets/tech/cypress.svg';

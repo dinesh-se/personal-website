@@ -1,4 +1,4 @@
-import NavLinks from '@components/NavLinks';
+import { NavLinks } from '@components/NavLinks';
 
 import { Link as LinkType } from '@types';
 
