@@ -12,19 +12,20 @@ exports[`ProjectCard renders correctly 1`] = `
       test-repo-name
     </h2>
     <p
-      class="text-sm text-gray-600"
+      class="text-sm text-gray-600 dark:text-gray-300"
     >
       test-description
     </p>
     <p
-      class="mt-4 text-sm"
+      class="mt-4 text-sm flex items-center"
     >
-      <span
-        class="font-semibold"
-      >
-        Tech: 
+      <span>
+        TypeScript
       </span>
-      TypeScript
+      <span
+        class="mr-2 w-4 h-4 rounded-full order-first"
+        style="background-color: rgb(255, 0, 255);"
+      />
     </p>
   </a>
 </div>

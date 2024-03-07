@@ -10,7 +10,10 @@ describe('ProjectCard', () => {
 			name: 'test-repo-name',
 			description: 'test-description',
 			href: 'https://test.repo.url',
-			language: 'TypeScript',
+			primaryLanguage: {
+				name: 'TypeScript',
+				color: '#ff00ff',
+			},
 		};
 		const { container } = render(<ProjectCard {...props} />);
 		expect(container).toMatchSnapshot();
