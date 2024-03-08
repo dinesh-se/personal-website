@@ -1,0 +1,25 @@
+name: Lint and Test
+
+on:
+  pull_request:
+    branches: [ main ] 
+
+jobs:
+  run-linters-and-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checks out repository code
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      - run: npm ci
+
+      - name: Run linters
+        run: npm run lint
+
+      - name: Run tests
+        run: npm test

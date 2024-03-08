@@ -3,60 +3,60 @@
 @tailwind utilities;
 
 :root {
-  --primary-color: theme('colors.slate.700');
-  --foreground-rgb: var(--primary-color);
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-  --logo-filter: var(--primary-color);
-  --logo-filter-hover: #000000;
-  --social-icon-fill: theme('colors.slate.400');
-  --social-icon-fill-hover: theme(colors.neutral.600);
+	--primary-color: theme('colors.slate.700');
+	--foreground-rgb: var(--primary-color);
+	--background-start-rgb: 214, 219, 220;
+	--background-end-rgb: 255, 255, 255;
+	--logo-filter: var(--primary-color);
+	--logo-filter-hover: #000000;
+	--social-icon-fill: theme('colors.slate.400');
+	--social-icon-fill-hover: theme(colors.neutral.600);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --primary-color: #ffffff;
-    --foreground-rgb: var(--primary-color);
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-    --logo-filter: var(--primary-color);
-    --logo-filter-hover: theme('colors.gray.700');
-    --social-icon-fill-hover: theme('colors.slate.200');
-  }
+	:root {
+		--primary-color: #ffffff;
+		--foreground-rgb: var(--primary-color);
+		--background-start-rgb: 0, 0, 0;
+		--background-end-rgb: 0, 0, 0;
+		--logo-filter: var(--primary-color);
+		--logo-filter-hover: theme('colors.gray.700');
+		--social-icon-fill-hover: theme('colors.slate.200');
+	}
 }
 
 body {
-  color: var(--foreground-rgb);
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	color: var(--foreground-rgb);
+	background: linear-gradient(
+			to bottom,
+			transparent,
+			rgb(var(--background-end-rgb))
+		)
+		rgb(var(--background-start-rgb));
 }
 
 .svg-icon {
-  fill: var(--logo-filter);
+	fill: var(--logo-filter);
 }
 
 .svg-icon:hover {
-  fill: var(--logo-filter-hover);
+	fill: var(--logo-filter-hover);
 }
 
 .social:first-child {
-  margin-left: -.85rem;
+	margin-left: -0.85rem;
 }
 
 .social .social-svg-icon {
-  fill: var(--social-icon-fill) !important;
+	fill: var(--social-icon-fill) !important;
 }
 
 .social:hover .social-svg-icon {
-  fill: var(--social-icon-fill-hover) !important;
+	fill: var(--social-icon-fill-hover) !important;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+	.text-balance {
+		text-wrap: balance;
+	}
 }

@@ -1,41 +1,79 @@
+import { RichTextContent } from '@graphcms/rich-text-types';
+
 export interface Author {
-  profile: Profile;
+	profile: Profile;
 }
 
 interface Profile {
-  fullName: string;
-  interests: string[];
-  summary: string;
-  contactDetail: ContactDetail;
-  experience: Experience;
-  testWyswyg: object;
+	fullName: string;
+	summary: string;
+	contactDetail: ContactDetail;
+	experience: Experience;
+	displayPicture: DisplayPicture;
+	moreDetails: MoreDetails;
+	githubRecentProjects: GithubRecentProjects;
 }
 
 interface ContactDetail {
-  eMail: string;
-  mobileNumber: string[];
-  socialMedia: SocialMedia;
+	eMail: string;
+	mobileNumber: string[];
+	socialMedia: SocialMedia;
 }
 
 interface SocialMedia {
-  linkedin: string;
-  github: string;
+	linkedin: string;
+	github: string;
 }
 
 export interface Contact extends SocialMedia, Pick<ContactDetail, 'eMail'> {}
 
 export interface Experience {
-  organizations: Organization[];
+	organizations: Organization[];
 }
 
 interface Organization {
-  orgName: string;
-  title: string;
-  from: string;
-  to: string;
-  orgLogo: OrgLogo;
+	orgName: string;
+	title: string;
+	from: string;
+	to: string;
+	orgLogo: OrgLogo;
 }
 
 interface OrgLogo {
-  url: string;
+	url: string;
 }
+
+interface DisplayPicture {
+	url: string;
+}
+
+interface MoreDetails {
+	raw: RichTextContent;
+}
+
+interface Repo {
+	id: string;
+	name: string;
+	description: string;
+	url: string;
+	primaryLanguage: PrimaryLanguage;
+}
+
+interface PrimaryLanguage {
+	name: string;
+	color: string;
+}
+
+export interface RepoUI extends Omit<Repo, 'id' | 'url'> {
+	href: Repo['url'];
+}
+
+export interface Projects {
+	projects: Repo[];
+}
+
+type GithubRecentProjects = {
+	repositories: {
+		nodes: Repo[];
+	};
+};

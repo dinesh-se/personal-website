@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Experience renders correctly 1`] = `
+<div>
+  <div
+    class="rounded-2xl border border-zinc-700/40 p-6"
+  >
+    <h4
+      class="flex space-x-4 font-semibold tracking-wider"
+    >
+      <svg
+        class="svg-icon h-6 w-6"
+      />
+      <span>
+        Experience
+      </span>
+    </h4>
+    <div
+      class="mt-6 space-y-4"
+    >
+      <div
+        class="flex w-full space-x-4"
+      >
+        <div
+          class="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-md border border-slate-300 bg-white shadow-md dark:border-zinc-500"
+        >
+          <img
+            alt="Organization 1 Logo"
+            class="h-auto w-auto object-cover text-transparent"
+            data-nimg="1"
+            decoding="async"
+            height="40"
+            loading="lazy"
+            src="/_next/image?url=https%3A%2F%2Ftest.org%2Flogo-1&w=96&q=75"
+            srcset="/_next/image?url=https%3A%2F%2Ftest.org%2Flogo-1&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Ftest.org%2Flogo-1&w=96&q=75 2x"
+            style="color: transparent;"
+            width="40"
+          />
+        </div>
+        <div
+          class="flex flex-1 flex-col"
+        >
+          <h4
+            class="font-semibold tracking-wider"
+          >
+            Organization 1
+          </h4>
+          <div
+            class="flex w-full flex-wrap justify-start text-sm text-zinc-400 sm:justify-between sm:space-x-4"
+          >
+            <p
+              class="text-sm"
+            >
+              Title 1
+            </p>
+            <div
+              class="text-sm"
+            >
+              <time
+                datetime="2023-05-25T00:00:00.000Z"
+              >
+                Jan 2024
+              </time>
+              <span
+                aria-hidden="true"
+              >
+                 — 
+              </span>
+              <time
+                datetime="2024-01-06T00:01:17.965Z"
+              >
+                Invalid Date
+              </time>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex w-full space-x-4"
+      >
+        <div
+          class="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-md border border-slate-300 bg-white shadow-md dark:border-zinc-500"
+        >
+          <img
+            alt="Organization 2 Logo"
+            class="h-auto w-auto object-cover text-transparent"
+            data-nimg="1"
+            decoding="async"
+            height="40"
+            loading="lazy"
+            src="/_next/image?url=https%3A%2F%2Ftest.org%2Flogo-2&w=96&q=75"
+            srcset="/_next/image?url=https%3A%2F%2Ftest.org%2Flogo-2&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Ftest.org%2Flogo-2&w=96&q=75 2x"
+            style="color: transparent;"
+            width="40"
+          />
+        </div>
+        <div
+          class="flex flex-1 flex-col"
+        >
+          <h4
+            class="font-semibold tracking-wider"
+          >
+            Organization 2
+          </h4>
+          <div
+            class="flex w-full flex-wrap justify-start text-sm text-zinc-400 sm:justify-between sm:space-x-4"
+          >
+            <p
+              class="text-sm"
+            >
+              Title 2
+            </p>
+            <div
+              class="text-sm"
+            >
+              <time
+                datetime="2023-05-25T00:00:00.000Z"
+              >
+                Jan 2024
+              </time>
+              <span
+                aria-hidden="true"
+              >
+                 — 
+              </span>
+              <time
+                datetime="2024-01-06T00:01:17.965Z"
+              >
+                Invalid Date
+              </time>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a
+      class="mt-6 flex cursor-pointer  items-center  justify-center rounded-md  bg-gray-300 px-3 py-2  text-sm  font-semibold transition hover:bg-gray-500 hover:text-gray-100 focus:ring active:ring dark:bg-zinc-800/50  dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
+      href="https://drive.google.com/file/d/13xI1xgpGBtYOGV9nOr0nplmb88STtI6C/view?usp=sharing"
+    >
+      Download Resume
+    </a>
+  </div>
+</div>
+`;

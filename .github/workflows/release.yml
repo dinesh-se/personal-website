@@ -1,0 +1,31 @@
+name: Bump version (on merge)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  your_job_name:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # - name: Check if pull request merged (optional)
+      #   run: |
+      #     if [[ ${{ github.event.pull_request.merged }} == true ]]; then
+      #       echo "Pull request merged, continuing workflow."
+      #     else
+      #       echo "Pull request not merged, exiting workflow."
+      #       exit 1
+      #     fi
+
+      - name: Initialize Git user
+        run: |
+          git config --global user.email "dinesh.be.gct@gmail.com"
+          git config --global user.name "Release Workflow"
+      
+      - name: Log git status
+        run: git status
+      
+      - name: Run release
+        run: npm run release -- --dry-run
