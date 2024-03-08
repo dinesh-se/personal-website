@@ -1,13 +1,7 @@
 name: Bump version (on merge)
 
-# on:
-#   pull_request:
-#     branches: [ main ]
-#     actions: [ closed ]
-
 on:
-  pull_request:
-    branches: [ main ] 
+  workflow_dispatch:
 
 jobs:
   your_job_name:
@@ -16,14 +10,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Check if pull request merged (optional)
-        run: |
-          if [[ ${{ github.event.pull_request.merged }} == true ]]; then
-            echo "Pull request merged, continuing workflow."
-          else
-            echo "Pull request not merged, exiting workflow."
-            exit 1
-          fi
+      # - name: Check if pull request merged (optional)
+      #   run: |
+      #     if [[ ${{ github.event.pull_request.merged }} == true ]]; then
+      #       echo "Pull request merged, continuing workflow."
+      #     else
+      #       echo "Pull request not merged, exiting workflow."
+      #       exit 1
+      #     fi
 
       - name: Initialize Git user
         run: |
@@ -35,7 +29,3 @@ jobs:
       
       - name: Run release
         run: npm run release -- --dry-run
-      
-
-env:
-  # ... (Optional: Define environment variables if needed) ...
