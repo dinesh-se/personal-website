@@ -3,10 +3,10 @@
     "requireBranch": "main",
     "commitMessage": "chore: release v${version}"
   },
-  "hooks": {
-    "after:bump": "npx auto-changelog -p"
-  },
   "github": {
     "release": true
+  },
+  "npm": {
+    "publish": false
   }
 }
