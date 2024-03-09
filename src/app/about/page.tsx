@@ -39,7 +39,7 @@ export default async function About() {
 						renderers={{
 							p: ({ children }) => <p className="">{children}</p>,
 							code: ({ children }) => (
-								<span className="bg-gradient-to-r from-pink-500 to-violet-600 bg-clip-text text-transparent">
+								<span className="text-amber-700 dark:text-amber-500">
 									{children}
 								</span>
 							),
