@@ -5,7 +5,7 @@ export default async function Uses() {
 		{
 			item: 'Macbook Air 2015',
 			comment:
-				'I love working with this. Still going strong. When the time comes, I would love to upgrade to a Macbook Pro with SSD and a M series chip.',
+				'Still running great for personal usage. I would love to upgrade to a Macbook Pro with SSD and a M series chip when time comes.',
 		},
 		{
 			item: 'Dual Monitors',
@@ -56,21 +56,15 @@ export default async function Uses() {
 		<>
 			<h1 className="text-3xl">Uses</h1>
 			<p className="mt-4">
-				Inspired by&nbsp;
-				<Link
-					className="text-sky-500 hover:text-sky-600 dark:hover:text-sky-400"
-					href="https://wesbos.com/"
-				>
-					Wes Bos&apos;s&nbsp;
-				</Link>
+				This page draws inspiration from&nbsp;
 				<Link
 					className="text-sky-500 hover:text-sky-600 dark:hover:text-sky-400"
 					href="https://uses.tech"
 				>
-					https://uses.tech
+					Wes Bos&apos;s Uses.Tech
 				</Link>
-				, here is the list of tools and technologies I use to keep myself
-				productive and for a plesant working environment.
+				&nbsp;project, a collection of developer&apos;s setup, hardware and
+				software.
 			</p>
 			<section className="mt-8 flex flex-col sm:flex-row">
 				<h2 className="min-w-[150px] text-2xl">Workstation</h2>

@@ -5,6 +5,7 @@ import { ProjectCard } from '@components/ProjectCard';
 export default async function Projects() {
 	const {
 		profile: {
+			contactDetail: { eMail },
 			githubRecentProjects: {
 				repositories: { nodes: repos },
 			},
@@ -28,7 +29,13 @@ export default async function Projects() {
 			<section className="flex justify-center px-4 py-8">
 				<p className="pb-6 text-center md:max-w-xl">
 					To know more about the projects that I have worked on in various
-					organizations, please reach out to me.
+					organizations, kindly&nbsp;
+					<a
+						className="text-sky-500 hover:text-sky-600 dark:hover:text-sky-400"
+						href={`mailto:${eMail}`}
+					>
+						contact me.
+					</a>
 				</p>
 			</section>
 		</>
