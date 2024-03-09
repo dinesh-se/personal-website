@@ -32,7 +32,7 @@ const Header = () => {
 				<div className="relative flex h-16 items-center justify-between">
 					<div className="flex flex-1 items-center justify-center sm:justify-start">
 						<div className="flex flex-1 items-center">
-							<Link href="/">
+							<Link href="/" aria-label="Home page">
 								<Logo className="svg-icon h-16 w-16" />
 							</Link>
 						</div>
