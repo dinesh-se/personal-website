@@ -59,9 +59,8 @@ export default async function Home() {
 					className="text-sky-500 hover:text-sky-600 dark:hover:text-sky-400"
 					href="/about"
 				>
-					Click here
+					More about me
 				</Link>
-				&nbsp;to learn more about me.
 			</p>
 			<section className="pt-3">
 				<Contact linkedin={linkedin} github={github} email={email} />
