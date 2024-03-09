@@ -79,6 +79,9 @@ const GET_MORE_DETAILS = gql`
 const GET_REPOS = gql`
 	query content_profile_githubRecentProjects($id: ID!) {
 		profile(where: { id: $id }, stage: PUBLISHED) {
+			contactDetail {
+				eMail
+			}
 			githubRecentProjects {
 				repositories(
 					orderBy: { field: UPDATED_AT, direction: DESC }
