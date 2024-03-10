@@ -20,7 +20,7 @@ const GET_USER = gql`
 		profile: profile(where: { id: $id }, stage: PUBLISHED, locales: en) {
 			summary
 			contactDetail {
-				eMail
+				email
 				mobileNumber
 				socialMedia {
 					linkedin
@@ -56,31 +56,31 @@ const GET_USER = gql`
 `;
 
 const GET_MORE_DETAILS = gql`
-  query ProfileUsers {
-    profile(where: {id: "${process.env.HYGRAPH_USER_ID}"}, stage: PUBLISHED, locales: en) {
-      displayPicture {
-        url
-      }
-      moreDetails {
-        raw
-      }
-      contactDetail {
-        eMail
-        mobileNumber
-        socialMedia {
-          linkedin
-          github
-        }
-      }
-    }
-  }
+	query ProfileUsers($id: ID!) {
+		profile(where: { id: $id }, stage: PUBLISHED, locales: en) {
+			displayPicture {
+				url
+			}
+			moreDetails {
+				raw
+			}
+			contactDetail {
+				email
+				mobileNumber
+				socialMedia {
+					linkedin
+					github
+				}
+			}
+		}
+	}
 `;
 
 const GET_REPOS = gql`
 	query content_profile_githubRecentProjects($id: ID!) {
 		profile(where: { id: $id }, stage: PUBLISHED) {
 			contactDetail {
-				eMail
+				email
 			}
 			githubRecentProjects {
 				repositories(
@@ -103,6 +103,22 @@ const GET_REPOS = gql`
 	}
 `;
 
+const GET_USES = gql`
+	query ProfileUsers($id: ID!) {
+		profile(where: { id: $id }, stage: PUBLISHED, locales: en) {
+			uses {
+				id
+				title
+				list {
+					id
+					name
+					description
+				}
+			}
+		}
+	}
+`;
+
 export const getUser = async () => {
 	const user = await client.request<Author>(GET_USER, hygraphUser);
 
@@ -110,7 +126,10 @@ export const getUser = async () => {
 };
 
 export const getMoreDetails = async () => {
-	const moreDetails = await client.request<Author>(GET_MORE_DETAILS);
+	const moreDetails = await client.request<Author>(
+		GET_MORE_DETAILS,
+		hygraphUser
+	);
 
 	return moreDetails;
 };
@@ -119,4 +138,12 @@ export const getRepos = async () => {
 	const data = await client.request<Author>(GET_REPOS, hygraphUser);
 
 	return data;
+};
+
+export const getUses = async () => {
+	const {
+		profile: { uses },
+	} = await client.request<Author>(GET_USES, hygraphUser);
+
+	return uses;
 };

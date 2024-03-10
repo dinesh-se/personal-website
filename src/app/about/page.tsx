@@ -23,7 +23,7 @@ export default async function About() {
 			displayPicture: { url },
 			moreDetails: { raw },
 			contactDetail: {
-				eMail,
+				email,
 				socialMedia: { linkedin, github },
 			},
 		},
@@ -39,16 +39,22 @@ export default async function About() {
 						renderers={{
 							p: ({ children }) => <p className="">{children}</p>,
 							code: ({ children }) => (
-								<span className="bg-gradient-to-r from-pink-500 to-violet-600 bg-clip-text text-transparent">
+								<span className="text-amber-700 dark:text-amber-500">
 									{children}
 								</span>
 							),
 						}}
 					/>
 				</section>
-				<section className="align-center flex flex-col justify-center md:flex-1">
-					<Image src={url} width="360" height="480" alt="Dinesh Haribabu" />
-					<Contact linkedin={linkedin} github={github} eMail={eMail} />
+				<section className="align-center flex flex-col justify-center md:flex-1 mt-4">
+					<Image
+						className="rounded-lg md:origin-bottom md:rotate-3"
+						src={url}
+						width="360"
+						height="360"
+						alt="Dinesh Haribabu"
+					/>
+					<Contact linkedin={linkedin} github={github} email={email} />
 				</section>
 			</section>
 			<section className="-mx-8 bg-neutral-200 px-4 py-8 dark:bg-gray-950">
