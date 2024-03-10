@@ -20,7 +20,7 @@ const GET_USER = gql`
 		profile: profile(where: { id: $id }, stage: PUBLISHED, locales: en) {
 			summary
 			contactDetail {
-				eMail
+				email
 				mobileNumber
 				socialMedia {
 					linkedin
@@ -65,7 +65,7 @@ const GET_MORE_DETAILS = gql`
 				raw
 			}
 			contactDetail {
-				eMail
+				email
 				mobileNumber
 				socialMedia {
 					linkedin
@@ -80,7 +80,7 @@ const GET_REPOS = gql`
 	query content_profile_githubRecentProjects($id: ID!) {
 		profile(where: { id: $id }, stage: PUBLISHED) {
 			contactDetail {
-				eMail
+				email
 			}
 			githubRecentProjects {
 				repositories(

@@ -5,7 +5,7 @@ import { ProjectCard } from '@components/ProjectCard';
 export default async function Projects() {
 	const {
 		profile: {
-			contactDetail: { eMail },
+			contactDetail: { email },
 			githubRecentProjects: {
 				repositories: { nodes: repos },
 			},
@@ -32,7 +32,7 @@ export default async function Projects() {
 					organizations, kindly&nbsp;
 					<a
 						className="text-sky-500 hover:text-sky-600 dark:hover:text-sky-400"
-						href={`mailto:${eMail}`}
+						href={`mailto:${email}`}
 					>
 						contact me.
 					</a>

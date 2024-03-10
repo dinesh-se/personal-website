@@ -23,7 +23,7 @@ export default async function About() {
 			displayPicture: { url },
 			moreDetails: { raw },
 			contactDetail: {
-				eMail,
+				email,
 				socialMedia: { linkedin, github },
 			},
 		},
@@ -54,7 +54,7 @@ export default async function About() {
 						height="360"
 						alt="Dinesh Haribabu"
 					/>
-					<Contact linkedin={linkedin} github={github} eMail={eMail} />
+					<Contact linkedin={linkedin} github={github} email={email} />
 				</section>
 			</section>
 			<section className="-mx-8 bg-neutral-200 px-4 py-8 dark:bg-gray-950">

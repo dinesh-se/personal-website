@@ -18,7 +18,7 @@ interface Profile {
 }
 
 interface ContactDetail {
-	eMail: string;
+	email: string;
 	mobileNumber: string[];
 	socialMedia: SocialMedia;
 }
@@ -28,7 +28,7 @@ interface SocialMedia {
 	github: string;
 }
 
-export interface Contact extends SocialMedia, Pick<ContactDetail, 'eMail'> {}
+export interface Contact extends SocialMedia, Pick<ContactDetail, 'email'> {}
 
 export interface Experience {
 	organizations: Organization[];

@@ -2,7 +2,7 @@ import { SocialIcon } from 'react-social-icons';
 
 import { Contact as ContactType } from '@types';
 
-const Contact = ({ linkedin, github, eMail }: ContactType) => {
+const Contact = ({ linkedin, github, email }: ContactType) => {
 	return (
 		<section>
 			<SocialIcon
@@ -18,7 +18,7 @@ const Contact = ({ linkedin, github, eMail }: ContactType) => {
 				bgColor="transparent"
 			/>
 			<SocialIcon
-				url={`mailto:${eMail}`}
+				url={`mailto:${email}`}
 				network="email"
 				className="social mx-1"
 				fgColor="currentColor"

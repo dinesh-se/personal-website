@@ -13,7 +13,7 @@ export default async function Home() {
 		profile: {
 			summary,
 			contactDetail: {
-				eMail,
+				email,
 				socialMedia: { linkedin, github },
 			},
 			experience: { organizations },
@@ -47,7 +47,7 @@ export default async function Home() {
 				&nbsp;to learn more about me.
 			</p>
 			<section className="pt-3">
-				<Contact linkedin={linkedin} github={github} eMail={eMail} />
+				<Contact linkedin={linkedin} github={github} email={email} />
 			</section>
 			<section className="mt-16 flex flex-col justify-between max-lg:space-y-8 lg:flex-row lg:space-x-16">
 				<div className="flex-1">
