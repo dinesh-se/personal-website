@@ -1,10 +1,11 @@
 import Link from 'next/link';
 
 import { getUses } from '@api/graphql';
-import { Uses } from '@types';
+
+import { Uses as UsesType } from '@types';
 
 export default async function Uses() {
-	const uses: Uses[] = await getUses();
+	const uses: UsesType[] = await getUses();
 
 	return (
 		<>
@@ -20,8 +21,8 @@ export default async function Uses() {
 				&nbsp;project, a collection of developer&apos;s setup, hardware and
 				software.
 			</p>
-			{uses.map(({id, title, list}) => (
-				<section className="mt-8 flex flex-col sm:flex-row" key={id}>	
+			{uses.map(({ id, title, list }) => (
+				<section className="mt-8 flex flex-col sm:flex-row" key={id}>
 					<h2 className="min-w-[150px] text-2xl">{title}</h2>
 					<ul className="flex-auto pt-8">
 						{list.map(({ id, name, description }) => (

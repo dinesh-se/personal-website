@@ -9,7 +9,7 @@ describe('Contact', () => {
 		const props: ContactType = {
 			linkedin: 'https://linkedin.com',
 			github: 'https://github.com',
-			eMail: 'test@test.com',
+			email: 'test@test.com',
 		};
 		const { container } = render(<Contact {...props} />);
 		expect(container).toMatchSnapshot();
