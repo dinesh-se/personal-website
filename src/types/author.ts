@@ -1,5 +1,7 @@
 import { RichTextContent } from '@graphcms/rich-text-types';
 
+import { Uses } from './uses';
+
 export interface Author {
 	profile: Profile;
 }
@@ -12,6 +14,7 @@ interface Profile {
 	displayPicture: DisplayPicture;
 	moreDetails: MoreDetails;
 	githubRecentProjects: GithubRecentProjects;
+	uses: Uses[];
 }
 
 interface ContactDetail {
