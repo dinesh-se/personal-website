@@ -15,7 +15,6 @@ const initialConfig: Config = {
 	},
 	setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 	testEnvironment: 'jest-environment-jsdom',
-	// verbose: true,
 };
 
 const jestConfig = async () => {

@@ -46,8 +46,14 @@ export default async function About() {
 						}}
 					/>
 				</section>
-				<section className="align-center flex flex-col justify-center md:flex-1">
-					<Image src={url} width="360" height="480" alt="Dinesh Haribabu" />
+				<section className="align-center flex flex-col justify-center md:flex-1 mt-4">
+					<Image
+						className="rounded-lg md:origin-bottom md:rotate-3"
+						src={url}
+						width="360"
+						height="360"
+						alt="Dinesh Haribabu"
+					/>
 					<Contact linkedin={linkedin} github={github} eMail={eMail} />
 				</section>
 			</section>
