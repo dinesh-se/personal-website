@@ -64,7 +64,7 @@ const Experience = ({ organizations }: ExperienceType) => {
            hover:text-gray-100 focus:ring active:ring
            dark:bg-zinc-800/50 
            dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
-				href="https://drive.google.com/file/d/13xI1xgpGBtYOGV9nOr0nplmb88STtI6C/view?usp=sharing"
+				href="https://docs.google.com/document/d/1vhOLI855ej5wEG9AwuFASioJxb4ALhCR_78Q6RR3X-s/export?format=pdf"
 			>
 				Download Resume
 			</a>
