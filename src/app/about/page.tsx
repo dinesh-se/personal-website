@@ -1,5 +1,6 @@
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import Image from 'next/image';
+import { cache } from 'react';
 
 import { getMoreDetails } from '@api/graphql';
 
@@ -17,7 +18,7 @@ import LogoTS from '@root/public/assets/tech/typescript.svg';
 
 import { Author } from '@types';
 
-export default async function About() {
+const getPageData = cache(async () => {
 	const {
 		profile: {
 			displayPicture: { url },
@@ -29,13 +30,28 @@ export default async function About() {
 		},
 	}: Author = await getMoreDetails();
 
+	return {
+		displayPictureUrl: url,
+		richContent: raw,
+		email,
+		linkedin,
+		github,
+	};
+});
+
+export const revalidate = 600;
+
+export default async function About() {
+	const { displayPictureUrl, richContent, email, linkedin, github } =
+		await getPageData();
+
 	return (
 		<>
 			<h1 className="text-3xl">A little more about me!</h1>
 			<section className="pb-6 pt-4 md:flex">
 				<section className="space-y-4 pr-8 leading-relaxed tracking-wide md:w-3/5">
 					<RichText
-						content={raw}
+						content={richContent}
 						renderers={{
 							p: ({ children }) => <p className="">{children}</p>,
 							code: ({ children }) => (
@@ -49,7 +65,7 @@ export default async function About() {
 				<section className="align-center flex flex-col justify-center md:flex-1 mt-4">
 					<Image
 						className="rounded-lg md:origin-bottom md:rotate-3"
-						src={url}
+						src={displayPictureUrl}
 						width="360"
 						height="360"
 						alt="Dinesh Haribabu"

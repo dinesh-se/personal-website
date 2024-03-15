@@ -1,11 +1,20 @@
 import Link from 'next/link';
+import { cache } from 'react';
 
 import { getUses } from '@api/graphql';
 
 import { Uses as UsesType } from '@types';
 
-export default async function Uses() {
+const getPageData = cache(async () => {
 	const uses: UsesType[] = await getUses();
+
+	return uses;
+});
+
+export const revalidate = 600;
+
+export default async function Uses() {
+	const uses = await getPageData();
 
 	return (
 		<>

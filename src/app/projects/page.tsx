@@ -1,22 +1,35 @@
+import { cache } from 'react';
+
 import { getRepos } from '@api/graphql';
 
 import { ProjectCard } from '@components/ProjectCard';
 
-export default async function Projects() {
+const getPageData = cache(async () => {
 	const {
 		profile: {
 			contactDetail: { email },
 			githubRecentProjects: {
-				repositories: { nodes: repos },
+				repositories: { nodes: projects },
 			},
 		},
 	} = await getRepos();
+
+	return {
+		email,
+		projects,
+	};
+});
+
+export const revalidate = 600;
+
+export default async function Projects() {
+	const { email, projects } = await getPageData();
 
 	return (
 		<>
 			<h1 className="text-3xl">GitHub Projects</h1>
 			<section className="grid grid-cols-1 gap-4 pb-6 pt-4 sm:grid-cols-2 lg:grid-cols-3">
-				{repos.map(({ id, name, description, url, primaryLanguage }) => (
+				{projects.map(({ id, name, description, url, primaryLanguage }) => (
 					<ProjectCard
 						key={id}
 						name={name}
