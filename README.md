@@ -1,6 +1,6 @@
 # Dinesh Haribabu website
 
-![Dinesh Haribabu - Passionate software engineer with a focus on front-end development](https://res.cloudinary.com/dineshharibabu-in/image/upload/v1710769624/Personal%20website/landing-page.png)
+![Dinesh Haribabu - Passionate software engineer with a focus on front-end development](https://res.cloudinary.com/dineshharibabu-in/image/upload/v1710773278/Personal%20website/landing-page.png)
 
 This personal website is built with [Next.js](https://nextjs.org/), [TypeScript](https://www.typescriptlang.org/) and [Tailwind CSS](https://tailwindcss.com/). The content is managed through [Hygraph](https://hygraph.com/). [Vercel Analytics](https://vercel.com/analytics) is used to track website's usage.
 
