@@ -39,9 +39,7 @@ const Footer = () => {
 					linkDefaultState={linkDefaultState}
 				/>
 			</div>
-			<p className="text-sm text-zinc-500">
-				© 2024 Dinesh Haribabu. All rights reserved.
-			</p>
+			<p className="text-sm text-zinc-500">uncopyright</p>
 		</footer>
 	);
 };
