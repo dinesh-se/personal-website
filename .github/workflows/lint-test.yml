@@ -2,8 +2,8 @@ name: Lint and Test
 
 on:
   pull_request:
-    branches: 
-      - main 
+    branches:
+      - main
 
 jobs:
   run-linters-and-tests:
