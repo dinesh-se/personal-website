@@ -3,7 +3,7 @@
 exports[`Footer renders correctly 1`] = `
 <div>
   <footer
-    class="m-auto flex max-w-7xl flex-col items-center justify-between gap-y-4 border-t border-slate-200 p-12 text-sm  sm:flex-row dark:border-slate-700 dark:text-slate-200"
+    class="m-auto flex max-w-7xl flex-col items-center justify-between gap-y-4 border-t border-slate-200 p-12 text-sm sm:flex-row dark:border-slate-700 dark:text-slate-200"
   >
     <div
       class="space-x-4"
@@ -33,11 +33,12 @@ exports[`Footer renders correctly 1`] = `
         Uses
       </a>
     </div>
-    <p
-      class="text-sm text-zinc-500"
+    <a
+      class="text-sm text-zinc-500 hover:text-zinc-300 hover:underline"
+      href="https://creativecommons.org/publicdomain/zero/1.0/deed.en"
     >
-      uncopyright
-    </p>
+      No Copyright
+    </a>
   </footer>
 </div>
 `;

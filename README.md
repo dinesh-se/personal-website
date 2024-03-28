@@ -20,7 +20,7 @@ npm run dev
 The site is now running at `http://localhost:3000`
 
 ## No Copyright
+
 This entire website is uncopyrighted. That means I’ve put them in the public domain, and released my copyright on all these works. There is no need to email me for permission — use my content however you want! Attribution is appreciated but not required.
 
 Thanks to [Joe Astuccio](https://astucc.io/uncopyright/) for inspiring me to uncopyright.
-
