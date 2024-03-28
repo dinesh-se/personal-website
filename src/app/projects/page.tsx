@@ -35,7 +35,7 @@ export default async function Projects() {
 						name={name}
 						description={description}
 						href={url}
-						primaryLanguage={primaryLanguage}
+						{...(primaryLanguage ? { primaryLanguage } : {})}
 					/>
 				))}
 			</section>

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProjectCard renders correctly 1`] = `
+exports[`ProjectCard renders correctly with primary language 1`] = `
 <div>
   <a
     class="overflow-hidden rounded-md bg-neutral-300 p-6 dark:bg-slate-900"
@@ -26,6 +26,26 @@ exports[`ProjectCard renders correctly 1`] = `
         class="mr-2 w-4 h-4 rounded-full order-first"
         style="background-color: rgb(255, 0, 255);"
       />
+    </p>
+  </a>
+</div>
+`;
+
+exports[`ProjectCard renders correctly without primary language 1`] = `
+<div>
+  <a
+    class="overflow-hidden rounded-md bg-neutral-300 p-6 dark:bg-slate-900"
+    href="https://test.repo.url"
+  >
+    <h2
+      class="mb-2 overflow-hidden text-ellipsis text-nowrap font-semibold"
+    >
+      test-repo-name
+    </h2>
+    <p
+      class="text-sm text-gray-600 dark:text-gray-300"
+    >
+      test-description
     </p>
   </a>
 </div>
