@@ -20,6 +20,10 @@ const Footer = () => {
 			href: '/projects',
 		},
 		{
+			label: 'Blog',
+			href: '/blog',
+		},
+		{
 			label: 'Uses',
 			href: '/uses',
 		},

@@ -25,6 +25,10 @@ const Header = () => {
 			href: '/projects',
 		},
 		{
+			label: 'Blog',
+			href: '/blog',
+		},
+		{
 			label: 'Uses',
 			href: '/uses',
 		},

@@ -28,6 +28,12 @@ exports[`Footer renders correctly 1`] = `
       </a>
       <a
         class="text-neutral-500 hover:text-slate-700 dark:hover:text-white"
+        href="/blog"
+      >
+        Blog
+      </a>
+      <a
+        class="text-neutral-500 hover:text-slate-700 dark:hover:text-white"
         href="/uses"
       >
         Uses
