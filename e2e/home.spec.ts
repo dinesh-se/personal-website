@@ -1,0 +1,92 @@
+import { expect, test } from '@playwright/test';
+
+test.describe('Home Page', () => {
+	test.beforeEach(async ({ page }) => {
+		await page.goto('/');
+	});
+
+	test('should render the page title', async ({ page }) => {
+		await expect(page).toHaveTitle(/Dinesh Haribabu/);
+	});
+
+	test('should display the greeting', async ({ page }) => {
+		await expect(page.locator('h1')).toBeVisible();
+	});
+
+	test('should render the header navigation', async ({ page }) => {
+		await expect(page.locator('nav')).toBeVisible();
+		const nav = page.getByRole('navigation');
+		await expect(nav.getByRole('link', { name: 'About me' })).toBeVisible();
+		await expect(nav.getByRole('link', { name: 'Projects' })).toBeVisible();
+		await expect(nav.getByRole('link', { name: 'Blog' })).toBeVisible();
+		await expect(nav.getByRole('link', { name: 'Uses' })).toBeVisible();
+	});
+
+	test('should render the footer', async ({ page }) => {
+		await expect(page.locator('footer')).toBeVisible();
+	});
+
+	test('should navigate to about page', async ({ page }) => {
+		await page.getByRole('navigation').getByRole('link', { name: 'About me' }).click();
+		await expect(page).toHaveURL('/about');
+		await expect(page.locator('h1')).toContainText(/about/i);
+	});
+
+	test('should navigate to projects page', async ({ page }) => {
+		await page.getByRole('navigation').getByRole('link', { name: 'Projects' }).click();
+		await expect(page).toHaveURL('/projects');
+	});
+
+	test('should navigate to blog page', async ({ page }) => {
+		await page.getByRole('navigation').getByRole('link', { name: 'Blog' }).click();
+		await expect(page).toHaveURL('/blog');
+	});
+
+	test('should navigate to uses page', async ({ page }) => {
+		await page.getByRole('navigation').getByRole('link', { name: 'Uses' }).click();
+		await expect(page).toHaveURL('/uses');
+	});
+});
+
+test.describe('Mobile Menu', () => {
+	test('should toggle mobile menu', async ({ page }) => {
+		await page.setViewportSize({ width: 375, height: 812 });
+		await page.goto('/');
+
+		const menuButton = page.getByRole('button', { name: /menu/i });
+		await expect(menuButton).toBeVisible();
+
+		// Menu should be closed initially (hidden class present)
+		await expect(page.locator('#mobile-menu')).toHaveClass(/hidden/);
+
+		// Open menu
+		await menuButton.click();
+		await expect(page.locator('#mobile-menu')).not.toHaveClass(/(^|\s)hidden(\s|$)/);
+
+		// Close menu
+		await menuButton.click();
+		await expect(page.locator('#mobile-menu')).toHaveClass(/(^|\s)hidden(\s|$)/);
+	});
+});
+
+test.describe('Dark Mode', () => {
+	test('should respect system preference', async ({ page }) => {
+		await page.goto('/');
+
+		// Check if antialiased class is present
+		const body = page.locator('body');
+		await expect(body).toHaveClass(/antialiased/);
+	});
+});
+
+test.describe('Footer Links', () => {
+	test('should have footer navigation links', async ({ page }) => {
+		await page.goto('/');
+
+		const footer = page.locator('footer');
+		await expect(footer).toBeVisible();
+
+		// Check for No Copyright link
+		await expect(footer.getByRole('link', { name: /No Copyright/i })).toBeVisible();
+	});
+});

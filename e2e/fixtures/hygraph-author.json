@@ -1,0 +1,81 @@
+{
+	"profile": {
+		"displayName": "Dinesh Haribabu",
+		"summary": "A front-end web developer focused on crafting clean and intuitive interfaces providing better UX.",
+		"contactDetail": {
+			"email": "dinesh@example.com",
+			"mobileNumber": ["+91 9876543210"],
+			"socialMedia": {
+				"linkedin": "https://linkedin.com/in/dineshharibabu",
+				"github": "https://github.com/dinesh-se"
+			}
+		},
+		"displayPicture": {
+			"url": "https://media.graphassets.com/abc123"
+		},
+		"moreDetails": {
+			"raw": [
+				{
+					"kind": "paragraph",
+					"children": [
+						{
+							"kind": "text",
+							"value": "Hello! I'm Dinesh, a front-end web developer with a passion for creating beautiful and functional user interfaces."
+						}
+					]
+				}
+			]
+		},
+		"experience": {
+			"organizations": [
+				{
+					"orgName": "Example Corp",
+					"title": "Senior Front-End Developer",
+					"from": "2020-01",
+					"to": null,
+					"orgLogo": {
+						"url": "https://media.graphassets.com/logo123"
+					}
+				}
+			]
+		},
+		"githubRecentProjects": {
+			"repositories": {
+				"nodes": [
+					{
+						"id": "repo1",
+						"name": "project-one",
+						"description": "A modern web application built with Next.js and TypeScript",
+						"url": "https://github.com/dinesh-se/project-one"
+					},
+					{
+						"id": "repo2",
+						"name": "project-two",
+						"description": "A React component library with accessibility focus",
+						"url": "https://github.com/dinesh-se/project-two"
+					}
+				]
+			}
+		},
+		"uses": {
+			"nodes": [
+				{
+					"id": "use1",
+					"title": "Development",
+					"list": [
+						{
+							"id": "item1",
+							"name": "VS Code",
+							"description": "My primary code editor"
+						},
+						{
+							"id": "item2",
+							"name": "Chrome",
+							"description": "For testing and development"
+						}
+					]
+				}
+			]
+		}
+	}
+}

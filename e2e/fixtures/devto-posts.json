@@ -1,0 +1,22 @@
+[
+	{
+		"id": 12345,
+		"title": "Building Modern Web Apps with Next.js 16",
+		"description": "A deep dive into the latest features of Next.js 16 and how they improve developer experience.",
+		"published_at": "2026-07-01T10:00:00Z",
+		"url": "https://dev.to/dinesh-se/building-modern-web-apps-with-nextjs-16",
+		"comments_count": 15,
+		"public_reactions_count": 120,
+		"page_views_count": 1500
+	},
+	{
+		"id": 12346,
+		"title": "TypeScript Best Practices for React Applications",
+		"description": "Learn how to write better TypeScript code in your React applications with these proven patterns.",
+		"published_at": "2026-06-15T08:30:00Z",
+		"url": "https://dev.to/dinesh-se/typescript-best-practices-for-react-applications",
+		"comments_count": 8,
+		"public_reactions_count": 85,
+		"page_views_count": 950
+	}
+]

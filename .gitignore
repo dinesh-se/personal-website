@@ -34,3 +34,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# pi-kalam: baseline
+node_modules/
+dist/
+build/
+coverage/
+.env
+.env.*
+*.log

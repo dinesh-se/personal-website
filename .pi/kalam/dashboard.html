@@ -66,7 +66,7 @@ header h1 { font-size: 18px; margin: 0; }
 <header>
   <h1>kalam pipeline</h1>
   <span class="chip">cycle 1 · brownfield</span>
-  <span class="timestamp">generated 14:33:30 UTC — auto-refreshes every 3s</span>
+  <span class="timestamp">generated 16:02:35 UTC — auto-refreshes every 3s</span>
 </header>
 <div class="readonly-note">Read-only view — control the pipeline from the TUI (/kalam …).</div>
 <div class="grid">
@@ -133,14 +133,14 @@ header h1 { font-size: 18px; margin: 0; }
 <div class="line">  Consistency : ✅ passed</div>
   </div>
 </section>
-<section class="card status-in-progress">
+<section class="card status-complete">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">⏳</span>
+    <span class="glyph" aria-hidden="true">✅</span>
     <h2>Step 4 · Technical Design</h2>
-    <span class="status-word">In progress</span>
+    <span class="status-word">Complete</span>
   </div>
   <div class="card-body">
-<div class="line">  Status      : ⏳ In progress</div>
+<div class="line">  Status      : ✅ Complete</div>
 <div class="line">  ✅ Architecture Document → openspec/specs/architecture.md </div>
 <div class="line">  ✅ Data Model → openspec/specs/data-model.md </div>
 <div class="line">  ✅ API Specification → openspec/specs/api-spec.md </div>
@@ -148,24 +148,26 @@ header h1 { font-size: 18px; margin: 0; }
 <div class="line">  Consistency : ✅ passed</div>
   </div>
 </section>
-<section class="card status-blocked">
+<section class="card status-in-progress">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">🔒</span>
+    <span class="glyph" aria-hidden="true">⏳</span>
     <h2>Step 4b · Design Validation (Feature Spike)</h2>
-    <span class="status-word">Blocked</span>
+    <span class="status-word">In progress</span>
   </div>
   <div class="card-body">
-<div class="line">  Status : 🔒 Blocked (complete Step 4 first)</div>
+<div class="line">  Status      : ⏳ In progress</div>
+<div class="line">  Spike       : pending</div>
   </div>
 </section>
-<section class="card status-blocked">
+<section class="card status-not-started">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">🔒</span>
+    <span class="glyph" aria-hidden="true">○</span>
     <h2>Step 5 · Task Pipeline</h2>
-    <span class="status-word">Blocked</span>
+    <span class="status-word">Not started</span>
   </div>
   <div class="card-body">
-<div class="line">  Status : 🔒 Blocked (complete Step 4 first)</div>
+<div class="line">  Status : not started</div>
+<div class="line">  → Start : /kalam tasks</div>
   </div>
 </section>
 <section class="card status-blocked">
