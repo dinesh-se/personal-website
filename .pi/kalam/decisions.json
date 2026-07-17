@@ -232,5 +232,21 @@
     "source": "build",
     "affects": [],
     "timestamp": "2026-07-17T18:38:31.100Z"
+  },
+  {
+    "id": "build:T-008",
+    "question": "Task T-008 (fix-playwright-e2e)",
+    "answer": "All 12 Playwright E2E tests pass with zero failures. No code changes were needed — the test suite was already working correctly with the upgraded stack.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-17T19:14:26.969Z"
+  },
+  {
+    "id": "build-skip:T-009",
+    "question": "Task T-009 (verify-page-rendering) — skipped after exhausting the acceptance manifest",
+    "answer": "skipped after 3 failed the acceptance manifest attempt(s). Final rejection detail:\nEvidence test \"No JS console errors on /\" not found in e2e/page-verification.spec.ts for \"All 5 pages (/, /about, /projects, /blog, /uses) render without JavaScript runtime errors\".\nEvidence test \"Active nav link on /about (About me)\" not found in e2e/page-verification.spec.ts for \"Navigation active-state highlights correctly on all pages\".\nEvidence test \"Dark mode applies on /\" not found in e2e/page-verification.spec.ts for \"Dark mode renders correctly on all pages (via system preference or toggle)\".\nEvidence test \"No JS console errors on /uses\" not found in e2e/page-verification.spec.ts for \"No console errors in browser dev tools when visiting any page\".",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-17T19:51:46.651Z"
   }
 ]

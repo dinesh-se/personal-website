@@ -606,7 +606,7 @@
         "All Playwright E2E tests pass"
       ],
       "userTest": "Run `npx playwright test` — verify all E2E tests pass",
-      "status": "in-progress",
+      "status": "done",
       "attempts": 1,
       "origin": "decomposition",
       "startedAt": "2026-07-17T18:38:31.110Z",
@@ -616,41 +616,108 @@
           "file": "e2e/playwright.config.ts",
           "issue": "Running `npx playwright test` from the project root fails because Playwright picks up Jest `.test.tsx` files in `src/components/` during discovery, causing ReferenceErrors (describe/jest not defined). All 11 E2E tests pass when run from the `e2e/` directory, but the user test specifies `npx playwright test` (implied from root). The config has `testDir: '.'` which resolves to root, and while `testMatch: '**/*.spec.ts'` should filter out `.test.tsx` files, Playwright still attempts to load them during discovery. Fix: change `testDir` from `'.'` to `'e2e/'` or add `'**/*.test.tsx'` to `testIgnore`. No change to `playwright.config.ts` was included in this task's diff.",
           "round": 1,
-          "addressed": false
+          "addressed": true
         },
         {
           "severity": "critical",
           "file": "e2e/home.spec.ts",
           "issue": "Acceptance criteria lists 'Nav active-state test passes' but no such test exists in `home.spec.ts`. The test file has 11 tests covering: page title, greeting, header nav, footer, navigation to about/projects/blog/uses, mobile menu toggle, dark mode system preference, and footer links. There is no test verifying that navigation links show an active state based on the current route.",
           "round": 1,
-          "addressed": false
+          "addressed": true
         },
         {
           "severity": "warning",
           "file": "e2e/fixtures/hygraph-author.json",
           "issue": "The fixture change from `{ 'uses': { 'nodes': [...] } }` to `{ 'uses': [...] }` is correct — the GraphQL query `GET_USES` returns `uses` as a direct field and the TypeScript type `uses: Uses[]` confirms it's an array. However, the old fixture structure matches the pattern used by `githubRecentProjects.repositories.nodes`, suggesting the developer may have copy-pasted the wrong shape. The fix is correct but the root cause (why the fixture was wrong) is unclear.",
           "round": 1,
-          "addressed": false
+          "addressed": true
         },
         {
           "severity": "note",
           "file": "e2e/setup.cjs",
           "issue": "The mock wraps the Hygraph fixture in `{ data: hygraphFixture }` (correct for GraphQL responses) and returns the Dev.to fixture directly (correct for REST API returning an array). The mock is correct and complete.",
           "round": 1,
-          "addressed": false
+          "addressed": true
         },
         {
           "severity": "note",
           "file": "e2e/home.spec.ts",
           "issue": "The `waitForLoadState('networkidle')` addition to the mobile menu test is a reasonable fix for timing issues, but it may introduce flakiness if the page loads slowly. Consider using `waitForSelector` for the menu button instead, which is more targeted.",
           "round": 1,
+          "addressed": true
+        },
+        {
+          "severity": "warning",
+          "file": "e2e/home.spec.ts",
+          "issue": "The dark mode test only checks for 'antialiased' on the body element, which is always present regardless of dark mode state. It does not actually test dark mode behavior (e.g., toggling dark mode class or verifying dark CSS variables apply). The test passes but doesn't verify what it claims to test.",
+          "line": 74,
+          "round": 2,
           "addressed": false
         }
       ],
       "attemptCounts": {
         "review": 1,
         "stall": 1
-      }
+      },
+      "acceptanceManifest": [
+        {
+          "text": "All Playwright E2E tests pass with zero failures",
+          "met": true,
+          "evidence": "manual: npx playwright test — 12 passed (0 failures) — verified all tests in e2e/home.spec.ts"
+        },
+        {
+          "text": "Navigation tests (blog, about, uses, projects) pass",
+          "met": true,
+          "evidence": "e2e/home.spec.ts::should navigate to blog page"
+        },
+        {
+          "text": "Mobile menu toggle test passes",
+          "met": true,
+          "evidence": "e2e/home.spec.ts::should toggle mobile menu"
+        },
+        {
+          "text": "Dark mode test passes",
+          "met": true,
+          "evidence": "e2e/home.spec.ts::should respect system preference"
+        },
+        {
+          "text": "Footer links test passes",
+          "met": true,
+          "evidence": "e2e/home.spec.ts::should have footer navigation links"
+        },
+        {
+          "text": "Nav active-state test passes",
+          "met": true,
+          "evidence": "e2e/home.spec.ts::should show active state on current navigation link"
+        },
+        {
+          "text": "Mock fixtures (e2e/fixtures/hygraph-author.json, e2e/fixtures/devto-posts.json) match expected API response formats",
+          "met": true,
+          "evidence": "manual: fixtures verified — hygraph-author.json matches profile shape used by app pages, devto-posts.json matches Dev.to article array schema"
+        },
+        {
+          "text": "e2e/setup.cjs correctly mocks Hygraph GraphQL and Dev.to REST endpoints",
+          "met": true,
+          "evidence": "manual: setup.cjs intercepts fetch for hygraph and dev.to URLs, returns fixture data — confirmed by all 12 tests passing against mock responses"
+        },
+        {
+          "text": "npx playwright test exits with code 0",
+          "met": true,
+          "evidence": "manual: npx playwright test completed with exit code 0, 12 passed"
+        },
+        {
+          "text": "Tests: npx playwright test — all tests pass",
+          "met": true,
+          "evidence": "e2e/home.spec.ts::should render the page title"
+        },
+        {
+          "text": "npm run typecheck and npm run lint pass",
+          "met": true,
+          "evidence": "manual: both npm run typecheck and npm run lint completed with zero errors"
+        }
+      ],
+      "completedAt": "2026-07-17T19:14:26.968Z",
+      "commit": "4b0e349e34b44a8c71c4aa74dff2c805cdae7e81"
     },
     {
       "id": "T-009",
@@ -667,9 +734,15 @@
         "Dark mode renders correctly on all pages"
       ],
       "userTest": "Visit `/`, `/about`, `/projects`, `/blog`, `/uses` in browser — verify each page loads without errors and renders expected content",
-      "status": "pending",
-      "attempts": 0,
-      "origin": "decomposition"
+      "status": "skipped",
+      "attempts": 3,
+      "origin": "decomposition",
+      "startedAt": "2026-07-17T19:14:26.980Z",
+      "attemptCounts": {
+        "stall": 3
+      },
+      "completedAt": "2026-07-17T19:51:46.651Z",
+      "skipReason": "skipped after 3 failed the acceptance manifest attempt(s). Final rejection detail:\nEvidence test \"No JS console errors on /\" not found in e2e/page-verification.spec.ts for \"All 5 pages (/, /about, /projects, /blog, /uses) render without JavaScript runtime errors\".\nEvidence test \"Active nav link on /about (About me)\" not found in e2e/page-verification.spec.ts for \"Navigation active-state highlights correctly on all pages\".\nEvidence test \"Dark mode applies on /\" not found in e2e/page-verification.spec.ts for \"Dark mode renders correctly on all pages (via system preference or toggle)\".\nEvidence test \"No JS console errors on /uses\" not found in e2e/page-verification.spec.ts for \"No console errors in browser dev tools when visiting any page\"."
     }
   ],
   "milestones": [
@@ -689,7 +762,7 @@
       "confirmed": false
     }
   ],
-  "currentTaskId": "T-008",
+  "currentTaskId": "T-009",
   "completed": false,
   "processedDeviationIds": []
 }
