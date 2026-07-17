@@ -19,20 +19,21 @@ Migrate ESLint from v8 (legacy `.eslintrc.json`) to v9 with the new flat config 
 - **Task:** T-003 (TypeScript errors must be fixed first to ensure ESLint can run without TS-related noise)
 
 ## Acceptance criteria
+> ✅ Verified 2026-07-17
 
-- [ ] `eslint.config.js` (or `eslint.config.mjs`) exists at project root
-- [ ] `.eslintrc.json` is removed
-- [ ] `package.json` `lint` script points to `next lint` (or `eslint` directly)
-- [ ] All existing rules are preserved in flat config:
+- [x] `eslint.config.js` (or `eslint.config.mjs`) exists at project root
+- [x] `.eslintrc.json` is removed
+- [x] `package.json` `lint` script points to `next lint` (or `eslint` directly)
+- [x] All existing rules are preserved in flat config:
   - `next/core-web-vitals` rules
   - `@typescript-eslint/recommended` rules
   - `prettier/recommended` rules
   - `jsx-a11y` rules
-- [ ] `eslint.config.js` ignores `e2e/`, `.next/`, and `node_modules/`
-- [ ] All source files in `src/` pass linting with zero errors
-- [ ] `npm run lint` executes with zero errors
-- [ ] Tests: `npm run lint` passes with zero warnings/errors
-- [ ] `npm run typecheck` and `npm test` pass
+- [x] `eslint.config.js` ignores `e2e/`, `.next/`, and `node_modules/`
+- [x] All source files in `src/` pass linting with zero errors
+- [x] `npm run lint` executes with zero errors
+- [x] Tests: `npm run lint` passes with zero warnings/errors
+- [x] `npm run typecheck` and `npm test` pass
 
 ## User test
 
@@ -52,3 +53,11 @@ Migrate ESLint from v8 (legacy `.eslintrc.json`) to v9 with the new flat config 
 - Change the linting rules themselves (only migrate the config format)
 - Add new linting rules or plugins
 - Remove existing rules unless they are deprecated in ESLint 9
+
+## Review findings
+
+Open — the reviewer flagged these:
+
+- **note** `eslint.config.mjs` — arrow-body-style and prefer-arrow-callback are explicitly set to 'off' but are already ESLint core defaults (off). eslint-config-prettier does not include these rules. These are redundant no-ops, not harmful but unnecessary.
+- **note** `eslint.config.mjs` — Extra ignore patterns 'out/' and '.out/' added beyond the original .eslintrc.json ignorePatterns (which only had 'e2e/'). Not a bug, just scope creep on ignores.
+- **note** `eslint.config.mjs` — TypeScript parser is configured in both the Next.js config block and in tsPlugin.configs['flat/recommended'][0]. Flat config merges languageOptions across matching configs, so the last parser wins — both use the same tsParser, so this is harmless but redundant.
