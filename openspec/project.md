@@ -15,7 +15,7 @@
 
 ## Layout
 
-- `openspec/specs/` — current truth: the authored spec set (prd.md, tech-stack.md)
+- `openspec/specs/` — current truth: the authored spec set (api-spec.md, architecture.md, data-model.md, prd.md, tech-stack.md, ux-spec.md)
 - `openspec/changes/current/proposal.md` — the active change's proposal
 - `openspec/changes/current/tasks/` — the active change's task packets
 - `openspec/changes/archive/` — completed changes (with their spec deltas)
