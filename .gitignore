@@ -43,3 +43,9 @@ coverage/
 .env
 .env.*
 *.log
+
+# pi-kalam: e2e artifacts
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
