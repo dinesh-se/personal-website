@@ -248,5 +248,13 @@
     "source": "build",
     "affects": [],
     "timestamp": "2026-07-17T19:51:46.651Z"
+  },
+  {
+    "id": "build:FIX-001",
+    "question": "Task FIX-001 (hardcoded-path-in-playwright-webserver)",
+    "answer": "Removed the hardcoded absolute path `/home/dinesh-se/Dev/personal-website` from the Playwright webServer command. Playwright runs the command from process.cwd() (the project root), so the `cd` was unnecessary and the command works with just relative paths.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-17T21:16:31.564Z"
   }
 ]

@@ -752,10 +752,35 @@
       "coversFeatures": [],
       "userTest": "Run: cd /home/dinesh-se/Dev/personal-website && npx playwright test e2e/home.spec.ts --reporter=line. The web server should start on port 3099 and all 12 tests should pass with no connection errors.",
       "milestone": 4,
-      "status": "in-progress",
+      "status": "done",
       "attempts": 0,
       "origin": "check",
-      "startedAt": "2026-07-17T21:11:17.119Z"
+      "startedAt": "2026-07-17T21:11:17.119Z",
+      "acceptanceManifest": [
+        {
+          "text": "The webServer.command in e2e/playwright.config.ts must not contain the hardcoded path /home/dinesh-se/Dev/personal-website",
+          "met": true,
+          "evidence": "manual: verified by reading e2e/playwright.config.ts — the command is now \"NODE_OPTIONS='--require ./e2e/setup.cjs' npm run dev -- -p 3099\" with no absolute path"
+        },
+        {
+          "text": "The command must use a relative path (.) or process.cwd() so it works regardless of the working directory",
+          "met": true,
+          "evidence": "manual: command uses \"./e2e/setup.cjs\" (relative) and \"npm run dev\" (runs from project root CWD) — no absolute paths anywhere"
+        },
+        {
+          "text": "Running npx playwright test e2e/ from the project root must still start the dev server and pass all e2e tests locally",
+          "met": true,
+          "evidence": "e2e/home.spec.ts::should render the page title"
+        },
+        {
+          "text": "The change must be CI-agnostic — it should work on GitHub Actions runners where the repo is checked out under /home/runner/work/...",
+          "met": true,
+          "evidence": "manual: the command contains zero absolute paths — uses only relative \"./e2e/setup.cjs\" and \"npm run dev\" from the project root, which is the CWD in any CI runner"
+        }
+      ],
+      "reviewFindings": [],
+      "completedAt": "2026-07-17T21:16:31.563Z",
+      "commit": "dd629f000d5fa39e7b9ba72feb9c4a66212d1419"
     }
   ],
   "milestones": [
@@ -781,6 +806,6 @@
     }
   ],
   "currentTaskId": "FIX-001",
-  "completed": false,
+  "completed": true,
   "processedDeviationIds": []
 }
