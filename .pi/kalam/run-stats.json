@@ -1,6 +1,6 @@
 {
   "startedAt": 1784309182354,
-  "totalSpawns": 12,
+  "totalSpawns": 14,
   "checkerSpawns": 0,
   "tasks": [
     {
@@ -66,6 +66,17 @@
       "tokensIn": 121919,
       "tokensOut": 2621,
       "startedAt": 1784313220109,
+      "durationMs": 108099,
+      "outcome": "committed"
+    },
+    {
+      "taskId": "T-007",
+      "coderSpawns": 1,
+      "reviewerSpawns": 1,
+      "verifyRuns": 1,
+      "tokensIn": 254508,
+      "tokensOut": 5280,
+      "startedAt": 1784313328209,
       "durationMs": 0,
       "outcome": ""
     }
@@ -73,7 +84,7 @@
   "notes": [
     "review gate: reviewer said \"fail\" but raised no critical finding on T-002 — verdict is advisory; task proceeds with 5 finding(s) recorded"
   ],
-  "updatedAt": 1784313328174,
+  "updatedAt": 1784313511069,
   "caps": {
     "enabled": false,
     "maxRunMinutes": 240,

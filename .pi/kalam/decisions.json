@@ -216,5 +216,13 @@
     "source": "build",
     "affects": [],
     "timestamp": "2026-07-17T18:33:40.109Z"
+  },
+  {
+    "id": "build:T-006",
+    "question": "Task T-006 (update-ci-workflow)",
+    "answer": "Updated CI workflow to use Node 24 and setup-node@v4. YAML syntax validated, typecheck and tests all pass.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-17T18:35:28.208Z"
   }
 ]
