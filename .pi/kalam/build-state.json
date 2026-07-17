@@ -1,0 +1,176 @@
+{
+  "kind": "build",
+  "tasksRoot": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks",
+  "verifyCommands": [],
+  "tasks": [
+    {
+      "id": "T-001",
+      "slug": "upgrade-core-deps",
+      "milestone": 1,
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-001-upgrade-core-deps",
+      "deps": [],
+      "coversFeatures": [
+        "Upgrade next to ^16.x",
+        "Upgrade react/react-dom to ^19.x",
+        "Upgrade @types/react/@types/react-dom to ^19",
+        "Upgrade @vercel/analytics to ^2.x"
+      ],
+      "userTest": "Run `npm install && npm run build` — verify build succeeds with zero TypeScript errors",
+      "status": "in-progress",
+      "attempts": 0,
+      "origin": "decomposition",
+      "startedAt": "2026-07-17T17:26:22.370Z"
+    },
+    {
+      "id": "T-002",
+      "slug": "upgrade-other-deps",
+      "milestone": 1,
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-002-upgrade-other-deps",
+      "deps": [
+        "T-001"
+      ],
+      "coversFeatures": [
+        "Upgrade all other direct dependencies to latest stable"
+      ],
+      "userTest": "Run `npm install && npm test` — verify all Jest tests pass",
+      "status": "pending",
+      "attempts": 0,
+      "origin": "decomposition"
+    },
+    {
+      "id": "T-003",
+      "slug": "fix-typescript-errors",
+      "milestone": 1,
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-003-fix-typescript-errors",
+      "deps": [
+        "T-002"
+      ],
+      "coversFeatures": [
+        "Fix all resulting TypeScript errors"
+      ],
+      "userTest": "Run `npm run build` — verify zero TypeScript errors in build output",
+      "status": "pending",
+      "attempts": 0,
+      "origin": "decomposition"
+    },
+    {
+      "id": "T-004",
+      "slug": "migrate-eslint-flat-config",
+      "milestone": 2,
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-004-migrate-eslint-flat-config",
+      "deps": [
+        "T-003"
+      ],
+      "coversFeatures": [
+        "Migrate ESLint v8 to v9 flat config"
+      ],
+      "userTest": "Run `npm run lint` — verify ESLint v9 runs with zero errors",
+      "status": "pending",
+      "attempts": 0,
+      "origin": "decomposition"
+    },
+    {
+      "id": "T-005",
+      "slug": "fix-eslint-errors",
+      "milestone": 2,
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-005-fix-eslint-errors",
+      "deps": [
+        "T-004"
+      ],
+      "coversFeatures": [
+        "Fix all resulting ESLint errors"
+      ],
+      "userTest": "Run `npm run lint` — verify zero ESLint errors",
+      "status": "pending",
+      "attempts": 0,
+      "origin": "decomposition"
+    },
+    {
+      "id": "T-006",
+      "slug": "update-ci-workflow",
+      "milestone": 2,
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-006-update-ci-workflow",
+      "deps": [
+        "T-005"
+      ],
+      "coversFeatures": [
+        "Update CI workflow to Node 24"
+      ],
+      "userTest": "Verify `.github/workflows/lint-test.yml` uses Node 24 and `setup-node@v4`",
+      "status": "pending",
+      "attempts": 0,
+      "origin": "decomposition"
+    },
+    {
+      "id": "T-007",
+      "slug": "fix-jest-snapshots",
+      "milestone": 3,
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-007-fix-jest-snapshots",
+      "deps": [
+        "T-003"
+      ],
+      "coversFeatures": [
+        "All Jest snapshot tests pass"
+      ],
+      "userTest": "Run `npm test` — verify all 8 component snapshot tests pass",
+      "status": "pending",
+      "attempts": 0,
+      "origin": "decomposition"
+    },
+    {
+      "id": "T-008",
+      "slug": "fix-playwright-e2e",
+      "milestone": 3,
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-008-fix-playwright-e2e",
+      "deps": [
+        "T-003"
+      ],
+      "coversFeatures": [
+        "All Playwright E2E tests pass"
+      ],
+      "userTest": "Run `npx playwright test` — verify all E2E tests pass",
+      "status": "pending",
+      "attempts": 0,
+      "origin": "decomposition"
+    },
+    {
+      "id": "T-009",
+      "slug": "verify-page-rendering",
+      "milestone": 3,
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-009-verify-page-rendering",
+      "deps": [
+        "T-008"
+      ],
+      "coversFeatures": [
+        "All 5 pages render without runtime errors",
+        "Mobile menu toggles correctly",
+        "Navigation active state highlights correctly",
+        "Dark mode renders correctly on all pages"
+      ],
+      "userTest": "Visit `/`, `/about`, `/projects`, `/blog`, `/uses` in browser — verify each page loads without errors and renders expected content",
+      "status": "pending",
+      "attempts": 0,
+      "origin": "decomposition"
+    }
+  ],
+  "milestones": [
+    {
+      "number": 1,
+      "title": "Walking skeleton",
+      "confirmed": false
+    },
+    {
+      "number": 2,
+      "title": "Milestone 2",
+      "confirmed": false
+    },
+    {
+      "number": 3,
+      "title": "Milestone 3",
+      "confirmed": false
+    }
+  ],
+  "currentTaskId": "T-001",
+  "completed": false,
+  "processedDeviationIds": []
+}

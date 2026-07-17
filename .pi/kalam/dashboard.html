@@ -66,11 +66,26 @@ header h1 { font-size: 18px; margin: 0; }
 <header>
   <h1>kalam pipeline</h1>
   <span class="chip">cycle 1 · brownfield</span>
-  <span class="timestamp">generated 17:15:12 UTC — auto-refreshes every 3s</span>
+  <span class="timestamp">generated 17:30:26 UTC — auto-refreshes every 3s</span>
 </header>
 <div class="readonly-note">Read-only view — control the pipeline from the TUI (/kalam …).</div>
 <div class="grid">
-
+<section class="card run-tile run-live">
+  <div class="card-head">
+    <span class="glyph" aria-hidden="true">🟢</span>
+    <h2>Run — live (4.1m)</h2>
+  </div>
+  <div class="tile-row">
+<div class="tile">
+    <div class="tile-label">Tasks committed</div>
+    <div class="tile-value">0 / 1</div>
+    <div class="meter-track"><div class="meter-fill meter-good" style="width:0.0%"></div></div>
+  </div>
+<div class="tile"><div class="tile-label">Child spawns</div><div class="tile-value">1</div></div>
+<div class="tile"><div class="tile-label">Wall clock</div><div class="tile-value">4.1</div></div>
+<div class="tile"><div class="tile-label">Tokens in/out</div><div class="tile-value">186651/3792</div></div>
+  </div>
+</section>
 <section class="card status-complete">
   <div class="card-head">
     <span class="glyph" aria-hidden="true">✅</span>
@@ -159,28 +174,31 @@ header h1 { font-size: 18px; margin: 0; }
 <div class="line">  Spike       : ✅ verified</div>
   </div>
 </section>
-<section class="card status-in-progress">
+<section class="card status-complete">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">⏳</span>
+    <span class="glyph" aria-hidden="true">✅</span>
     <h2>Step 5 · Task Pipeline</h2>
-    <span class="status-word">In progress</span>
+    <span class="status-word">Complete</span>
   </div>
   <div class="card-body">
-<div class="line">  Status      : ⏳ In progress</div>
+<div class="line">  Status      : ✅ Complete</div>
 <div class="line">  Tasks       : 9 recorded</div>
 <div class="line">  Review      : ✅ passed</div>
 <div class="line">  Approved    : ✅</div>
 <div class="line">  Tasks root  : /home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks</div>
+<div class="line">  → Execute   : /kalam build</div>
   </div>
 </section>
-<section class="card status-blocked">
+<section class="card status-in-progress">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">🔒</span>
+    <span class="glyph" aria-hidden="true">⏳</span>
     <h2>Build · Implementation</h2>
-    <span class="status-word">Blocked</span>
+    <span class="status-word">In progress</span>
   </div>
   <div class="card-body">
-<div class="line">  Status : 🔒 Blocked (complete Step 5 first)</div>
+<div class="line">  Status      : ⏳ In progress</div>
+<div class="line">  Tasks       : 0/9 done</div>
+<div class="line">  Current     : T-001 (upgrade-core-deps)</div>
   </div>
 </section>
 <section class="card status-blocked">

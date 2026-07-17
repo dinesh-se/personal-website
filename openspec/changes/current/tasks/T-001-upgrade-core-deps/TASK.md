@@ -22,15 +22,16 @@ Upgrade the four core dependencies (`next`, `react`/`react-dom`, `@types/react`/
 - **None**
 
 ## Acceptance criteria
+> ✅ Verified 2026-07-17
 
-- [ ] `package.json` has `next: "^16.x"`, `react: "^19.x"`, `react-dom: "^19.x"`, `@types/react: "^19"`, `@types/react-dom: "^19"`, `@vercel/analytics: "^2.x"`
-- [ ] `npm install` completes with exit code 0 and zero peer dependency conflict warnings
-- [ ] `npm run build` succeeds with zero TypeScript errors
-- [ ] `src/app/layout.tsx` still imports `<Analytics />` without type errors (API may have changed)
-- [ ] `next.config.mjs` has no warnings about deprecated options
-- [ ] All 5 pages (`/`, `/about`, `/projects`, `/blog`, `/uses`) render without JavaScript runtime errors
-- [ ] Tests: `npm test` passes (existing Jest snapshots may need updates in T-007, but no new TS errors should appear)
-- [ ] `npm run typecheck` (or `npm run build`) and `npm run lint` pass
+- [x] `package.json` has `next: "^16.x"`, `react: "^19.x"`, `react-dom: "^19.x"`, `@types/react: "^19"`, `@types/react-dom: "^19"`, `@vercel/analytics: "^2.x"`
+- [x] `npm install` completes with exit code 0 and zero peer dependency conflict warnings
+- [x] `npm run build` succeeds with zero TypeScript errors
+- [x] `src/app/layout.tsx` still imports `<Analytics />` without type errors (API may have changed)
+- [x] `next.config.mjs` has no warnings about deprecated options
+- [x] All 5 pages (`/`, `/about`, `/projects`, `/blog`, `/uses`) render without JavaScript runtime errors
+- [x] Tests: `npm test` passes (existing Jest snapshots may need updates in T-007, but no new TS errors should appear)
+- [x] `npm run typecheck` (or `npm run build`) and `npm run lint` pass
 
 ## User test
 
@@ -50,3 +51,11 @@ Upgrade the four core dependencies (`next`, `react`/`react-dom`, `@types/react`/
 - Upgrade any dependencies beyond the four core packages listed above
 - Modify any component logic or page rendering
 - Change the ESLint configuration (handled in T-004)
+
+## Review findings
+
+Open — the reviewer flagged these:
+
+- **note** `package.json` — The --webpack flag in build/dev scripts is redundant in Next.js 16 where webpack is the default bundler, but it is not deprecated and does not cause issues.
+- **note** `next.config.mjs` — reactStrictMode is set to true. This option is still supported in Next.js 16 but has been a no-op for several versions. Not a breaking change, but worth noting.
+- **note** `.pi/kalam/dashboard.html` — This file is part of the kalam pipeline dashboard (status tracking), not the Next.js application. Its changes in the diff are unrelated to the dependency upgrade task but were included in the working tree.
