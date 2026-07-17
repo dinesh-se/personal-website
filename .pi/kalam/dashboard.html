@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="3">
+<title>kalam pipeline dashboard</title>
+<style>
+:root {
+  --surface: #fcfcfb; --page: #f9f9f7; --ink: #0b0b0b; --secondary: #52514e;
+  --muted: #898781; --hairline: #e1e0d9; --border: rgba(11,11,11,.10);
+  --accent: #2a78d6; --good: #0ca30c; --warning: #fab219; --serious: #ec835a; --critical: #d03b3b;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #1a1a19; --page: #0d0d0d; --ink: #ffffff; --secondary: #c3c2b7;
+    --muted: #8a887f; --hairline: #2c2c2a; --border: rgba(255,255,255,.10);
+    --accent: #3987e5; --good: #0ca30c; --warning: #fab219; --serious: #ec835a; --critical: #d03b3b;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 24px; background: var(--page); color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px; line-height: 1.5;
+}
+header { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+header h1 { font-size: 18px; margin: 0; }
+.chip {
+  display: inline-block; padding: 2px 10px; border-radius: 999px;
+  border: 1px solid var(--border); color: var(--secondary); font-size: 12px;
+}
+.timestamp { color: var(--muted); font-size: 12px; margin-left: auto; }
+.readonly-note { color: var(--muted); font-size: 12px; margin-bottom: 20px; }
+.grid { display: grid; gap: 14px; }
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px 16px;
+}
+.card-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.card-head h2 { font-size: 14px; margin: 0; flex: 1; }
+.glyph { font-size: 16px; }
+.status-word { font-size: 12px; color: var(--secondary); }
+.card-body .line {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+  white-space: pre-wrap; color: var(--secondary); font-size: 12.5px;
+}
+.status-complete .status-word { color: var(--good); }
+.status-interrupted .status-word { color: var(--serious); }
+.status-blocked .status-word { color: var(--muted); }
+.status-paused .status-word { color: var(--warning); }
+.run-tile { margin-bottom: 4px; }
+.tile-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+.tile { border: 1px solid var(--hairline); border-radius: 8px; padding: 8px 10px; }
+.tile-label { font-size: 11px; color: var(--muted); }
+.tile-value { font-size: 16px; font-variant-numeric: tabular-nums; margin-top: 2px; }
+.meter-track { height: 6px; border-radius: 3px; background: var(--hairline); margin-top: 6px; overflow: hidden; }
+.meter-fill { height: 100%; border-radius: 3px; }
+.meter-good { background: var(--accent); }
+.meter-warning { background: var(--warning); }
+.meter-critical { background: var(--critical); }
+.footer-note { margin-top: 20px; color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>kalam pipeline</h1>
+  <span class="chip">cycle 1 · brownfield</span>
+  <span class="timestamp">generated 13:05:03 UTC — auto-refreshes every 3s</span>
+</header>
+<div class="readonly-note">Read-only view — control the pipeline from the TUI (/kalam …).</div>
+<div class="grid">
+
+<section class="card status-complete">
+  <div class="card-head">
+    <span class="glyph" aria-hidden="true">✅</span>
+    <h2>Step 0 · Codebase Comprehension</h2>
+    <span class="status-word">Complete</span>
+  </div>
+  <div class="card-body">
+<div class="line">  Status  : ✅ Complete</div>
+<div class="line">  Root    : /home/dinesh-se/Dev/personal-website</div>
+<div class="line">  Facets  : 7/7 covered (bar: 0.6)</div>
+<div class="line">  Drift   : ✅ scanned — 1 item(s) found, 1 resolved</div>
+<div class="line">  codebase-map.md   : ❌</div>
+<div class="line">  codebase-map.json : ❌</div>
+  </div>
+</section>
+<section class="card status-not-started">
+  <div class="card-head">
+    <span class="glyph" aria-hidden="true">○</span>
+    <h2>Feature Brief (Brownfield)</h2>
+    <span class="status-word">Not started</span>
+  </div>
+  <div class="card-body">
+<div class="line">  Status : not started</div>
+<div class="line">  → Start : /kalam feature &lt;idea&gt;</div>
+  </div>
+</section>
+<section class="card status-not-started">
+  <div class="card-head">
+    <span class="glyph" aria-hidden="true">○</span>
+    <h2>Step 1 · Brainstorm (Requirements)</h2>
+    <span class="status-word">Not started</span>
+  </div>
+  <div class="card-body">
+<div class="line">  Status : not started</div>
+<div class="line">  → Start : /kalam new &lt;idea&gt;</div>
+  </div>
+</section>
+<section class="card status-blocked">
+  <div class="card-head">
+    <span class="glyph" aria-hidden="true">🔒</span>
+    <h2>Step 2 · Data Preparation</h2>
+    <span class="status-word">Blocked</span>
+  </div>
+  <div class="card-body">
+<div class="line">  Status : 🔒 Blocked (complete Step 1 first)</div>
+  </div>
+</section>
+<section class="card status-blocked">
+  <div class="card-head">
+    <span class="glyph" aria-hidden="true">🔒</span>
+    <h2>Step 3 · Business/Product Docs</h2>
+    <span class="status-word">Blocked</span>
+  </div>
+  <div class="card-body">
+<div class="line">  Status : 🔒 Blocked (complete Step 2 first)</div>
+  </div>
+</section>
+<section class="card status-blocked">
+  <div class="card-head">
+    <span class="glyph" aria-hidden="true">🔒</span>
+    <h2>Step 4 · Technical Design</h2>
+    <span class="status-word">Blocked</span>
+  </div>
+  <div class="card-body">
+<div class="line">  Status : 🔒 Blocked (complete Step 3 first)</div>
+  </div>
+</section>
+<section class="card status-blocked">
+  <div class="card-head">
+    <span class="glyph" aria-hidden="true">🔒</span>
+    <h2>Step 4b · Design Validation (Feature Spike)</h2>
+    <span class="status-word">Blocked</span>
+  </div>
+  <div class="card-body">
+<div class="line">  Status : 🔒 Blocked (complete Step 4 first)</div>
+  </div>
+</section>
+<section class="card status-blocked">
+  <div class="card-head">
+    <span class="glyph" aria-hidden="true">🔒</span>
+    <h2>Step 5 · Task Pipeline</h2>
+    <span class="status-word">Blocked</span>
+  </div>
+  <div class="card-body">
+<div class="line">  Status : 🔒 Blocked (complete Step 4 first)</div>
+  </div>
+</section>
+<section class="card status-blocked">
+  <div class="card-head">
+    <span class="glyph" aria-hidden="true">🔒</span>
+    <h2>Build · Implementation</h2>
+    <span class="status-word">Blocked</span>
+  </div>
+  <div class="card-body">
+<div class="line">  Status : 🔒 Blocked (complete Step 5 first)</div>
+  </div>
+</section>
+<section class="card status-blocked">
+  <div class="card-head">
+    <span class="glyph" aria-hidden="true">🔒</span>
+    <h2>Step 6 · Integration Check</h2>
+    <span class="status-word">Blocked</span>
+  </div>
+  <div class="card-body">
+<div class="line">  Status : 🔒 Blocked (complete Step 5 first)</div>
+  </div>
+</section>
+</div>
+
+</body>
+</html>

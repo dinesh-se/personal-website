@@ -1,0 +1,124 @@
+[
+  {
+    "id": "drift:integrations:the-content-is-managed-through-hygraph",
+    "question": "Drift (doc-ahead, integrations): README.md — \"\"The content is managed through Hygraph.\"\"",
+    "answer": "doc-stale — code reality: Content is managed through TWO sources: Hygraph (profile, experience, projects, uses) AND Dev.to REST API (blog posts via /blog page). README only mentions Hygraph.",
+    "source": "drift",
+    "affects": [
+      "README.md"
+    ],
+    "timestamp": "2026-07-17T13:05:03.413Z"
+  },
+  {
+    "id": "onboarding:stack",
+    "question": "Tech Stack (as-is)",
+    "answer": "Next.js 14.2.21 (App Router, Server Components, ISR with revalidate: 600), React 18.3.1, TypeScript 5 (strict mode), Tailwind CSS 3.4.12, graphql-request 7.1.0 (Hygraph client), @testing-library/react 16.0.1 + Jest 29.7.0 (unit tests), ESLint 8 with @typescript-eslint 8, Prettier 3.3.3 with import ordering plugins. Package manager: npm (package-lock.json present). Scripts: dev (next dev --turbo), build, start, lint, format, format:fix, test, test:watch, release (release-it).",
+    "source": "onboarding",
+    "affects": [
+      "tech-stack.md"
+    ],
+    "timestamp": "2026-07-17T13:05:03.417Z"
+  },
+  {
+    "id": "onboarding:architecture",
+    "question": "Architecture (as-is)",
+    "answer": "Next.js App Router with Server Components. Entry point: src/app/layout.tsx (RootLayout with Header/Footer/Analytics). Data flow: Server Components fetch data at build/time via cache() wrappers (src/app/page.tsx, about/page.tsx, blog/page.tsx, projects/page.tsx, uses/page.tsx). Two API layers: src/api/graphql.ts (Hygraph GraphQL client) and src/api/rest.ts (Dev.to REST fetch). Build: next build → static output. Deploy: Vercel (implied by @vercel/analytics and sitemap URL). CI: .github/workflows/lint-test.yml (lint + test on PR to main). Path aliases configured in tsconfig.json: @components/*, @api/*, @styles/*, @root/*, @types. SVG imports handled via @svgr/webpack in next.config.mjs.",
+    "source": "onboarding",
+    "affects": [
+      "architecture.md"
+    ],
+    "timestamp": "2026-07-17T13:05:03.417Z"
+  },
+  {
+    "id": "onboarding:data-model",
+    "question": "Data Model (as-is)",
+    "answer": "No database or ORM. All types defined in src/types/: (1) Author (src/types/author.ts) - profile: {fullName, summary, contactDetail: {email, mobileNumber[], socialMedia: {linkedin, github}}, experience: {organizations: [{orgName, title, from, to, orgLogo: {url}}]}, displayPicture: {url}, moreDetails: {raw: RichTextContent}, githubRecentProjects: {repositories: {nodes: Repo[]}}, uses: Uses[]}. Repo: {id, name, description, url, primaryLanguage?: {name, color}}. (2) BlogPost (src/types/blog-post.ts) - {id, title, description, published_at, url, comments_count, public_reactions_count, page_views_count} + BlogPostUI (transformed UI shape with date: Date, commentsCount, reactionsCount, pageViewsCount). (3) Uses (src/types/uses.ts) - {id, title, list: [{id, name, description}]}. (4) NavLinks (src/types/nav-links.ts) - {links: Link[], linkActiveState, linkDefaultState?, otherStyleClasses?}. (5) Link - {label, href}. (6) Contact - {email, linkedin, github}.",
+    "source": "onboarding",
+    "affects": [
+      "data-model.md"
+    ],
+    "timestamp": "2026-07-17T13:05:03.417Z"
+  },
+  {
+    "id": "onboarding:api-surface",
+    "question": "API Surface (as-is)",
+    "answer": "External APIs: (1) Hygraph GraphQL (src/api/graphql.ts) - endpoint: https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/{HYGRAPH_ADMIN_ID}/master, auth via Bearer token. Exports: getUser (GET_USER query - profile, contact, experience, repos), getMoreDetails (GET_MORE_DETAILS - displayPicture, moreDetails, contact), getRepos (GET_REPOS - repos with primaryLanguage), getUses (GET_USES - uses list). (2) Dev.to REST (src/api/rest.ts) - endpoint: https://dev.to/api/articles/me/published, auth via api-key header. Exports: getBlogPosts (returns BlogPostUI[]). Internal routes/pages: / (home), /about, /projects, /blog, /uses. Metadata: robots.ts (allows all, sitemap URL), sitemap.ts (5 routes with monthly changeFrequency, priority 0.8/1.0).",
+    "source": "onboarding",
+    "affects": [
+      "api-spec.md"
+    ],
+    "timestamp": "2026-07-17T13:05:03.417Z"
+  },
+  {
+    "id": "onboarding:ui-surface",
+    "question": "UI Surface (as-is)",
+    "answer": "5 pages: / (home - greeting, summary, contact, recent projects, experience), /about (bio with RichText, display picture, tech stack logos, contact), /projects (GitHub repo grid with cards), /blog (Dev.to articles list), /uses (tech/tools list). 8 components: Header (nav with mobile menu, logo, links), Footer (nav links + No Copyright link), NavLinks (reusable link list with active state), Contact (social icons), Experience (organization list), BlogPostCard (blog post card), ProjectCard (project card with language badge), RecentProjects (project grid). Dark mode via CSS media query (prefers-color-scheme: dark) + Tailwind dark: variants. Mobile responsive (sm: breakpoints). Navigation: Header (About me, Projects, Blog, Uses) + Footer (Home, About me, Projects, Blog, Uses).",
+    "source": "onboarding",
+    "affects": [
+      "ux-spec.md"
+    ],
+    "timestamp": "2026-07-17T13:05:03.418Z"
+  },
+  {
+    "id": "onboarding:integrations",
+    "question": "Integrations (as-is)",
+    "answer": "(1) Hygraph GraphQL CMS (src/api/graphql.ts) - content source for profile, experience, projects, uses. Env vars: HYGRAPH_ADMIN_ID, HYGRAPH_AUTH_TOKEN, HYGRAPH_USER_ID. (2) Dev.to REST API (src/api/rest.ts) - blog posts source. Env var: DEVTO_KEY. (3) Vercel Analytics (@vercel/analytics/react) - usage tracking, no env vars needed. (4) SVG icons via @svgr/webpack (next.config.mjs) - converts SVG imports to React components. (5) @heroicons/react - icon library. (6) @graphcms/rich-text-react-renderer + @graphcms/rich-text-types - renders Hygraph rich text content. (7) react-social-icons - social media icons. (8) clsx - conditional CSS class merging. (9) next/image with remotePatterns restriction to **\\.graphassets.com only (next.config.mjs).",
+    "source": "onboarding",
+    "affects": [
+      "architecture.md",
+      "tech-stack.md"
+    ],
+    "timestamp": "2026-07-17T13:05:03.418Z"
+  },
+  {
+    "id": "onboarding:conventions",
+    "question": "Conventions (as-is)",
+    "answer": "TypeScript: strict mode enabled, path aliases (@components, @api, @styles, @root, @types) in tsconfig.json. ESLint: next/core-web-vitals + @typescript-eslint/recommended + prettier + jsx-a11y. Prettier: singleQuote, semi, tabWidth 2, importOrder with grouping (THIRD_PARTY_MODULES, @api, @components, @styles, @root, @types, relative), tailwindcss plugin. Testing: Jest 29.7 + @testing-library/react 16.0.1, jsdom environment, snapshot tests for all 8 components, SVG mocked to 'div' in __mocks__/svg.ts. CSS: Tailwind with @tailwind directives, CSS custom properties for theming, dark mode via prefers-color-scheme. Component structure: barrel exports (index.ts) in each component folder. File naming: PascalCase for components, kebab-case not used. Data fetching: cache() wrapper from React for ISR. Revalidation: 600s on all pages.",
+    "source": "onboarding",
+    "affects": [
+      "tech-stack.md",
+      "architecture.md"
+    ],
+    "timestamp": "2026-07-17T13:05:03.418Z"
+  },
+  {
+    "id": "profile:shape",
+    "question": "What kind of project is this? (derived from the existing codebase)",
+    "answer": "client-server",
+    "source": "onboarding",
+    "affects": [],
+    "timestamp": "2026-07-17T13:05:03.418Z"
+  },
+  {
+    "id": "profile:layout",
+    "question": "How is the repository laid out? (derived from the existing codebase)",
+    "answer": "single",
+    "source": "onboarding",
+    "affects": [],
+    "timestamp": "2026-07-17T13:05:03.419Z"
+  },
+  {
+    "id": "skill:webapp-testing",
+    "question": "Install agent skill \"webapp-testing\"?",
+    "answer": "https://github.com/anthropics/skills@fa0fa64bdc967915dc8399e803be67759e1e62b8",
+    "source": "skills",
+    "affects": [],
+    "timestamp": "2026-07-17T13:05:46.002Z"
+  },
+  {
+    "id": "skill:frontend-design",
+    "question": "Install agent skill \"frontend-design\"?",
+    "answer": "https://github.com/anthropics/skills@fa0fa64bdc967915dc8399e803be67759e1e62b8",
+    "source": "skills",
+    "affects": [],
+    "timestamp": "2026-07-17T13:05:46.841Z"
+  },
+  {
+    "id": "skill:find-skills",
+    "question": "Install agent skill \"find-skills\"?",
+    "answer": "https://github.com/vercel-labs/skills@777599e1159e401b11ce4c8a57c20f09a8f1596e",
+    "source": "skills",
+    "affects": [],
+    "timestamp": "2026-07-17T13:05:47.546Z"
+  }
+]
