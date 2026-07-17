@@ -66,14 +66,14 @@ header h1 { font-size: 18px; margin: 0; }
 <header>
   <h1>kalam pipeline</h1>
   <span class="chip">cycle 1 · brownfield</span>
-  <span class="timestamp">generated 19:48:23 UTC — auto-refreshes every 3s</span>
+  <span class="timestamp">generated 20:09:43 UTC — auto-refreshes every 3s</span>
 </header>
 <div class="readonly-note">Read-only view — control the pipeline from the TUI (/kalam …).</div>
 <div class="grid">
-<section class="card run-tile run-live">
+<section class="card run-tile run-ended">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">🟢</span>
-    <h2>Run — live (142.0m)</h2>
+    <span class="glyph" aria-hidden="true">⏹</span>
+    <h2>Run — ended (145.4m)</h2>
   </div>
   <div class="tile-row">
 <div class="tile">
@@ -82,7 +82,7 @@ header h1 { font-size: 18px; margin: 0; }
     <div class="meter-track"><div class="meter-fill meter-warning" style="width:88.9%"></div></div>
   </div>
 <div class="tile"><div class="tile-label">Child spawns</div><div class="tile-value">22</div></div>
-<div class="tile"><div class="tile-label">Wall clock</div><div class="tile-value">142</div></div>
+<div class="tile"><div class="tile-label">Wall clock</div><div class="tile-value">145.4</div></div>
 <div class="tile"><div class="tile-label">Tokens in/out</div><div class="tile-value">9693943/181808</div></div>
   </div>
 </section>
@@ -189,30 +189,36 @@ header h1 { font-size: 18px; margin: 0; }
 <div class="line">  → Execute   : /kalam build</div>
   </div>
 </section>
-<section class="card status-in-progress">
+<section class="card status-complete">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">⏳</span>
+    <span class="glyph" aria-hidden="true">✅</span>
     <h2>Build · Implementation</h2>
-    <span class="status-word">In progress</span>
+    <span class="status-word">Complete</span>
   </div>
   <div class="card-body">
-<div class="line">  Status      : ⏳ In progress</div>
-<div class="line">  Tasks       : 8/9 done</div>
-<div class="line">  Current     : T-009 (verify-page-rendering)</div>
+<div class="line">  Status      : ✅ Complete</div>
+<div class="line">  Tasks       : 9/9 done</div>
+<div class="line">  Skipped     : T-009</div>
 <div class="line">  Review notes: 22 open across T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008</div>
+<div class="line">  → Next      : /kalam integration-check</div>
   </div>
 </section>
-<section class="card status-blocked">
+<section class="card status-paused">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">🔒</span>
+    <span class="glyph" aria-hidden="true">⏸</span>
     <h2>Step 6 · Integration Check</h2>
-    <span class="status-word">Blocked</span>
+    <span class="status-word">Paused</span>
   </div>
   <div class="card-body">
-<div class="line">  Status : 🔒 Blocked (complete Step 5 first)</div>
+<div class="line">  Status          : ⏸ Paused</div>
+<div class="line">  e2e specs       : 0 authored</div>
+<div class="line">  Cycles          : 0 completed</div>
+<div class="line">  Open issues     : 0</div>
+<div class="line">  Pending feedback: 0</div>
+<div class="line">  → Resume        : /kalam integration-check</div>
   </div>
 </section>
 </div>
-
+<div class="footer-note">Last run report: /home/dinesh-se/Dev/personal-website/.pi/kalam/last-run-report.md</div>
 </body>
 </html>
