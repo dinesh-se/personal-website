@@ -224,5 +224,13 @@
     "source": "build",
     "affects": [],
     "timestamp": "2026-07-17T18:35:28.208Z"
+  },
+  {
+    "id": "build:T-007",
+    "question": "Task T-007 (fix-jest-snapshots)",
+    "answer": "All 8 component snapshot tests pass with 10 snapshots matching. No updates needed — snapshots were already current for React 19 output.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-17T18:38:31.100Z"
   }
 ]

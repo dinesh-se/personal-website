@@ -6,7 +6,14 @@ import prettierPlugin from 'eslint-plugin-prettier';
 
 export default [
 	{
-		ignores: ['e2e/', '.next/', 'node_modules/', 'out/', '.out/'],
+		ignores: [
+			'e2e/',
+			'.next/',
+			'node_modules/',
+			'out/',
+			'.out/',
+			'next-env.d.ts',
+		],
 	},
 	{
 		...nextPlugin.configs['core-web-vitals'],

@@ -52,6 +52,7 @@ test.describe('Mobile Menu', () => {
 	test('should toggle mobile menu', async ({ page }) => {
 		await page.setViewportSize({ width: 375, height: 812 });
 		await page.goto('/');
+		await page.waitForSelector('#mobile-menu', { state: 'attached' });
 
 		const menuButton = page.getByRole('button', { name: /menu/i });
 		await expect(menuButton).toBeVisible();
@@ -88,5 +89,28 @@ test.describe('Footer Links', () => {
 
 		// Check for No Copyright link
 		await expect(footer.getByRole('link', { name: /No Copyright/i })).toBeVisible();
+	});
+});
+
+test.describe('Nav Active State', () => {
+	test('should show active state on current navigation link', async ({ page }) => {
+		await page.goto('/about');
+
+		// Navigate to the nav
+		const nav = page.getByRole('navigation');
+
+		// 'About me' link should have active state class (bg-stone-300)
+		const aboutLink = nav.getByRole('link', { name: 'About me' });
+		await expect(aboutLink).toHaveClass(/bg-stone-300/);
+
+		// Other links should NOT have active state class
+		const projectsLink = nav.getByRole('link', { name: 'Projects' });
+		await expect(projectsLink).not.toHaveClass(/bg-stone-300/);
+
+		const blogLink = nav.getByRole('link', { name: 'Blog' });
+		await expect(blogLink).not.toHaveClass(/bg-stone-300/);
+
+		const usesLink = nav.getByRole('link', { name: 'Uses' });
+		await expect(usesLink).not.toHaveClass(/bg-stone-300/);
 	});
 });
