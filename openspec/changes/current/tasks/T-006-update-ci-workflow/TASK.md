@@ -21,13 +21,14 @@ Update the GitHub Actions CI workflow (`.github/workflows/lint-test.yml`) to use
 - **Task:** T-005 (lint must pass before CI workflow is updated, to ensure the workflow changes don't introduce new errors)
 
 ## Acceptance criteria
+> ✅ Verified 2026-07-17
 
-- [ ] `.github/workflows/lint-test.yml` uses `node-version: '24'` (or `node-version: 24`)
-- [ ] `setup-node` action is bumped to `v4` (from `v2`)
-- [ ] All CI steps (`npm ci`, `npm run lint`, `npm test`) reference the updated Node version
-- [ ] Workflow syntax is valid and can be validated with GitHub's workflow validator
-- [ ] Tests: No new CI errors introduced (workflow is syntactically correct)
-- [ ] `npm run typecheck` and `npm test` pass
+- [x] `.github/workflows/lint-test.yml` uses `node-version: '24'` (or `node-version: 24`)
+- [x] `setup-node` action is bumped to `v4` (from `v2`)
+- [x] All CI steps (`npm ci`, `npm run lint`, `npm test`) reference the updated Node version
+- [x] Workflow syntax is valid and can be validated with GitHub's workflow validator
+- [x] Tests: No new CI errors introduced (workflow is syntactically correct)
+- [x] `npm run typecheck` and `npm test` pass
 
 ## User test
 
@@ -44,3 +45,9 @@ Update the GitHub Actions CI workflow (`.github/workflows/lint-test.yml`) to use
 - Change the CI workflow steps (only update Node version and setup-node action)
 - Add new CI jobs or stages
 - Modify the lint or test commands themselves
+
+## Review findings
+
+Open — the reviewer flagged these:
+
+- **note** `.github/workflows/lint-test.yml:1` — No `engines` field in package.json to pin the required Node version — the CI and local environments both use Node 24, but there's no manifest-level constraint. Consider adding `"engines": {"node": ">=24"}` to prevent future drift.

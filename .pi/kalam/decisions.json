@@ -208,5 +208,13 @@
     "source": "build",
     "affects": [],
     "timestamp": "2026-07-17T18:29:42.967Z"
+  },
+  {
+    "id": "build:T-005",
+    "question": "Task T-005 (fix-eslint-errors)",
+    "answer": "No ESLint errors to fix — lint, typecheck, and tests all pass cleanly with the flat config in place. Zero files needed modification.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-17T18:33:40.109Z"
   }
 ]

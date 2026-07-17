@@ -392,10 +392,72 @@
         "Fix all resulting ESLint errors"
       ],
       "userTest": "Run `npm run lint` — verify zero ESLint errors",
-      "status": "in-progress",
+      "status": "done",
       "attempts": 0,
       "origin": "decomposition",
-      "startedAt": "2026-07-17T18:29:42.979Z"
+      "startedAt": "2026-07-17T18:29:42.979Z",
+      "acceptanceManifest": [
+        {
+          "text": "`npm run lint` exits with code 0",
+          "met": true,
+          "evidence": "manual: npm run lint exits 0, zero errors"
+        },
+        {
+          "text": "Lint output contains zero errors",
+          "met": true,
+          "evidence": "manual: eslint output is empty (no warnings or errors)"
+        },
+        {
+          "text": "All source files in src/ pass linting with zero errors",
+          "met": true,
+          "evidence": "manual: npm run lint exits 0 covering all src/ files"
+        },
+        {
+          "text": "All test files in src/components/*/ pass linting with zero errors",
+          "met": true,
+          "evidence": "manual: npm run lint exits 0, no errors in component tests"
+        },
+        {
+          "text": "All E2E test files in e2e/ are properly ignored",
+          "met": true,
+          "evidence": "manual: eslint.config.mjs includes 'e2e/' in ignores array"
+        },
+        {
+          "text": "Tests: `npm run lint` passes with zero warnings/errors",
+          "met": true,
+          "evidence": "manual: npm run lint exits 0"
+        },
+        {
+          "text": "`npm run typecheck` and `npm test` pass",
+          "met": true,
+          "evidence": "manual: tsc --noEmit exits 0; jest — 8 suites, 10 tests passed"
+        }
+      ],
+      "reviewFindings": [
+        {
+          "severity": "note",
+          "file": "eslint.config.mjs",
+          "issue": "arrow-body-style and prefer-arrow-callback are explicitly set to 'off' but are already ESLint core defaults. These are redundant no-ops — harmless but unnecessary.",
+          "round": 1,
+          "addressed": false
+        },
+        {
+          "severity": "note",
+          "file": "eslint.config.mjs",
+          "issue": "Extra ignore patterns 'out/' and '.out/' added beyond the original .eslintrc.json ignorePatterns (which only had 'e2e/'). Not a bug, just scope creep on ignores.",
+          "round": 1,
+          "addressed": false
+        },
+        {
+          "severity": "note",
+          "file": "eslint.config.mjs",
+          "issue": "TypeScript parser is configured in both the Next.js config block and in tsPlugin.configs['flat/recommended'][0]. Flat config merges languageOptions, so both use the same tsParser — harmless but redundant.",
+          "round": 1,
+          "addressed": false
+        }
+      ],
+      "completedAt": "2026-07-17T18:33:40.108Z",
+      "commit": "1669ebdda971b8028d824d004354c6619a50cd6e"
     },
     {
       "id": "T-006",
@@ -409,9 +471,10 @@
         "Update CI workflow to Node 24"
       ],
       "userTest": "Verify `.github/workflows/lint-test.yml` uses Node 24 and `setup-node@v4`",
-      "status": "pending",
+      "status": "in-progress",
       "attempts": 0,
-      "origin": "decomposition"
+      "origin": "decomposition",
+      "startedAt": "2026-07-17T18:33:40.119Z"
     },
     {
       "id": "T-007",
@@ -482,7 +545,7 @@
       "confirmed": false
     }
   ],
-  "currentTaskId": "T-005",
+  "currentTaskId": "T-006",
   "completed": false,
   "processedDeviationIds": []
 }
