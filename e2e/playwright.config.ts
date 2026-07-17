@@ -22,7 +22,7 @@ export default defineConfig({
 	],
 	webServer: {
 		command:
-			"cd /home/dinesh-se/Dev/personal-website && NODE_OPTIONS='--require ./e2e/setup.cjs' npm run dev -- -p 3099",
+			"NODE_OPTIONS='--require ./e2e/setup.cjs' npm run dev -- -p 3099",
 		port: 3099,
 		reuseExistingServer: false,
 		stdout: 'pipe',

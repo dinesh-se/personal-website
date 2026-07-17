@@ -1,114 +1,25 @@
 {
-  "startedAt": 1784309182354,
-  "totalSpawns": 22,
-  "checkerSpawns": 0,
+  "startedAt": 1784322519389,
+  "totalSpawns": 3,
+  "checkerSpawns": 1,
   "tasks": [
     {
-      "taskId": "T-001",
+      "taskId": "FIX-001",
       "coderSpawns": 1,
       "reviewerSpawns": 1,
       "verifyRuns": 1,
-      "tokensIn": 448192,
-      "tokensOut": 8222,
-      "startedAt": 1784309182355,
-      "durationMs": 369254,
-      "outcome": "committed"
-    },
-    {
-      "taskId": "T-002",
-      "coderSpawns": 1,
-      "reviewerSpawns": 1,
-      "verifyRuns": 1,
-      "tokensIn": 3237122,
-      "tokensOut": 31423,
-      "startedAt": 1784309551609,
-      "durationMs": 1671858,
-      "outcome": "committed"
-    },
-    {
-      "taskId": "T-003",
-      "coderSpawns": 1,
-      "reviewerSpawns": 1,
-      "verifyRuns": 1,
-      "tokensIn": 1230736,
-      "tokensOut": 23468,
-      "startedAt": 1784311223468,
-      "durationMs": 952095,
-      "outcome": "committed"
-    },
-    {
-      "taskId": "T-004",
-      "coderSpawns": 1,
-      "reviewerSpawns": 1,
-      "verifyRuns": 1,
-      "tokensIn": 1106419,
-      "tokensOut": 23122,
-      "startedAt": 1784312175564,
-      "durationMs": 807403,
-      "outcome": "committed"
-    },
-    {
-      "taskId": "T-005",
-      "coderSpawns": 1,
-      "reviewerSpawns": 1,
-      "verifyRuns": 1,
-      "tokensIn": 246317,
-      "tokensOut": 6984,
-      "startedAt": 1784312982967,
-      "durationMs": 237142,
-      "outcome": "committed"
-    },
-    {
-      "taskId": "T-006",
-      "coderSpawns": 1,
-      "reviewerSpawns": 1,
-      "verifyRuns": 1,
-      "tokensIn": 121919,
-      "tokensOut": 2621,
-      "startedAt": 1784313220109,
-      "durationMs": 108099,
-      "outcome": "committed"
-    },
-    {
-      "taskId": "T-007",
-      "coderSpawns": 1,
-      "reviewerSpawns": 1,
-      "verifyRuns": 1,
-      "tokensIn": 254508,
-      "tokensOut": 5280,
-      "startedAt": 1784313328209,
-      "durationMs": 182891,
-      "outcome": "committed"
-    },
-    {
-      "taskId": "T-008",
-      "coderSpawns": 3,
-      "reviewerSpawns": 2,
-      "verifyRuns": 2,
-      "tokensIn": 1744354,
-      "tokensOut": 56175,
-      "startedAt": 1784313511101,
-      "durationMs": 2155868,
-      "outcome": "committed"
-    },
-    {
-      "taskId": "T-009",
-      "coderSpawns": 3,
-      "reviewerSpawns": 0,
-      "verifyRuns": 0,
-      "tokensIn": 1304376,
-      "tokensOut": 24513,
-      "startedAt": 1784315666969,
-      "durationMs": 2239706,
-      "outcome": "skipped"
+      "tokensIn": 256251,
+      "tokensOut": 6002,
+      "startedAt": 1784322677108,
+      "durationMs": 0,
+      "outcome": ""
     }
   ],
   "notes": [
-    "review gate: reviewer said \"fail\" but raised no critical finding on T-002 — verdict is advisory; task proceeds with 5 finding(s) recorded",
-    "review gate: reviewer said \"fail\" but raised no critical finding on T-007 — verdict is advisory; task proceeds with 2 finding(s) recorded"
+    "task FIX-001 starting with a dirty working tree (4 tracked file(s) modified outside .pi/kalam: e2e/home.spec.ts, openspec/changes/current/tasks/T-009-verify-page-rendering/TASK.md, playwright-report/index.html, test-results/.last-run.json) — these will be swept into this task's commit"
   ],
-  "updatedAt": 1784317906676,
-  "endedAt": 1784317906676,
+  "updatedAt": 1784322991525,
+  "endedAt": 1784322455467,
   "caps": {
     "enabled": false,
     "maxRunMinutes": 240,

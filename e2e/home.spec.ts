@@ -74,9 +74,20 @@ test.describe('Dark Mode', () => {
 	test('should respect system preference', async ({ page }) => {
 		await page.goto('/');
 
-		// Check if antialiased class is present
+		// Verify page renders in light mode
 		const body = page.locator('body');
-		await expect(body).toHaveClass(/antialiased/);
+		await expect(body).toBeVisible();
+
+		// Emulate dark mode system preference
+		await page.emulateMedia({ colorScheme: 'dark' });
+		await page.reload();
+
+		// Verify dark mode CSS custom properties are applied
+		// --foreground-rgb switches to #ffffff in dark mode (defined in globals.css media query)
+		const foregroundColor = await page.evaluate(() =>
+			getComputedStyle(document.documentElement).getPropertyValue('--foreground-rgb').trim()
+		);
+		expect(foregroundColor).toBe('#ffffff');
 	});
 });
 

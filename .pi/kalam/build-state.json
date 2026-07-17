@@ -743,6 +743,19 @@
       },
       "completedAt": "2026-07-17T19:51:46.651Z",
       "skipReason": "skipped after 3 failed the acceptance manifest attempt(s). Final rejection detail:\nEvidence test \"No JS console errors on /\" not found in e2e/page-verification.spec.ts for \"All 5 pages (/, /about, /projects, /blog, /uses) render without JavaScript runtime errors\".\nEvidence test \"Active nav link on /about (About me)\" not found in e2e/page-verification.spec.ts for \"Navigation active-state highlights correctly on all pages\".\nEvidence test \"Dark mode applies on /\" not found in e2e/page-verification.spec.ts for \"Dark mode renders correctly on all pages (via system preference or toggle)\".\nEvidence test \"No JS console errors on /uses\" not found in e2e/page-verification.spec.ts for \"No console errors in browser dev tools when visiting any page\"."
+    },
+    {
+      "id": "FIX-001",
+      "slug": "hardcoded-path-in-playwright-webserver",
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/FIX-001-hardcoded-path-in-playwright-webserver",
+      "deps": [],
+      "coversFeatures": [],
+      "userTest": "Run: cd /home/dinesh-se/Dev/personal-website && npx playwright test e2e/home.spec.ts --reporter=line. The web server should start on port 3099 and all 12 tests should pass with no connection errors.",
+      "milestone": 4,
+      "status": "in-progress",
+      "attempts": 0,
+      "origin": "check",
+      "startedAt": "2026-07-17T21:11:17.119Z"
     }
   ],
   "milestones": [
@@ -759,10 +772,15 @@
     {
       "number": 3,
       "title": "Milestone 3",
+      "confirmed": true
+    },
+    {
+      "number": 4,
+      "title": "Integration Check fixes",
       "confirmed": false
     }
   ],
-  "currentTaskId": "T-009",
-  "completed": true,
+  "currentTaskId": "FIX-001",
+  "completed": false,
   "processedDeviationIds": []
 }
