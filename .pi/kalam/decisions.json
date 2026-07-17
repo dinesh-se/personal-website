@@ -200,5 +200,13 @@
     "source": "build",
     "affects": [],
     "timestamp": "2026-07-17T18:00:23.467Z"
+  },
+  {
+    "id": "build:T-004",
+    "question": "Task T-004 (migrate-eslint-flat-config)",
+    "answer": "Migrated ESLint from v8 (.eslintrc.json) to v9 flat config (eslint.config.mjs). Removed legacy config, preserved all rules (next/core-web-vitals, @typescript-eslint/recommended, prettier/recommended, jsx-a11y), updated lint script, and fixed 1 auto-fixable formatting issue.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-17T18:29:42.967Z"
   }
 ]

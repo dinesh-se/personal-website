@@ -19,15 +19,16 @@ Fix all remaining ESLint errors introduced by the flat config migration and/or d
 - **Task:** T-004 (ESLint flat config must be in place before errors can be accurately identified and fixed)
 
 ## Acceptance criteria
+> ✅ Verified 2026-07-17
 
-- [ ] `npm run lint` exits with code 0
-- [ ] Lint output contains zero errors
-- [ ] All source files in `src/` pass linting with zero errors
-- [ ] All test files in `src/components/*/` pass linting with zero errors
-- [ ] All E2E test files in `e2e/` are properly ignored
-- [ ] `npm run lint` exits with code 0
-- [ ] Tests: `npm run lint` passes with zero warnings/errors
-- [ ] `npm run typecheck` and `npm test` pass
+- [x] `npm run lint` exits with code 0
+- [x] Lint output contains zero errors
+- [x] All source files in `src/` pass linting with zero errors
+- [x] All test files in `src/components/*/` pass linting with zero errors
+- [x] All E2E test files in `e2e/` are properly ignored
+- [x] `npm run lint` exits with code 0
+- [x] Tests: `npm run lint` passes with zero warnings/errors
+- [x] `npm run typecheck` and `npm test` pass
 
 ## User test
 
@@ -50,3 +51,11 @@ Fix all remaining ESLint errors introduced by the flat config migration and/or d
 - Change application logic or component behavior
 - Add new features or pages
 - Modify external API integrations
+
+## Review findings
+
+Open — the reviewer flagged these:
+
+- **note** `eslint.config.mjs` — arrow-body-style and prefer-arrow-callback are explicitly set to 'off' but are already ESLint core defaults. These are redundant no-ops — harmless but unnecessary.
+- **note** `eslint.config.mjs` — Extra ignore patterns 'out/' and '.out/' added beyond the original .eslintrc.json ignorePatterns (which only had 'e2e/'). Not a bug, just scope creep on ignores.
+- **note** `eslint.config.mjs` — TypeScript parser is configured in both the Next.js config block and in tsPlugin.configs['flat/recommended'][0]. Flat config merges languageOptions, so both use the same tsParser — harmless but redundant.
