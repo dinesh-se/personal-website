@@ -763,6 +763,6 @@
     }
   ],
   "currentTaskId": "T-009",
-  "completed": false,
+  "completed": true,
   "processedDeviationIds": []
 }

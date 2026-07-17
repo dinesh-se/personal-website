@@ -99,15 +99,16 @@
       "tokensIn": 1304376,
       "tokensOut": 24513,
       "startedAt": 1784315666969,
-      "durationMs": 0,
-      "outcome": ""
+      "durationMs": 2239706,
+      "outcome": "skipped"
     }
   ],
   "notes": [
     "review gate: reviewer said \"fail\" but raised no critical finding on T-002 — verdict is advisory; task proceeds with 5 finding(s) recorded",
     "review gate: reviewer said \"fail\" but raised no critical finding on T-007 — verdict is advisory; task proceeds with 2 finding(s) recorded"
   ],
-  "updatedAt": 1784317702757,
+  "updatedAt": 1784317906676,
+  "endedAt": 1784317906676,
   "caps": {
     "enabled": false,
     "maxRunMinutes": 240,
