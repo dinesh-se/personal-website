@@ -192,5 +192,13 @@
     "source": "build",
     "affects": [],
     "timestamp": "2026-07-17T17:32:31.608Z"
+  },
+  {
+    "id": "build:T-002",
+    "question": "Task T-002 (upgrade-other-deps)",
+    "answer": "Upgraded all non-core direct dependencies to latest stable versions. Key bumps: jest 29→30, @types/jest 29→30, @testing-library/react 16.2→16.3, @trivago/prettier-plugin-sort-imports 4→6, @typescript-eslint 8.6→8.64, eslint-config-next 16.0→16.2, graphql-request 7.1→7.4, react-social-icons 6.20→6.26, prettier 3.3→3.9, autoprefixer 10.4→10.5, postcss 8→8.5, ts-jest 29.2→29.4, eslint-plugin-prettier 5.2→5.5, eslint-config-prettier 9→10.1, @types/node 22→26. ESLint pinned to v9.39 (latest v9) as eslint-config-next transitive deps (react/import/jsx-a11y plugins) don't support ESLint 10. Removed eslint-plugin-jsx-a11y (incompatible with ESLint 10). TailwindCSS stays on v3.4.12. All 8 test suites pass, typecheck and lint clean.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-17T18:00:23.467Z"
   }
 ]

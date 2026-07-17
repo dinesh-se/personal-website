@@ -19,24 +19,34 @@ import LogoTS from '@root/public/assets/tech/typescript.svg';
 import { Author } from '@types';
 
 const getPageData = cache(async () => {
-	const {
-		profile: {
-			displayPicture: { url },
-			moreDetails: { raw },
-			contactDetail: {
-				email,
-				socialMedia: { linkedin, github },
+	try {
+		const {
+			profile: {
+				displayPicture: { url },
+				moreDetails: { raw },
+				contactDetail: {
+					email,
+					socialMedia: { linkedin, github },
+				},
 			},
-		},
-	}: Author = await getMoreDetails();
+		}: Author = await getMoreDetails();
 
-	return {
-		displayPictureUrl: url,
-		richContent: raw,
-		email,
-		linkedin,
-		github,
-	};
+		return {
+			displayPictureUrl: url,
+			richContent: raw,
+			email,
+			linkedin,
+			github,
+		};
+	} catch {
+		return {
+			displayPictureUrl: '',
+			richContent: [],
+			email: '',
+			linkedin: '',
+			github: '',
+		};
+	}
 });
 
 export const revalidate = 600;

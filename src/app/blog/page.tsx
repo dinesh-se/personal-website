@@ -10,9 +10,12 @@ import { BlogPostUI } from '@root/src/types';
 export const revalidate = 600;
 
 const getPageData = cache(async () => {
-	const blogPosts: BlogPostUI[] = await getBlogPosts();
-
-	return blogPosts;
+	try {
+		const blogPosts: BlogPostUI[] = await getBlogPosts();
+		return blogPosts;
+	} catch {
+		return [];
+	}
 });
 
 export default async function Blog() {

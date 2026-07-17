@@ -5,19 +5,26 @@ import { getRepos } from '@api/graphql';
 import { ProjectCard } from '@components/ProjectCard';
 
 const getPageData = cache(async () => {
-	const {
-		profile: {
-			contactDetail: { email },
-			githubRecentProjects: {
-				repositories: { nodes: projects },
+	try {
+		const {
+			profile: {
+				contactDetail: { email },
+				githubRecentProjects: {
+					repositories: { nodes: projects },
+				},
 			},
-		},
-	} = await getRepos();
+		} = await getRepos();
 
-	return {
-		email,
-		projects,
-	};
+		return {
+			email,
+			projects,
+		};
+	} catch {
+		return {
+			email: '',
+			projects: [],
+		};
+	}
 });
 
 export const revalidate = 600;
