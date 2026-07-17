@@ -66,7 +66,7 @@ header h1 { font-size: 18px; margin: 0; }
 <header>
   <h1>kalam pipeline</h1>
   <span class="chip">cycle 1 · brownfield</span>
-  <span class="timestamp">generated 14:00:46 UTC — auto-refreshes every 3s</span>
+  <span class="timestamp">generated 14:15:54 UTC — auto-refreshes every 3s</span>
 </header>
 <div class="readonly-note">Read-only view — control the pipeline from the TUI (/kalam …).</div>
 <div class="grid">
@@ -96,7 +96,7 @@ header h1 { font-size: 18px; margin: 0; }
 <div class="line">  Status : ✅ Complete</div>
 <div class="line">  Feature: &quot;Upgrade core dependencies to their latest stable versions: Next.js 14 to 16, React 18 to 19, @vercel/analytics 1 to 2, and any other outdated packages. Bump the CI workflow&#39;s Node version to match the local dev environment (currently pinned to Node 18 in CI, but local dev uses Node 24). Goal is a clean, working upgrade with no regressions, so the e2e/unit test harness from the previous cycle can be used with confidence on a modern stack.&quot;</div>
 <div class="line">  Boundaries: 7/7 addressed | asked: true</div>
-<div class="line">  Output : proposal.md ❌</div>
+<div class="line">  Output : proposal.md ✅</div>
   </div>
 </section>
 <section class="card status-not-started">
@@ -120,14 +120,17 @@ header h1 { font-size: 18px; margin: 0; }
 <div class="line">  Status : 🔒 Blocked (complete Step 1 first)</div>
   </div>
 </section>
-<section class="card status-blocked">
+<section class="card status-in-progress">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">🔒</span>
+    <span class="glyph" aria-hidden="true">⏳</span>
     <h2>Step 3 · Business/Product Docs</h2>
-    <span class="status-word">Blocked</span>
+    <span class="status-word">In progress</span>
   </div>
   <div class="card-body">
-<div class="line">  Status : 🔒 Blocked (complete Step 2 first)</div>
+<div class="line">  Status      : ⏳ In progress</div>
+<div class="line">  ✅ Product Requirements Document (PRD) → openspec/specs/prd.md </div>
+<div class="line">  ✅ Technology Stack → openspec/specs/tech-stack.md </div>
+<div class="line">  Consistency : ✅ passed</div>
   </div>
 </section>
 <section class="card status-blocked">
