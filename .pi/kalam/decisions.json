@@ -120,5 +120,69 @@
     "source": "skills",
     "affects": [],
     "timestamp": "2026-07-17T13:05:47.546Z"
+  },
+  {
+    "id": "boundary:next-version",
+    "question": "Which Next.js 16.x version to target?",
+    "answer": "Next.js 16 (latest stable, may have newer features)",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-17T13:48:05.709Z"
+  },
+  {
+    "id": "boundary:node-version",
+    "question": "What Node.js version should CI use after upgrade?",
+    "answer": "Node 24 (match local dev)",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-17T13:49:05.096Z"
+  },
+  {
+    "id": "boundary:react-version",
+    "question": "Which React 19.x version to target?",
+    "answer": "React 19 (latest stable)",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-17T13:50:01.543Z"
+  },
+  {
+    "id": "boundary:breaking-changes",
+    "question": "How should known breaking changes be handled during the upgrade?",
+    "answer": "Upgrade with audit: npm audit fix, fix TypeScript errors, run tests, fix failures one-by-one",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-17T13:50:59.381Z"
+  },
+  {
+    "id": "boundary:eslint-update",
+    "question": "Should ESLint be upgraded from v8 to v9 (flat config) or stay on v8 with flat config?",
+    "answer": "ESLint 9 with flat config (full migration)",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-17T13:54:26.846Z"
+  },
+  {
+    "id": "boundary:other-deps",
+    "question": "Which other direct dependencies should be bumped to latest stable?",
+    "answer": "All direct dependencies to latest stable",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-17T13:58:15.562Z"
+  },
+  {
+    "id": "profile:audience",
+    "question": "Who is this for?",
+    "answer": "personal",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-17T13:58:34.625Z"
+  },
+  {
+    "id": "profile:externalData",
+    "question": "Does this need external data sources?",
+    "answer": "none",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-17T13:58:48.171Z"
   }
 ]

@@ -1,0 +1,131 @@
+{
+	"rootDir": "/home/dinesh-se/Dev/personal-website",
+	"scannedAt": "2026-07-17T14:00:00Z",
+	"stack": {
+		"summary": "Next.js 14 App Router static site with TypeScript, Tailwind CSS, and server-side data fetching from Hygraph GraphQL and Dev.to REST APIs.",
+		"languages": ["TypeScript", "JavaScript", "CSS"],
+		"frameworks": ["Next.js 14.2.21", "React 18.3.1", "Tailwind CSS 3.4.12"],
+		"packageManager": "npm",
+		"keyDependencies": [
+			"next",
+			"react",
+			"react-dom",
+			"typescript",
+			"tailwindcss",
+			"graphql-request",
+			"@vercel/analytics",
+			"@graphcms/rich-text-react-renderer",
+			"@testing-library/react",
+			"jest",
+			"eslint",
+			"prettier"
+		]
+	},
+	"architecture": {
+		"summary": "Next.js App Router with Server Components, ISR revalidation (600s), static site generation. No local database — data fetched from external APIs at build/runtime.",
+		"modules": [
+			"src/app/ (pages/routes)",
+			"src/components/ (UI components)",
+			"src/api/ (data fetching layer)",
+			"src/types/ (TypeScript type definitions)",
+			"src/styles/ (global CSS)",
+			"public/ (static assets)",
+			"__mocks__/ (Jest mocks)"
+		],
+		"entryPoints": ["src/app/layout.tsx", "src/app/page.tsx"],
+		"buildCommand": "next build",
+		"devCommand": "next dev --turbo",
+		"testCommand": "jest"
+	},
+	"dataModel": {
+		"summary": "No persistent data model — stateless service. All types defined in TypeScript interfaces (src/types/). Data sourced from Hygraph (GraphQL) and Dev.to (REST).",
+		"entities": [
+			"Author",
+			"BlogPost",
+			"BlogPostUI",
+			"Uses",
+			"NavLinks",
+			"Link"
+		],
+		"migrationTool": "Not applicable — no database"
+	},
+	"apiSurface": {
+		"summary": "Two external API integrations: Hygraph GraphQL (content management) and Dev.to REST (blog posts). Internal Next.js routes for 5 pages.",
+		"baseUrl": "N/A (static site)",
+		"endpoints": [
+			{
+				"method": "POST",
+				"path": "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/{adminId}/master",
+				"purpose": "Hygraph GraphQL queries (getUser, getMoreDetails, getRepos, getUses)"
+			},
+			{
+				"method": "GET",
+				"path": "https://dev.to/api/articles/me/published",
+				"purpose": "Fetch published blog posts from Dev.to"
+			}
+		]
+	},
+	"uiSurface": {
+		"applicable": true,
+		"summary": "5-page static site with responsive design, dark mode support, and mobile navigation.",
+		"screens": [
+			{
+				"name": "Home",
+				"route": "/",
+				"purpose": "Greeting, summary, contact, recent projects, experience"
+			},
+			{
+				"name": "About",
+				"route": "/about",
+				"purpose": "Bio with rich text, display picture, tech stack logos, contact"
+			},
+			{
+				"name": "Projects",
+				"route": "/projects",
+				"purpose": "GitHub repository grid with project cards"
+			},
+			{
+				"name": "Blog",
+				"route": "/blog",
+				"purpose": "Dev.to published articles list"
+			},
+			{
+				"name": "Uses",
+				"route": "/uses",
+				"purpose": "Developer tools and tech stack list"
+			}
+		]
+	},
+	"integrations": {
+		"summary": "Two external data sources (Hygraph, Dev.to), one analytics service (Vercel), SVG icon processing via webpack.",
+		"services": [
+			{
+				"name": "Hygraph",
+				"type": "GraphQL CMS",
+				"configuredVia": "HYGRAPH_ADMIN_ID, HYGRAPH_AUTH_TOKEN, HYGRAPH_USER_ID env vars"
+			},
+			{
+				"name": "Dev.to",
+				"type": "REST API",
+				"configuredVia": "DEVTO_KEY env var"
+			},
+			{
+				"name": "Vercel Analytics",
+				"type": "Analytics",
+				"configuredVia": "No env vars needed"
+			},
+			{
+				"name": "@svgr/webpack",
+				"type": "SVG loader",
+				"configuredVia": "next.config.mjs webpack config"
+			}
+		]
+	},
+	"conventions": {
+		"summary": "TypeScript strict mode, ESLint with next/core-web-vitals + @typescript-eslint + prettier + jsx-a11y, Jest snapshot tests, Tailwind CSS with dark mode, path aliases, import ordering via Prettier.",
+		"linter": "ESLint 8 (next/core-web-vitals, @typescript-eslint/recommended, prettier, jsx-a11y)",
+		"formatter": "Prettier 3.3.3 (singleQuote, semi, tabWidth 2, importOrder grouping, tailwindcss plugin)",
+		"testFramework": "Jest 29.7 + @testing-library/react 16.0.1 (jsdom, snapshot tests)",
+		"typescriptStrict": true
+	}
+}
