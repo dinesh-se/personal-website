@@ -1,25 +1,11 @@
 {
-  "startedAt": 1784322519389,
-  "totalSpawns": 3,
+  "startedAt": 1784324341593,
+  "totalSpawns": 1,
   "checkerSpawns": 1,
-  "tasks": [
-    {
-      "taskId": "FIX-001",
-      "coderSpawns": 1,
-      "reviewerSpawns": 1,
-      "verifyRuns": 1,
-      "tokensIn": 256251,
-      "tokensOut": 6002,
-      "startedAt": 1784322677108,
-      "durationMs": 314456,
-      "outcome": "committed"
-    }
-  ],
-  "notes": [
-    "task FIX-001 starting with a dirty working tree (4 tracked file(s) modified outside .pi/kalam: e2e/home.spec.ts, openspec/changes/current/tasks/T-009-verify-page-rendering/TASK.md, playwright-report/index.html, test-results/.last-run.json) — these will be swept into this task's commit"
-  ],
-  "updatedAt": 1784322991564,
-  "endedAt": 1784322455467,
+  "tasks": [],
+  "notes": [],
+  "updatedAt": 1784324987554,
+  "endedAt": 1784324987554,
   "caps": {
     "enabled": false,
     "maxRunMinutes": 240,

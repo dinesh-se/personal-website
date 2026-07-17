@@ -21,8 +21,7 @@ export default defineConfig({
 		},
 	],
 	webServer: {
-		command:
-			"NODE_OPTIONS='--require ./e2e/setup.cjs' npm run dev -- -p 3099",
+		command: `NODE_OPTIONS='--require ${path.resolve(__dirname, 'setup.cjs')}' npm --prefix ${path.resolve(__dirname, '..')} run dev -- -p 3099`,
 		port: 3099,
 		reuseExistingServer: false,
 		stdout: 'pipe',
