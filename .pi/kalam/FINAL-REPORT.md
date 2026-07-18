@@ -1,11 +1,11 @@
-# Integration Check — Final Report — 2026-07-18 21:57
+# Integration Check — Final Report — 2026-07-18 22:25
 
 ## Summary
 
 | Metric | Value |
 |---|---|
-| Total check cycles | 12 |
-| Issues detected | 92 |
+| Total check cycles | 14 |
+| Issues detected | 97 |
 | Issues resolved | 1 |
 | Authored e2e specs | 9 |
 
@@ -25,6 +25,8 @@
 | 010 | 2026-07-18 19:47 | 1 |
 | 011 | 2026-07-18 19:52 | 1 |
 | 012 | 2026-07-18 20:57 | 3 |
+| 013 | 2026-07-18 21:17 | 4 |
+| 014 | 2026-07-18 21:25 | 3 |
 
 ## Unresolved Issues
 
@@ -545,6 +547,35 @@ Call log:
 - ISS-090: advisory: LCP 2856ms exceeds budget 2500ms (budget-violation) — advisory: LCP 2856ms exceeds budget 2500ms
 - ISS-091: advisory: TBT 1225ms exceeds budget 300ms (budget-violation) — advisory: TBT 1225ms exceeds budget 300ms
 - ISS-092: advisory: Performance score 0.72 is below budget 0.9 (budget-violation) — advisory: Performance score 0.72 is below budget 0.9
+- ISS-093: e2e failure: should toggle mobile menu (home.spec.ts) — Error: [2mexpect([22m[31mlocator[39m[2m).not.[22mtoHaveClass[2m([22m[32mexpected[39m[2m)[22m failed
+
+Locator: locator('#mobile-menu')
+Expected pattern: not [32m/(^|\s)hidden(\s|$)/[39m
+Received string: [31m"[7mhidden [27msm:hidden"[39m
+Timeout: 5000ms
+
+Call log:
+[2m  - Expect "not toHaveClass" with timeout 5000ms[22m
+[2m  - waiting for locator('#mobile-menu')[22m
+[2m    14 × locator resolved to <div id="mobile-menu" class="hidden sm:hidden">…</div>[22m
+[2m       - unexpected value "hidden sm:hidden"[22m
+ (e2e-failure) — e2e failure: should toggle mobile menu (home.spec.ts) — Error: [2mexpect([22m[31mlocator[39m[2m).not.[22mtoHaveClass[2m([22m[32mexpected[39m[2m)[22m failed
+
+Locator: locator('#mobile-menu')
+Expected pattern: not [32m/(^|\s)hidden(\s|$)/[39m
+Received string: [31m"[7mhidden [27msm:hidden"[39m
+Timeout: 5000ms
+
+Call log:
+[2m  - Expect "not toHaveClass" with timeout 5000ms[22m
+[2m  - waiting for locator('#mobile-menu')[22m
+[2m    14 × locator resolved to <div id="mobile-menu" class="hidden sm:hidden">…</div>[22m
+[2m       - unexpected value "hidden sm:hidden"[22m
+
+- ISS-094: advisory: LCP 2855ms exceeds budget 2500ms (budget-violation) — advisory: LCP 2855ms exceeds budget 2500ms
+- ISS-095: advisory: TBT 1175ms exceeds budget 300ms (budget-violation) — advisory: TBT 1175ms exceeds budget 300ms
+- ISS-096: advisory: LCP 2854ms exceeds budget 2500ms (budget-violation) — advisory: LCP 2854ms exceeds budget 2500ms
+- ISS-097: advisory: TBT 1178ms exceeds budget 300ms (budget-violation) — advisory: TBT 1178ms exceeds budget 300ms
 
 ## e2e Specs
 

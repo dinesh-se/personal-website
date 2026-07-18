@@ -770,10 +770,50 @@
     },
     {
       "id": "ISS-092",
-      "detectedAt": "2026-07-18T20:57:27.920Z",
+      "detectedAt": "2026-07-18T21:25:06.473Z",
       "kind": "budget-violation",
       "description": "advisory: Performance score 0.72 is below budget 0.9",
       "source": "advisory: Performance score 0.72 is below budget 0.9",
+      "resolved": false
+    },
+    {
+      "id": "ISS-093",
+      "detectedAt": "2026-07-18T21:17:52.849Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should toggle mobile menu (home.spec.ts) — Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveClass\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#mobile-menu')\nExpected pattern: not \u001b[32m/(^|\\s)hidden(\\s|$)/\u001b[39m\nReceived string: \u001b[31m\"\u001b[7mhidden \u001b[27msm:hidden\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toHaveClass\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#mobile-menu')\u001b[22m\n\u001b[2m    14 × locator resolved to <div id=\"mobile-menu\" class=\"hidden sm:hidden\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden sm:hidden\"\u001b[22m\n",
+      "source": "e2e failure: should toggle mobile menu (home.spec.ts) — Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveClass\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#mobile-menu')\nExpected pattern: not \u001b[32m/(^|\\s)hidden(\\s|$)/\u001b[39m\nReceived string: \u001b[31m\"\u001b[7mhidden \u001b[27msm:hidden\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toHaveClass\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#mobile-menu')\u001b[22m\n\u001b[2m    14 × locator resolved to <div id=\"mobile-menu\" class=\"hidden sm:hidden\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden sm:hidden\"\u001b[22m\n",
+      "resolved": false
+    },
+    {
+      "id": "ISS-094",
+      "detectedAt": "2026-07-18T21:17:52.849Z",
+      "kind": "budget-violation",
+      "description": "advisory: LCP 2855ms exceeds budget 2500ms",
+      "source": "advisory: LCP 2855ms exceeds budget 2500ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-095",
+      "detectedAt": "2026-07-18T21:17:52.849Z",
+      "kind": "budget-violation",
+      "description": "advisory: TBT 1175ms exceeds budget 300ms",
+      "source": "advisory: TBT 1175ms exceeds budget 300ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-096",
+      "detectedAt": "2026-07-18T21:25:06.473Z",
+      "kind": "budget-violation",
+      "description": "advisory: LCP 2854ms exceeds budget 2500ms",
+      "source": "advisory: LCP 2854ms exceeds budget 2500ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-097",
+      "detectedAt": "2026-07-18T21:25:06.473Z",
+      "kind": "budget-violation",
+      "description": "advisory: TBT 1178ms exceeds budget 300ms",
+      "source": "advisory: TBT 1178ms exceeds budget 300ms",
       "resolved": false
     }
   ],
@@ -849,6 +889,18 @@
       "number": 12,
       "startedAt": "2026-07-18T20:56:59.072Z",
       "completedAt": "2026-07-18T20:57:27.920Z",
+      "issuesFound": 3
+    },
+    {
+      "number": 13,
+      "startedAt": "2026-07-18T21:17:25.569Z",
+      "completedAt": "2026-07-18T21:17:52.850Z",
+      "issuesFound": 4
+    },
+    {
+      "number": 14,
+      "startedAt": "2026-07-18T21:24:01.606Z",
+      "completedAt": "2026-07-18T21:25:06.473Z",
       "issuesFound": 3
     }
   ],

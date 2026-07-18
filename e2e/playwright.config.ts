@@ -12,8 +12,16 @@ export default defineConfig({
 	],
 	fullyParallel: true,
 	forbidOnly: !!process.env.CI,
-	retries: process.env.CI ? 2 : 0,
-	workers: process.env.CI ? 1 : undefined,
+	// KALAM_BASE_URL: kalam starts a fresh `next dev` and runs specs immediately;
+	// webpack compiles routes lazily on first hit, so a cold request can reset
+	// under load. Retry so those first-hit transients self-heal (a real failure
+	// still fails all attempts).
+	retries: process.env.CI || process.env.KALAM_BASE_URL ? 2 : 0,
+	// Serial under kalam/CI: on this box the check shares CPU with local LLM
+	// inference, and parallel workers starve each other so client-side
+	// hydration lags and interaction tests (mobile menu, nav) flake. One
+	// worker gives each browser test full CPU so hydration finishes in time.
+	workers: process.env.CI || process.env.KALAM_BASE_URL ? 1 : undefined,
 	reporter: 'html',
 	use: {
 		baseURL:

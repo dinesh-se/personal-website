@@ -1,15 +1,15 @@
-# App Health Check — 2026-07-18 21:57
+# App Health Check — 2026-07-18 22:25
 
-**Status:** CRITICAL (19 advisory notices)
+**Status:** CRITICAL (23 advisory notices)
 
 | Metric | Value |
 |---|---|
-| Check cycles completed | 12 |
-| Open issues | 91 (19 advisory) |
+| Check cycles completed | 14 |
+| Open issues | 96 (23 advisory) |
 | Pending feedback items | 0 |
 | Authored e2e specs | 9 |
 | Scenario coverage | 0/10 PRD scenarios covered by done tasks |
-| Last check | 2026-07-18 21:57 |
+| Last check | 2026-07-18 22:25 |
 
 ## Open Issues
 
@@ -319,6 +319,23 @@ Call log:
 | ISS-090 | budget-violation | advisory: LCP 2856ms exceeds budget 2500ms | — | Open |
 | ISS-091 | budget-violation | advisory: TBT 1225ms exceeds budget 300ms | — | Open |
 | ISS-092 | budget-violation | advisory: Performance score 0.72 is below budget 0.9 | — | Open |
+| ISS-093 | e2e-failure | e2e failure: should toggle mobile menu (home.spec.ts) — Error: [2mexpect([22m[31mlocator[39m[2m).not.[22mtoHaveClass[2m([22m[32mexpected[39m[2m)[22m failed
+
+Locator: locator('#mobile-menu')
+Expected pattern: not [32m/(^|\s)hidden(\s|$)/[39m
+Received string: [31m"[7mhidden [27msm:hidden"[39m
+Timeout: 5000ms
+
+Call log:
+[2m  - Expect "not toHaveClass" with timeout 5000ms[22m
+[2m  - waiting for locator('#mobile-menu')[22m
+[2m    14 × locator resolved to <div id="mobile-menu" class="hidden sm:hidden">…</div>[22m
+[2m       - unexpected value "hidden sm:hidden"[22m
+ | — | Open |
+| ISS-094 | budget-violation | advisory: LCP 2855ms exceeds budget 2500ms | — | Open |
+| ISS-095 | budget-violation | advisory: TBT 1175ms exceeds budget 300ms | — | Open |
+| ISS-096 | budget-violation | advisory: LCP 2854ms exceeds budget 2500ms | — | Open |
+| ISS-097 | budget-violation | advisory: TBT 1178ms exceeds budget 300ms | — | Open |
 
 ## Feedback Backlog
 
