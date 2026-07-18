@@ -743,6 +743,14 @@
       "description": "advisory: TBT 1165ms exceeds budget 300ms",
       "source": "advisory: TBT 1165ms exceeds budget 300ms",
       "resolved": false
+    },
+    {
+      "id": "ISS-089",
+      "detectedAt": "2026-07-18T16:55:11.426Z",
+      "kind": "budget-violation",
+      "description": "Port 3000 is already in use by a process this check didn't start (no recorded pid from a prior cycle) — refusing to kill an unrelated process. Free the port manually (or adjust candidatePorts), then retry.",
+      "source": "Port 3000 is already in use by a process this check didn't start (no recorded pid from a prior cycle) — refusing to kill an unrelated process. Free the port manually (or adjust candidatePorts), then retry.",
+      "resolved": false
     }
   ],
   "feedbackItems": [],
@@ -782,6 +790,12 @@
       "startedAt": "2026-07-17T21:39:01.594Z",
       "completedAt": "2026-07-17T21:40:07.137Z",
       "issuesFound": 62
+    },
+    {
+      "number": 7,
+      "startedAt": "2026-07-18T16:55:11.423Z",
+      "completedAt": "2026-07-18T16:55:11.426Z",
+      "issuesFound": 1
     }
   ],
   "cleanCycleCount": 0,
