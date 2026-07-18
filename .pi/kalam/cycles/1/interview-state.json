@@ -1,0 +1,103 @@
+{
+  "kind": "interview",
+  "mode": "brownfield",
+  "idea": "Upgrade core dependencies to their latest stable versions: Next.js 14 to 16, React 18 to 19, @vercel/analytics 1 to 2, and any other outdated packages. Bump the CI workflow's Node version to match the local dev environment (currently pinned to Node 18 in CI, but local dev uses Node 24). Goal is a clean, working upgrade with no regressions, so the e2e/unit test harness from the previous cycle can be used with confidence on a modern stack.",
+  "round": 8,
+  "askedAtLeastOnce": true,
+  "boundaries": [
+    {
+      "id": "node-version",
+      "question": "What Node.js version should CI use after upgrade?",
+      "importance": "key",
+      "status": "resolved",
+      "resolution": "Node 24 (match local dev)"
+    },
+    {
+      "id": "next-version",
+      "question": "Which Next.js 16.x version to target?",
+      "importance": "key",
+      "status": "resolved",
+      "resolution": "Next.js 16 (latest stable, may have newer features)"
+    },
+    {
+      "id": "react-version",
+      "question": "Which React 19.x version to target?",
+      "importance": "key",
+      "status": "resolved",
+      "resolution": "React 19 (latest stable)"
+    },
+    {
+      "id": "breaking-changes",
+      "question": "How should known breaking changes be handled during the upgrade?",
+      "importance": "key",
+      "status": "resolved",
+      "resolution": "Upgrade with audit: npm audit fix, fix TypeScript errors, run tests, fix failures one-by-one"
+    },
+    {
+      "id": "eslint-update",
+      "question": "Should ESLint be upgraded from v8 to v9 (flat config) or stay on v8 with flat config?",
+      "importance": "key",
+      "status": "resolved",
+      "resolution": "ESLint 9 with flat config (full migration)"
+    },
+    {
+      "id": "test-harness",
+      "question": "What test coverage is required to verify the upgrade is safe?",
+      "importance": "key",
+      "status": "deferred",
+      "resolution": "User skipped — defer to implementation"
+    },
+    {
+      "id": "other-deps",
+      "question": "Which other direct dependencies should be bumped to latest stable?",
+      "importance": "minor",
+      "status": "resolved",
+      "resolution": "All direct dependencies to latest stable"
+    }
+  ],
+  "transcript": [
+    {
+      "round": 1,
+      "topic": "next-version",
+      "question": "Next.js 14 → 16: Next.js 15 and 16 have significant differences (App Router changes, Turbopack defaults, new image/headers APIs). Which target do you want?",
+      "answer": "Next.js 16 (latest stable, may have newer features)"
+    },
+    {
+      "round": 2,
+      "topic": "node-version",
+      "question": "CI uses Node 18 (setup-node@v2 with node-version: '18'). Local dev uses Node 24. What Node version should CI target?",
+      "answer": "Node 24 (match local dev)"
+    },
+    {
+      "round": 3,
+      "topic": "react-version",
+      "question": "React 18 → 19: React 19 has breaking changes (removed PropTypes, new hooks API, automatic batching changes, context updates). Which target?",
+      "answer": "React 19 (latest stable)"
+    },
+    {
+      "round": 4,
+      "topic": "breaking-changes",
+      "question": "React 19 and Next.js 15/16 have breaking changes. How should known incompatibilities be handled?",
+      "answer": "Upgrade with audit: npm audit fix, fix TypeScript errors, run tests, fix failures one-by-one"
+    },
+    {
+      "round": 5,
+      "topic": "eslint-update",
+      "question": "ESLint 8 (legacy .eslintrc.json) → ESLint 9 (flat config eslint.config.js). Next.js 16's eslint-config-next likely requires ESLint 9. Which path?",
+      "answer": "ESLint 9 with flat config (full migration)"
+    },
+    {
+      "round": 7,
+      "topic": "other-deps",
+      "question": "Beyond the explicitly mentioned upgrades, which other direct dependencies should be bumped to latest stable in this same PR?",
+      "answer": "All direct dependencies to latest stable"
+    }
+  ],
+  "openQuestions": [
+    "test-harness"
+  ],
+  "completed": true,
+  "summaryReady": true,
+  "externalDataNeeded": false,
+  "askRejections": 0
+}

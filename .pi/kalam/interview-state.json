@@ -1,100 +1,98 @@
 {
   "kind": "interview",
   "mode": "brownfield",
-  "idea": "Upgrade core dependencies to their latest stable versions: Next.js 14 to 16, React 18 to 19, @vercel/analytics 1 to 2, and any other outdated packages. Bump the CI workflow's Node version to match the local dev environment (currently pinned to Node 18 in CI, but local dev uses Node 24). Goal is a clean, working upgrade with no regressions, so the e2e/unit test harness from the previous cycle can be used with confidence on a modern stack.",
+  "idea": "\"Re-architect to current Next.js 16 App Router standards/patterns: move all Hygraph + Dev.to fetching into Server Components (App Router data model); add per-route loading.tsx + error.tsx (streaming + Suspense boundaries); adopt Cache Components (use cache / cacheLife) + Partial Prerendering for cached remote data; upgrade Next to 16.3+ as the prerequisite; migrate to generateMetadata Metadata API + typed routes; fix Experience formatDate DD/MM/YYYY bug. No visual redesign, no new pages; keep Hygraph/Dto as the data sources.\"",
   "round": 8,
   "askedAtLeastOnce": true,
   "boundaries": [
     {
-      "id": "node-version",
-      "question": "What Node.js version should CI use after upgrade?",
+      "id": "loading-state-pattern",
+      "question": "What loading state pattern should be used for per-route loading.tsx?",
       "importance": "key",
       "status": "resolved",
-      "resolution": "Node 24 (match local dev)"
+      "resolution": "Skeleton loaders"
     },
     {
-      "id": "next-version",
-      "question": "Which Next.js 16.x version to target?",
+      "id": "error-handling-strategy",
+      "question": "What error handling strategy should be adopted for error.tsx files?",
       "importance": "key",
       "status": "resolved",
-      "resolution": "Next.js 16 (latest stable, may have newer features)"
+      "resolution": "Hybrid: root + per-route"
     },
     {
-      "id": "react-version",
-      "question": "Which React 19.x version to target?",
+      "id": "cache-strategy",
+      "question": "What caching strategy should be used for remote data (Hygraph + Dev.to)?",
       "importance": "key",
       "status": "resolved",
-      "resolution": "React 19 (latest stable)"
+      "resolution": "Default cacheLife profiles"
     },
     {
-      "id": "breaking-changes",
-      "question": "How should known breaking changes be handled during the upgrade?",
+      "id": "partial-prerendering",
+      "question": "Should Partial Prerendering (PPR) be adopted alongside ISR for cached remote data?",
       "importance": "key",
       "status": "resolved",
-      "resolution": "Upgrade with audit: npm audit fix, fix TypeScript errors, run tests, fix failures one-by-one"
+      "resolution": "Yes — adopt PPR"
     },
     {
-      "id": "eslint-update",
-      "question": "Should ESLint be upgraded from v8 to v9 (flat config) or stay on v8 with flat config?",
+      "id": "metadata-api-migration",
+      "question": "Should all routes migrate from static metadata exports to generateMetadata?",
       "importance": "key",
       "status": "resolved",
-      "resolution": "ESLint 9 with flat config (full migration)"
+      "resolution": "Yes — generateMetadata on all routes"
     },
     {
-      "id": "test-harness",
-      "question": "What test coverage is required to verify the upgrade is safe?",
-      "importance": "key",
-      "status": "deferred",
-      "resolution": "User skipped — defer to implementation"
-    },
-    {
-      "id": "other-deps",
-      "question": "Which other direct dependencies should be bumped to latest stable?",
+      "id": "experience-formatdate-fix",
+      "question": "What should the Experience component's formatDate output be?",
       "importance": "minor",
       "status": "resolved",
-      "resolution": "All direct dependencies to latest stable"
+      "resolution": "MMM YYYY (keep current format — no change needed)"
     }
   ],
   "transcript": [
     {
       "round": 1,
-      "topic": "next-version",
-      "question": "Next.js 14 → 16: Next.js 15 and 16 have significant differences (App Router changes, Turbopack defaults, new image/headers APIs). Which target do you want?",
-      "answer": "Next.js 16 (latest stable, may have newer features)"
+      "topic": "loading-state-pattern",
+      "question": "What loading state pattern should per-route loading.tsx use?",
+      "answer": "Skeleton loaders"
     },
     {
       "round": 2,
-      "topic": "node-version",
-      "question": "CI uses Node 18 (setup-node@v2 with node-version: '18'). Local dev uses Node 24. What Node version should CI target?",
-      "answer": "Node 24 (match local dev)"
+      "topic": "error-handling-strategy",
+      "question": "What error handling strategy should be adopted for error.tsx files?",
+      "answer": "Hybrid: root + per-route"
     },
     {
       "round": 3,
-      "topic": "react-version",
-      "question": "React 18 → 19: React 19 has breaking changes (removed PropTypes, new hooks API, automatic batching changes, context updates). Which target?",
-      "answer": "React 19 (latest stable)"
+      "topic": "cache-strategy",
+      "question": "What caching strategy should be used for remote data (Hygraph + Dev.to)?",
+      "answer": "Default cacheLife profiles"
     },
     {
       "round": 4,
-      "topic": "breaking-changes",
-      "question": "React 19 and Next.js 15/16 have breaking changes. How should known incompatibilities be handled?",
-      "answer": "Upgrade with audit: npm audit fix, fix TypeScript errors, run tests, fix failures one-by-one"
+      "topic": "partial-prerendering",
+      "question": "Should Partial Prerendering (PPR) be adopted alongside ISR for cached remote data?",
+      "answer": "Yes — adopt PPR"
     },
     {
       "round": 5,
-      "topic": "eslint-update",
-      "question": "ESLint 8 (legacy .eslintrc.json) → ESLint 9 (flat config eslint.config.js). Next.js 16's eslint-config-next likely requires ESLint 9. Which path?",
-      "answer": "ESLint 9 with flat config (full migration)"
+      "topic": "metadata-api-migration",
+      "question": "Should all routes migrate from static metadata exports to generateMetadata?",
+      "answer": "Yes — generateMetadata on all routes"
     },
     {
       "round": 7,
-      "topic": "other-deps",
-      "question": "Beyond the explicitly mentioned upgrades, which other direct dependencies should be bumped to latest stable in this same PR?",
-      "answer": "All direct dependencies to latest stable"
+      "topic": "experience-formatdate-fix",
+      "question": "What date format should the Experience component use? Currently it shows \"May 2023\" (month name + year).",
+      "answer": "MMM YYYY (keep current format)"
     }
   ],
   "openQuestions": [
-    "test-harness"
+    "loading-state-pattern",
+    "error-handling-strategy",
+    "cache-strategy",
+    "partial-prerendering",
+    "metadata-api-migration",
+    "experience-formatdate-fix"
   ],
   "completed": true,
   "summaryReady": true,

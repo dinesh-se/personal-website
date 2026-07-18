@@ -65,8 +65,8 @@ header h1 { font-size: 18px; margin: 0; }
 <body>
 <header>
   <h1>kalam pipeline</h1>
-  <span class="chip">cycle 1 · brownfield</span>
-  <span class="timestamp">generated 21:34:52 UTC — auto-refreshes every 3s</span>
+  <span class="chip">cycle 2 · brownfield</span>
+  <span class="timestamp">generated 23:32:49 UTC — auto-refreshes every 3s</span>
 </header>
 <div class="readonly-note">Read-only view — control the pipeline from the TUI (/kalam …).</div>
 <div class="grid">
@@ -105,9 +105,9 @@ header h1 { font-size: 18px; margin: 0; }
   </div>
   <div class="card-body">
 <div class="line">  Status : ✅ Complete</div>
-<div class="line">  Feature: &quot;Upgrade core dependencies to their latest stable versions: Next.js 14 to 16, React 18 to 19, @vercel/analytics 1 to 2, and any other outdated packages. Bump the CI workflow&#39;s Node version to match the local dev environment (currently pinned to Node 18 in CI, but local dev uses Node 24). Goal is a clean, working upgrade with no regressions, so the e2e/unit test harness from the previous cycle can be used with confidence on a modern stack.&quot;</div>
-<div class="line">  Boundaries: 7/7 addressed | asked: true</div>
-<div class="line">  Output : proposal.md ✅</div>
+<div class="line">  Feature: &quot;&quot;Re-architect to current Next.js 16 App Router standards/patterns: move all Hygraph + Dev.to fetching into Server Components (App Router data model); add per-route loading.tsx + error.tsx (streaming + Suspense boundaries); adopt Cache Components (use cache / cacheLife) + Partial Prerendering for cached remote data; upgrade Next to 16.3+ as the prerequisite; migrate to generateMetadata Metadata API + typed routes; fix Experience formatDate DD/MM/YYYY bug. No visual redesign, no new pages; keep Hygraph/Dto as the data sources.&quot;&quot;</div>
+<div class="line">  Boundaries: 6/6 addressed | asked: true</div>
+<div class="line">  Output : proposal.md ❌</div>
   </div>
 </section>
 <section class="card status-not-started">
@@ -131,88 +131,64 @@ header h1 { font-size: 18px; margin: 0; }
 <div class="line">  Status : 🔒 Blocked (complete Step 1 first)</div>
   </div>
 </section>
-<section class="card status-complete">
+<section class="card status-blocked">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">✅</span>
+    <span class="glyph" aria-hidden="true">🔒</span>
     <h2>Step 3 · Business/Product Docs</h2>
-    <span class="status-word">Complete</span>
+    <span class="status-word">Blocked</span>
   </div>
   <div class="card-body">
-<div class="line">  Status      : ✅ Complete</div>
-<div class="line">  ✅ Product Requirements Document (PRD) → openspec/specs/prd.md </div>
-<div class="line">  ✅ Technology Stack → openspec/specs/tech-stack.md </div>
-<div class="line">  Consistency : ✅ passed</div>
+<div class="line">  Status : 🔒 Blocked (complete Step 2 first)</div>
   </div>
 </section>
-<section class="card status-complete">
+<section class="card status-blocked">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">✅</span>
+    <span class="glyph" aria-hidden="true">🔒</span>
     <h2>Step 4 · Technical Design</h2>
-    <span class="status-word">Complete</span>
+    <span class="status-word">Blocked</span>
   </div>
   <div class="card-body">
-<div class="line">  Status      : ✅ Complete</div>
-<div class="line">  ✅ Architecture Document → openspec/specs/architecture.md </div>
-<div class="line">  ✅ Data Model → openspec/specs/data-model.md </div>
-<div class="line">  ✅ API Specification → openspec/specs/api-spec.md </div>
-<div class="line">  ✅ UX Specification → openspec/specs/ux-spec.md </div>
-<div class="line">  Consistency : ✅ passed</div>
+<div class="line">  Status : 🔒 Blocked (complete Step 3 first)</div>
   </div>
 </section>
-<section class="card status-complete">
+<section class="card status-blocked">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">✅</span>
+    <span class="glyph" aria-hidden="true">🔒</span>
     <h2>Step 4b · Design Validation (Feature Spike)</h2>
-    <span class="status-word">Complete</span>
+    <span class="status-word">Blocked</span>
   </div>
   <div class="card-body">
-<div class="line">  Status      : ✅ Complete</div>
-<div class="line">  Spike       : ✅ verified</div>
+<div class="line">  Status : 🔒 Blocked (complete Step 4 first)</div>
   </div>
 </section>
-<section class="card status-complete">
+<section class="card status-blocked">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">✅</span>
+    <span class="glyph" aria-hidden="true">🔒</span>
     <h2>Step 5 · Task Pipeline</h2>
-    <span class="status-word">Complete</span>
+    <span class="status-word">Blocked</span>
   </div>
   <div class="card-body">
-<div class="line">  Status      : ✅ Complete</div>
-<div class="line">  Tasks       : 9 recorded</div>
-<div class="line">  Review      : ✅ passed</div>
-<div class="line">  Approved    : ✅</div>
-<div class="line">  Tasks root  : /home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks</div>
-<div class="line">  → Execute   : /kalam build</div>
+<div class="line">  Status : 🔒 Blocked (complete Step 4 first)</div>
   </div>
 </section>
-<section class="card status-complete">
+<section class="card status-blocked">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">✅</span>
+    <span class="glyph" aria-hidden="true">🔒</span>
     <h2>Build · Implementation</h2>
-    <span class="status-word">Complete</span>
+    <span class="status-word">Blocked</span>
   </div>
   <div class="card-body">
-<div class="line">  Status      : ✅ Complete</div>
-<div class="line">  Tasks       : 10/10 done</div>
-<div class="line">  Skipped     : T-009</div>
-<div class="line">  Review notes: 22 open across T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008</div>
-<div class="line">  → Next      : /kalam integration-check</div>
+<div class="line">  Status : 🔒 Blocked (complete Step 5 first)</div>
   </div>
 </section>
-<section class="card status-complete">
+<section class="card status-blocked">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">✅</span>
+    <span class="glyph" aria-hidden="true">🔒</span>
     <h2>Step 6 · Integration Check</h2>
-    <span class="status-word">Complete</span>
+    <span class="status-word">Blocked</span>
   </div>
   <div class="card-body">
-<div class="line">  Status          : ✅ Complete</div>
-<div class="line">  e2e specs       : 9 authored</div>
-<div class="line">  Cycles          : 14 completed</div>
-<div class="line">  Open issues     : 97</div>
-<div class="line">  Pending feedback: 0</div>
-<div class="line">  Last check      : 2026-07-18 21:25</div>
-<div class="line">  → Refresh       : /kalam health (rewrites HEALTH-CHECK.md)</div>
+<div class="line">  Status : 🔒 Blocked (complete Step 5 first)</div>
   </div>
 </section>
 </div>

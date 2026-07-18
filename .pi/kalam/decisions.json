@@ -256,5 +256,69 @@
     "source": "build",
     "affects": [],
     "timestamp": "2026-07-17T21:16:31.564Z"
+  },
+  {
+    "id": "boundary:loading-state-pattern",
+    "question": "What loading state pattern should be used for per-route loading.tsx?",
+    "answer": "Skeleton loaders",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-18T23:25:54.744Z"
+  },
+  {
+    "id": "boundary:error-handling-strategy",
+    "question": "What error handling strategy should be adopted for error.tsx files?",
+    "answer": "Hybrid: root + per-route",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-18T23:26:59.967Z"
+  },
+  {
+    "id": "boundary:cache-strategy",
+    "question": "What caching strategy should be used for remote data (Hygraph + Dev.to)?",
+    "answer": "Default cacheLife profiles",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-18T23:27:41.693Z"
+  },
+  {
+    "id": "boundary:partial-prerendering",
+    "question": "Should Partial Prerendering (PPR) be adopted alongside ISR for cached remote data?",
+    "answer": "Yes — adopt PPR",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-18T23:28:06.979Z"
+  },
+  {
+    "id": "boundary:metadata-api-migration",
+    "question": "Should all routes migrate from static metadata exports to generateMetadata?",
+    "answer": "Yes — generateMetadata on all routes",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-18T23:28:32.437Z"
+  },
+  {
+    "id": "boundary:experience-formatdate-fix",
+    "question": "What should the Experience component's formatDate output be?",
+    "answer": "MMM YYYY (keep current format — no change needed)",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-18T23:29:55.126Z"
+  },
+  {
+    "id": "profile:audience",
+    "question": "Who is this for?",
+    "answer": "personal",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-18T23:32:28.955Z"
+  },
+  {
+    "id": "profile:externalData",
+    "question": "Does this need external data sources?",
+    "answer": "apis",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-18T23:32:48.634Z"
   }
 ]
