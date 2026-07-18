@@ -25,3 +25,8 @@
 ### Feature Round 7 — experience-formatdate-fix
 **Q:** What date format should the Experience component use? Currently it shows "May 2023" (month name + year).
 **A:** MMM YYYY (keep current format)
+
+### Consistency reconciliation
+**Conflict:** PRD assumes Playwright E2E tests exist and must pass (FR-12, §9 Success Metrics, §4 scenarios, §6 Assumption A7), but tech-stack.md says 'No genuinely new technology is introduced' and only lists Jest + @testing-library/react for testing. Codebase-map.json key dependencies also don't include Playwright.
+**Decision:** Add Playwright to tech-stack.md and confirm it exists in the codebase
+**Affects:** prd.md, tech-stack.md

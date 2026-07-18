@@ -320,5 +320,16 @@
     "source": "feature-brief",
     "affects": [],
     "timestamp": "2026-07-18T23:32:48.634Z"
+  },
+  {
+    "id": "reconcile:prd-assumes-playwright-e2e-tests-exist-and-must-pass-fr-12-9",
+    "question": "PRD assumes Playwright E2E tests exist and must pass (FR-12, §9 Success Metrics, §4 scenarios, §6 Assumption A7), but tech-stack.md says 'No genuinely new technology is introduced' and only lists Jest + @testing-library/react for testing. Codebase-map.json key dependencies also don't include Playwright.",
+    "answer": "Add Playwright to tech-stack.md and confirm it exists in the codebase",
+    "source": "reconciliation",
+    "affects": [
+      "prd.md",
+      "tech-stack.md"
+    ],
+    "timestamp": "2026-07-18T23:51:46.909Z"
   }
 ]
