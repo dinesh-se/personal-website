@@ -9,8 +9,10 @@ export interface BlogPost {
 	page_views_count: number;
 }
 
-export interface BlogPostUI
-	extends Pick<BlogPost, 'title' | 'description' | 'url'> {
+export interface BlogPostUI extends Pick<
+	BlogPost,
+	'title' | 'description' | 'url'
+> {
 	id?: string;
 	date: Date;
 	commentsCount: number;

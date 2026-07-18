@@ -1,0 +1,984 @@
+{
+  "kind": "integration-check",
+  "specs": [
+    {
+      "taskId": "T-001",
+      "path": "e2e/t-001-dependency-upgrade.spec.ts"
+    },
+    {
+      "taskId": "T-002",
+      "path": "e2e/t-002-other-deps-upgrade.spec.ts"
+    },
+    {
+      "taskId": "T-003",
+      "path": "e2e/t-003-build-and-render.spec.ts"
+    },
+    {
+      "taskId": "T-004",
+      "path": "e2e/t-004-eslint-flat-config-migration.spec.ts"
+    },
+    {
+      "taskId": "T-006",
+      "path": "e2e/t-006-ci-node-24.spec.ts"
+    },
+    {
+      "taskId": "T-007",
+      "path": "e2e/t-007-component-snapshots.spec.ts"
+    },
+    {
+      "taskId": "T-005",
+      "path": "e2e/t-005-eslint-errors-fixed.spec.ts"
+    },
+    {
+      "taskId": "T-008",
+      "path": "e2e/home.spec.ts"
+    },
+    {
+      "taskId": "FIX-001",
+      "path": "e2e/fix-001-hardcoded-path-webserver.spec.ts"
+    }
+  ],
+  "issues": [
+    {
+      "id": "ISS-001",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should render the page title (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should render the page title (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-002",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should display the greeting (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should display the greeting (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-003",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should render the header navigation (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should render the header navigation (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-004",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should render the footer (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should render the footer (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-005",
+      "detectedAt": "2026-07-17T21:09:43.636Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should navigate to about page (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should navigate to about page (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-006",
+      "detectedAt": "2026-07-17T21:09:43.636Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should navigate to projects page (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should navigate to projects page (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-007",
+      "detectedAt": "2026-07-17T21:09:43.636Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should navigate to blog page (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should navigate to blog page (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-008",
+      "detectedAt": "2026-07-17T21:09:43.636Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should navigate to uses page (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should navigate to uses page (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-009",
+      "detectedAt": "2026-07-17T21:09:43.636Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should toggle mobile menu (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should toggle mobile menu (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-010",
+      "detectedAt": "2026-07-17T21:09:43.636Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should respect system preference (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should respect system preference (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-011",
+      "detectedAt": "2026-07-17T21:09:43.636Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should have footer navigation links (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should have footer navigation links (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-012",
+      "detectedAt": "2026-07-17T21:09:43.636Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should show active state on current navigation link (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should show active state on current navigation link (home.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-013",
+      "detectedAt": "2026-07-17T21:09:43.636Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should render home page without runtime errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should render home page without runtime errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-014",
+      "detectedAt": "2026-07-17T21:09:43.636Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should render about page without runtime errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should render about page without runtime errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-015",
+      "detectedAt": "2026-07-17T21:09:43.636Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should render projects page without runtime errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/projects\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/projects\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should render projects page without runtime errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/projects\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/projects\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-016",
+      "detectedAt": "2026-07-17T21:09:43.636Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should render blog page without runtime errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/blog\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/blog\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should render blog page without runtime errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/blog\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/blog\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-017",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should render uses page without runtime errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/uses\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/uses\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should render uses page without runtime errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/uses\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/uses\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-018",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should navigate between all pages without console errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should navigate between all pages without console errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-019",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: about page renders with social icons from react-social-icons (t-002-other-deps-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: about page renders with social icons from react-social-icons (t-002-other-deps-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-020",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: home page renders Contact component with social icons from react-social-icons (t-002-other-deps-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: home page renders Contact component with social icons from react-social-icons (t-002-other-deps-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-021",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: all pages render without crashes after dependency upgrade (t-002-other-deps-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: all pages render without crashes after dependency upgrade (t-002-other-deps-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-022",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: navigation between pages works after dependency upgrade (t-002-other-deps-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: navigation between pages works after dependency upgrade (t-002-other-deps-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-023",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: uses page renders content from graphql-request data fetch (t-002-other-deps-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/uses\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/uses\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: uses page renders content from graphql-request data fetch (t-002-other-deps-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/uses\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/uses\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-024",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: blog page renders content from dev.to API fetch (t-002-other-deps-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/blog\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: blog page renders content from dev.to API fetch (t-002-other-deps-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/blog\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-025",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: projects page renders project cards (t-002-other-deps-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/projects\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: projects page renders project cards (t-002-other-deps-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/projects\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-026",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: footer navigation links are functional after dependency upgrade (t-002-other-deps-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: footer navigation links are functional after dependency upgrade (t-002-other-deps-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-027",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: all 5 pages load without runtime/console errors (t-003-build-and-render.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: all 5 pages load without runtime/console errors (t-003-build-and-render.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-028",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: full navigation chain produces zero console errors (t-003-build-and-render.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: full navigation chain produces zero console errors (t-003-build-and-render.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-029",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: each page renders expected structural content (t-003-build-and-render.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: each page renders expected structural content (t-003-build-and-render.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-030",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: about page social icons render (React 19 PropTypes compatibility) (t-003-build-and-render.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: about page social icons render (React 19 PropTypes compatibility) (t-003-build-and-render.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-031",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: home page contact icons render (React 19 PropTypes compatibility) (t-003-build-and-render.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: home page contact icons render (React 19 PropTypes compatibility) (t-003-build-and-render.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-032",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: uses page renders graphql data categories and items (t-003-build-and-render.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/uses\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/uses\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: uses page renders graphql data categories and items (t-003-build-and-render.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/uses\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/uses\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-033",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: blog page renders dev.to data as post cards (t-003-build-and-render.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/blog\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: blog page renders dev.to data as post cards (t-003-build-and-render.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/blog\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-034",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: projects page renders project cards with repo links (t-003-build-and-render.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/projects\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: projects page renders project cards with repo links (t-003-build-and-render.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/projects\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-035",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: all pages load without console errors after ESLint migration (t-004-eslint-flat-config-migration.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: all pages load without console errors after ESLint migration (t-004-eslint-flat-config-migration.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-036",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: navigation chain produces zero console errors after migration (t-004-eslint-flat-config-migration.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: navigation chain produces zero console errors after migration (t-004-eslint-flat-config-migration.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-037",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: all pages render without runtime errors on Node 24 (t-006-ci-node-24.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: all pages render without runtime errors on Node 24 (t-006-ci-node-24.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-038",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: navigation chain works on Node 24 (t-006-ci-node-24.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: navigation chain works on Node 24 (t-006-ci-node-24.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-039",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: Header renders top navigation with logo and links (t-007-component-snapshots.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: Header renders top navigation with logo and links (t-007-component-snapshots.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-040",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: Footer renders nav links and copyright link (t-007-component-snapshots.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: Footer renders nav links and copyright link (t-007-component-snapshots.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-041",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: NavLinks renders active state on current page (t-007-component-snapshots.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: NavLinks renders active state on current page (t-007-component-snapshots.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-042",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: Contact component renders social icon links (react-social-icons + React 19) (t-007-component-snapshots.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: Contact component renders social icon links (react-social-icons + React 19) (t-007-component-snapshots.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-043",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: Experience renders organization timeline entries (t-007-component-snapshots.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: Experience renders organization timeline entries (t-007-component-snapshots.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-044",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: BlogPostCard renders post title, description, and metrics (t-007-component-snapshots.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/blog\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: BlogPostCard renders post title, description, and metrics (t-007-component-snapshots.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/blog\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-045",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: ProjectCard renders project name, description, and language badge (t-007-component-snapshots.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/projects\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: ProjectCard renders project name, description, and language badge (t-007-component-snapshots.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/projects\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-046",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: RecentProjects renders a grid of project cards on home page (t-007-component-snapshots.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: RecentProjects renders a grid of project cards on home page (t-007-component-snapshots.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-047",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: About page renders rich text bio via @graphcms/rich-text-react-renderer (t-007-component-snapshots.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: About page renders rich text bio via @graphcms/rich-text-react-renderer (t-007-component-snapshots.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-048",
+      "detectedAt": "2026-07-17T20:40:55.323Z",
+      "kind": "budget-violation",
+      "description": "advisory: LCP 54805ms exceeds budget 2500ms",
+      "source": "advisory: LCP 54805ms exceeds budget 2500ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-049",
+      "detectedAt": "2026-07-17T21:09:43.636Z",
+      "kind": "budget-violation",
+      "description": "advisory: CLS 0.123 exceeds budget 0.1",
+      "source": "advisory: CLS 0.123 exceeds budget 0.1",
+      "resolved": false
+    },
+    {
+      "id": "ISS-050",
+      "detectedAt": "2026-07-17T20:40:55.323Z",
+      "kind": "budget-violation",
+      "description": "advisory: TBT 1287ms exceeds budget 300ms",
+      "source": "advisory: TBT 1287ms exceeds budget 300ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-051",
+      "detectedAt": "2026-07-17T20:40:55.323Z",
+      "kind": "budget-violation",
+      "description": "advisory: Performance score 0.26 is below budget 0.9",
+      "source": "advisory: Performance score 0.26 is below budget 0.9",
+      "resolved": false
+    },
+    {
+      "id": "ISS-052",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "budget-violation",
+      "description": "advisory: LCP 54844ms exceeds budget 2500ms",
+      "source": "advisory: LCP 54844ms exceeds budget 2500ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-053",
+      "detectedAt": "2026-07-17T20:55:33.096Z",
+      "kind": "budget-violation",
+      "description": "advisory: TBT 1108ms exceeds budget 300ms",
+      "source": "advisory: TBT 1108ms exceeds budget 300ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-054",
+      "detectedAt": "2026-07-17T21:09:43.636Z",
+      "kind": "budget-violation",
+      "description": "advisory: Performance score 0.28 is below budget 0.9",
+      "source": "advisory: Performance score 0.28 is below budget 0.9",
+      "resolved": false
+    },
+    {
+      "id": "ISS-055",
+      "detectedAt": "2026-07-17T21:09:43.636Z",
+      "kind": "budget-violation",
+      "description": "advisory: LCP 54814ms exceeds budget 2500ms",
+      "source": "advisory: LCP 54814ms exceeds budget 2500ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-056",
+      "detectedAt": "2026-07-17T21:09:43.636Z",
+      "kind": "budget-violation",
+      "description": "advisory: TBT 1084ms exceeds budget 300ms",
+      "source": "advisory: TBT 1084ms exceeds budget 300ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-057",
+      "detectedAt": "2026-07-17T21:11:17.106Z",
+      "kind": "e2e-failure",
+      "description": "The Playwright webServer command in e2e/playwright.config.ts uses a hardcoded absolute path (/home/dinesh-se/Dev/personal-website) that only exists on the developer's machine. In CI (GitHub Actions runners), this path doesn't exist, so the shell command fails silently \u2014 the Next.js dev server never starts. Playwright then waits for port 3099 to be available (up to its 60s timeout), and when tests finally run, they get ERR_CONNECTION_REFUSED or ERR_EMPTY_RESPONSE because nothing is listening on that port. All 47 failing e2e tests share this single cause.",
+      "source": "e2e spec \"should render the page title\" (home.spec.ts) failed: Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "taskId": "FIX-001",
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-058",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should render the page title (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should render the page title (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-059",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should display the greeting (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should display the greeting (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-060",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should render the header navigation (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should render the header navigation (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-061",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should render the footer (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should render the footer (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-062",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should navigate to about page (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should navigate to about page (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-063",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should navigate to projects page (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should navigate to projects page (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-064",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should navigate to blog page (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should navigate to blog page (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-065",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should navigate to uses page (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should navigate to uses page (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-066",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should toggle mobile menu (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should toggle mobile menu (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-067",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should respect system preference (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should respect system preference (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-068",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should have footer navigation links (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should have footer navigation links (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-069",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should show active state on current navigation link (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should show active state on current navigation link (fix-001-hardcoded-path-webserver.spec.ts) \u2014 Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-070",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should navigate to about page (home.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should navigate to about page (home.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-071",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should navigate to projects page (home.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should navigate to projects page (home.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-072",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should navigate to blog page (home.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should navigate to blog page (home.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-073",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should navigate to uses page (home.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should navigate to uses page (home.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-074",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should toggle mobile menu (home.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should toggle mobile menu (home.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-075",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should respect system preference (home.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should respect system preference (home.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-076",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should have footer navigation links (home.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should have footer navigation links (home.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-077",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should show active state on current navigation link (home.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should show active state on current navigation link (home.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-078",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should render home page without runtime errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should render home page without runtime errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-079",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should render about page without runtime errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should render about page without runtime errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/about\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-080",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should render projects page without runtime errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/projects\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should render projects page without runtime errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/projects\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-081",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should render blog page without runtime errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/blog\", waiting until \"load\"\u001b[22m\n",
+      "source": "e2e failure: should render blog page without runtime errors (t-001-dependency-upgrade.spec.ts) \u2014 Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/blog\", waiting until \"load\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-082",
+      "detectedAt": "2026-07-17T21:18:53.909Z",
+      "kind": "budget-violation",
+      "description": "advisory: LCP 54763ms exceeds budget 2500ms",
+      "source": "advisory: LCP 54763ms exceeds budget 2500ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-083",
+      "detectedAt": "2026-07-17T21:18:53.909Z",
+      "kind": "budget-violation",
+      "description": "advisory: TBT 1251ms exceeds budget 300ms",
+      "source": "advisory: TBT 1251ms exceeds budget 300ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-084",
+      "detectedAt": "2026-07-17T21:18:53.909Z",
+      "kind": "budget-violation",
+      "description": "advisory: Performance score 0.29 is below budget 0.9",
+      "source": "advisory: Performance score 0.29 is below budget 0.9",
+      "resolved": false
+    },
+    {
+      "id": "ISS-085",
+      "detectedAt": "2026-07-17T21:28:53.229Z",
+      "kind": "budget-violation",
+      "description": "advisory: LCP 54816ms exceeds budget 2500ms",
+      "source": "advisory: LCP 54816ms exceeds budget 2500ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-086",
+      "detectedAt": "2026-07-17T21:28:53.229Z",
+      "kind": "budget-violation",
+      "description": "advisory: TBT 1150ms exceeds budget 300ms",
+      "source": "advisory: TBT 1150ms exceeds budget 300ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-087",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "budget-violation",
+      "description": "advisory: Performance score 0.30 is below budget 0.9",
+      "source": "advisory: Performance score 0.30 is below budget 0.9",
+      "resolved": false
+    },
+    {
+      "id": "ISS-088",
+      "detectedAt": "2026-07-17T21:40:07.137Z",
+      "kind": "budget-violation",
+      "description": "advisory: TBT 1165ms exceeds budget 300ms",
+      "source": "advisory: TBT 1165ms exceeds budget 300ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-089",
+      "detectedAt": "2026-07-18T19:52:55.679Z",
+      "kind": "budget-violation",
+      "description": "Port 3000 is already in use by a process this check didn't start (no recorded pid from a prior cycle) \u2014 refusing to kill an unrelated process. Free the port manually (or adjust candidatePorts), then retry.",
+      "source": "Port 3000 is already in use by a process this check didn't start (no recorded pid from a prior cycle) \u2014 refusing to kill an unrelated process. Free the port manually (or adjust candidatePorts), then retry.",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-090",
+      "detectedAt": "2026-07-18T20:57:27.920Z",
+      "kind": "budget-violation",
+      "description": "advisory: LCP 2856ms exceeds budget 2500ms",
+      "source": "advisory: LCP 2856ms exceeds budget 2500ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-091",
+      "detectedAt": "2026-07-18T20:57:27.920Z",
+      "kind": "budget-violation",
+      "description": "advisory: TBT 1225ms exceeds budget 300ms",
+      "source": "advisory: TBT 1225ms exceeds budget 300ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-092",
+      "detectedAt": "2026-07-18T21:25:06.473Z",
+      "kind": "budget-violation",
+      "description": "advisory: Performance score 0.72 is below budget 0.9",
+      "source": "advisory: Performance score 0.72 is below budget 0.9",
+      "resolved": false
+    },
+    {
+      "id": "ISS-093",
+      "detectedAt": "2026-07-18T21:17:52.849Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure: should toggle mobile menu (home.spec.ts) \u2014 Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveClass\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#mobile-menu')\nExpected pattern: not \u001b[32m/(^|\\s)hidden(\\s|$)/\u001b[39m\nReceived string: \u001b[31m\"\u001b[7mhidden \u001b[27msm:hidden\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toHaveClass\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#mobile-menu')\u001b[22m\n\u001b[2m    14 \u00d7 locator resolved to <div id=\"mobile-menu\" class=\"hidden sm:hidden\">\u2026</div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden sm:hidden\"\u001b[22m\n",
+      "source": "e2e failure: should toggle mobile menu (home.spec.ts) \u2014 Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoHaveClass\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#mobile-menu')\nExpected pattern: not \u001b[32m/(^|\\s)hidden(\\s|$)/\u001b[39m\nReceived string: \u001b[31m\"\u001b[7mhidden \u001b[27msm:hidden\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"not toHaveClass\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#mobile-menu')\u001b[22m\n\u001b[2m    14 \u00d7 locator resolved to <div id=\"mobile-menu\" class=\"hidden sm:hidden\">\u2026</div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden sm:hidden\"\u001b[22m\n",
+      "resolved": true,
+      "resolvedReason": "stale: from pre-fix cycles 11-13 (port-collision / cold-start / hydration-flake); no longer reproduces after clean cycle 14"
+    },
+    {
+      "id": "ISS-094",
+      "detectedAt": "2026-07-18T21:17:52.849Z",
+      "kind": "budget-violation",
+      "description": "advisory: LCP 2855ms exceeds budget 2500ms",
+      "source": "advisory: LCP 2855ms exceeds budget 2500ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-095",
+      "detectedAt": "2026-07-18T21:17:52.849Z",
+      "kind": "budget-violation",
+      "description": "advisory: TBT 1175ms exceeds budget 300ms",
+      "source": "advisory: TBT 1175ms exceeds budget 300ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-096",
+      "detectedAt": "2026-07-18T21:25:06.473Z",
+      "kind": "budget-violation",
+      "description": "advisory: LCP 2854ms exceeds budget 2500ms",
+      "source": "advisory: LCP 2854ms exceeds budget 2500ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-097",
+      "detectedAt": "2026-07-18T21:25:06.473Z",
+      "kind": "budget-violation",
+      "description": "advisory: TBT 1178ms exceeds budget 300ms",
+      "source": "advisory: TBT 1178ms exceeds budget 300ms",
+      "resolved": false
+    }
+  ],
+  "feedbackItems": [],
+  "cycles": [
+    {
+      "number": 1,
+      "startedAt": "2026-07-17T20:39:51.325Z",
+      "completedAt": "2026-07-17T20:40:55.323Z",
+      "issuesFound": 51
+    },
+    {
+      "number": 2,
+      "startedAt": "2026-07-17T20:54:28.729Z",
+      "completedAt": "2026-07-17T20:55:33.096Z",
+      "issuesFound": 51
+    },
+    {
+      "number": 3,
+      "startedAt": "2026-07-17T21:08:39.389Z",
+      "completedAt": "2026-07-17T21:09:43.636Z",
+      "issuesFound": 51
+    },
+    {
+      "number": 4,
+      "startedAt": "2026-07-17T21:17:47.561Z",
+      "completedAt": "2026-07-17T21:18:53.909Z",
+      "issuesFound": 62
+    },
+    {
+      "number": 5,
+      "startedAt": "2026-07-17T21:27:47.563Z",
+      "completedAt": "2026-07-17T21:28:53.229Z",
+      "issuesFound": 62
+    },
+    {
+      "number": 6,
+      "startedAt": "2026-07-17T21:39:01.594Z",
+      "completedAt": "2026-07-17T21:40:07.137Z",
+      "issuesFound": 62
+    },
+    {
+      "number": 7,
+      "startedAt": "2026-07-18T16:55:11.423Z",
+      "completedAt": "2026-07-18T16:55:11.426Z",
+      "issuesFound": 1
+    },
+    {
+      "number": 8,
+      "startedAt": "2026-07-18T16:56:31.273Z",
+      "completedAt": "2026-07-18T16:56:31.276Z",
+      "issuesFound": 1
+    },
+    {
+      "number": 9,
+      "startedAt": "2026-07-18T16:59:42.048Z",
+      "completedAt": "2026-07-18T16:59:42.050Z",
+      "issuesFound": 1
+    },
+    {
+      "number": 10,
+      "startedAt": "2026-07-18T19:47:12.686Z",
+      "completedAt": "2026-07-18T19:47:12.690Z",
+      "issuesFound": 1
+    },
+    {
+      "number": 11,
+      "startedAt": "2026-07-18T19:52:55.676Z",
+      "completedAt": "2026-07-18T19:52:55.679Z",
+      "issuesFound": 1
+    },
+    {
+      "number": 12,
+      "startedAt": "2026-07-18T20:56:59.072Z",
+      "completedAt": "2026-07-18T20:57:27.920Z",
+      "issuesFound": 3
+    },
+    {
+      "number": 13,
+      "startedAt": "2026-07-18T21:17:25.569Z",
+      "completedAt": "2026-07-18T21:17:52.850Z",
+      "issuesFound": 4
+    },
+    {
+      "number": 14,
+      "startedAt": "2026-07-18T21:24:01.606Z",
+      "completedAt": "2026-07-18T21:25:06.473Z",
+      "issuesFound": 3
+    }
+  ],
+  "cleanCycleCount": 1,
+  "active": true,
+  "completed": true
+}

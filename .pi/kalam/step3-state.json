@@ -1,0 +1,22 @@
+{
+  "kind": "doc-gen",
+  "documents": {
+    "prd": {
+      "generated": true,
+      "regenCount": 0,
+      "changesRequested": []
+    },
+    "tech-stack": {
+      "generated": true,
+      "regenCount": 0,
+      "changesRequested": []
+    }
+  },
+  "consistency": {
+    "checked": true,
+    "passed": true,
+    "issues": []
+  },
+  "resolutions": [],
+  "completed": true
+}

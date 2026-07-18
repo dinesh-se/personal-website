@@ -15,6 +15,7 @@ const initialConfig: Config = {
 	},
 	setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 	testEnvironment: 'jest-environment-jsdom',
+	testPathIgnorePatterns: ['<rootDir>/e2e/'],
 };
 
 const jestConfig = async () => {

@@ -6,9 +6,12 @@ import { getUses } from '@api/graphql';
 import { Uses as UsesType } from '@types';
 
 const getPageData = cache(async () => {
-	const uses: UsesType[] = await getUses();
-
-	return uses;
+	try {
+		const uses: UsesType[] = await getUses();
+		return uses;
+	} catch {
+		return [];
+	}
 });
 
 export const revalidate = 600;

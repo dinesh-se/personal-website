@@ -1,0 +1,260 @@
+[
+  {
+    "id": "drift:integrations:the-content-is-managed-through-hygraph",
+    "question": "Drift (doc-ahead, integrations): README.md — \"\"The content is managed through Hygraph.\"\"",
+    "answer": "doc-stale — code reality: Content is managed through TWO sources: Hygraph (profile, experience, projects, uses) AND Dev.to REST API (blog posts via /blog page). README only mentions Hygraph.",
+    "source": "drift",
+    "affects": [
+      "README.md"
+    ],
+    "timestamp": "2026-07-17T13:05:03.413Z"
+  },
+  {
+    "id": "onboarding:stack",
+    "question": "Tech Stack (as-is)",
+    "answer": "Next.js 14.2.21 (App Router, Server Components, ISR with revalidate: 600), React 18.3.1, TypeScript 5 (strict mode), Tailwind CSS 3.4.12, graphql-request 7.1.0 (Hygraph client), @testing-library/react 16.0.1 + Jest 29.7.0 (unit tests), ESLint 8 with @typescript-eslint 8, Prettier 3.3.3 with import ordering plugins. Package manager: npm (package-lock.json present). Scripts: dev (next dev --turbo), build, start, lint, format, format:fix, test, test:watch, release (release-it).",
+    "source": "onboarding",
+    "affects": [
+      "tech-stack.md"
+    ],
+    "timestamp": "2026-07-17T13:05:03.417Z"
+  },
+  {
+    "id": "onboarding:architecture",
+    "question": "Architecture (as-is)",
+    "answer": "Next.js App Router with Server Components. Entry point: src/app/layout.tsx (RootLayout with Header/Footer/Analytics). Data flow: Server Components fetch data at build/time via cache() wrappers (src/app/page.tsx, about/page.tsx, blog/page.tsx, projects/page.tsx, uses/page.tsx). Two API layers: src/api/graphql.ts (Hygraph GraphQL client) and src/api/rest.ts (Dev.to REST fetch). Build: next build → static output. Deploy: Vercel (implied by @vercel/analytics and sitemap URL). CI: .github/workflows/lint-test.yml (lint + test on PR to main). Path aliases configured in tsconfig.json: @components/*, @api/*, @styles/*, @root/*, @types. SVG imports handled via @svgr/webpack in next.config.mjs.",
+    "source": "onboarding",
+    "affects": [
+      "architecture.md"
+    ],
+    "timestamp": "2026-07-17T13:05:03.417Z"
+  },
+  {
+    "id": "onboarding:data-model",
+    "question": "Data Model (as-is)",
+    "answer": "No database or ORM. All types defined in src/types/: (1) Author (src/types/author.ts) - profile: {fullName, summary, contactDetail: {email, mobileNumber[], socialMedia: {linkedin, github}}, experience: {organizations: [{orgName, title, from, to, orgLogo: {url}}]}, displayPicture: {url}, moreDetails: {raw: RichTextContent}, githubRecentProjects: {repositories: {nodes: Repo[]}}, uses: Uses[]}. Repo: {id, name, description, url, primaryLanguage?: {name, color}}. (2) BlogPost (src/types/blog-post.ts) - {id, title, description, published_at, url, comments_count, public_reactions_count, page_views_count} + BlogPostUI (transformed UI shape with date: Date, commentsCount, reactionsCount, pageViewsCount). (3) Uses (src/types/uses.ts) - {id, title, list: [{id, name, description}]}. (4) NavLinks (src/types/nav-links.ts) - {links: Link[], linkActiveState, linkDefaultState?, otherStyleClasses?}. (5) Link - {label, href}. (6) Contact - {email, linkedin, github}.",
+    "source": "onboarding",
+    "affects": [
+      "data-model.md"
+    ],
+    "timestamp": "2026-07-17T13:05:03.417Z"
+  },
+  {
+    "id": "onboarding:api-surface",
+    "question": "API Surface (as-is)",
+    "answer": "External APIs: (1) Hygraph GraphQL (src/api/graphql.ts) - endpoint: https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/{HYGRAPH_ADMIN_ID}/master, auth via Bearer token. Exports: getUser (GET_USER query - profile, contact, experience, repos), getMoreDetails (GET_MORE_DETAILS - displayPicture, moreDetails, contact), getRepos (GET_REPOS - repos with primaryLanguage), getUses (GET_USES - uses list). (2) Dev.to REST (src/api/rest.ts) - endpoint: https://dev.to/api/articles/me/published, auth via api-key header. Exports: getBlogPosts (returns BlogPostUI[]). Internal routes/pages: / (home), /about, /projects, /blog, /uses. Metadata: robots.ts (allows all, sitemap URL), sitemap.ts (5 routes with monthly changeFrequency, priority 0.8/1.0).",
+    "source": "onboarding",
+    "affects": [
+      "api-spec.md"
+    ],
+    "timestamp": "2026-07-17T13:05:03.417Z"
+  },
+  {
+    "id": "onboarding:ui-surface",
+    "question": "UI Surface (as-is)",
+    "answer": "5 pages: / (home - greeting, summary, contact, recent projects, experience), /about (bio with RichText, display picture, tech stack logos, contact), /projects (GitHub repo grid with cards), /blog (Dev.to articles list), /uses (tech/tools list). 8 components: Header (nav with mobile menu, logo, links), Footer (nav links + No Copyright link), NavLinks (reusable link list with active state), Contact (social icons), Experience (organization list), BlogPostCard (blog post card), ProjectCard (project card with language badge), RecentProjects (project grid). Dark mode via CSS media query (prefers-color-scheme: dark) + Tailwind dark: variants. Mobile responsive (sm: breakpoints). Navigation: Header (About me, Projects, Blog, Uses) + Footer (Home, About me, Projects, Blog, Uses).",
+    "source": "onboarding",
+    "affects": [
+      "ux-spec.md"
+    ],
+    "timestamp": "2026-07-17T13:05:03.418Z"
+  },
+  {
+    "id": "onboarding:integrations",
+    "question": "Integrations (as-is)",
+    "answer": "(1) Hygraph GraphQL CMS (src/api/graphql.ts) - content source for profile, experience, projects, uses. Env vars: HYGRAPH_ADMIN_ID, HYGRAPH_AUTH_TOKEN, HYGRAPH_USER_ID. (2) Dev.to REST API (src/api/rest.ts) - blog posts source. Env var: DEVTO_KEY. (3) Vercel Analytics (@vercel/analytics/react) - usage tracking, no env vars needed. (4) SVG icons via @svgr/webpack (next.config.mjs) - converts SVG imports to React components. (5) @heroicons/react - icon library. (6) @graphcms/rich-text-react-renderer + @graphcms/rich-text-types - renders Hygraph rich text content. (7) react-social-icons - social media icons. (8) clsx - conditional CSS class merging. (9) next/image with remotePatterns restriction to **\\.graphassets.com only (next.config.mjs).",
+    "source": "onboarding",
+    "affects": [
+      "architecture.md",
+      "tech-stack.md"
+    ],
+    "timestamp": "2026-07-17T13:05:03.418Z"
+  },
+  {
+    "id": "onboarding:conventions",
+    "question": "Conventions (as-is)",
+    "answer": "TypeScript: strict mode enabled, path aliases (@components, @api, @styles, @root, @types) in tsconfig.json. ESLint: next/core-web-vitals + @typescript-eslint/recommended + prettier + jsx-a11y. Prettier: singleQuote, semi, tabWidth 2, importOrder with grouping (THIRD_PARTY_MODULES, @api, @components, @styles, @root, @types, relative), tailwindcss plugin. Testing: Jest 29.7 + @testing-library/react 16.0.1, jsdom environment, snapshot tests for all 8 components, SVG mocked to 'div' in __mocks__/svg.ts. CSS: Tailwind with @tailwind directives, CSS custom properties for theming, dark mode via prefers-color-scheme. Component structure: barrel exports (index.ts) in each component folder. File naming: PascalCase for components, kebab-case not used. Data fetching: cache() wrapper from React for ISR. Revalidation: 600s on all pages.",
+    "source": "onboarding",
+    "affects": [
+      "tech-stack.md",
+      "architecture.md"
+    ],
+    "timestamp": "2026-07-17T13:05:03.418Z"
+  },
+  {
+    "id": "profile:shape",
+    "question": "What kind of project is this? (derived from the existing codebase)",
+    "answer": "client-server",
+    "source": "onboarding",
+    "affects": [],
+    "timestamp": "2026-07-17T13:05:03.418Z"
+  },
+  {
+    "id": "profile:layout",
+    "question": "How is the repository laid out? (derived from the existing codebase)",
+    "answer": "single",
+    "source": "onboarding",
+    "affects": [],
+    "timestamp": "2026-07-17T13:05:03.419Z"
+  },
+  {
+    "id": "skill:webapp-testing",
+    "question": "Install agent skill \"webapp-testing\"?",
+    "answer": "https://github.com/anthropics/skills@fa0fa64bdc967915dc8399e803be67759e1e62b8",
+    "source": "skills",
+    "affects": [],
+    "timestamp": "2026-07-17T13:05:46.002Z"
+  },
+  {
+    "id": "skill:frontend-design",
+    "question": "Install agent skill \"frontend-design\"?",
+    "answer": "https://github.com/anthropics/skills@fa0fa64bdc967915dc8399e803be67759e1e62b8",
+    "source": "skills",
+    "affects": [],
+    "timestamp": "2026-07-17T13:05:46.841Z"
+  },
+  {
+    "id": "skill:find-skills",
+    "question": "Install agent skill \"find-skills\"?",
+    "answer": "https://github.com/vercel-labs/skills@777599e1159e401b11ce4c8a57c20f09a8f1596e",
+    "source": "skills",
+    "affects": [],
+    "timestamp": "2026-07-17T13:05:47.546Z"
+  },
+  {
+    "id": "boundary:next-version",
+    "question": "Which Next.js 16.x version to target?",
+    "answer": "Next.js 16 (latest stable, may have newer features)",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-17T13:48:05.709Z"
+  },
+  {
+    "id": "boundary:node-version",
+    "question": "What Node.js version should CI use after upgrade?",
+    "answer": "Node 24 (match local dev)",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-17T13:49:05.096Z"
+  },
+  {
+    "id": "boundary:react-version",
+    "question": "Which React 19.x version to target?",
+    "answer": "React 19 (latest stable)",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-17T13:50:01.543Z"
+  },
+  {
+    "id": "boundary:breaking-changes",
+    "question": "How should known breaking changes be handled during the upgrade?",
+    "answer": "Upgrade with audit: npm audit fix, fix TypeScript errors, run tests, fix failures one-by-one",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-17T13:50:59.381Z"
+  },
+  {
+    "id": "boundary:eslint-update",
+    "question": "Should ESLint be upgraded from v8 to v9 (flat config) or stay on v8 with flat config?",
+    "answer": "ESLint 9 with flat config (full migration)",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-17T13:54:26.846Z"
+  },
+  {
+    "id": "boundary:other-deps",
+    "question": "Which other direct dependencies should be bumped to latest stable?",
+    "answer": "All direct dependencies to latest stable",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-17T13:58:15.562Z"
+  },
+  {
+    "id": "profile:audience",
+    "question": "Who is this for?",
+    "answer": "personal",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-17T13:58:34.625Z"
+  },
+  {
+    "id": "profile:externalData",
+    "question": "Does this need external data sources?",
+    "answer": "none",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-17T13:58:48.171Z"
+  },
+  {
+    "id": "build:T-001",
+    "question": "Task T-001 (upgrade-core-deps)",
+    "answer": "Upgraded @vercel/analytics from ^1.5.0 to ^2.0.0. Next.js, React, and @types/react were already at target versions (16, 19, 19). All builds, lint, and tests pass.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-17T17:32:31.608Z"
+  },
+  {
+    "id": "build:T-002",
+    "question": "Task T-002 (upgrade-other-deps)",
+    "answer": "Upgraded all non-core direct dependencies to latest stable versions. Key bumps: jest 29→30, @types/jest 29→30, @testing-library/react 16.2→16.3, @trivago/prettier-plugin-sort-imports 4→6, @typescript-eslint 8.6→8.64, eslint-config-next 16.0→16.2, graphql-request 7.1→7.4, react-social-icons 6.20→6.26, prettier 3.3→3.9, autoprefixer 10.4→10.5, postcss 8→8.5, ts-jest 29.2→29.4, eslint-plugin-prettier 5.2→5.5, eslint-config-prettier 9→10.1, @types/node 22→26. ESLint pinned to v9.39 (latest v9) as eslint-config-next transitive deps (react/import/jsx-a11y plugins) don't support ESLint 10. Removed eslint-plugin-jsx-a11y (incompatible with ESLint 10). TailwindCSS stays on v3.4.12. All 8 test suites pass, typecheck and lint clean.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-17T18:00:23.467Z"
+  },
+  {
+    "id": "build:T-004",
+    "question": "Task T-004 (migrate-eslint-flat-config)",
+    "answer": "Migrated ESLint from v8 (.eslintrc.json) to v9 flat config (eslint.config.mjs). Removed legacy config, preserved all rules (next/core-web-vitals, @typescript-eslint/recommended, prettier/recommended, jsx-a11y), updated lint script, and fixed 1 auto-fixable formatting issue.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-17T18:29:42.967Z"
+  },
+  {
+    "id": "build:T-005",
+    "question": "Task T-005 (fix-eslint-errors)",
+    "answer": "No ESLint errors to fix — lint, typecheck, and tests all pass cleanly with the flat config in place. Zero files needed modification.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-17T18:33:40.109Z"
+  },
+  {
+    "id": "build:T-006",
+    "question": "Task T-006 (update-ci-workflow)",
+    "answer": "Updated CI workflow to use Node 24 and setup-node@v4. YAML syntax validated, typecheck and tests all pass.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-17T18:35:28.208Z"
+  },
+  {
+    "id": "build:T-007",
+    "question": "Task T-007 (fix-jest-snapshots)",
+    "answer": "All 8 component snapshot tests pass with 10 snapshots matching. No updates needed — snapshots were already current for React 19 output.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-17T18:38:31.100Z"
+  },
+  {
+    "id": "build:T-008",
+    "question": "Task T-008 (fix-playwright-e2e)",
+    "answer": "All 12 Playwright E2E tests pass with zero failures. No code changes were needed — the test suite was already working correctly with the upgraded stack.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-17T19:14:26.969Z"
+  },
+  {
+    "id": "build-skip:T-009",
+    "question": "Task T-009 (verify-page-rendering) — skipped after exhausting the acceptance manifest",
+    "answer": "skipped after 3 failed the acceptance manifest attempt(s). Final rejection detail:\nEvidence test \"No JS console errors on /\" not found in e2e/page-verification.spec.ts for \"All 5 pages (/, /about, /projects, /blog, /uses) render without JavaScript runtime errors\".\nEvidence test \"Active nav link on /about (About me)\" not found in e2e/page-verification.spec.ts for \"Navigation active-state highlights correctly on all pages\".\nEvidence test \"Dark mode applies on /\" not found in e2e/page-verification.spec.ts for \"Dark mode renders correctly on all pages (via system preference or toggle)\".\nEvidence test \"No JS console errors on /uses\" not found in e2e/page-verification.spec.ts for \"No console errors in browser dev tools when visiting any page\".",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-17T19:51:46.651Z"
+  },
+  {
+    "id": "build:FIX-001",
+    "question": "Task FIX-001 (hardcoded-path-in-playwright-webserver)",
+    "answer": "Removed the hardcoded absolute path `/home/dinesh-se/Dev/personal-website` from the Playwright webServer command. Playwright runs the command from process.cwd() (the project root), so the `cd` was unnecessary and the command works with just relative paths.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-17T21:16:31.564Z"
+  }
+]

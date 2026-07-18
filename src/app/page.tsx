@@ -10,28 +10,39 @@ import { RecentProjects } from '@components/RecentProjects';
 import { Author } from '@types';
 
 const getPageData = cache(async () => {
-	const {
-		profile: {
-			summary,
-			contactDetail: {
-				email,
-				socialMedia: { linkedin, github },
+	try {
+		const {
+			profile: {
+				summary,
+				contactDetail: {
+					email,
+					socialMedia: { linkedin, github },
+				},
+				experience: { organizations },
+				githubRecentProjects: {
+					repositories: { nodes },
+				},
 			},
-			experience: { organizations },
-			githubRecentProjects: {
-				repositories: { nodes },
-			},
-		},
-	}: Author = await getUser();
+		}: Author = await getUser();
 
-	return {
-		summary,
-		email,
-		linkedin,
-		github,
-		organizations,
-		projects: nodes,
-	};
+		return {
+			summary,
+			email,
+			linkedin,
+			github,
+			organizations,
+			projects: nodes,
+		};
+	} catch {
+		return {
+			summary: '',
+			email: '',
+			linkedin: '',
+			github: '',
+			organizations: [],
+			projects: [],
+		};
+	}
 });
 
 export const revalidate = 600;

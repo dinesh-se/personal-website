@@ -34,3 +34,18 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# pi-kalam: baseline
+node_modules/
+dist/
+build/
+coverage/
+.env
+.env.*
+*.log
+
+# pi-kalam: e2e artifacts
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
