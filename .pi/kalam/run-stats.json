@@ -1,11 +1,11 @@
 {
-  "startedAt": 1784404032686,
+  "startedAt": 1784404375676,
   "totalSpawns": 0,
   "checkerSpawns": 0,
   "tasks": [],
   "notes": [],
-  "updatedAt": 1784404032691,
-  "endedAt": 1784404032691,
+  "updatedAt": 1784404375682,
+  "endedAt": 1784404375682,
   "caps": {
     "enabled": false,
     "maxRunMinutes": 240,

@@ -746,10 +746,34 @@
     },
     {
       "id": "ISS-089",
-      "detectedAt": "2026-07-18T19:47:12.690Z",
+      "detectedAt": "2026-07-18T19:52:55.679Z",
       "kind": "budget-violation",
       "description": "Port 3000 is already in use by a process this check didn't start (no recorded pid from a prior cycle) — refusing to kill an unrelated process. Free the port manually (or adjust candidatePorts), then retry.",
       "source": "Port 3000 is already in use by a process this check didn't start (no recorded pid from a prior cycle) — refusing to kill an unrelated process. Free the port manually (or adjust candidatePorts), then retry.",
+      "resolved": false
+    },
+    {
+      "id": "ISS-090",
+      "detectedAt": "2026-07-18T20:57:27.920Z",
+      "kind": "budget-violation",
+      "description": "advisory: LCP 2856ms exceeds budget 2500ms",
+      "source": "advisory: LCP 2856ms exceeds budget 2500ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-091",
+      "detectedAt": "2026-07-18T20:57:27.920Z",
+      "kind": "budget-violation",
+      "description": "advisory: TBT 1225ms exceeds budget 300ms",
+      "source": "advisory: TBT 1225ms exceeds budget 300ms",
+      "resolved": false
+    },
+    {
+      "id": "ISS-092",
+      "detectedAt": "2026-07-18T20:57:27.920Z",
+      "kind": "budget-violation",
+      "description": "advisory: Performance score 0.72 is below budget 0.9",
+      "source": "advisory: Performance score 0.72 is below budget 0.9",
       "resolved": false
     }
   ],
@@ -814,9 +838,21 @@
       "startedAt": "2026-07-18T19:47:12.686Z",
       "completedAt": "2026-07-18T19:47:12.690Z",
       "issuesFound": 1
+    },
+    {
+      "number": 11,
+      "startedAt": "2026-07-18T19:52:55.676Z",
+      "completedAt": "2026-07-18T19:52:55.679Z",
+      "issuesFound": 1
+    },
+    {
+      "number": 12,
+      "startedAt": "2026-07-18T20:56:59.072Z",
+      "completedAt": "2026-07-18T20:57:27.920Z",
+      "issuesFound": 3
     }
   ],
-  "cleanCycleCount": 0,
+  "cleanCycleCount": 1,
   "active": true,
-  "completed": false
+  "completed": true
 }
