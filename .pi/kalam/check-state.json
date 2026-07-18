@@ -746,7 +746,7 @@
     },
     {
       "id": "ISS-089",
-      "detectedAt": "2026-07-18T16:55:11.426Z",
+      "detectedAt": "2026-07-18T19:47:12.690Z",
       "kind": "budget-violation",
       "description": "Port 3000 is already in use by a process this check didn't start (no recorded pid from a prior cycle) — refusing to kill an unrelated process. Free the port manually (or adjust candidatePorts), then retry.",
       "source": "Port 3000 is already in use by a process this check didn't start (no recorded pid from a prior cycle) — refusing to kill an unrelated process. Free the port manually (or adjust candidatePorts), then retry.",
@@ -795,6 +795,24 @@
       "number": 7,
       "startedAt": "2026-07-18T16:55:11.423Z",
       "completedAt": "2026-07-18T16:55:11.426Z",
+      "issuesFound": 1
+    },
+    {
+      "number": 8,
+      "startedAt": "2026-07-18T16:56:31.273Z",
+      "completedAt": "2026-07-18T16:56:31.276Z",
+      "issuesFound": 1
+    },
+    {
+      "number": 9,
+      "startedAt": "2026-07-18T16:59:42.048Z",
+      "completedAt": "2026-07-18T16:59:42.050Z",
+      "issuesFound": 1
+    },
+    {
+      "number": 10,
+      "startedAt": "2026-07-18T19:47:12.686Z",
+      "completedAt": "2026-07-18T19:47:12.690Z",
       "issuesFound": 1
     }
   ],
