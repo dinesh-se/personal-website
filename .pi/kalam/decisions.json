@@ -366,5 +366,29 @@
     "source": "build",
     "affects": [],
     "timestamp": "2026-07-19T04:35:21.904Z"
+  },
+  {
+    "id": "build:T-004:escalation",
+    "question": "The task specifies adding `experimental.ppr: 'incremental'` to next.config.mjs, but Next.js 16.3.0-preview.6 rejects this with a build error because PPR was merged into `cacheComponents`. PPR IS enabled via `cacheComponents: true` (build output confirms 'Cache Components enabled'). Should I proceed as 'done' since PPR functionality is active, or is the literal config key required regardless of the build error?",
+    "answer": "Mark as done — PPR is enabled via cacheComponents: true (functional equivalent)",
+    "source": "clarification",
+    "affects": [],
+    "timestamp": "2026-07-19T08:34:52.963Z"
+  },
+  {
+    "id": "build:T-004:escalation",
+    "question": "The task requires experimental.ppr: 'incremental' in next.config.mjs, but Next.js 16.3.0-preview.6 fully deprecated this option and throws a HardDeprecatedConfigError when it's present. PPR is enabled via cacheComponents: true (already in place). How should I proceed?",
+    "answer": "Remove the experimental.ppr criterion and mark task done — PPR is already enabled via cacheComponents: true",
+    "source": "clarification",
+    "affects": [],
+    "timestamp": "2026-07-19T09:14:32.485Z"
+  },
+  {
+    "id": "build-skip:T-004",
+    "question": "Task T-004 (partial-prerendering-and-typed-routes) — skipped after exhausting the acceptance manifest",
+    "answer": "skipped after 3 failed the acceptance manifest attempt(s). Final rejection detail:\nEvidence test \"Dark Mode › should respect system preference\" not found in e2e/home.spec.ts for \"Dark mode styles apply correctly on all pages via system preference toggle\" (use \"manual: <what you checked and how>\" if this criterion has no automatable check).\nEvidence test \"Mobile Menu › should toggle mobile menu\" not found in e2e/home.spec.ts for \"The mobile navigation menu opens and closes correctly on a mobile viewport width\" (use \"manual: <what you checked and how>\" if this criterion has no automatable check).\nEvidence test \"Nav Active State › should show active state on current navigation link\" not found in e2e/home.spec.ts for \"The active navigation link is highlighted in both Header and Footer when on any page\" (use \"manual: <what you checked and how>\" if this criterion has no automatable check).\nEvidence test \"T-001 — Dependency Upgrade: All Pages Render › should render home page without runtime errors\" not found in e2e/t-001-dependency-upgrade.spec.ts for \"All five pages render without runtime errors when visiting each route in a browser\" (use \"manual: <what you checked and how>\" if this criterion has no automatable check).\nEvidence test \"T-006 — Update CI Workflow to Node 24 › CI workflow uses Node 24 and setup-node v4\" not found in e2e/t-006-ci-node-24.spec.ts for \"The CI workflow runs on Node 24 and passes lint and test steps\" (use \"manual: <what you checked and how>\" if this criterion has no automatable check).\nIf any of the above criteria are verified manually rather than by an automated test, resubmit with evidence \"manual: <what you checked and how>\" instead of a test reference.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-19T09:28:44.840Z"
   }
 ]

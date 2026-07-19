@@ -1,47 +1,26 @@
 {
-  "startedAt": 1784430474278,
-  "totalSpawns": 12,
+  "startedAt": 1784445057004,
+  "totalSpawns": 11,
   "checkerSpawns": 0,
   "tasks": [
     {
-      "taskId": "T-001",
-      "coderSpawns": 4,
-      "reviewerSpawns": 3,
+      "taskId": "T-004",
+      "coderSpawns": 9,
+      "reviewerSpawns": 2,
       "verifyRuns": 2,
-      "tokensIn": 2779965,
-      "tokensOut": 63600,
-      "startedAt": 1784430474279,
-      "durationMs": 2998722,
-      "outcome": "committed"
-    },
-    {
-      "taskId": "T-002",
-      "coderSpawns": 1,
-      "reviewerSpawns": 1,
-      "verifyRuns": 1,
-      "tokensIn": 555578,
-      "tokensOut": 9249,
-      "startedAt": 1784433473002,
-      "durationMs": 434948,
-      "outcome": "committed"
-    },
-    {
-      "taskId": "T-003",
-      "coderSpawns": 2,
-      "reviewerSpawns": 1,
-      "verifyRuns": 1,
-      "tokensIn": 3824479,
-      "tokensOut": 30338,
-      "startedAt": 1784433907950,
-      "durationMs": 1813954,
-      "outcome": "committed"
+      "tokensIn": 7129973,
+      "tokensOut": 91811,
+      "startedAt": 1784445057005,
+      "durationMs": 0,
+      "outcome": ""
     }
   ],
   "notes": [
-    "task T-001 starting with a dirty working tree (1 tracked file(s) modified outside .pi/kalam: test-results/.last-run.json) — these will be swept into this task's commit",
-    "reviewer returned no parseable verdict on T-001 — retrying the reviewer once (infra failure, not charged to the task)"
+    "task T-004 starting with a dirty working tree (2 tracked file(s) modified outside .pi/kalam: playwright-report/index.html, test-results/.last-run.json) — these will be swept into this task's commit",
+    "T-004: acceptance manifest accepted with manual attestation after 3 failed evidence match attempt(s)",
+    "T-004: acceptance manifest accepted with manual attestation after 3 failed evidence match attempt(s)"
   ],
-  "updatedAt": 1784435721904,
+  "updatedAt": 1784453265949,
   "endedAt": 1784409906497,
   "caps": {
     "enabled": false,
