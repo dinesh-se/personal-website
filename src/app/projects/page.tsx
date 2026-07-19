@@ -1,10 +1,12 @@
-import { cache } from 'react';
+'use cache';
+// cacheLife: medium
+import Link from 'next/link';
 
 import { getRepos } from '@api/graphql';
 
 import { ProjectCard } from '@components/ProjectCard';
 
-const getPageData = cache(async () => {
+async function getPageData() {
 	try {
 		const {
 			profile: {
@@ -25,9 +27,7 @@ const getPageData = cache(async () => {
 			projects: [],
 		};
 	}
-});
-
-export const revalidate = 600;
+}
 
 export default async function Projects() {
 	const { email, projects } = await getPageData();
@@ -50,12 +50,12 @@ export default async function Projects() {
 				<p className="pb-6 text-center md:max-w-xl">
 					To know more about the projects that I have worked on in various
 					organizations, kindly&nbsp;
-					<a
+					<Link
 						className="text-sky-500 hover:text-sky-600 dark:hover:text-sky-400"
 						href={`mailto:${email}`}
 					>
 						contact me.
-					</a>
+					</Link>
 				</p>
 			</section>
 		</>

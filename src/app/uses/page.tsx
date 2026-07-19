@@ -1,20 +1,19 @@
+'use cache';
+// cacheLife: medium
 import Link from 'next/link';
-import { cache } from 'react';
 
 import { getUses } from '@api/graphql';
 
 import { Uses as UsesType } from '@types';
 
-const getPageData = cache(async () => {
+async function getPageData() {
 	try {
 		const uses: UsesType[] = await getUses();
 		return uses;
 	} catch {
 		return [];
 	}
-});
-
-export const revalidate = 600;
+}
 
 export default async function Uses() {
 	const uses = await getPageData();

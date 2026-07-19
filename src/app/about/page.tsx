@@ -1,6 +1,7 @@
+'use cache';
+// cacheLife: medium
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import Image from 'next/image';
-import { cache } from 'react';
 
 import { getMoreDetails } from '@api/graphql';
 
@@ -18,7 +19,7 @@ import LogoTS from '@root/public/assets/tech/typescript.svg';
 
 import { Author } from '@types';
 
-const getPageData = cache(async () => {
+async function getPageData() {
 	try {
 		const {
 			profile: {
@@ -47,9 +48,7 @@ const getPageData = cache(async () => {
 			github: '',
 		};
 	}
-});
-
-export const revalidate = 600;
+}
 
 export default async function About() {
 	const { displayPictureUrl, richContent, email, linkedin, github } =

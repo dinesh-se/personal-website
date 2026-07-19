@@ -1,5 +1,6 @@
+'use cache';
+// cacheLife: medium
 import Link from 'next/link';
-import { cache } from 'react';
 
 import { getUser } from '@api/graphql';
 
@@ -7,49 +8,15 @@ import { Contact } from '@components/Contact';
 import { Experience } from '@components/Experience';
 import { RecentProjects } from '@components/RecentProjects';
 
-import { Author } from '@types';
-
-const getPageData = cache(async () => {
-	try {
-		const {
-			profile: {
-				summary,
-				contactDetail: {
-					email,
-					socialMedia: { linkedin, github },
-				},
-				experience: { organizations },
-				githubRecentProjects: {
-					repositories: { nodes },
-				},
-			},
-		}: Author = await getUser();
-
-		return {
-			summary,
-			email,
-			linkedin,
-			github,
-			organizations,
-			projects: nodes,
-		};
-	} catch {
-		return {
-			summary: '',
-			email: '',
-			linkedin: '',
-			github: '',
-			organizations: [],
-			projects: [],
-		};
-	}
-});
-
-export const revalidate = 600;
-
 export default async function Home() {
-	const { summary, email, linkedin, github, organizations, projects } =
-		await getPageData();
+	const { profile } = await getUser();
+	const { summary, contactDetail, experience, githubRecentProjects } = profile;
+	const {
+		email,
+		socialMedia: { linkedin, github },
+	} = contactDetail;
+	const { organizations } = experience;
+	const { nodes: projectsList } = githubRecentProjects.repositories;
 
 	return (
 		<>
@@ -78,7 +45,7 @@ export default async function Home() {
 			</section>
 			<section className="mt-16 flex flex-col justify-between max-lg:space-y-8 lg:flex-row lg:space-x-16">
 				<div className="flex-1">
-					<RecentProjects projects={projects}></RecentProjects>
+					<RecentProjects projects={projectsList}></RecentProjects>
 				</div>
 				<div className="space-y-10">
 					<Experience organizations={organizations} />

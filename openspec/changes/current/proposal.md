@@ -13,7 +13,7 @@ Re-architect the existing 5-page personal website to align with Next.js 16 App R
 - **Partial Prerendering (PPR)**: Enable PPR alongside existing ISR to stream the static shell on first paint while allowing per-segment revalidation of cached remote data.
 - **generateMetadata migration**: Migrate all routes from static `export const metadata` and standalone `robots.ts`/`sitemap.ts` to per-route `generateMetadata` functions.
 - **Typed routes**: Adopt Next.js 16 typed routes pattern.
-- **Experience formatDate bug**: Address the date formatting in the Experience component (user confirmed: keep current MMM YYYY format, no change needed).
+- **Experience formatDate bug fix**: `formatDate()` in `Experience.tsx` calls `new Date(date)` on DD/MM/YYYY strings (e.g. `"31/01/2024"`) which JavaScript cannot parse, producing `"Invalid Date"`. Fix the parser to correctly handle DD/MM/YYYY input and display as MMM YYYY — no visual change to the output format.
 
 **Out of scope:** No visual redesign, no new pages, no new data sources, no changes to component UI (Header, Footer, BlogPostCard, ProjectCard, etc.).
 
@@ -28,7 +28,8 @@ Re-architect the existing 5-page personal website to align with Next.js 16 App R
 - [ ] Next.js upgraded to 16.3+ and build succeeds without errors.
 - [ ] No visual changes — existing UI components render identically.
 - [ ] Existing tests (Jest snapshot tests for 8 components) continue to pass.
-- [ ] Experience component date format unchanged (MMM YYYY).
+- [ ] Experience component `formatDate()` correctly parses DD/MM/YYYY input (e.g. `"31/01/2024"`) and renders as `"Jan 2024"` — no `"Invalid Date"` strings.
+- [ ] Experience component displayed date format unchanged (MMM YYYY).
 
 ## Affected Areas
 
@@ -37,7 +38,7 @@ Re-architect the existing 5-page personal website to align with Next.js 16 App R
 - **`src/app/sitemap.ts`** — Migrated to generateMetadata or removed
 - **`src/api/graphql.ts`** — May need updates for Cache Components compatibility
 - **`src/api/rest.ts`** — May need updates for Cache Components compatibility
-- **`src/components/Experience/Experience.tsx`** — formatDate function (no change per user decision)
+- **`src/components/Experience/Experience.tsx`** — `formatDate()` parsing logic fix (DD/MM/YYYY → correct Date → MMM YYYY display)
 - **`next.config.mjs`** — PPR experimental flag, any Cache Components config
 - **`package.json`** — Next.js version bump to 16.3+
 

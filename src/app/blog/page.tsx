@@ -1,5 +1,6 @@
+'use cache';
+// cacheLife: medium
 import Link from 'next/link';
-import { cache } from 'react';
 
 import { getBlogPosts } from '@api/rest';
 
@@ -7,16 +8,14 @@ import { BlogPostCard } from '@components/BlogPostCard';
 
 import { BlogPostUI } from '@root/src/types';
 
-export const revalidate = 600;
-
-const getPageData = cache(async () => {
+async function getPageData() {
 	try {
 		const blogPosts: BlogPostUI[] = await getBlogPosts();
 		return blogPosts;
 	} catch {
 		return [];
 	}
-});
+}
 
 export default async function Blog() {
 	const blogPosts = await getPageData();
