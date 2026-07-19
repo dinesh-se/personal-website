@@ -1,27 +1,11 @@
 {
-  "startedAt": 1784445057004,
-  "totalSpawns": 11,
-  "checkerSpawns": 0,
-  "tasks": [
-    {
-      "taskId": "T-004",
-      "coderSpawns": 9,
-      "reviewerSpawns": 2,
-      "verifyRuns": 2,
-      "tokensIn": 7129973,
-      "tokensOut": 91811,
-      "startedAt": 1784445057005,
-      "durationMs": 8267857,
-      "outcome": "skipped"
-    }
-  ],
-  "notes": [
-    "task T-004 starting with a dirty working tree (2 tracked file(s) modified outside .pi/kalam: playwright-report/index.html, test-results/.last-run.json) — these will be swept into this task's commit",
-    "T-004: acceptance manifest accepted with manual attestation after 3 failed evidence match attempt(s)",
-    "T-004: acceptance manifest accepted with manual attestation after 3 failed evidence match attempt(s)"
-  ],
-  "updatedAt": 1784453324863,
-  "endedAt": 1784453324863,
+  "startedAt": 1784453324881,
+  "totalSpawns": 3,
+  "checkerSpawns": 3,
+  "tasks": [],
+  "notes": [],
+  "updatedAt": 1784454156100,
+  "endedAt": 1784454156100,
   "caps": {
     "enabled": false,
     "maxRunMinutes": 240,
