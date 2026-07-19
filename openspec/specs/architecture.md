@@ -13,6 +13,7 @@ This is a **single-module Next.js application** with internal module boundaries:
 - **`__mocks__/`** — Jest mock files (`svg.ts` mocks SVG imports for tests).
 
 **Upgrade impact (proposal: `openspec/changes/current/proposal.md`):** No new modules introduced. The feature upgrades existing modules to newer versions:
+
 - `src/app/` — May need adjustments for React 19 Server Component patterns and Next.js 16 API changes (source: `proposal.md`, "Affected Areas" → "Next.js config").
 - `src/components/` — May need fixes for React 19 breaking changes (PropTypes removal, new hooks, context API changes, server component patterns) (source: `proposal.md`, "Affected Areas" → "Source code").
 - `src/api/` — `graphql-request` version bump; verify compatibility with Next.js 16 server components (source: `proposal.md`, "Integration Concerns" → Hygraph GraphQL).
@@ -69,6 +70,7 @@ This is a **single-module Next.js application** with internal module boundaries:
 ```
 
 **Upgrade impact (proposal: `openspec/changes/current/proposal.md`):**
+
 - **New file:** `eslint.config.js` — replaces `.eslintrc.json` with ESLint v9 flat config format (source: `proposal.md`, "In scope" → "Migrate ESLint from v8 to v9 with flat config").
 - **Removed file:** `.eslintrc.json` — legacy ESLint v8 config replaced by flat config (source: `proposal.md`, "Affected Areas" → "ESLint").
 - **Modified file:** `.github/workflows/lint-test.yml` — Node version 18→24, `setup-node` action v2→v4 (source: `proposal.md`, "In scope" → "Update CI workflow").
@@ -90,6 +92,7 @@ This is a **single-module Next.js application** with internal module boundaries:
 - **Dev.to (REST):** Blog posts — fetched via `getBlogPosts()`.
 
 **Upgrade impact (proposal: `openspec/changes/current/proposal.md`):**
+
 - The data flow architecture is unchanged — same Next.js App Router, same Server Components, same ISR pattern.
 - `graphql-request` version bump: verify the library's `fetch`-based client remains compatible with Next.js 16's server component execution model (source: `proposal.md`, "Integration Concerns" → Hygraph GraphQL).
 - No new data sources or migration scripts required (source: `proposal.md`, "Data Needs").
@@ -108,10 +111,10 @@ This is a **single-module Next.js application** with internal module boundaries:
 
 - **REST API:** `src/api/rest.ts` checks `res.ok` and throws `Error('Failed to fetch blog posts')` on non-200 responses.
 - **GraphQL:** `graphql-request` library handles GraphQL errors internally (throws on response errors).
-- **No custom error pages:** Next.js default error handling applies. No `error.tsx` or `not-found.tsx` in any route.
+- **Hybrid error pages:** Root-level `error.tsx` serves as a catch-all fallback. Route-specific `error.tsx` files are created for key routes where custom error UI adds value. All error pages use skeleton-based fallback UI consistent with the loading state pattern.
 - **No try/catch in data fetching:** Server components propagate errors to Next.js error boundary.
 
-**Upgrade impact (proposal: `openspec/changes/current/proposal.md`):** No new error handling paths introduced. The feature may surface existing latent issues (TypeScript errors, lint errors, test failures) but does not add new error categories (source: `proposal.md`, "Out of scope" → "Rewriting application logic or components").
+**Upgrade impact (proposal: `openspec/changes/current/proposal.md`):** New error.tsx files added per route (hybrid pattern). Root `error.tsx` retained as catch-all. No changes to existing REST/GraphQL error propagation logic (source: `proposal.md`, "Affected Areas" → `src/app/` error.tsx).
 
 ## 6. Logging & Observability
 
@@ -135,6 +138,7 @@ This is a **single-module Next.js application** with internal module boundaries:
 - **No separate staging/production environments:** Single deployment target.
 
 **Upgrade impact (proposal: `openspec/changes/current/proposal.md`):**
+
 - CI workflow updated: Node version 18→24, `setup-node` action v2→v4 (source: `proposal.md`, "In scope" → "Update CI workflow").
 - Node 24 on `ubuntu-latest` runner is supported by `setup-node@v4` (source: `proposal.md`, "Risks" → Node 24 in CI).
 - No new deployment services or topology changes (source: `proposal.md`, "Out of scope" → "Changing external API integrations").
@@ -151,6 +155,7 @@ This is a **single-module Next.js application** with internal module boundaries:
 - **ESLint:** Migrated from v8 (`.eslintrc.json`) to v9 with flat config (`eslint.config.js`). Uses `@eslint/js` flat config template with `@typescript-eslint`, `prettier`, and `jsx-a11y` rules (source: `proposal.md`, "In scope" → "Migrate ESLint from v8 to v9 with flat config"; "Risks" → ESLint 9 flat config migration).
 
 **Upgrade impact (proposal: `openspec/changes/current/proposal.md`):**
+
 - **ESLint flat config:** Full migration from legacy `.eslintrc.json` to `eslint.config.js` (source: `proposal.md`, "Affected Areas" → "ESLint"; "In scope" → "Migrate ESLint from v8 to v9 with flat config").
 - **ESLint config package:** `eslint-config-next` upgraded to match Next.js 16, requiring ESLint 9 (source: `proposal.md`, "In scope" → "Upgrade `eslint-config-next` to match Next.js 16").
 - **TypeScript config:** `tsconfig.json` may need updates for React 19 types and Next.js 16 compiler changes (source: `proposal.md`, "Affected Areas" → "TypeScript").
