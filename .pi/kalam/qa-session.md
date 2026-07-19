@@ -35,3 +35,6 @@
 **Conflict:** Architecture §5 Error Handling says 'No custom error pages: Next.js default error handling applies. No error.tsx or not-found.tsx in any route.' But proposal.md Feature Scope specifies 'Per-route error.tsx (hybrid): Retain the root-level error.tsx as a catch-all fallback, and create route-specific error pages for key routes.'
 **Decision:** Update architecture §5 to describe the hybrid error.tsx pattern
 **Affects:** architecture.md, proposal.md
+
+### Step 5 Approval
+Decision: Approved — 4 task(s)
