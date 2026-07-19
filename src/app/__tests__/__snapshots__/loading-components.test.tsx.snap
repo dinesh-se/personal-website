@@ -1,0 +1,751 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Loading Components About Loading renders skeleton placeholders matching about page structure 1`] = `
+<div>
+  <h1
+    class="text-3xl"
+  >
+    <span
+      class="inline-block h-9 w-48 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+    />
+  </h1>
+  <section
+    class="pb-6 pt-4 md:flex"
+  >
+    <section
+      class="space-y-4 pr-8 md:w-3/5"
+    >
+      <p>
+        <span
+          class="inline-block h-5 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+      </p>
+      <p>
+        <span
+          class="inline-block h-5 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+      </p>
+      <p>
+        <span
+          class="inline-block h-5 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+      </p>
+      <p>
+        <span
+          class="inline-block h-5 w-3/4 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+      </p>
+      <p>
+        <span
+          class="inline-block h-5 w-3/4 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+      </p>
+    </section>
+    <section
+      class="align-center mt-4 flex flex-col justify-center md:flex-1"
+    >
+      <span
+        class="inline-block h-[360px] w-[360px] animate-pulse rounded-lg bg-gray-200 dark:bg-gray-700"
+      />
+      <div
+        class="mt-4"
+      >
+        <span
+          class="inline-block h-8 w-48 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+      </div>
+    </section>
+  </section>
+  <section
+    class="-mx-8 bg-neutral-200 px-4 py-8 dark:bg-gray-950"
+  >
+    <h2
+      class="mt-10 text-center text-xl md:text-2xl lg:text-3xl"
+    >
+      <span
+        class="inline-block h-7 w-64 animate-pulse rounded bg-gray-300 dark:bg-gray-600"
+      />
+    </h2>
+    <div
+      class="mx-auto mb-16 mt-14 flex max-w-4xl flex-wrap items-center justify-center gap-x-16 gap-y-8"
+    >
+      <span
+        class="inline-block h-12 w-24 animate-pulse rounded bg-gray-300 dark:bg-gray-600"
+      />
+      <span
+        class="inline-block h-12 w-24 animate-pulse rounded bg-gray-300 dark:bg-gray-600"
+      />
+      <span
+        class="inline-block h-12 w-24 animate-pulse rounded bg-gray-300 dark:bg-gray-600"
+      />
+      <span
+        class="inline-block h-12 w-24 animate-pulse rounded bg-gray-300 dark:bg-gray-600"
+      />
+      <span
+        class="inline-block h-12 w-24 animate-pulse rounded bg-gray-300 dark:bg-gray-600"
+      />
+      <span
+        class="inline-block h-12 w-24 animate-pulse rounded bg-gray-300 dark:bg-gray-600"
+      />
+      <span
+        class="inline-block h-12 w-24 animate-pulse rounded bg-gray-300 dark:bg-gray-600"
+      />
+      <span
+        class="inline-block h-12 w-24 animate-pulse rounded bg-gray-300 dark:bg-gray-600"
+      />
+      <span
+        class="inline-block h-12 w-24 animate-pulse rounded bg-gray-300 dark:bg-gray-600"
+      />
+    </div>
+  </section>
+</div>
+`;
+
+exports[`Loading Components Blog Loading renders skeleton placeholders matching blog page structure 1`] = `
+<div>
+  <h1
+    class="text-3xl"
+  >
+    <span
+      class="inline-block h-9 w-36 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+    />
+  </h1>
+  <p
+    class="mt-4"
+  >
+    <span
+      class="inline-block h-5 w-80 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+    />
+  </p>
+  <div
+    class="sm:mx-16 md:mx-24 lg:mx-32 grid grid-cols-1 gap-4 pb-6 pt-4"
+  >
+    <div
+      class="w-full rounded overflow-hidden shadow-lg p-4 bg-neutral-300 dark:bg-slate-900"
+    >
+      <span
+        class="mb-2 block h-6 w-3/4 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+      <span
+        class="block h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+      <div
+        class="mt-4 flex flex-row text-sm"
+      >
+        <span
+          class="inline-block h-4 w-48 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+        <span
+          class="ml-4 inline-block h-4 w-32 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+      </div>
+    </div>
+    <div
+      class="w-full rounded overflow-hidden shadow-lg p-4 bg-neutral-300 dark:bg-slate-900"
+    >
+      <span
+        class="mb-2 block h-6 w-3/4 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+      <span
+        class="block h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+      <div
+        class="mt-4 flex flex-row text-sm"
+      >
+        <span
+          class="inline-block h-4 w-48 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+        <span
+          class="ml-4 inline-block h-4 w-32 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+      </div>
+    </div>
+    <div
+      class="w-full rounded overflow-hidden shadow-lg p-4 bg-neutral-300 dark:bg-slate-900"
+    >
+      <span
+        class="mb-2 block h-6 w-3/4 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+      <span
+        class="block h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+      <div
+        class="mt-4 flex flex-row text-sm"
+      >
+        <span
+          class="inline-block h-4 w-48 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+        <span
+          class="ml-4 inline-block h-4 w-32 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Loading Components Projects Loading renders skeleton placeholders matching projects page structure 1`] = `
+<div>
+  <h1
+    class="text-3xl"
+  >
+    <span
+      class="inline-block h-9 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+    />
+  </h1>
+  <section
+    class="grid grid-cols-1 gap-4 pb-6 pt-4 sm:grid-cols-2 lg:grid-cols-3"
+  >
+    <div
+      class="overflow-hidden rounded-md bg-neutral-300 p-6 dark:bg-slate-900"
+    >
+      <span
+        class="mb-2 block h-5 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+      <span
+        class="block h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+      <div
+        class="mt-4 flex items-center"
+      >
+        <span
+          class="mr-2 h-4 w-4 animate-pulse rounded-full bg-gray-200 dark:bg-gray-700"
+        />
+        <span
+          class="h-4 w-24 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+      </div>
+    </div>
+    <div
+      class="overflow-hidden rounded-md bg-neutral-300 p-6 dark:bg-slate-900"
+    >
+      <span
+        class="mb-2 block h-5 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+      <span
+        class="block h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+      <div
+        class="mt-4 flex items-center"
+      >
+        <span
+          class="mr-2 h-4 w-4 animate-pulse rounded-full bg-gray-200 dark:bg-gray-700"
+        />
+        <span
+          class="h-4 w-24 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+      </div>
+    </div>
+    <div
+      class="overflow-hidden rounded-md bg-neutral-300 p-6 dark:bg-slate-900"
+    >
+      <span
+        class="mb-2 block h-5 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+      <span
+        class="block h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+      <div
+        class="mt-4 flex items-center"
+      >
+        <span
+          class="mr-2 h-4 w-4 animate-pulse rounded-full bg-gray-200 dark:bg-gray-700"
+        />
+        <span
+          class="h-4 w-24 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+      </div>
+    </div>
+    <div
+      class="overflow-hidden rounded-md bg-neutral-300 p-6 dark:bg-slate-900"
+    >
+      <span
+        class="mb-2 block h-5 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+      <span
+        class="block h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+      <div
+        class="mt-4 flex items-center"
+      >
+        <span
+          class="mr-2 h-4 w-4 animate-pulse rounded-full bg-gray-200 dark:bg-gray-700"
+        />
+        <span
+          class="h-4 w-24 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+      </div>
+    </div>
+    <div
+      class="overflow-hidden rounded-md bg-neutral-300 p-6 dark:bg-slate-900"
+    >
+      <span
+        class="mb-2 block h-5 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+      <span
+        class="block h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+      <div
+        class="mt-4 flex items-center"
+      >
+        <span
+          class="mr-2 h-4 w-4 animate-pulse rounded-full bg-gray-200 dark:bg-gray-700"
+        />
+        <span
+          class="h-4 w-24 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+      </div>
+    </div>
+    <div
+      class="overflow-hidden rounded-md bg-neutral-300 p-6 dark:bg-slate-900"
+    >
+      <span
+        class="mb-2 block h-5 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+      <span
+        class="block h-4 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+      <div
+        class="mt-4 flex items-center"
+      >
+        <span
+          class="mr-2 h-4 w-4 animate-pulse rounded-full bg-gray-200 dark:bg-gray-700"
+        />
+        <span
+          class="h-4 w-24 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+      </div>
+    </div>
+  </section>
+  <section
+    class="flex justify-center px-4 py-8"
+  >
+    <div
+      class="md:max-w-xl"
+    >
+      <span
+        class="block h-5 w-64 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+      <span
+        class="mt-2 block h-5 w-48 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+      />
+    </div>
+  </section>
+</div>
+`;
+
+exports[`Loading Components Root Loading renders skeleton placeholders matching home page structure 1`] = `
+<div>
+  <p
+    class="pb-4 text-3xl"
+  >
+    <span
+      class="inline-block h-8 w-32 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+    />
+  </p>
+  <h1
+    class="pb-4 text-5xl font-bold"
+  >
+    <span
+      class="inline-block h-14 w-64 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+    />
+  </h1>
+  <h2
+    class="mb-2"
+  >
+    <span
+      class="inline-block h-6 w-48 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+    />
+  </h2>
+  <p
+    class="mt-2"
+  >
+    <span
+      class="inline-block h-4 w-32 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+    />
+  </p>
+  <section
+    class="pt-3"
+  >
+    <span
+      class="inline-block h-8 w-48 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+    />
+  </section>
+  <section
+    class="mt-16 flex flex-col justify-between max-lg:space-y-8 lg:flex-row lg:space-x-16"
+  >
+    <div
+      class="flex-1"
+    >
+      <div
+        class="mb-10 flex space-x-4"
+      >
+        <span
+          class="inline-block h-8 w-8 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+        <span
+          class="inline-block h-8 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+        />
+      </div>
+      <div
+        class="flex flex-col space-y-10"
+      >
+        <div
+          class="flex flex-col"
+        >
+          <span
+            class="mb-3 h-5 w-36 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+          <span
+            class="h-4 w-64 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+        <div
+          class="flex flex-col"
+        >
+          <span
+            class="mb-3 h-5 w-36 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+          <span
+            class="h-4 w-64 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+        <div
+          class="flex flex-col"
+        >
+          <span
+            class="mb-3 h-5 w-36 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+          <span
+            class="h-4 w-64 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="space-y-10"
+    >
+      <div
+        class="rounded-2xl border border-zinc-700/40 p-6"
+      >
+        <div
+          class="flex space-x-4"
+        >
+          <span
+            class="inline-block h-6 w-6 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+          <span
+            class="inline-block h-6 w-28 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+        <div
+          class="mt-6 space-y-4"
+        >
+          <div
+            class="flex w-full space-x-4"
+          >
+            <span
+              class="inline-block h-10 w-10 animate-pulse rounded-md bg-gray-200 dark:bg-gray-700"
+            />
+            <div
+              class="flex flex-1 flex-col space-y-2"
+            >
+              <span
+                class="h-4 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+              />
+              <span
+                class="h-3 w-56 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+              />
+            </div>
+          </div>
+          <div
+            class="flex w-full space-x-4"
+          >
+            <span
+              class="inline-block h-10 w-10 animate-pulse rounded-md bg-gray-200 dark:bg-gray-700"
+            />
+            <div
+              class="flex flex-1 flex-col space-y-2"
+            >
+              <span
+                class="h-4 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+              />
+              <span
+                class="h-3 w-56 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+              />
+            </div>
+          </div>
+          <div
+            class="flex w-full space-x-4"
+          >
+            <span
+              class="inline-block h-10 w-10 animate-pulse rounded-md bg-gray-200 dark:bg-gray-700"
+            />
+            <div
+              class="flex flex-1 flex-col space-y-2"
+            >
+              <span
+                class="h-4 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+              />
+              <span
+                class="h-3 w-56 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="mt-6"
+        >
+          <span
+            class="inline-block h-9 w-32 animate-pulse rounded-md bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`Loading Components Uses Loading renders skeleton placeholders matching uses page structure 1`] = `
+<div>
+  <h1
+    class="text-3xl"
+  >
+    <span
+      class="inline-block h-9 w-16 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+    />
+  </h1>
+  <p
+    class="mt-4"
+  >
+    <span
+      class="inline-block h-5 w-full animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+    />
+    <span
+      class="mt-1 block h-5 w-3/4 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+    />
+  </p>
+  <section
+    class="mt-8 flex flex-col sm:flex-row"
+  >
+    <span
+      class="min-w-[150px] h-8 w-36 animate-pulse rounded bg-gray-200 dark:bg-gray-700 text-2xl"
+    />
+    <ul
+      class="flex-auto pt-8"
+    >
+      <li
+        class="my-4 flex"
+      >
+        <div
+          class="mr-4"
+        >
+          <span
+            class="inline-block h-5 w-2 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+        <div
+          class="space-y-2"
+        >
+          <span
+            class="block h-5 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+          <span
+            class="block h-4 w-64 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+      </li>
+      <li
+        class="my-4 flex"
+      >
+        <div
+          class="mr-4"
+        >
+          <span
+            class="inline-block h-5 w-2 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+        <div
+          class="space-y-2"
+        >
+          <span
+            class="block h-5 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+          <span
+            class="block h-4 w-64 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+      </li>
+      <li
+        class="my-4 flex"
+      >
+        <div
+          class="mr-4"
+        >
+          <span
+            class="inline-block h-5 w-2 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+        <div
+          class="space-y-2"
+        >
+          <span
+            class="block h-5 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+          <span
+            class="block h-4 w-64 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+      </li>
+    </ul>
+  </section>
+  <section
+    class="mt-8 flex flex-col sm:flex-row"
+  >
+    <span
+      class="min-w-[150px] h-8 w-36 animate-pulse rounded bg-gray-200 dark:bg-gray-700 text-2xl"
+    />
+    <ul
+      class="flex-auto pt-8"
+    >
+      <li
+        class="my-4 flex"
+      >
+        <div
+          class="mr-4"
+        >
+          <span
+            class="inline-block h-5 w-2 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+        <div
+          class="space-y-2"
+        >
+          <span
+            class="block h-5 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+          <span
+            class="block h-4 w-64 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+      </li>
+      <li
+        class="my-4 flex"
+      >
+        <div
+          class="mr-4"
+        >
+          <span
+            class="inline-block h-5 w-2 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+        <div
+          class="space-y-2"
+        >
+          <span
+            class="block h-5 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+          <span
+            class="block h-4 w-64 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+      </li>
+      <li
+        class="my-4 flex"
+      >
+        <div
+          class="mr-4"
+        >
+          <span
+            class="inline-block h-5 w-2 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+        <div
+          class="space-y-2"
+        >
+          <span
+            class="block h-5 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+          <span
+            class="block h-4 w-64 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+      </li>
+    </ul>
+  </section>
+  <section
+    class="mt-8 flex flex-col sm:flex-row"
+  >
+    <span
+      class="min-w-[150px] h-8 w-36 animate-pulse rounded bg-gray-200 dark:bg-gray-700 text-2xl"
+    />
+    <ul
+      class="flex-auto pt-8"
+    >
+      <li
+        class="my-4 flex"
+      >
+        <div
+          class="mr-4"
+        >
+          <span
+            class="inline-block h-5 w-2 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+        <div
+          class="space-y-2"
+        >
+          <span
+            class="block h-5 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+          <span
+            class="block h-4 w-64 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+      </li>
+      <li
+        class="my-4 flex"
+      >
+        <div
+          class="mr-4"
+        >
+          <span
+            class="inline-block h-5 w-2 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+        <div
+          class="space-y-2"
+        >
+          <span
+            class="block h-5 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+          <span
+            class="block h-4 w-64 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+      </li>
+      <li
+        class="my-4 flex"
+      >
+        <div
+          class="mr-4"
+        >
+          <span
+            class="inline-block h-5 w-2 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+        <div
+          class="space-y-2"
+        >
+          <span
+            class="block h-5 w-40 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+          <span
+            class="block h-4 w-64 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
+          />
+        </div>
+      </li>
+    </ul>
+  </section>
+</div>
+`;

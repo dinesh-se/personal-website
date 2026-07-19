@@ -1,7 +1,11 @@
 {
   "kind": "build",
   "tasksRoot": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks",
-  "verifyCommands": [],
+  "verifyCommands": [
+    "npm run typecheck",
+    "npm test",
+    "npm run lint"
+  ],
   "tasks": [
     {
       "id": "T-001",
@@ -15,9 +19,23 @@
       ],
       "userTest": "Run npm run dev, visit each route and verify skeleton loaders appear during initial paint. Force an error on one route, verify the error.tsx renders. Run npm test, npm run lint, npm run build, npm run typecheck, and npx playwright test — all must pass.",
       "status": "in-progress",
-      "attempts": 0,
+      "attempts": 2,
       "origin": "decomposition",
-      "startedAt": "2026-07-19T01:54:42.975Z"
+      "startedAt": "2026-07-19T01:54:42.975Z",
+      "reviewFindings": [
+        {
+          "severity": "critical",
+          "file": "src/app/about/loading.tsx",
+          "issue": "Uses `h-90 w-90` on line 21 which are NOT valid Tailwind CSS classes. The default Tailwind spacing scale jumps from 80 (20rem) to 96 (24rem) — there is no 90. The build passes because Tailwind only strips unused classes from CSS output, not from HTML attributes. The skeleton image placeholder collapses to 0×0 and is invisible, so the loading skeleton does NOT visually match the About page layout (which uses a 360×360 image). Should use `h-[360px] w-[360px]` or `h-96 w-96`.",
+          "line": 21,
+          "round": 1,
+          "addressed": false
+        }
+      ],
+      "attemptCounts": {
+        "review": 1,
+        "stall": 2
+      }
     },
     {
       "id": "T-002",

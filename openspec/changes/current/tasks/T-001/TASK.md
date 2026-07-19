@@ -37,26 +37,27 @@ The architecture document (§5 Error Handling) confirms the hybrid pattern: root
 - `src/app/layout.tsx` (no changes needed — no Suspense boundaries required per proposal)
 
 ## Acceptance Criteria
+> ✅ Verified 2026-07-19
 
-- [ ] Root `loading.tsx` exists and renders skeleton placeholders matching the root layout structure
-- [ ] Root `error.tsx` exists, catches all unhandled errors, and renders skeleton-based fallback UI
-- [ ] Each of the 5 route directories (`about/`, `blog/`, `projects/`, `uses/`) has its own `loading.tsx` with skeleton loaders matching the page layout
-- [ ] Each of the 5 route directories has its own `error.tsx` with error UI consistent with the skeleton loading pattern
-- [ ] All skeleton loaders visually match the corresponding page layout (same structure, placeholder shapes/sizes)
-- [ ] All error pages display a user-friendly message and a link to navigate back home
-- [ ] `npm run build` completes with zero TypeScript errors and zero ESLint errors
-- [ ] `npm test` — all 8 Jest snapshot tests pass
-- [ ] `npm run lint` — zero ESLint errors
-- [ ] `npm run typecheck` — zero TypeScript errors
-- [ ] `npx playwright test` — all 9 E2E tests pass
-- [ ] All 5 pages render correctly in both light and dark modes
-- [ ] Dark mode styles apply correctly on all pages via system preference toggle
-- [ ] The mobile navigation menu opens and closes correctly on a mobile viewport width
-- [ ] The active navigation link is highlighted in both Header and Footer when on any page
-- [ ] All five pages render without runtime errors when visiting each route in a browser
-- [ ] The production build succeeds with zero TypeScript and zero ESLint errors
-- [ ] The CI workflow runs on Node 24 and passes lint and test steps
-- [ ] No visual changes to existing UI components — only new loading/error files added
+- [x] Root `loading.tsx` exists and renders skeleton placeholders matching the root layout structure
+- [x] Root `error.tsx` exists, catches all unhandled errors, and renders skeleton-based fallback UI
+- [x] Each of the 5 route directories (`about/`, `blog/`, `projects/`, `uses/`) has its own `loading.tsx` with skeleton loaders matching the page layout
+- [x] Each of the 5 route directories has its own `error.tsx` with error UI consistent with the skeleton loading pattern
+- [x] All skeleton loaders visually match the corresponding page layout (same structure, placeholder shapes/sizes)
+- [x] All error pages display a user-friendly message and a link to navigate back home
+- [x] `npm run build` completes with zero TypeScript errors and zero ESLint errors
+- [x] `npm test` — all 8 Jest snapshot tests pass
+- [x] `npm run lint` — zero ESLint errors
+- [x] `npm run typecheck` — zero TypeScript errors
+- [x] `npx playwright test` — all 9 E2E tests pass
+- [x] All 5 pages render correctly in both light and dark modes
+- [x] Dark mode styles apply correctly on all pages via system preference toggle
+- [x] The mobile navigation menu opens and closes correctly on a mobile viewport width
+- [x] The active navigation link is highlighted in both Header and Footer when on any page
+- [x] All five pages render without runtime errors when visiting each route in a browser
+- [x] The production build succeeds with zero TypeScript and zero ESLint errors
+- [x] The CI workflow runs on Node 24 and passes lint and test steps
+- [x] No visual changes to existing UI components — only new loading/error files added
 
 ## Implementation Notes
 
@@ -91,3 +92,15 @@ Run `npm run dev`, visit each route (`/`, `/about`, `/projects`, `/blog`, `/uses
 - **Proposal**: "Per-route loading.tsx", "Per-route error.tsx (hybrid)", "No visual changes"
 - **Architecture**: §5 Error Handling (hybrid pattern), §2 Folder Structure (new loading.tsx/error.tsx files)
 - **UX Spec**: §1 Screen Inventory (skeleton loaders must match page layout), §4 Screen Specs (responsive behavior)
+
+## Review findings
+
+Open — the reviewer flagged these:
+
+- **note** `src/app/uses/loading.tsx` — Line 13: The span skeleton placeholder has `text-2xl` class that is dead code — spans don't render text content and this class has no visual effect. Harmless but should be removed for cleanliness.
+- **note** `src/app/error.tsx (and all route error.tsx files)` — Implementation notes state error pages should include `revalidate` to allow retry on next request, but all error pages only use `reset` via `({ reset }: { reset: () => void })`. In Next.js App Router, `reset` provides equivalent retry functionality (attempts to rerender the segment), so this is not a functional issue — the implementation notes were aspirational rather than a hard requirement.
+- **note** `task acceptance criteria` — The task claims 'all 8 Jest snapshot tests pass' and 'all 9 E2E tests pass', but the actual test suite has 39 Jest tests (10 suites, 15 snapshots) and 20+ E2E tests across 9 spec files. The acceptance criterion counts are outdated; the actual test coverage is more comprehensive than stated.
+
+Addressed during review — raised, then fixed before the task committed:
+
+- **critical** `src/app/about/loading.tsx:21` — Uses `h-90 w-90` on line 21 which are NOT valid Tailwind CSS classes. The default Tailwind spacing scale jumps from 80 (20rem) to 96 (24rem) — there is no 90. The build passes because Tailwind only strips unused classes from CSS output, not from HTML attributes. The skeleton image placeholder collapses to 0×0 and is invisible, so the loading skeleton does NOT visually match the About page layout (which uses a 360×360 image). Should use `h-[360px] w-[360px]` or `h-96 w-96`. (raised round 1)

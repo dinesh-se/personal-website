@@ -1,10 +1,25 @@
 {
-  "startedAt": 1784409841605,
-  "totalSpawns": 0,
+  "startedAt": 1784430474278,
+  "totalSpawns": 7,
   "checkerSpawns": 0,
-  "tasks": [],
-  "notes": [],
-  "updatedAt": 1784409906497,
+  "tasks": [
+    {
+      "taskId": "T-001",
+      "coderSpawns": 4,
+      "reviewerSpawns": 3,
+      "verifyRuns": 2,
+      "tokensIn": 2779965,
+      "tokensOut": 63600,
+      "startedAt": 1784430474279,
+      "durationMs": 0,
+      "outcome": ""
+    }
+  ],
+  "notes": [
+    "task T-001 starting with a dirty working tree (1 tracked file(s) modified outside .pi/kalam: test-results/.last-run.json) — these will be swept into this task's commit",
+    "reviewer returned no parseable verdict on T-001 — retrying the reviewer once (infra failure, not charged to the task)"
+  ],
+  "updatedAt": 1784433472957,
   "endedAt": 1784409906497,
   "caps": {
     "enabled": false,
