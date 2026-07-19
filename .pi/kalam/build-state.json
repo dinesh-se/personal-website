@@ -1,0 +1,87 @@
+{
+  "kind": "build",
+  "tasksRoot": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks",
+  "verifyCommands": [],
+  "tasks": [
+    {
+      "id": "T-001",
+      "slug": "per-route-loading-and-error-pages",
+      "milestone": 1,
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-001",
+      "deps": [],
+      "coversFeatures": [
+        "Per-route loading.tsx",
+        "Per-route error.tsx (hybrid)"
+      ],
+      "userTest": "Run npm run dev, visit each route and verify skeleton loaders appear during initial paint. Force an error on one route, verify the error.tsx renders. Run npm test, npm run lint, npm run build, npm run typecheck, and npx playwright test — all must pass.",
+      "status": "in-progress",
+      "attempts": 0,
+      "origin": "decomposition",
+      "startedAt": "2026-07-19T01:54:42.975Z"
+    },
+    {
+      "id": "T-002",
+      "slug": "experience-formatdate-bug-fix",
+      "milestone": 1,
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-002",
+      "deps": [],
+      "coversFeatures": [
+        "Experience formatDate bug fix"
+      ],
+      "userTest": "Run npm test to verify the Experience snapshot still passes. Visit the home page and about page, verify all organization dates display as MMM YYYY with no Invalid Date strings. Run npm run build and npm run lint — zero errors.",
+      "status": "pending",
+      "attempts": 0,
+      "origin": "decomposition"
+    },
+    {
+      "id": "T-003",
+      "slug": "generate-metadata-migration",
+      "milestone": 1,
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-003",
+      "deps": [
+        "T-001"
+      ],
+      "coversFeatures": [
+        "generateMetadata migration"
+      ],
+      "userTest": "Run npm run build — verify zero errors and that all 5 pages produce correct metadata. Verify robots.txt and sitemap.xml are served correctly. Run npm test, npm run lint, npm run typecheck — all pass.",
+      "status": "pending",
+      "attempts": 0,
+      "origin": "decomposition"
+    },
+    {
+      "id": "T-004",
+      "slug": "partial-prerendering-and-typed-routes",
+      "milestone": 2,
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-004",
+      "deps": [
+        "T-001",
+        "T-002",
+        "T-003"
+      ],
+      "coversFeatures": [
+        "Partial Prerendering (PPR)",
+        "Typed routes"
+      ],
+      "userTest": "Run npm run build — verify zero errors and that the build output shows PPR is active. Run npm test, npm run lint, npm run typecheck — all pass. Visit each route and verify static shell streams on first paint.",
+      "status": "pending",
+      "attempts": 0,
+      "origin": "decomposition"
+    }
+  ],
+  "milestones": [
+    {
+      "number": 1,
+      "title": "Walking skeleton",
+      "confirmed": false
+    },
+    {
+      "number": 2,
+      "title": "Milestone 2",
+      "confirmed": false
+    }
+  ],
+  "currentTaskId": "T-001",
+  "completed": false,
+  "processedDeviationIds": []
+}
