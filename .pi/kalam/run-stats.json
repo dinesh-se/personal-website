@@ -11,8 +11,8 @@
       "tokensIn": 7129973,
       "tokensOut": 91811,
       "startedAt": 1784445057005,
-      "durationMs": 0,
-      "outcome": ""
+      "durationMs": 8267857,
+      "outcome": "skipped"
     }
   ],
   "notes": [
@@ -20,8 +20,8 @@
     "T-004: acceptance manifest accepted with manual attestation after 3 failed evidence match attempt(s)",
     "T-004: acceptance manifest accepted with manual attestation after 3 failed evidence match attempt(s)"
   ],
-  "updatedAt": 1784453265949,
-  "endedAt": 1784409906497,
+  "updatedAt": 1784453324863,
+  "endedAt": 1784453324863,
   "caps": {
     "enabled": false,
     "maxRunMinutes": 240,

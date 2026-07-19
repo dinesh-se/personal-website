@@ -530,6 +530,6 @@
     }
   ],
   "currentTaskId": "T-004",
-  "completed": false,
+  "completed": true,
   "processedDeviationIds": []
 }
