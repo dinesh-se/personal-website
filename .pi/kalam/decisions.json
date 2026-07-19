@@ -350,5 +350,13 @@
     "source": "build",
     "affects": [],
     "timestamp": "2026-07-19T03:57:53.001Z"
+  },
+  {
+    "id": "build:T-002",
+    "question": "Task T-002 (experience-formatdate-bug-fix)",
+    "answer": "Fixed formatDate() in Experience.tsx to correctly parse DD/MM/YYYY date strings by splitting on '/' and constructing Date(year, month-1, day). Updated Organization.to type to optional (string | undefined) to match runtime behavior.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-19T04:05:07.949Z"
   }
 ]

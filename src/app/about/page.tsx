@@ -1,6 +1,7 @@
 'use cache';
 // cacheLife: medium
 import { RichText } from '@graphcms/rich-text-react-renderer';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 
 import { getMoreDetails } from '@api/graphql';
@@ -18,6 +19,18 @@ import LogoTailwindCSS from '@root/public/assets/tech/tailwindcss.svg';
 import LogoTS from '@root/public/assets/tech/typescript.svg';
 
 import { Author } from '@types';
+
+export async function generateMetadata(): Promise<Metadata> {
+	return {
+		title: 'About me — Dinesh Haribabu',
+		description:
+			'More about me — my background, experience, and the technologies I work with.',
+		authors: {
+			name: 'Dinesh Haribabu',
+			url: 'https://dineshharibabu.in/',
+		},
+	};
+}
 
 async function getPageData() {
 	try {

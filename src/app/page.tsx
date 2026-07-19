@@ -1,5 +1,6 @@
 'use cache';
 // cacheLife: medium
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getUser } from '@api/graphql';
@@ -7,6 +8,18 @@ import { getUser } from '@api/graphql';
 import { Contact } from '@components/Contact';
 import { Experience } from '@components/Experience';
 import { RecentProjects } from '@components/RecentProjects';
+
+export async function generateMetadata(): Promise<Metadata> {
+	return {
+		title: 'Dinesh Haribabu',
+		description:
+			'A front-end web developer focused on crafting clean and intuitive interfaces providing better UX.',
+		authors: {
+			name: 'Dinesh Haribabu',
+			url: 'https://dineshharibabu.in/',
+		},
+	};
+}
 
 export default async function Home() {
 	const { profile } = await getUser();

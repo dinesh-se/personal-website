@@ -1,10 +1,23 @@
 'use cache';
 // cacheLife: medium
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getRepos } from '@api/graphql';
 
 import { ProjectCard } from '@components/ProjectCard';
+
+export async function generateMetadata(): Promise<Metadata> {
+	return {
+		title: 'Projects — Dinesh Haribabu',
+		description:
+			'GitHub projects and repositories I have worked on. Explore my open source contributions and side projects.',
+		authors: {
+			name: 'Dinesh Haribabu',
+			url: 'https://dineshharibabu.in/',
+		},
+	};
+}
 
 async function getPageData() {
 	try {

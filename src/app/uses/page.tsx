@@ -1,10 +1,23 @@
 'use cache';
 // cacheLife: medium
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getUses } from '@api/graphql';
 
 import { Uses as UsesType } from '@types';
+
+export async function generateMetadata(): Promise<Metadata> {
+	return {
+		title: 'Uses — Dinesh Haribabu',
+		description:
+			'My setup — hardware, software, tools, and configurations I use for work and personal projects.',
+		authors: {
+			name: 'Dinesh Haribabu',
+			url: 'https://dineshharibabu.in/',
+		},
+	};
+}
 
 async function getPageData() {
 	try {

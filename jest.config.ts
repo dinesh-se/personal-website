@@ -25,6 +25,7 @@ const jestConfig = async () => {
 		...nextJestConfig,
 		moduleNameMapper: {
 			'\\.svg$': '<rootDir>/__mocks__/svg.ts',
+			'^@vercel/analytics/react$': '<rootDir>/__mocks__/vercel-analytics.ts',
 			...nextJestConfig.moduleNameMapper,
 		},
 		transformIgnorePatterns: ['node_modules/(?!(react-social-icons))'],

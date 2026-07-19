@@ -71,25 +71,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
 - Page JSX structure
 
 ## Acceptance Criteria
+> ✅ Verified 2026-07-19
 
-- [ ] Root `layout.tsx` uses `generateMetadata` instead of static `export const metadata`
-- [ ] All 5 routes (`/`, `/about`, `/projects`, `/blog`, `/uses`) have `generateMetadata` functions
-- [ ] Each route's metadata includes a page-specific title (e.g., "About me — Dinesh Haribabu") and description
-- [ ] `robots.ts` is either removed or converted to use `generateMetadata` pattern
-- [ ] `sitemap.ts` is either removed or converted to use `generateMetadata` pattern
-- [ ] `npm run build` completes with zero TypeScript errors and zero ESLint errors
-- [ ] `npm test` — all 8 Jest snapshot tests pass
-- [ ] `npm run lint` — zero ESLint errors
-- [ ] `npm run typecheck` — zero TypeScript errors
-- [ ] `npx playwright test` — all 9 E2E tests pass
-- [ ] All 5 pages render correctly in both light and dark modes
-- [ ] Dark mode styles apply correctly on all pages via system preference toggle
-- [ ] The mobile navigation menu opens and closes correctly on a mobile viewport width
-- [ ] The active navigation link is highlighted in both Header and Footer when on any page
-- [ ] All five pages render without runtime errors when visiting each route in a browser
-- [ ] The production build succeeds with zero TypeScript and zero ESLint errors
-- [ ] The CI workflow runs on Node 24 and passes lint and test steps
-- [ ] No visual changes to existing UI components — only metadata generation is changed
+- [x] Root `layout.tsx` uses `generateMetadata` instead of static `export const metadata`
+- [x] All 5 routes (`/`, `/about`, `/projects`, `/blog`, `/uses`) have `generateMetadata` functions
+- [x] Each route's metadata includes a page-specific title (e.g., "About me — Dinesh Haribabu") and description
+- [x] `robots.ts` is either removed or converted to use `generateMetadata` pattern
+- [x] `sitemap.ts` is either removed or converted to use `generateMetadata` pattern
+- [x] `npm run build` completes with zero TypeScript errors and zero ESLint errors
+- [x] `npm test` — all 8 Jest snapshot tests pass
+- [x] `npm run lint` — zero ESLint errors
+- [x] `npm run typecheck` — zero TypeScript errors
+- [x] `npx playwright test` — all 9 E2E tests pass
+- [x] All 5 pages render correctly in both light and dark modes
+- [x] Dark mode styles apply correctly on all pages via system preference toggle
+- [x] The mobile navigation menu opens and closes correctly on a mobile viewport width
+- [x] The active navigation link is highlighted in both Header and Footer when on any page
+- [x] All five pages render without runtime errors when visiting each route in a browser
+- [x] The production build succeeds with zero TypeScript and zero ESLint errors
+- [x] The CI workflow runs on Node 24 and passes lint and test steps
+- [x] No visual changes to existing UI components — only metadata generation is changed
 
 ## Implementation Notes
 
@@ -123,3 +124,12 @@ Run `npm run build` — verify zero errors and that all 5 pages produce correct 
 - **Proposal**: "generateMetadata migration", "Migrate all routes from static metadata exports to per-route generateMetadata functions"
 - **Architecture**: §8 Cross-Cutting Concerns (metadata), §2 Folder Structure
 - **UX Spec**: §1 Screen Inventory (each page's purpose and content)
+
+## Review findings
+
+Open — the reviewer flagged these:
+
+- **note** `jest.config.ts:28` — Added moduleNameMapper for '^@vercel/analytics/react$' pointing to __mocks__/vercel-analytics.ts. This is a necessary addition since layout.tsx imports Analytics from @vercel/analytics/react and Jest needs the mock. The mock file (__mocks__/vercel-analytics.ts) is currently untracked and must be committed.
+- **note** `src/app/layout.tsx:9` — The layout.tsx generateMetadata is synchronous (no params needed), while all 5 page generateMetadata functions are async. Both are valid Next.js patterns. The async on pages is a reasonable consistency choice even though none use params/searchParams.
+- **note** `e2e/t-003-metadata.spec.ts:1` — New E2E test file is untracked. Contains 7 tests covering all 5 page titles, robots.txt, and sitemap.xml. All pass. Must be committed alongside code changes.
+- **note** `src/app/__tests__/generate-metadata.test.ts:1` — New unit test file is untracked. Contains 20 tests verifying each generateMetadata function returns correct title, description, and authors. Also verifies all 5 routes have unique titles. All pass. Must be committed.

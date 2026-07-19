@@ -1,5 +1,6 @@
 'use cache';
 // cacheLife: medium
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getBlogPosts } from '@api/rest';
@@ -7,6 +8,18 @@ import { getBlogPosts } from '@api/rest';
 import { BlogPostCard } from '@components/BlogPostCard';
 
 import { BlogPostUI } from '@root/src/types';
+
+export async function generateMetadata(): Promise<Metadata> {
+	return {
+		title: 'Blog — Dinesh Haribabu',
+		description:
+			'Blog posts about web development, software engineering, and other topics. Written on Dev.To.',
+		authors: {
+			name: 'Dinesh Haribabu',
+			url: 'https://dineshharibabu.in/',
+		},
+	};
+}
 
 async function getPageData() {
 	try {
