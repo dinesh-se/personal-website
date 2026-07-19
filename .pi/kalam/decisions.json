@@ -342,5 +342,13 @@
       "proposal.md"
     ],
     "timestamp": "2026-07-19T00:01:48.499Z"
+  },
+  {
+    "id": "build:T-001",
+    "question": "Task T-001 (per-route-loading-and-error-pages)",
+    "answer": "Created 10 per-route loading.tsx and error.tsx files for root + 4 routes (about, blog, projects, uses). All loading components render skeleton placeholders matching each page's layout structure. All error components display route-specific messages with Try again + Go Home links. Hybrid error pattern: root error.tsx as catch-all, route-specific error.tsx for key routes.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-19T03:57:53.001Z"
   }
 ]
