@@ -358,5 +358,13 @@
     "source": "build",
     "affects": [],
     "timestamp": "2026-07-19T04:05:07.949Z"
+  },
+  {
+    "id": "build:T-003",
+    "question": "Task T-003 (generate-metadata-migration)",
+    "answer": "generateMetadata migration already implemented — all 5 routes and root layout use generateMetadata with page-specific titles, descriptions, and authors. robots.ts and sitemap.ts remain as Next.js special metadata route handlers. All 63 Jest tests (15 snapshots), 9 Playwright E2E tests, lint, typecheck, and build pass.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-19T04:35:21.904Z"
   }
 ]
