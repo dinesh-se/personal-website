@@ -1,5 +1,7 @@
 import { BlogPost, BlogPostUI } from '@types';
 
+export type { BlogPostUI } from '@types';
+
 export type FetchErrorType =
 	'network' | 'rate_limit' | 'auth' | 'server' | 'unknown';
 

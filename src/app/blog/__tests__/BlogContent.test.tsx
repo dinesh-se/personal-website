@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 
 import { BlogFetchResult } from '@api/rest';
 
@@ -62,6 +62,33 @@ const mockPosts = [
 		pageViewsCount: 75,
 	},
 ];
+
+// Mock global fetch so useEffect doesn't make real requests
+beforeEach(() => {
+	global.fetch = jest.fn().mockResolvedValue({
+		ok: true,
+		json: () =>
+			Promise.resolve({
+				success: true,
+				posts: [
+					{
+						id: '1',
+						title: 'First Post',
+						description: 'Description of first post',
+						date: new Date('2024-01-15').toISOString(),
+						url: 'https://dev.to/dinesh/first-post',
+						commentsCount: 5,
+						reactionsCount: 42,
+						pageViewsCount: 100,
+					},
+				],
+			}),
+	});
+});
+
+afterEach(() => {
+	jest.restoreAllMocks();
+});
 
 describe('BlogContent', () => {
 	describe('Criterion 1: renders without console errors when API fails', () => {
@@ -251,6 +278,62 @@ describe('BlogContent', () => {
 					'Blog posts are temporarily unavailable. Check back soon.'
 				)
 			).not.toBeInTheDocument();
+		});
+	});
+
+	describe('client-side fetch from /api/articles/me/published', () => {
+		it('fetches from the local API route when no result prop is provided', async () => {
+			render(<BlogContent />);
+
+			await waitFor(() => {
+				expect(global.fetch).toHaveBeenCalledWith('/api/articles/me/published');
+			});
+		});
+
+		it('renders posts fetched from the API', async () => {
+			render(<BlogContent />);
+
+			await waitFor(() => {
+				const cards = screen.getAllByTestId('blog-post-card');
+				expect(cards).toHaveLength(1);
+			});
+		});
+
+		it('shows fallback when the API returns an error response', async () => {
+			(global.fetch as jest.Mock).mockResolvedValueOnce({
+				ok: false,
+				json: () =>
+					Promise.resolve({
+						success: false,
+						errorType: 'auth',
+					}),
+			});
+
+			render(<BlogContent />);
+
+			await waitFor(() => {
+				expect(
+					screen.getByText(
+						'Blog posts are temporarily unavailable. Check back soon.'
+					)
+				).toBeInTheDocument();
+			});
+		});
+
+		it('shows fallback when fetch throws a network error', async () => {
+			(global.fetch as jest.Mock).mockRejectedValueOnce(
+				new Error('Network error')
+			);
+
+			render(<BlogContent />);
+
+			await waitFor(() => {
+				expect(
+					screen.getByText(
+						'Blog posts are temporarily unavailable. Check back soon.'
+					)
+				).toBeInTheDocument();
+			});
 		});
 	});
 });

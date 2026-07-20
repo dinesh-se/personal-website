@@ -10,7 +10,7 @@ export default function Loading() {
 			</p>
 			{[1, 2, 3].map((section) => (
 				<section key={section} className="mt-8 flex flex-col sm:flex-row">
-					<span className="min-w-[150px] h-8 w-36 animate-pulse rounded bg-gray-200 dark:bg-gray-700 text-2xl" />
+					<span className="min-w-[150px] h-8 w-36 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
 					<ul className="flex-auto pt-8">
 						{[1, 2, 3].map((item) => (
 							<li key={item} className="my-4 flex">

@@ -1,24 +1,27 @@
 {
-  "startedAt": 1784565914469,
+  "startedAt": 1784576234290,
   "totalSpawns": 3,
   "checkerSpawns": 0,
   "tasks": [
     {
-      "taskId": "FIX-001",
+      "taskId": "FIX-002",
       "coderSpawns": 2,
       "reviewerSpawns": 1,
-      "verifyRuns": 2,
-      "tokensIn": 1914185,
-      "tokensOut": 24317,
-      "startedAt": 1784565914470,
+      "verifyRuns": 3,
+      "tokensIn": 900171,
+      "tokensOut": 21395,
+      "startedAt": 1784576234292,
       "durationMs": 0,
       "outcome": ""
     }
   ],
-  "notes": [],
-  "tokensIn": 1914185,
-  "tokensOut": 24317,
-  "updatedAt": 1784567423721,
+  "notes": [
+    "task FIX-002 starting with a dirty working tree (7 tracked file(s) modified outside .pi/kalam: e2e/playwright.config.ts, playwright-report/index.html, src/app/__tests__/__snapshots__/loading-components.test.tsx.snap, src/app/blog/BlogContent.tsx, src/app/blog/__tests__/BlogContent.test.tsx, …) — these will be swept into this task's commit",
+    "verify: `npm run lint` failed on FIX-002 — ran `npm run lint -- --fix` and re-verified clean, not charged to the task's verify budget"
+  ],
+  "tokensIn": 900171,
+  "tokensOut": 21395,
+  "updatedAt": 1784577026606,
   "endedAt": 1784565411218,
   "caps": {
     "enabled": false,

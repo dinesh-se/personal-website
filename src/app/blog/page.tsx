@@ -1,12 +1,8 @@
-'use cache';
-// cacheLife: medium
 import type { Metadata } from 'next';
-
-import { getBlogFetchResult } from '@api/rest';
 
 import { BlogContent } from './BlogContent';
 
-export async function generateMetadata(): Promise<Metadata> {
+export function generateMetadata(): Metadata {
 	return {
 		title: 'Blog — Dinesh Haribabu',
 		description:
@@ -18,8 +14,6 @@ export async function generateMetadata(): Promise<Metadata> {
 	};
 }
 
-export default async function Blog() {
-	const result = await getBlogFetchResult();
-
-	return <BlogContent result={result} />;
+export default function Blog() {
+	return <BlogContent />;
 }

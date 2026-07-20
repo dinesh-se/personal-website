@@ -524,7 +524,7 @@
       "coversFeatures": [],
       "userTest": "1. Set DEVTO_KEY to an invalid value in the environment. 2. Run `npm run dev` and visit http://localhost:3000/blog. 3. Verify the page shows a message like 'Blog posts are temporarily unavailable' instead of an empty list and no error appears in the terminal console. 4. Restore DEVTO_KEY to a valid value. 5. Refresh the page. 6. Verify blog posts render normally.",
       "milestone": 3,
-      "status": "in-progress",
+      "status": "done",
       "attempts": 1,
       "origin": "feedback",
       "startedAt": "2026-07-20T15:18:56.250Z",
@@ -539,28 +539,28 @@
           "file": "src/app/blog/__tests__/BlogContent.test.tsx",
           "issue": "Criterion 1 ('renders without console errors') is a no-op: the test spies on console.error, renders the component, then restores the spy without any assertion about its call count. It does not verify that no console errors occurred. The actual suppression of console.error is achieved because the old inline getPageData() in page.tsx had console.error() which was removed — but this is never tested.",
           "round": 1,
-          "addressed": false
+          "addressed": true
         },
         {
           "severity": "critical",
           "file": "src/app/blog/__tests__/BlogContent.test.tsx",
           "issue": "Criterion 4 ('renders blog posts normally') test only checks that post titles appear in the document — not that BlogPostCard components are rendered. The test verifies screen.getByText('First Post') but does not assert blog post cards are rendered with correct props (e.g., the card's link href, date formatting, or reaction counts). This is a weak claim of 'renders normally'.",
           "round": 1,
-          "addressed": false
+          "addressed": true
         },
         {
           "severity": "warning",
           "file": "src/api/blog.ts",
           "issue": "All failure modes (network error, rate limit, invalid API key) are collapsed into a single boolean fetchFailed. There is no differentiation — if Dev.to returns 401 for an invalid API key vs 429 for rate limiting, the user sees the same message. Consider preserving the error type for future differentiation.",
           "round": 1,
-          "addressed": false
+          "addressed": true
         },
         {
           "severity": "warning",
           "file": "src/app/blog/error.tsx",
           "issue": "The route-level error.tsx boundary is now dead code. Since getPageData() in src/api/blog.ts catches all errors and returns { fetchFailed: true } instead of throwing, this error boundary will never activate. It serves no purpose and may confuse future maintainers.",
           "round": 1,
-          "addressed": false
+          "addressed": true
         },
         {
           "severity": "note",
@@ -569,7 +569,47 @@
           "round": 1,
           "addressed": false
         }
-      ]
+      ],
+      "acceptanceManifest": [
+        {
+          "text": "When Dev.to API fails (network error, rate limit, missing/invalid API key), the blog page still renders without console errors",
+          "met": true,
+          "evidence": "src/app/blog/__tests__/BlogContent.test.tsx::renders cleanly on network failure without console.error"
+        },
+        {
+          "text": "The page displays a user-friendly message like 'Blog posts are temporarily unavailable. Check back soon.' instead of an empty list",
+          "met": true,
+          "evidence": "src/app/blog/__tests__/BlogContent.test.tsx::shows fallback message instead of empty list"
+        },
+        {
+          "text": "The page layout is preserved (heading, intro text, and fallback message all render)",
+          "met": true,
+          "evidence": "src/app/blog/__tests__/BlogContent.test.tsx::renders heading, intro text, and fallback message all together"
+        },
+        {
+          "text": "When the API succeeds, the page renders blog posts normally with no visual change",
+          "met": true,
+          "evidence": "src/app/blog/__tests__/BlogContent.test.tsx::renders BlogPostCard components for each post"
+        }
+      ],
+      "completedAt": "2026-07-20T17:10:23.766Z",
+      "commit": "062bae566c027d5ed73ec89b4778fdab00238a49"
+    },
+    {
+      "id": "FIX-002",
+      "slug": "fix-e2e-blog-failure-playwright-config-and-fetch-mocking",
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/FIX-002-fix-e2e-blog-failure-playwright-config-and-fetch-mocking",
+      "deps": [],
+      "coversFeatures": [],
+      "userTest": "1. Run `npx playwright test e2e/fix-001-graceful-devto-fetch-failure.spec.ts` — both tests should pass without ERR_CONNECTION_REFUSED.\n2. Visit http://localhost:3099/blog in a browser — Dev.to posts should render normally.\n3. Set DEVTO_KEY to an invalid value, restart the dev server, and visit /blog — the fallback message 'Blog posts are temporarily unavailable. Check back soon.' should appear.",
+      "milestone": 3,
+      "status": "in-progress",
+      "attempts": 1,
+      "origin": "check",
+      "startedAt": "2026-07-20T17:20:13.361Z",
+      "attemptCounts": {
+        "verify": 1
+      }
     }
   ],
   "milestones": [
@@ -589,7 +629,7 @@
       "confirmed": false
     }
   ],
-  "currentTaskId": "FIX-001",
+  "currentTaskId": "FIX-002",
   "completed": false,
   "processedDeviationIds": []
 }
