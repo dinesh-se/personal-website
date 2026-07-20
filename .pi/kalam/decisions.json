@@ -526,5 +526,55 @@
     "source": "feature-brief",
     "affects": [],
     "timestamp": "2026-07-20T21:04:10.547Z"
+  },
+  {
+    "id": "reconcile:tech-stack-md-describes-the-dependency-upgrade-feature-next-",
+    "question": "tech-stack.md describes the dependency upgrade feature (Next.js 14→16, React 18→19, ESLint 8→9, Node 18→24) instead of the current visual theming & accessibility feature. All summary table rows, constraints, and methodology text reference the wrong feature.",
+    "answer": "Rewrite tech-stack.md to reflect the current feature (theming + a11y) — keep existing baseline stack entries, add axe-core as new dependency, remove dependency upgrade references",
+    "source": "reconciliation",
+    "affects": [
+      "tech-stack.md"
+    ],
+    "timestamp": "2026-07-20T21:15:44.232Z"
+  },
+  {
+    "id": "reconcile:architecture-md-describes-the-dependency-upgrade-feature-nex",
+    "question": "architecture.md describes the dependency upgrade feature (Next.js 14→16, React 18→19, ESLint 8→9, Node 18→24) throughout all 8 sections. The current feature is visual theming and WCAG 2.1 AA accessibility. All section headers, upgrade impact notes, and constraints reference the wrong feature.",
+    "answer": "Rewrite architecture.md to reflect the current feature (theming + a11y) — update all 8 sections with dark mode, a11y, focus management, axe-core CI integration",
+    "source": "reconciliation",
+    "affects": [
+      "architecture.md"
+    ],
+    "timestamp": "2026-07-20T21:24:16.931Z"
+  },
+  {
+    "id": "reconcile:data-model-md-intro-1-2-3-5-all-describe-the-dependency-upgr",
+    "question": "data-model.md intro, §1, §2, §3, §5 all describe the dependency upgrade feature (Next.js 16, React 19) instead of visual theming & a11y. Every 'This feature introduces no new entities' paragraph references the wrong feature.",
+    "answer": "Update data-model.md in-place: replace the feature description paragraphs while keeping the baseline type definitions intact",
+    "source": "reconciliation",
+    "affects": [
+      "data-model.md"
+    ],
+    "timestamp": "2026-07-20T21:34:06.033Z"
+  },
+  {
+    "id": "reconcile:api-spec-md-1-5-all-reference-the-upgrade-next-js-16-react-1",
+    "question": "api-spec.md §1-5 all reference 'the upgrade' (Next.js 16, React 19, graphql-request version bump) instead of the current theming & a11y feature. §3 incorrectly claims graphql-request version is bumped.",
+    "answer": "Rewrite api-spec.md to reflect the current feature — keep all baseline API specs, replace every 'upgrade' reference with 'visual theming & a11y' scope, remove graphql-request version bump claim",
+    "source": "reconciliation",
+    "affects": [
+      "api-spec.md"
+    ],
+    "timestamp": "2026-07-20T21:34:06.338Z"
+  },
+  {
+    "id": "reconcile:ux-spec-md-1-3-6-all-say-the-feature-upgrades-core-dependenc",
+    "question": "ux-spec.md §1, §3, §6 all say the feature upgrades core dependencies without adding pages, routes, or visual changes — but the current feature DOES add visual changes (dark mode toggle, color palette adjustments). §3 says components remain unchanged but Header gets a new toggle button. §6 says the upgrade doesn't modify Tailwind config but this feature changes darkMode from media to class.",
+    "answer": "Update ux-spec.md in-place: replace the feature impact paragraphs while keeping the baseline UI descriptions",
+    "source": "reconciliation",
+    "affects": [
+      "ux-spec.md"
+    ],
+    "timestamp": "2026-07-20T21:34:15.394Z"
   }
 ]

@@ -1,0 +1,73 @@
+{
+  "kind": "tech-design",
+  "documents": {
+    "architecture": {
+      "generated": true,
+      "regenCount": 0,
+      "changesRequested": []
+    },
+    "data-model": {
+      "generated": true,
+      "regenCount": 0,
+      "changesRequested": []
+    },
+    "api-spec": {
+      "generated": true,
+      "regenCount": 0,
+      "changesRequested": []
+    },
+    "ux-spec": {
+      "generated": true,
+      "regenCount": 0,
+      "changesRequested": []
+    }
+  },
+  "consistency": {
+    "checked": true,
+    "passed": true,
+    "issues": []
+  },
+  "resolutions": [
+    {
+      "summary": "tech-stack.md describes the dependency upgrade feature (Next.js 14→16, React 18→19, ESLint 8→9, Node 18→24) instead of the current visual theming & accessibility feature. All summary table rows, constraints, and methodology text reference the wrong feature.",
+      "decision": "Rewrite tech-stack.md to reflect the current feature (theming + a11y) — keep existing baseline stack entries, add axe-core as new dependency, remove dependency upgrade references",
+      "docs": [
+        "openspec/specs/tech-stack.md"
+      ]
+    },
+    {
+      "summary": "architecture.md describes the dependency upgrade feature (Next.js 14→16, React 18→19, ESLint 8→9, Node 18→24) throughout all 8 sections. The current feature is visual theming and WCAG 2.1 AA accessibility. All section headers, upgrade impact notes, and constraints reference the wrong feature.",
+      "decision": "Rewrite architecture.md to reflect the current feature (theming + a11y) — update all 8 sections with dark mode, a11y, focus management, axe-core CI integration",
+      "docs": [
+        "openspec/specs/architecture.md"
+      ]
+    },
+    {
+      "summary": "data-model.md intro, §1, §2, §3, §5 all describe the dependency upgrade feature (Next.js 16, React 19) instead of visual theming & a11y. Every 'This feature introduces no new entities' paragraph references the wrong feature.",
+      "decision": "Update data-model.md in-place: replace the feature description paragraphs while keeping the baseline type definitions intact",
+      "docs": [
+        "openspec/specs/data-model.md"
+      ]
+    },
+    {
+      "summary": "api-spec.md §1-5 all reference 'the upgrade' (Next.js 16, React 19, graphql-request version bump) instead of the current theming & a11y feature. §3 incorrectly claims graphql-request version is bumped.",
+      "decision": "Rewrite api-spec.md to reflect the current feature — keep all baseline API specs, replace every 'upgrade' reference with 'visual theming & a11y' scope, remove graphql-request version bump claim",
+      "docs": [
+        "openspec/specs/api-spec.md"
+      ]
+    },
+    {
+      "summary": "ux-spec.md §1, §3, §6 all say the feature upgrades core dependencies without adding pages, routes, or visual changes — but the current feature DOES add visual changes (dark mode toggle, color palette adjustments). §3 says components remain unchanged but Header gets a new toggle button. §6 says the upgrade doesn't modify Tailwind config but this feature changes darkMode from media to class.",
+      "decision": "Update ux-spec.md in-place: replace the feature impact paragraphs while keeping the baseline UI descriptions",
+      "docs": [
+        "openspec/specs/ux-spec.md"
+      ]
+    }
+  ],
+  "completed": true,
+  "pendingRecheck": [
+    "data-model.md",
+    "api-spec.md",
+    "ux-spec.md"
+  ]
+}

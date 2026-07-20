@@ -66,7 +66,7 @@ header h1 { font-size: 18px; margin: 0; }
 <header>
   <h1>kalam pipeline</h1>
   <span class="chip">cycle 3 · brownfield</span>
-  <span class="timestamp">generated 21:11:36 UTC — auto-refreshes every 3s</span>
+  <span class="timestamp">generated 21:39:37 UTC — auto-refreshes every 3s</span>
 </header>
 <div class="readonly-note">Read-only view — control the pipeline from the TUI (/kalam …).</div>
 <div class="grid">
@@ -135,27 +135,32 @@ header h1 { font-size: 18px; margin: 0; }
 <div class="line">  Status : 🔒 Blocked (complete Step 1 first)</div>
   </div>
 </section>
-<section class="card status-in-progress">
+<section class="card status-complete">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">⏳</span>
+    <span class="glyph" aria-hidden="true">✅</span>
     <h2>Step 3 · Business/Product Docs</h2>
-    <span class="status-word">In progress</span>
+    <span class="status-word">Complete</span>
   </div>
   <div class="card-body">
-<div class="line">  Status      : ⏳ In progress</div>
+<div class="line">  Status      : ✅ Complete</div>
 <div class="line">  ✅ Product Requirements Document (PRD) → openspec/specs/prd.md </div>
 <div class="line">  ✅ Technology Stack → openspec/specs/tech-stack.md </div>
 <div class="line">  Consistency : ✅ passed</div>
   </div>
 </section>
-<section class="card status-blocked">
+<section class="card status-in-progress">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">🔒</span>
+    <span class="glyph" aria-hidden="true">⏳</span>
     <h2>Step 4 · Technical Design</h2>
-    <span class="status-word">Blocked</span>
+    <span class="status-word">In progress</span>
   </div>
   <div class="card-body">
-<div class="line">  Status : 🔒 Blocked (complete Step 3 first)</div>
+<div class="line">  Status      : ⏳ In progress</div>
+<div class="line">  ✅ Architecture Document → openspec/specs/architecture.md </div>
+<div class="line">  ✅ Data Model → openspec/specs/data-model.md </div>
+<div class="line">  ✅ API Specification → openspec/specs/api-spec.md </div>
+<div class="line">  ✅ UX Specification → openspec/specs/ux-spec.md </div>
+<div class="line">  Consistency : ✅ passed</div>
   </div>
 </section>
 <section class="card status-blocked">
