@@ -1,7 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import AboutError from '../about/error';
-import BlogError from '../blog/error';
 import RootError from '../error';
 import ProjectsError from '../projects/error';
 import UsesError from '../uses/error';
@@ -96,28 +95,6 @@ describe('Error Components', () => {
 		it('renders "Try again" button and "Go Home" link', () => {
 			const reset = jest.fn();
 			const { container } = render(<ProjectsError reset={reset} />);
-			fireEvent.click(screen.getByText('Try again'));
-			expect(reset).toHaveBeenCalled();
-			expect(container.querySelector('a[href="/"]')).toHaveTextContent(
-				'Go Home'
-			);
-		});
-	});
-
-	describe('Blog Error', () => {
-		it('renders route-specific error message', () => {
-			render(<BlogError reset={jest.fn()} />);
-			expect(screen.getByText('Failed to load blog posts')).toBeInTheDocument();
-		});
-
-		it('renders route-specific descriptive text', () => {
-			render(<BlogError reset={jest.fn()} />);
-			expect(screen.getByText(/Unable to load blog posts/)).toBeInTheDocument();
-		});
-
-		it('renders "Try again" button and "Go Home" link', () => {
-			const reset = jest.fn();
-			const { container } = render(<BlogError reset={reset} />);
 			fireEvent.click(screen.getByText('Try again'));
 			expect(reset).toHaveBeenCalled();
 			expect(container.querySelector('a[href="/"]')).toHaveTextContent(

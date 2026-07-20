@@ -1,12 +1,9 @@
 {
-  "kind": "skeleton",
-  "mode": "brownfield",
-  "scaffoldExecuted": true,
-  "scaffoldVerified": true,
-  "skeletonVerified": true,
-  "log": [
-    "Skeleton verify: FAILED",
-    "Skeleton verify: passed"
-  ],
-  "completed": true
+	"kind": "skeleton",
+	"mode": "brownfield",
+	"scaffoldExecuted": true,
+	"scaffoldVerified": true,
+	"skeletonVerified": true,
+	"log": ["Skeleton verify: FAILED", "Skeleton verify: passed"],
+	"completed": true
 }

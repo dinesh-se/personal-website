@@ -1,6 +1,6 @@
 {
-  "check": {
-    "candidatePorts": [3099],
-    "startCommand": "NODE_OPTIONS='--require ./e2e/setup.cjs' npm run dev -- -p 3099"
-  }
+	"check": {
+		"candidatePorts": [3099],
+		"startCommand": "NODE_OPTIONS='--require ./e2e/setup.cjs' npm run dev -- -p 3099"
+	}
 }

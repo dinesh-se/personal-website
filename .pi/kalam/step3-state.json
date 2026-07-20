@@ -1,31 +1,28 @@
 {
-  "kind": "doc-gen",
-  "documents": {
-    "prd": {
-      "generated": true,
-      "regenCount": 0,
-      "changesRequested": []
-    },
-    "tech-stack": {
-      "generated": true,
-      "regenCount": 0,
-      "changesRequested": []
-    }
-  },
-  "consistency": {
-    "checked": true,
-    "passed": true,
-    "issues": []
-  },
-  "resolutions": [
-    {
-      "summary": "PRD assumes Playwright E2E tests exist and must pass (FR-12, §9 Success Metrics, §4 scenarios, §6 Assumption A7), but tech-stack.md says 'No genuinely new technology is introduced' and only lists Jest + @testing-library/react for testing. Codebase-map.json key dependencies also don't include Playwright.",
-      "decision": "Add Playwright to tech-stack.md and confirm it exists in the codebase",
-      "docs": [
-        "prd.md",
-        "tech-stack.md"
-      ]
-    }
-  ],
-  "completed": true
+	"kind": "doc-gen",
+	"documents": {
+		"prd": {
+			"generated": true,
+			"regenCount": 0,
+			"changesRequested": []
+		},
+		"tech-stack": {
+			"generated": true,
+			"regenCount": 0,
+			"changesRequested": []
+		}
+	},
+	"consistency": {
+		"checked": true,
+		"passed": true,
+		"issues": []
+	},
+	"resolutions": [
+		{
+			"summary": "PRD assumes Playwright E2E tests exist and must pass (FR-12, §9 Success Metrics, §4 scenarios, §6 Assumption A7), but tech-stack.md says 'No genuinely new technology is introduced' and only lists Jest + @testing-library/react for testing. Codebase-map.json key dependencies also don't include Playwright.",
+			"decision": "Add Playwright to tech-stack.md and confirm it exists in the codebase",
+			"docs": ["prd.md", "tech-stack.md"]
+		}
+	],
+	"completed": true
 }

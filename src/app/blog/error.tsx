@@ -8,7 +8,7 @@ export default function Error({ reset }: { reset: () => void }) {
 			<div className="mb-6 h-16 w-16 animate-pulse rounded-full bg-gray-200 dark:bg-gray-700" />
 			<h2 className="mb-4 text-2xl font-bold">Failed to load blog posts</h2>
 			<p className="mb-8 max-w-md text-gray-600 dark:text-gray-300">
-				Unable to load blog posts. Please try again.
+				Unable to load blog posts from Dev.to. Please try again.
 			</p>
 			<div className="flex gap-4">
 				<button

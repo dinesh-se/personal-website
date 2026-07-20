@@ -529,7 +529,7 @@ exports[`Loading Components Uses Loading renders skeleton placeholders matching 
     class="mt-8 flex flex-col sm:flex-row"
   >
     <span
-      class="min-w-[150px] h-8 w-36 animate-pulse rounded bg-gray-200 dark:bg-gray-700 text-2xl"
+      class="min-w-[150px] h-8 w-36 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
     />
     <ul
       class="flex-auto pt-8"
@@ -603,7 +603,7 @@ exports[`Loading Components Uses Loading renders skeleton placeholders matching 
     class="mt-8 flex flex-col sm:flex-row"
   >
     <span
-      class="min-w-[150px] h-8 w-36 animate-pulse rounded bg-gray-200 dark:bg-gray-700 text-2xl"
+      class="min-w-[150px] h-8 w-36 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
     />
     <ul
       class="flex-auto pt-8"
@@ -677,7 +677,7 @@ exports[`Loading Components Uses Loading renders skeleton placeholders matching 
     class="mt-8 flex flex-col sm:flex-row"
   >
     <span
-      class="min-w-[150px] h-8 w-36 animate-pulse rounded bg-gray-200 dark:bg-gray-700 text-2xl"
+      class="min-w-[150px] h-8 w-36 animate-pulse rounded bg-gray-200 dark:bg-gray-700"
     />
     <ul
       class="flex-auto pt-8"

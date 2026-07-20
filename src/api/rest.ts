@@ -1,5 +1,14 @@
 import { BlogPost, BlogPostUI } from '@types';
 
+export type { BlogPostUI } from '@types';
+
+export type FetchErrorType =
+	'network' | 'rate_limit' | 'auth' | 'server' | 'unknown';
+
+export type BlogFetchResult =
+	| { success: true; posts: BlogPostUI[] }
+	| { success: false; errorType: FetchErrorType };
+
 const getBlogPosts = async (): Promise<BlogPostUI[]> => {
 	const res = await fetch('https://dev.to/api/articles/me/published', {
 		headers: {
@@ -8,7 +17,9 @@ const getBlogPosts = async (): Promise<BlogPostUI[]> => {
 	});
 
 	if (!res.ok) {
-		throw new Error('Failed to fetch blog posts');
+		throw Object.assign(new Error('Failed to fetch blog posts'), {
+			status: res.status,
+		});
 	}
 
 	const data = await res.json();
@@ -25,4 +36,24 @@ const getBlogPosts = async (): Promise<BlogPostUI[]> => {
 	}));
 };
 
-export { getBlogPosts };
+const getBlogFetchResult = async (): Promise<BlogFetchResult> => {
+	try {
+		const posts = await getBlogPosts();
+		return { success: true, posts };
+	} catch (error: unknown) {
+		const status = (error as { status?: number })?.status;
+		let errorType: FetchErrorType = 'unknown';
+		if (status === 401 || status === 403) {
+			errorType = 'auth';
+		} else if (status === 429) {
+			errorType = 'rate_limit';
+		} else if (status && status >= 500) {
+			errorType = 'server';
+		} else if (status === undefined) {
+			errorType = 'network';
+		}
+		return { success: false, errorType };
+	}
+};
+
+export { getBlogPosts, getBlogFetchResult };

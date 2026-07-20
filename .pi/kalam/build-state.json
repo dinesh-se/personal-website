@@ -515,6 +515,136 @@
       ],
       "completedAt": "2026-07-19T09:28:44.839Z",
       "skipReason": "skipped after 3 failed the acceptance manifest attempt(s). Final rejection detail:\nEvidence test \"Dark Mode › should respect system preference\" not found in e2e/home.spec.ts for \"Dark mode styles apply correctly on all pages via system preference toggle\" (use \"manual: <what you checked and how>\" if this criterion has no automatable check).\nEvidence test \"Mobile Menu › should toggle mobile menu\" not found in e2e/home.spec.ts for \"The mobile navigation menu opens and closes correctly on a mobile viewport width\" (use \"manual: <what you checked and how>\" if this criterion has no automatable check).\nEvidence test \"Nav Active State › should show active state on current navigation link\" not found in e2e/home.spec.ts for \"The active navigation link is highlighted in both Header and Footer when on any page\" (use \"manual: <what you checked and how>\" if this criterion has no automatable check).\nEvidence test \"T-001 — Dependency Upgrade: All Pages Render › should render home page without runtime errors\" not found in e2e/t-001-dependency-upgrade.spec.ts for \"All five pages render without runtime errors when visiting each route in a browser\" (use \"manual: <what you checked and how>\" if this criterion has no automatable check).\nEvidence test \"T-006 — Update CI Workflow to Node 24 › CI workflow uses Node 24 and setup-node v4\" not found in e2e/t-006-ci-node-24.spec.ts for \"The CI workflow runs on Node 24 and passes lint and test steps\" (use \"manual: <what you checked and how>\" if this criterion has no automatable check).\nIf any of the above criteria are verified manually rather than by an automated test, resubmit with evidence \"manual: <what you checked and how>\" instead of a test reference."
+    },
+    {
+      "id": "FIX-001",
+      "slug": "graceful-devto-fetch-failure",
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/FIX-001-graceful-devto-fetch-failure",
+      "deps": [],
+      "coversFeatures": [],
+      "userTest": "1. Set DEVTO_KEY to an invalid value in the environment. 2. Run `npm run dev` and visit http://localhost:3000/blog. 3. Verify the page shows a message like 'Blog posts are temporarily unavailable' instead of an empty list and no error appears in the terminal console. 4. Restore DEVTO_KEY to a valid value. 5. Refresh the page. 6. Verify blog posts render normally.",
+      "milestone": 3,
+      "status": "done",
+      "attempts": 1,
+      "origin": "feedback",
+      "startedAt": "2026-07-20T15:18:56.250Z",
+      "attemptCounts": {
+        "stall": 4,
+        "verify": 4,
+        "review": 1
+      },
+      "reviewFindings": [
+        {
+          "severity": "critical",
+          "file": "src/app/blog/__tests__/BlogContent.test.tsx",
+          "issue": "Criterion 1 ('renders without console errors') is a no-op: the test spies on console.error, renders the component, then restores the spy without any assertion about its call count. It does not verify that no console errors occurred. The actual suppression of console.error is achieved because the old inline getPageData() in page.tsx had console.error() which was removed — but this is never tested.",
+          "round": 1,
+          "addressed": true
+        },
+        {
+          "severity": "critical",
+          "file": "src/app/blog/__tests__/BlogContent.test.tsx",
+          "issue": "Criterion 4 ('renders blog posts normally') test only checks that post titles appear in the document — not that BlogPostCard components are rendered. The test verifies screen.getByText('First Post') but does not assert blog post cards are rendered with correct props (e.g., the card's link href, date formatting, or reaction counts). This is a weak claim of 'renders normally'.",
+          "round": 1,
+          "addressed": true
+        },
+        {
+          "severity": "warning",
+          "file": "src/api/blog.ts",
+          "issue": "All failure modes (network error, rate limit, invalid API key) are collapsed into a single boolean fetchFailed. There is no differentiation — if Dev.to returns 401 for an invalid API key vs 429 for rate limiting, the user sees the same message. Consider preserving the error type for future differentiation.",
+          "round": 1,
+          "addressed": true
+        },
+        {
+          "severity": "warning",
+          "file": "src/app/blog/error.tsx",
+          "issue": "The route-level error.tsx boundary is now dead code. Since getPageData() in src/api/blog.ts catches all errors and returns { fetchFailed: true } instead of throwing, this error boundary will never activate. It serves no purpose and may confuse future maintainers.",
+          "round": 1,
+          "addressed": true
+        },
+        {
+          "severity": "note",
+          "file": "e2e/fix-001-hardcoded-path-webserver.spec.ts",
+          "issue": "No e2e test exercises the fetch failure path. The user test explicitly requires setting DEVTO_KEY to an invalid value and verifying the fallback message on /blog — this scenario is entirely untested at the integration level.",
+          "round": 1,
+          "addressed": false
+        }
+      ],
+      "acceptanceManifest": [
+        {
+          "text": "When Dev.to API fails (network error, rate limit, missing/invalid API key), the blog page still renders without console errors",
+          "met": true,
+          "evidence": "src/app/blog/__tests__/BlogContent.test.tsx::renders cleanly on network failure without console.error"
+        },
+        {
+          "text": "The page displays a user-friendly message like 'Blog posts are temporarily unavailable. Check back soon.' instead of an empty list",
+          "met": true,
+          "evidence": "src/app/blog/__tests__/BlogContent.test.tsx::shows fallback message instead of empty list"
+        },
+        {
+          "text": "The page layout is preserved (heading, intro text, and fallback message all render)",
+          "met": true,
+          "evidence": "src/app/blog/__tests__/BlogContent.test.tsx::renders heading, intro text, and fallback message all together"
+        },
+        {
+          "text": "When the API succeeds, the page renders blog posts normally with no visual change",
+          "met": true,
+          "evidence": "src/app/blog/__tests__/BlogContent.test.tsx::renders BlogPostCard components for each post"
+        }
+      ],
+      "completedAt": "2026-07-20T17:10:23.766Z",
+      "commit": "062bae566c027d5ed73ec89b4778fdab00238a49"
+    },
+    {
+      "id": "FIX-002",
+      "slug": "fix-e2e-blog-failure-playwright-config-and-fetch-mocking",
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/FIX-002-fix-e2e-blog-failure-playwright-config-and-fetch-mocking",
+      "deps": [],
+      "coversFeatures": [],
+      "userTest": "1. Run `npx playwright test e2e/fix-001-graceful-devto-fetch-failure.spec.ts` — both tests should pass without ERR_CONNECTION_REFUSED.\n2. Visit http://localhost:3099/blog in a browser — Dev.to posts should render normally.\n3. Set DEVTO_KEY to an invalid value, restart the dev server, and visit /blog — the fallback message 'Blog posts are temporarily unavailable. Check back soon.' should appear.",
+      "milestone": 3,
+      "status": "done",
+      "attempts": 1,
+      "origin": "check",
+      "startedAt": "2026-07-20T17:20:13.361Z",
+      "attemptCounts": {
+        "verify": 1
+      },
+      "acceptanceManifest": [
+        {
+          "text": "Playwright config starts the Next.js dev server on port 3099 before running e2e tests (via webServer config)",
+          "met": true,
+          "evidence": "e2e/playwright.config.ts::webServer config block with port 3099"
+        },
+        {
+          "text": "A local API route exists at /api/articles/me/published that wraps the Dev.to fetch (reuses existing getBlogFetchResult logic from src/api/rest.ts)",
+          "met": true,
+          "evidence": "src/app/api/articles/me/published/route.ts"
+        },
+        {
+          "text": "BlogContent component is converted to a client component ('use client') that fetches from the local API route instead of receiving pre-fetched data from a server component",
+          "met": true,
+          "evidence": "src/app/blog/BlogContent.tsx::'use client' and fetch('/api/articles/me/published')"
+        },
+        {
+          "text": "The blog page.tsx becomes a thin server wrapper that renders BlogContent (now a client component)",
+          "met": true,
+          "evidence": "src/app/blog/page.tsx::renders BlogContent"
+        },
+        {
+          "text": "The e2e test's page.route('**/api/articles/me/published*') successfully intercepts the browser request and mocks the Dev.to response",
+          "met": true,
+          "evidence": "e2e/fix-001-graceful-devto-fetch-failure.spec.ts::shows fallback message when Dev.to API fails"
+        },
+        {
+          "text": "Both e2e spec tests pass: the auth-failure fallback path and the success path with mocked posts",
+          "met": true,
+          "evidence": "e2e/fix-001-graceful-devto-fetch-failure.spec.ts::2 passed"
+        }
+      ],
+      "reviewFindings": [],
+      "completedAt": "2026-07-20T19:50:26.649Z",
+      "commit": "10aee132e89135f7d3f571fcce876dc1030694e9"
     }
   ],
   "milestones": [
@@ -526,10 +656,15 @@
     {
       "number": 2,
       "title": "Milestone 2",
+      "confirmed": true
+    },
+    {
+      "number": 3,
+      "title": "User feedback",
       "confirmed": false
     }
   ],
-  "currentTaskId": "T-004",
+  "currentTaskId": "FIX-002",
   "completed": true,
   "processedDeviationIds": []
 }

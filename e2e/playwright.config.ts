@@ -4,6 +4,12 @@ import path from 'path';
 export default defineConfig({
 	testDir: path.resolve(__dirname),
 	testMatch: '**/*.spec.ts',
+	webServer: {
+		command: 'npm run dev -- --port 3099',
+		port: 3099,
+		timeout: 120_000,
+		reuseExistingServer: !process.env.CI,
+	},
 	testIgnore: [
 		'**/node_modules/**',
 		'**/__mocks__/**',
@@ -32,6 +38,10 @@ export default defineConfig({
 		navigationTimeout: 60000,
 		actionTimeout: 30000,
 	},
+timeout: 60000,
+expect: {
+	timeout: 30000,
+},
 	projects: [
 		{
 			name: 'chromium',
