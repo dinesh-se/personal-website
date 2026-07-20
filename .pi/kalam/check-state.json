@@ -1,11 +1,20 @@
 {
-  "kind": "integration-check",
-  "specs": [],
-  "issues": [],
-  "feedbackItems": [],
-  "cycles": [],
-  "cleanCycleCount": 0,
-  "active": true,
-  "completed": false,
-  "e2eAuthoredMilestones": []
+	"kind": "integration-check",
+	"specs": [],
+	"issues": [],
+	"feedbackItems": [
+		{
+			"id": "FB-001",
+			"submittedAt": "2026-07-20T15:17:51.568Z",
+			"description": "Failed to fetch blog posts from Dev.to: Error: Failed to fetch blog posts\n    at getBlogPosts (src/api/rest.ts:11:9)\n    at async getPageData (src/app/blog/page.tsx:26:35)\n    at async Blog (src/app/blog/page.tsx:35:20)\n   9 |\n  10 |  if (!res.ok) {\n> 11 |          throw new Error('Failed to fetch blog posts');\n     |       ^\n  12 |  }\n  13 |\n  14 |  const data = await res.json();\n Cache  Failed to fetch blog posts from Dev.to: Error: Failed to fetch blog posts\n    at getBlogPosts (src/api/rest.ts:11:9)\n    at getPageData (src/app/blog/page.tsx:26:35)\n    at Blog (src/app/blog/page.tsx:35:20)\n   9 |\n  10 |  if (!res.ok) {\n> 11 |          throw new Error('Failed to fetch blog posts');\n     |       ^\n  12 |  }\n  13 |\n  14 |  const data = await res.json(); {\n  environmentName: 'Cache'\n}\n GET /blog 200 in 465ms (next.js: 312ms, application-code: 153ms)\n Cache  Failed to fetch blog posts from Dev.to: Error: Failed to fetch blog posts\n    at getBlogPosts (src/api/rest.ts:11:9)\n    at getPageData (src/app/blog/page.tsx:26:35)\n    at Blog (src/app/blog/page.tsx:35:20)\n   9 |\n  10 |  if (!res.ok) {\n> 11 |          throw new Error('Failed to fetch blog posts');\n     |       ^\n  12 |  }\n  13 |\n  14 |  const data = await res.json(); {\n  environmentName: 'Cache'\n}",
+			"resolved": false,
+			"category": "bug",
+			"taskId": "FIX-001"
+		}
+	],
+	"cycles": [],
+	"cleanCycleCount": 0,
+	"active": false,
+	"completed": false,
+	"e2eAuthoredMilestones": []
 }

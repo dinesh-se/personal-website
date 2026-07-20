@@ -2,48 +2,48 @@
 
 **Status:** HEALTHY (23 advisory notices)
 
-| Metric | Value |
-|---|---|
-| Check cycles completed | 14 |
-| Open issues | 23 (23 advisory) |
-| Pending feedback items | 0 |
-| Authored e2e specs | 9 |
-| Scenario coverage | 0/10 PRD scenarios covered by done tasks |
-| Last check | 2026-07-18 22:25 |
+| Metric                 | Value                                    |
+| ---------------------- | ---------------------------------------- |
+| Check cycles completed | 14                                       |
+| Open issues            | 23 (23 advisory)                         |
+| Pending feedback items | 0                                        |
+| Authored e2e specs     | 9                                        |
+| Scenario coverage      | 0/10 PRD scenarios covered by done tasks |
+| Last check             | 2026-07-18 22:25                         |
 
 ## Open Issues
 
-| ID | Kind | Source | Fix Task | Status |
-|---|---|---|---|---|
-| ISS-048 | budget-violation | advisory: LCP 54805ms exceeds budget 2500ms | — | Open |
-| ISS-049 | budget-violation | advisory: CLS 0.123 exceeds budget 0.1 | — | Open |
-| ISS-050 | budget-violation | advisory: TBT 1287ms exceeds budget 300ms | — | Open |
-| ISS-051 | budget-violation | advisory: Performance score 0.26 is below budget 0.9 | — | Open |
-| ISS-052 | budget-violation | advisory: LCP 54844ms exceeds budget 2500ms | — | Open |
-| ISS-053 | budget-violation | advisory: TBT 1108ms exceeds budget 300ms | — | Open |
-| ISS-054 | budget-violation | advisory: Performance score 0.28 is below budget 0.9 | — | Open |
-| ISS-055 | budget-violation | advisory: LCP 54814ms exceeds budget 2500ms | — | Open |
-| ISS-056 | budget-violation | advisory: TBT 1084ms exceeds budget 300ms | — | Open |
-| ISS-082 | budget-violation | advisory: LCP 54763ms exceeds budget 2500ms | — | Open |
-| ISS-083 | budget-violation | advisory: TBT 1251ms exceeds budget 300ms | — | Open |
-| ISS-084 | budget-violation | advisory: Performance score 0.29 is below budget 0.9 | — | Open |
-| ISS-085 | budget-violation | advisory: LCP 54816ms exceeds budget 2500ms | — | Open |
-| ISS-086 | budget-violation | advisory: TBT 1150ms exceeds budget 300ms | — | Open |
-| ISS-087 | budget-violation | advisory: Performance score 0.30 is below budget 0.9 | — | Open |
-| ISS-088 | budget-violation | advisory: TBT 1165ms exceeds budget 300ms | — | Open |
-| ISS-090 | budget-violation | advisory: LCP 2856ms exceeds budget 2500ms | — | Open |
-| ISS-091 | budget-violation | advisory: TBT 1225ms exceeds budget 300ms | — | Open |
-| ISS-092 | budget-violation | advisory: Performance score 0.72 is below budget 0.9 | — | Open |
-| ISS-094 | budget-violation | advisory: LCP 2855ms exceeds budget 2500ms | — | Open |
-| ISS-095 | budget-violation | advisory: TBT 1175ms exceeds budget 300ms | — | Open |
-| ISS-096 | budget-violation | advisory: LCP 2854ms exceeds budget 2500ms | — | Open |
-| ISS-097 | budget-violation | advisory: TBT 1178ms exceeds budget 300ms | — | Open |
+| ID      | Kind             | Source                                               | Fix Task | Status |
+| ------- | ---------------- | ---------------------------------------------------- | -------- | ------ |
+| ISS-048 | budget-violation | advisory: LCP 54805ms exceeds budget 2500ms          | —        | Open   |
+| ISS-049 | budget-violation | advisory: CLS 0.123 exceeds budget 0.1               | —        | Open   |
+| ISS-050 | budget-violation | advisory: TBT 1287ms exceeds budget 300ms            | —        | Open   |
+| ISS-051 | budget-violation | advisory: Performance score 0.26 is below budget 0.9 | —        | Open   |
+| ISS-052 | budget-violation | advisory: LCP 54844ms exceeds budget 2500ms          | —        | Open   |
+| ISS-053 | budget-violation | advisory: TBT 1108ms exceeds budget 300ms            | —        | Open   |
+| ISS-054 | budget-violation | advisory: Performance score 0.28 is below budget 0.9 | —        | Open   |
+| ISS-055 | budget-violation | advisory: LCP 54814ms exceeds budget 2500ms          | —        | Open   |
+| ISS-056 | budget-violation | advisory: TBT 1084ms exceeds budget 300ms            | —        | Open   |
+| ISS-082 | budget-violation | advisory: LCP 54763ms exceeds budget 2500ms          | —        | Open   |
+| ISS-083 | budget-violation | advisory: TBT 1251ms exceeds budget 300ms            | —        | Open   |
+| ISS-084 | budget-violation | advisory: Performance score 0.29 is below budget 0.9 | —        | Open   |
+| ISS-085 | budget-violation | advisory: LCP 54816ms exceeds budget 2500ms          | —        | Open   |
+| ISS-086 | budget-violation | advisory: TBT 1150ms exceeds budget 300ms            | —        | Open   |
+| ISS-087 | budget-violation | advisory: Performance score 0.30 is below budget 0.9 | —        | Open   |
+| ISS-088 | budget-violation | advisory: TBT 1165ms exceeds budget 300ms            | —        | Open   |
+| ISS-090 | budget-violation | advisory: LCP 2856ms exceeds budget 2500ms           | —        | Open   |
+| ISS-091 | budget-violation | advisory: TBT 1225ms exceeds budget 300ms            | —        | Open   |
+| ISS-092 | budget-violation | advisory: Performance score 0.72 is below budget 0.9 | —        | Open   |
+| ISS-094 | budget-violation | advisory: LCP 2855ms exceeds budget 2500ms           | —        | Open   |
+| ISS-095 | budget-violation | advisory: TBT 1175ms exceeds budget 300ms            | —        | Open   |
+| ISS-096 | budget-violation | advisory: LCP 2854ms exceeds budget 2500ms           | —        | Open   |
+| ISS-097 | budget-violation | advisory: TBT 1178ms exceeds budget 300ms            | —        | Open   |
 
 ## Feedback Backlog
 
-| ID | Submitted | Description | Category | Fix Task | Status |
-|---|---|---|---|---|---|
-| — | — | — | — | — | — |
+| ID  | Submitted | Description | Category | Fix Task | Status |
+| --- | --------- | ----------- | -------- | -------- | ------ |
+| —   | —         | —           | —        | —        | —      |
 
 ## Open Reviewer Findings
 

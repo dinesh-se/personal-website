@@ -2,362 +2,362 @@
 
 ## Summary
 
-| Metric | Value |
-|---|---|
-| Total check cycles | 14 |
-| Issues detected | 97 |
-| Issues resolved | 1 |
-| Authored e2e specs | 9 |
+| Metric             | Value |
+| ------------------ | ----- |
+| Total check cycles | 14    |
+| Issues detected    | 97    |
+| Issues resolved    | 1     |
+| Authored e2e specs | 9     |
 
 ## Cycle History
 
-| Cycle | Completed | Issues Found |
-|---|---|---|
-| 001 | 2026-07-17 20:40 | 51 |
-| 002 | 2026-07-17 20:55 | 51 |
-| 003 | 2026-07-17 21:09 | 51 |
-| 004 | 2026-07-17 21:18 | 62 |
-| 005 | 2026-07-17 21:28 | 62 |
-| 006 | 2026-07-17 21:40 | 62 |
-| 007 | 2026-07-18 16:55 | 1 |
-| 008 | 2026-07-18 16:56 | 1 |
-| 009 | 2026-07-18 16:59 | 1 |
-| 010 | 2026-07-18 19:47 | 1 |
-| 011 | 2026-07-18 19:52 | 1 |
-| 012 | 2026-07-18 20:57 | 3 |
-| 013 | 2026-07-18 21:17 | 4 |
-| 014 | 2026-07-18 21:25 | 3 |
+| Cycle | Completed        | Issues Found |
+| ----- | ---------------- | ------------ |
+| 001   | 2026-07-17 20:40 | 51           |
+| 002   | 2026-07-17 20:55 | 51           |
+| 003   | 2026-07-17 21:09 | 51           |
+| 004   | 2026-07-17 21:18 | 62           |
+| 005   | 2026-07-17 21:28 | 62           |
+| 006   | 2026-07-17 21:40 | 62           |
+| 007   | 2026-07-18 16:55 | 1            |
+| 008   | 2026-07-18 16:56 | 1            |
+| 009   | 2026-07-18 16:59 | 1            |
+| 010   | 2026-07-18 19:47 | 1            |
+| 011   | 2026-07-18 19:52 | 1            |
+| 012   | 2026-07-18 20:57 | 3            |
+| 013   | 2026-07-18 21:17 | 4            |
+| 014   | 2026-07-18 21:25 | 3            |
 
 ## Unresolved Issues
 
 - ISS-001: e2e failure: should render the page title (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should render the page title (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should render the page title (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-002: e2e failure: should display the greeting (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should display the greeting (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should display the greeting (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-003: e2e failure: should render the header navigation (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should render the header navigation (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should render the header navigation (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-004: e2e failure: should render the footer (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should render the footer (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should render the footer (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-005: e2e failure: should navigate to about page (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should navigate to about page (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should navigate to about page (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-006: e2e failure: should navigate to projects page (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should navigate to projects page (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should navigate to projects page (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-007: e2e failure: should navigate to blog page (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should navigate to blog page (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should navigate to blog page (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-008: e2e failure: should navigate to uses page (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should navigate to uses page (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should navigate to uses page (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-009: e2e failure: should toggle mobile menu (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should toggle mobile menu (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should toggle mobile menu (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-010: e2e failure: should respect system preference (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should respect system preference (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should respect system preference (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-011: e2e failure: should have footer navigation links (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should have footer navigation links (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should have footer navigation links (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-012: e2e failure: should show active state on current navigation link (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
- (e2e-failure) — e2e failure: should show active state on current navigation link (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should show active state on current navigation link (home.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/about
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
 
 - ISS-013: e2e failure: should render home page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should render home page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should render home page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-014: e2e failure: should render about page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
- (e2e-failure) — e2e failure: should render about page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should render about page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/about
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
 
 - ISS-015: e2e failure: should render projects page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/projects
-Call log:
-[2m  - navigating to "http://localhost:3099/projects", waiting until "load"[22m
- (e2e-failure) — e2e failure: should render projects page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/projects
-Call log:
-[2m  - navigating to "http://localhost:3099/projects", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/projects", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should render projects page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/projects
+  Call log:
+  [2m - navigating to "http://localhost:3099/projects", waiting until "load"[22m
 
 - ISS-016: e2e failure: should render blog page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/blog
-Call log:
-[2m  - navigating to "http://localhost:3099/blog", waiting until "load"[22m
- (e2e-failure) — e2e failure: should render blog page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/blog
-Call log:
-[2m  - navigating to "http://localhost:3099/blog", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/blog", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should render blog page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/blog
+  Call log:
+  [2m - navigating to "http://localhost:3099/blog", waiting until "load"[22m
 
 - ISS-017: e2e failure: should render uses page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/uses
-Call log:
-[2m  - navigating to "http://localhost:3099/uses", waiting until "load"[22m
- (e2e-failure) — e2e failure: should render uses page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/uses
-Call log:
-[2m  - navigating to "http://localhost:3099/uses", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/uses", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should render uses page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/uses
+  Call log:
+  [2m - navigating to "http://localhost:3099/uses", waiting until "load"[22m
 
 - ISS-018: e2e failure: should navigate between all pages without console errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should navigate between all pages without console errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should navigate between all pages without console errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-019: e2e failure: about page renders with social icons from react-social-icons (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
- (e2e-failure) — e2e failure: about page renders with social icons from react-social-icons (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  (e2e-failure) — e2e failure: about page renders with social icons from react-social-icons (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
 
 - ISS-020: e2e failure: home page renders Contact component with social icons from react-social-icons (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: home page renders Contact component with social icons from react-social-icons (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: home page renders Contact component with social icons from react-social-icons (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-021: e2e failure: all pages render without crashes after dependency upgrade (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: all pages render without crashes after dependency upgrade (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: all pages render without crashes after dependency upgrade (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-022: e2e failure: navigation between pages works after dependency upgrade (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: navigation between pages works after dependency upgrade (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: navigation between pages works after dependency upgrade (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-023: e2e failure: uses page renders content from graphql-request data fetch (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/uses
-Call log:
-[2m  - navigating to "http://localhost:3099/uses", waiting until "load"[22m
- (e2e-failure) — e2e failure: uses page renders content from graphql-request data fetch (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/uses
-Call log:
-[2m  - navigating to "http://localhost:3099/uses", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/uses", waiting until "load"[22m
+  (e2e-failure) — e2e failure: uses page renders content from graphql-request data fetch (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/uses
+  Call log:
+  [2m - navigating to "http://localhost:3099/uses", waiting until "load"[22m
 
 - ISS-024: e2e failure: blog page renders content from dev.to API fetch (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog
-Call log:
-[2m  - navigating to "http://localhost:3099/blog", waiting until "load"[22m
- (e2e-failure) — e2e failure: blog page renders content from dev.to API fetch (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog
-Call log:
-[2m  - navigating to "http://localhost:3099/blog", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/blog", waiting until "load"[22m
+  (e2e-failure) — e2e failure: blog page renders content from dev.to API fetch (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog
+  Call log:
+  [2m - navigating to "http://localhost:3099/blog", waiting until "load"[22m
 
 - ISS-025: e2e failure: projects page renders project cards (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects
-Call log:
-[2m  - navigating to "http://localhost:3099/projects", waiting until "load"[22m
- (e2e-failure) — e2e failure: projects page renders project cards (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects
-Call log:
-[2m  - navigating to "http://localhost:3099/projects", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/projects", waiting until "load"[22m
+  (e2e-failure) — e2e failure: projects page renders project cards (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects
+  Call log:
+  [2m - navigating to "http://localhost:3099/projects", waiting until "load"[22m
 
 - ISS-026: e2e failure: footer navigation links are functional after dependency upgrade (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: footer navigation links are functional after dependency upgrade (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: footer navigation links are functional after dependency upgrade (t-002-other-deps-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-027: e2e failure: all 5 pages load without runtime/console errors (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: all 5 pages load without runtime/console errors (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: all 5 pages load without runtime/console errors (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-028: e2e failure: full navigation chain produces zero console errors (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: full navigation chain produces zero console errors (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: full navigation chain produces zero console errors (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-029: e2e failure: each page renders expected structural content (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: each page renders expected structural content (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: each page renders expected structural content (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-030: e2e failure: about page social icons render (React 19 PropTypes compatibility) (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
- (e2e-failure) — e2e failure: about page social icons render (React 19 PropTypes compatibility) (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  (e2e-failure) — e2e failure: about page social icons render (React 19 PropTypes compatibility) (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
 
 - ISS-031: e2e failure: home page contact icons render (React 19 PropTypes compatibility) (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: home page contact icons render (React 19 PropTypes compatibility) (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: home page contact icons render (React 19 PropTypes compatibility) (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-032: e2e failure: uses page renders graphql data categories and items (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/uses
-Call log:
-[2m  - navigating to "http://localhost:3099/uses", waiting until "load"[22m
- (e2e-failure) — e2e failure: uses page renders graphql data categories and items (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/uses
-Call log:
-[2m  - navigating to "http://localhost:3099/uses", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/uses", waiting until "load"[22m
+  (e2e-failure) — e2e failure: uses page renders graphql data categories and items (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/uses
+  Call log:
+  [2m - navigating to "http://localhost:3099/uses", waiting until "load"[22m
 
 - ISS-033: e2e failure: blog page renders dev.to data as post cards (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog
-Call log:
-[2m  - navigating to "http://localhost:3099/blog", waiting until "load"[22m
- (e2e-failure) — e2e failure: blog page renders dev.to data as post cards (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog
-Call log:
-[2m  - navigating to "http://localhost:3099/blog", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/blog", waiting until "load"[22m
+  (e2e-failure) — e2e failure: blog page renders dev.to data as post cards (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog
+  Call log:
+  [2m - navigating to "http://localhost:3099/blog", waiting until "load"[22m
 
 - ISS-034: e2e failure: projects page renders project cards with repo links (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects
-Call log:
-[2m  - navigating to "http://localhost:3099/projects", waiting until "load"[22m
- (e2e-failure) — e2e failure: projects page renders project cards with repo links (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects
-Call log:
-[2m  - navigating to "http://localhost:3099/projects", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/projects", waiting until "load"[22m
+  (e2e-failure) — e2e failure: projects page renders project cards with repo links (t-003-build-and-render.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects
+  Call log:
+  [2m - navigating to "http://localhost:3099/projects", waiting until "load"[22m
 
 - ISS-035: e2e failure: all pages load without console errors after ESLint migration (t-004-eslint-flat-config-migration.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: all pages load without console errors after ESLint migration (t-004-eslint-flat-config-migration.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: all pages load without console errors after ESLint migration (t-004-eslint-flat-config-migration.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-036: e2e failure: navigation chain produces zero console errors after migration (t-004-eslint-flat-config-migration.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: navigation chain produces zero console errors after migration (t-004-eslint-flat-config-migration.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: navigation chain produces zero console errors after migration (t-004-eslint-flat-config-migration.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-037: e2e failure: all pages render without runtime errors on Node 24 (t-006-ci-node-24.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: all pages render without runtime errors on Node 24 (t-006-ci-node-24.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: all pages render without runtime errors on Node 24 (t-006-ci-node-24.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-038: e2e failure: navigation chain works on Node 24 (t-006-ci-node-24.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: navigation chain works on Node 24 (t-006-ci-node-24.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: navigation chain works on Node 24 (t-006-ci-node-24.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-039: e2e failure: Header renders top navigation with logo and links (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: Header renders top navigation with logo and links (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: Header renders top navigation with logo and links (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-040: e2e failure: Footer renders nav links and copyright link (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: Footer renders nav links and copyright link (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: Footer renders nav links and copyright link (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-041: e2e failure: NavLinks renders active state on current page (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
- (e2e-failure) — e2e failure: NavLinks renders active state on current page (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  (e2e-failure) — e2e failure: NavLinks renders active state on current page (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
 
 - ISS-042: e2e failure: Contact component renders social icon links (react-social-icons + React 19) (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
- (e2e-failure) — e2e failure: Contact component renders social icon links (react-social-icons + React 19) (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  (e2e-failure) — e2e failure: Contact component renders social icon links (react-social-icons + React 19) (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
 
 - ISS-043: e2e failure: Experience renders organization timeline entries (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: Experience renders organization timeline entries (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: Experience renders organization timeline entries (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-044: e2e failure: BlogPostCard renders post title, description, and metrics (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog
-Call log:
-[2m  - navigating to "http://localhost:3099/blog", waiting until "load"[22m
- (e2e-failure) — e2e failure: BlogPostCard renders post title, description, and metrics (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog
-Call log:
-[2m  - navigating to "http://localhost:3099/blog", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/blog", waiting until "load"[22m
+  (e2e-failure) — e2e failure: BlogPostCard renders post title, description, and metrics (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog
+  Call log:
+  [2m - navigating to "http://localhost:3099/blog", waiting until "load"[22m
 
 - ISS-045: e2e failure: ProjectCard renders project name, description, and language badge (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects
-Call log:
-[2m  - navigating to "http://localhost:3099/projects", waiting until "load"[22m
- (e2e-failure) — e2e failure: ProjectCard renders project name, description, and language badge (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects
-Call log:
-[2m  - navigating to "http://localhost:3099/projects", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/projects", waiting until "load"[22m
+  (e2e-failure) — e2e failure: ProjectCard renders project name, description, and language badge (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects
+  Call log:
+  [2m - navigating to "http://localhost:3099/projects", waiting until "load"[22m
 
 - ISS-046: e2e failure: RecentProjects renders a grid of project cards on home page (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: RecentProjects renders a grid of project cards on home page (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: RecentProjects renders a grid of project cards on home page (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-047: e2e failure: About page renders rich text bio via @graphcms/rich-text-react-renderer (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
- (e2e-failure) — e2e failure: About page renders rich text bio via @graphcms/rich-text-react-renderer (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  (e2e-failure) — e2e failure: About page renders rich text bio via @graphcms/rich-text-react-renderer (t-007-component-snapshots.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
 
 - ISS-048: advisory: LCP 54805ms exceeds budget 2500ms (budget-violation) — advisory: LCP 54805ms exceeds budget 2500ms
 - ISS-049: advisory: CLS 0.123 exceeds budget 0.1 (budget-violation) — advisory: CLS 0.123 exceeds budget 0.1
@@ -369,172 +369,172 @@ Call log:
 - ISS-055: advisory: LCP 54814ms exceeds budget 2500ms (budget-violation) — advisory: LCP 54814ms exceeds budget 2500ms
 - ISS-056: advisory: TBT 1084ms exceeds budget 300ms (budget-violation) — advisory: TBT 1084ms exceeds budget 300ms
 - ISS-058: e2e failure: should render the page title (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should render the page title (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should render the page title (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-059: e2e failure: should display the greeting (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should display the greeting (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should display the greeting (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-060: e2e failure: should render the header navigation (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should render the header navigation (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should render the header navigation (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-061: e2e failure: should render the footer (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should render the footer (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should render the footer (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-062: e2e failure: should navigate to about page (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should navigate to about page (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should navigate to about page (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-063: e2e failure: should navigate to projects page (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should navigate to projects page (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should navigate to projects page (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-064: e2e failure: should navigate to blog page (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should navigate to blog page (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should navigate to blog page (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-065: e2e failure: should navigate to uses page (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should navigate to uses page (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should navigate to uses page (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-066: e2e failure: should toggle mobile menu (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should toggle mobile menu (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should toggle mobile menu (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-067: e2e failure: should respect system preference (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should respect system preference (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should respect system preference (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-068: e2e failure: should have footer navigation links (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should have footer navigation links (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should have footer navigation links (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-069: e2e failure: should show active state on current navigation link (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
- (e2e-failure) — e2e failure: should show active state on current navigation link (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should show active state on current navigation link (fix-001-hardcoded-path-webserver.spec.ts) — Error: page.goto: net::ERR_EMPTY_RESPONSE at http://localhost:3099/about
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
 
 - ISS-070: e2e failure: should navigate to about page (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should navigate to about page (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should navigate to about page (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-071: e2e failure: should navigate to projects page (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should navigate to projects page (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should navigate to projects page (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-072: e2e failure: should navigate to blog page (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should navigate to blog page (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should navigate to blog page (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-073: e2e failure: should navigate to uses page (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should navigate to uses page (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should navigate to uses page (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-074: e2e failure: should toggle mobile menu (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should toggle mobile menu (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should toggle mobile menu (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-075: e2e failure: should respect system preference (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should respect system preference (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should respect system preference (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-076: e2e failure: should have footer navigation links (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should have footer navigation links (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should have footer navigation links (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-077: e2e failure: should show active state on current navigation link (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
- (e2e-failure) — e2e failure: should show active state on current navigation link (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should show active state on current navigation link (home.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
 
 - ISS-078: e2e failure: should render home page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
- (e2e-failure) — e2e failure: should render home page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
-Call log:
-[2m  - navigating to "http://localhost:3099/", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should render home page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/
+  Call log:
+  [2m - navigating to "http://localhost:3099/", waiting until "load"[22m
 
 - ISS-079: e2e failure: should render about page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
- (e2e-failure) — e2e failure: should render about page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
-Call log:
-[2m  - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should render about page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/about
+  Call log:
+  [2m - navigating to "http://localhost:3099/about", waiting until "load"[22m
 
 - ISS-080: e2e failure: should render projects page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects
-Call log:
-[2m  - navigating to "http://localhost:3099/projects", waiting until "load"[22m
- (e2e-failure) — e2e failure: should render projects page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects
-Call log:
-[2m  - navigating to "http://localhost:3099/projects", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/projects", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should render projects page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/projects
+  Call log:
+  [2m - navigating to "http://localhost:3099/projects", waiting until "load"[22m
 
 - ISS-081: e2e failure: should render blog page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog
-Call log:
-[2m  - navigating to "http://localhost:3099/blog", waiting until "load"[22m
- (e2e-failure) — e2e failure: should render blog page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog
-Call log:
-[2m  - navigating to "http://localhost:3099/blog", waiting until "load"[22m
+  Call log:
+  [2m - navigating to "http://localhost:3099/blog", waiting until "load"[22m
+  (e2e-failure) — e2e failure: should render blog page without runtime errors (t-001-dependency-upgrade.spec.ts) — Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog
+  Call log:
+  [2m - navigating to "http://localhost:3099/blog", waiting until "load"[22m
 
 - ISS-082: advisory: LCP 54763ms exceeds budget 2500ms (budget-violation) — advisory: LCP 54763ms exceeds budget 2500ms
 - ISS-083: advisory: TBT 1251ms exceeds budget 300ms (budget-violation) — advisory: TBT 1251ms exceeds budget 300ms
@@ -555,11 +555,11 @@ Received string: [31m"[7mhidden [27msm:hidden"[39m
 Timeout: 5000ms
 
 Call log:
-[2m  - Expect "not toHaveClass" with timeout 5000ms[22m
-[2m  - waiting for locator('#mobile-menu')[22m
-[2m    14 × locator resolved to <div id="mobile-menu" class="hidden sm:hidden">…</div>[22m
-[2m       - unexpected value "hidden sm:hidden"[22m
- (e2e-failure) — e2e failure: should toggle mobile menu (home.spec.ts) — Error: [2mexpect([22m[31mlocator[39m[2m).not.[22mtoHaveClass[2m([22m[32mexpected[39m[2m)[22m failed
+[2m - Expect "not toHaveClass" with timeout 5000ms[22m
+[2m - waiting for locator('#mobile-menu')[22m
+[2m 14 × locator resolved to <div id="mobile-menu" class="hidden sm:hidden">…</div>[22m
+[2m - unexpected value "hidden sm:hidden"[22m
+(e2e-failure) — e2e failure: should toggle mobile menu (home.spec.ts) — Error: [2mexpect([22m[31mlocator[39m[2m).not.[22mtoHaveClass[2m([22m[32mexpected[39m[2m)[22m failed
 
 Locator: locator('#mobile-menu')
 Expected pattern: not [32m/(^|\s)hidden(\s|$)/[39m
@@ -567,10 +567,10 @@ Received string: [31m"[7mhidden [27msm:hidden"[39m
 Timeout: 5000ms
 
 Call log:
-[2m  - Expect "not toHaveClass" with timeout 5000ms[22m
-[2m  - waiting for locator('#mobile-menu')[22m
-[2m    14 × locator resolved to <div id="mobile-menu" class="hidden sm:hidden">…</div>[22m
-[2m       - unexpected value "hidden sm:hidden"[22m
+[2m - Expect "not toHaveClass" with timeout 5000ms[22m
+[2m - waiting for locator('#mobile-menu')[22m
+[2m 14 × locator resolved to <div id="mobile-menu" class="hidden sm:hidden">…</div>[22m
+[2m - unexpected value "hidden sm:hidden"[22m
 
 - ISS-094: advisory: LCP 2855ms exceeds budget 2500ms (budget-violation) — advisory: LCP 2855ms exceeds budget 2500ms
 - ISS-095: advisory: TBT 1175ms exceeds budget 300ms (budget-violation) — advisory: TBT 1175ms exceeds budget 300ms

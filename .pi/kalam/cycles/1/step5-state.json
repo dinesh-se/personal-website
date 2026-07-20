@@ -1,404 +1,336 @@
 {
-  "kind": "task-pipeline",
-  "tasksRoot": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks",
-  "plan": [
-    {
-      "id": "T-001",
-      "slug": "upgrade-core-deps",
-      "milestone": 1,
-      "coversFeatures": [
-        "Upgrade next to ^16.x",
-        "Upgrade react/react-dom to ^19.x",
-        "Upgrade @types/react/@types/react-dom to ^19",
-        "Upgrade @vercel/analytics to ^2.x"
-      ],
-      "deps": [],
-      "userTest": "Run `npm install && npm run build` — verify build succeeds with zero TypeScript errors"
-    },
-    {
-      "id": "T-002",
-      "slug": "upgrade-other-deps",
-      "milestone": 1,
-      "coversFeatures": [
-        "Upgrade all other direct dependencies to latest stable"
-      ],
-      "deps": [
-        "T-001"
-      ],
-      "userTest": "Run `npm install && npm test` — verify all Jest tests pass"
-    },
-    {
-      "id": "T-003",
-      "slug": "fix-typescript-errors",
-      "milestone": 1,
-      "coversFeatures": [
-        "Fix all resulting TypeScript errors"
-      ],
-      "deps": [
-        "T-002"
-      ],
-      "userTest": "Run `npm run build` — verify zero TypeScript errors in build output"
-    },
-    {
-      "id": "T-004",
-      "slug": "migrate-eslint-flat-config",
-      "milestone": 2,
-      "coversFeatures": [
-        "Migrate ESLint v8 to v9 flat config"
-      ],
-      "deps": [
-        "T-003"
-      ],
-      "userTest": "Run `npm run lint` — verify ESLint v9 runs with zero errors"
-    },
-    {
-      "id": "T-005",
-      "slug": "fix-eslint-errors",
-      "milestone": 2,
-      "coversFeatures": [
-        "Fix all resulting ESLint errors"
-      ],
-      "deps": [
-        "T-004"
-      ],
-      "userTest": "Run `npm run lint` — verify zero ESLint errors"
-    },
-    {
-      "id": "T-006",
-      "slug": "update-ci-workflow",
-      "milestone": 2,
-      "coversFeatures": [
-        "Update CI workflow to Node 24"
-      ],
-      "deps": [
-        "T-005"
-      ],
-      "userTest": "Verify `.github/workflows/lint-test.yml` uses Node 24 and `setup-node@v4`"
-    },
-    {
-      "id": "T-007",
-      "slug": "fix-jest-snapshots",
-      "milestone": 3,
-      "coversFeatures": [
-        "All Jest snapshot tests pass"
-      ],
-      "deps": [
-        "T-003"
-      ],
-      "userTest": "Run `npm test` — verify all 8 component snapshot tests pass"
-    },
-    {
-      "id": "T-008",
-      "slug": "fix-playwright-e2e",
-      "milestone": 3,
-      "coversFeatures": [
-        "All Playwright E2E tests pass"
-      ],
-      "deps": [
-        "T-003"
-      ],
-      "userTest": "Run `npx playwright test` — verify all E2E tests pass"
-    },
-    {
-      "id": "T-009",
-      "slug": "verify-page-rendering",
-      "milestone": 3,
-      "coversFeatures": [
-        "All 5 pages render without runtime errors",
-        "Mobile menu toggles correctly",
-        "Navigation active state highlights correctly",
-        "Dark mode renders correctly on all pages"
-      ],
-      "deps": [
-        "T-008"
-      ],
-      "userTest": "Visit `/`, `/about`, `/projects`, `/blog`, `/uses` in browser — verify each page loads without errors and renders expected content"
-    }
-  ],
-  "planComplete": true,
-  "tasks": {
-    "T-001": {
-      "id": "T-001",
-      "slug": "upgrade-core-deps",
-      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-001-upgrade-core-deps",
-      "milestone": 1,
-      "deps": [],
-      "fileScope": [
-        "package.json",
-        "src/app/layout.tsx",
-        "next.config.mjs"
-      ],
-      "coversFeatures": [
-        "Upgrade next to ^16.x",
-        "Upgrade react/react-dom to ^19.x",
-        "Upgrade @types/react/@types/react-dom to ^19",
-        "Upgrade @vercel/analytics to ^2.x"
-      ],
-      "userTest": "Run `npm install && npm run build` — verify build succeeds with zero TypeScript errors",
-      "acceptanceCriteria": [
-        "package.json has next: ^16.x, react: ^19.x, react-dom: ^19.x, @types/react: ^19, @types/react-dom: ^19, @vercel/analytics: ^2.x",
-        "npm install completes with exit code 0 and zero peer dependency conflict warnings",
-        "npm run build succeeds with zero TypeScript errors",
-        "src/app/layout.tsx still imports <Analytics /> without type errors",
-        "next.config.mjs has no warnings about deprecated options",
-        "npm test and npm run typecheck and npm run lint pass"
-      ]
-    },
-    "T-002": {
-      "id": "T-002",
-      "slug": "upgrade-other-deps",
-      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-002-upgrade-other-deps",
-      "milestone": 1,
-      "deps": [
-        "T-001"
-      ],
-      "fileScope": [
-        "package.json",
-        "src/api/graphql.ts",
-        "src/components/Contact/Contact.tsx",
-        "src/app/about/page.tsx",
-        "next.config.mjs"
-      ],
-      "coversFeatures": [
-        "Upgrade all other direct dependencies to latest stable"
-      ],
-      "userTest": "Run `npm install && npm test` — verify all Jest tests pass",
-      "acceptanceCriteria": [
-        "All direct dependencies in package.json are bumped to their latest stable versions per the PRD dependency table",
-        "npm install completes with exit code 0 and zero peer dependency conflict warnings",
-        "npm test executes all 8 component test suites",
-        "npm run build still succeeds with zero new TypeScript errors",
-        "@graphcms/rich-text-react-renderer version is the latest stable (or pinned to a React 19-compatible version)",
-        "react-social-icons version is the latest stable (or pinned if incompatible with React 19)",
-        "tailwindcss stays on v3.x",
-        "npm test runs without crashes or import errors",
-        "npm run typecheck and npm run lint pass"
-      ]
-    },
-    "T-003": {
-      "id": "T-003",
-      "slug": "fix-typescript-errors",
-      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-003-fix-typescript-errors",
-      "milestone": 1,
-      "deps": [
-        "T-002"
-      ],
-      "fileScope": [
-        "src/app/page.tsx",
-        "src/app/about/page.tsx",
-        "src/app/projects/page.tsx",
-        "src/app/blog/page.tsx",
-        "src/app/uses/page.tsx",
-        "src/app/layout.tsx",
-        "src/components/*/Header.tsx",
-        "src/components/*/Footer.tsx",
-        "src/components/*/NavLinks.tsx",
-        "src/components/*/Contact.tsx",
-        "src/components/*/Experience.tsx",
-        "src/components/*/BlogPostCard.tsx",
-        "src/components/*/ProjectCard.tsx",
-        "src/components/*/RecentProjects.tsx",
-        "src/api/graphql.ts",
-        "src/api/rest.ts",
-        "src/types/*.ts",
-        "tsconfig.json"
-      ],
-      "coversFeatures": [
-        "Fix all resulting TypeScript errors"
-      ],
-      "userTest": "Run `npm run build` — verify zero TypeScript errors in build output",
-      "acceptanceCriteria": [
-        "npm run build exits with code 0",
-        "Build output contains zero TypeScript compilation errors",
-        "All 5 pages compile without type errors",
-        "All components in src/components/ compile without type errors",
-        "All API modules in src/api/ compile without type errors",
-        "All type definitions in src/types/ are compatible with upgraded packages",
-        "npm test runs without TypeScript errors in test files",
-        "npm run typecheck and npm run lint pass"
-      ]
-    },
-    "T-004": {
-      "id": "T-004",
-      "slug": "migrate-eslint-flat-config",
-      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-004-migrate-eslint-flat-config",
-      "milestone": 2,
-      "deps": [
-        "T-003"
-      ],
-      "fileScope": [
-        "eslint.config.js",
-        ".eslintrc.json",
-        "package.json"
-      ],
-      "coversFeatures": [
-        "Migrate ESLint v8 to v9 flat config"
-      ],
-      "userTest": "Run `npm run lint` — verify ESLint v9 runs with zero errors",
-      "acceptanceCriteria": [
-        "eslint.config.js (or eslint.config.mjs) exists at project root",
-        ".eslintrc.json is removed",
-        "package.json lint script points to next lint (or eslint directly)",
-        "All existing rules are preserved in flat config: next/core-web-vitals, @typescript-eslint/recommended, prettier/recommended, jsx-a11y",
-        "eslint.config.js ignores e2e/, .next/, and node_modules/",
-        "npm run lint executes with zero errors",
-        "npm run typecheck and npm test pass"
-      ]
-    },
-    "T-005": {
-      "id": "T-005",
-      "slug": "fix-eslint-errors",
-      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-005-fix-eslint-errors",
-      "milestone": 2,
-      "deps": [
-        "T-004"
-      ],
-      "fileScope": [
-        "src/app/page.tsx",
-        "src/app/about/page.tsx",
-        "src/app/projects/page.tsx",
-        "src/app/blog/page.tsx",
-        "src/app/uses/page.tsx",
-        "src/components/*/"
-      ],
-      "coversFeatures": [
-        "Fix all resulting ESLint errors"
-      ],
-      "userTest": "Run `npm run lint` — verify zero ESLint errors",
-      "acceptanceCriteria": [
-        "npm run lint exits with code 0",
-        "Lint output contains zero errors",
-        "All source files in src/ pass linting",
-        "All test files in src/components/*/ pass linting",
-        "All E2E test files in e2e/ are properly ignored",
-        "npm run typecheck and npm test pass"
-      ]
-    },
-    "T-006": {
-      "id": "T-006",
-      "slug": "update-ci-workflow",
-      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-006-update-ci-workflow",
-      "milestone": 2,
-      "deps": [
-        "T-005"
-      ],
-      "fileScope": [
-        ".github/workflows/lint-test.yml"
-      ],
-      "coversFeatures": [
-        "Update CI workflow to Node 24"
-      ],
-      "userTest": "Verify `.github/workflows/lint-test.yml` uses Node 24 and `setup-node@v4`",
-      "acceptanceCriteria": [
-        ".github/workflows/lint-test.yml uses node-version: '24'",
-        "setup-node action is bumped to v4 (from v2)",
-        "All CI steps (npm ci, npm run lint, npm test) reference the updated Node version",
-        "Workflow syntax is valid",
-        "npm run typecheck and npm test pass"
-      ]
-    },
-    "T-007": {
-      "id": "T-007",
-      "slug": "fix-jest-snapshots",
-      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-007-fix-jest-snapshots",
-      "milestone": 3,
-      "deps": [
-        "T-003"
-      ],
-      "fileScope": [
-        "src/components/Header/__snapshots__/",
-        "src/components/Footer/__snapshots__/",
-        "src/components/NavLinks/__snapshots__/",
-        "src/components/Contact/__snapshots__/",
-        "src/components/Experience/__snapshots__/",
-        "src/components/BlogPostCard/__snapshots__/",
-        "src/components/ProjectCard/__snapshots__/",
-        "src/components/RecentProjects/__snapshots__/",
-        "jest.config.ts",
-        "jest.setup.ts",
-        "babel.config.json"
-      ],
-      "coversFeatures": [
-        "All Jest snapshot tests pass"
-      ],
-      "userTest": "Run `npm test` — verify all 8 component snapshot tests pass",
-      "acceptanceCriteria": [
-        "All 8 component snapshot tests pass with zero failures",
-        "Snapshots are updated to reflect React 19 output (if changed)",
-        "@graphcms/rich-text-react-renderer renders correctly on /about page snapshot",
-        "react-social-icons renders correctly in Contact component snapshot",
-        "npm test exits with code 0",
-        "npm run typecheck and npm run lint pass"
-      ]
-    },
-    "T-008": {
-      "id": "T-008",
-      "slug": "fix-playwright-e2e",
-      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-008-fix-playwright-e2e",
-      "milestone": 3,
-      "deps": [
-        "T-003"
-      ],
-      "fileScope": [
-        "e2e/home.spec.ts",
-        "e2e/setup.cjs",
-        "e2e/fixtures/hygraph-author.json",
-        "e2e/fixtures/devto-posts.json",
-        "e2e/playwright.config.ts",
-        "e2e/shared/intercept-api.ts"
-      ],
-      "coversFeatures": [
-        "All Playwright E2E tests pass"
-      ],
-      "userTest": "Run `npx playwright test` — verify all E2E tests pass",
-      "acceptanceCriteria": [
-        "All Playwright E2E tests pass with zero failures",
-        "Navigation tests (blog, about, uses, projects) pass",
-        "Mobile menu toggle test passes",
-        "Dark mode test passes",
-        "Footer links test passes",
-        "Nav active-state test passes",
-        "Mock fixtures match expected API response formats",
-        "e2e/setup.cjs correctly mocks Hygraph GraphQL and Dev.to REST endpoints",
-        "npx playwright test exits with code 0",
-        "npm run typecheck and npm run lint pass"
-      ]
-    },
-    "T-009": {
-      "id": "T-009",
-      "slug": "verify-page-rendering",
-      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-009-verify-page-rendering",
-      "milestone": 3,
-      "deps": [
-        "T-008"
-      ],
-      "fileScope": [
-        "None (verification task only)"
-      ],
-      "coversFeatures": [
-        "All 5 pages render without runtime errors",
-        "Mobile menu toggles correctly",
-        "Navigation active state highlights correctly",
-        "Dark mode renders correctly on all pages"
-      ],
-      "userTest": "Visit `/`, `/about`, `/projects`, `/blog`, `/uses` in browser — verify each page loads without errors and renders expected content",
-      "acceptanceCriteria": [
-        "All 5 pages (/ , /about, /projects, /blog, /uses) render without JavaScript runtime errors",
-        "Each page renders its expected content (greeting, bio, project grid, articles, tech stack list)",
-        "Mobile menu opens and closes correctly on mobile viewport",
-        "Navigation active-state highlights correctly on all pages",
-        "Dark mode renders correctly on all pages",
-        "No console errors in browser dev tools when visiting any page",
-        "npm run typecheck and npm run lint pass"
-      ]
-    }
-  },
-  "review": {
-    "checked": true,
-    "passed": true,
-    "issues": []
-  },
-  "approved": true,
-  "completed": true,
-  "readTurn": 2
+	"kind": "task-pipeline",
+	"tasksRoot": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks",
+	"plan": [
+		{
+			"id": "T-001",
+			"slug": "upgrade-core-deps",
+			"milestone": 1,
+			"coversFeatures": [
+				"Upgrade next to ^16.x",
+				"Upgrade react/react-dom to ^19.x",
+				"Upgrade @types/react/@types/react-dom to ^19",
+				"Upgrade @vercel/analytics to ^2.x"
+			],
+			"deps": [],
+			"userTest": "Run `npm install && npm run build` — verify build succeeds with zero TypeScript errors"
+		},
+		{
+			"id": "T-002",
+			"slug": "upgrade-other-deps",
+			"milestone": 1,
+			"coversFeatures": [
+				"Upgrade all other direct dependencies to latest stable"
+			],
+			"deps": ["T-001"],
+			"userTest": "Run `npm install && npm test` — verify all Jest tests pass"
+		},
+		{
+			"id": "T-003",
+			"slug": "fix-typescript-errors",
+			"milestone": 1,
+			"coversFeatures": ["Fix all resulting TypeScript errors"],
+			"deps": ["T-002"],
+			"userTest": "Run `npm run build` — verify zero TypeScript errors in build output"
+		},
+		{
+			"id": "T-004",
+			"slug": "migrate-eslint-flat-config",
+			"milestone": 2,
+			"coversFeatures": ["Migrate ESLint v8 to v9 flat config"],
+			"deps": ["T-003"],
+			"userTest": "Run `npm run lint` — verify ESLint v9 runs with zero errors"
+		},
+		{
+			"id": "T-005",
+			"slug": "fix-eslint-errors",
+			"milestone": 2,
+			"coversFeatures": ["Fix all resulting ESLint errors"],
+			"deps": ["T-004"],
+			"userTest": "Run `npm run lint` — verify zero ESLint errors"
+		},
+		{
+			"id": "T-006",
+			"slug": "update-ci-workflow",
+			"milestone": 2,
+			"coversFeatures": ["Update CI workflow to Node 24"],
+			"deps": ["T-005"],
+			"userTest": "Verify `.github/workflows/lint-test.yml` uses Node 24 and `setup-node@v4`"
+		},
+		{
+			"id": "T-007",
+			"slug": "fix-jest-snapshots",
+			"milestone": 3,
+			"coversFeatures": ["All Jest snapshot tests pass"],
+			"deps": ["T-003"],
+			"userTest": "Run `npm test` — verify all 8 component snapshot tests pass"
+		},
+		{
+			"id": "T-008",
+			"slug": "fix-playwright-e2e",
+			"milestone": 3,
+			"coversFeatures": ["All Playwright E2E tests pass"],
+			"deps": ["T-003"],
+			"userTest": "Run `npx playwright test` — verify all E2E tests pass"
+		},
+		{
+			"id": "T-009",
+			"slug": "verify-page-rendering",
+			"milestone": 3,
+			"coversFeatures": [
+				"All 5 pages render without runtime errors",
+				"Mobile menu toggles correctly",
+				"Navigation active state highlights correctly",
+				"Dark mode renders correctly on all pages"
+			],
+			"deps": ["T-008"],
+			"userTest": "Visit `/`, `/about`, `/projects`, `/blog`, `/uses` in browser — verify each page loads without errors and renders expected content"
+		}
+	],
+	"planComplete": true,
+	"tasks": {
+		"T-001": {
+			"id": "T-001",
+			"slug": "upgrade-core-deps",
+			"path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-001-upgrade-core-deps",
+			"milestone": 1,
+			"deps": [],
+			"fileScope": ["package.json", "src/app/layout.tsx", "next.config.mjs"],
+			"coversFeatures": [
+				"Upgrade next to ^16.x",
+				"Upgrade react/react-dom to ^19.x",
+				"Upgrade @types/react/@types/react-dom to ^19",
+				"Upgrade @vercel/analytics to ^2.x"
+			],
+			"userTest": "Run `npm install && npm run build` — verify build succeeds with zero TypeScript errors",
+			"acceptanceCriteria": [
+				"package.json has next: ^16.x, react: ^19.x, react-dom: ^19.x, @types/react: ^19, @types/react-dom: ^19, @vercel/analytics: ^2.x",
+				"npm install completes with exit code 0 and zero peer dependency conflict warnings",
+				"npm run build succeeds with zero TypeScript errors",
+				"src/app/layout.tsx still imports <Analytics /> without type errors",
+				"next.config.mjs has no warnings about deprecated options",
+				"npm test and npm run typecheck and npm run lint pass"
+			]
+		},
+		"T-002": {
+			"id": "T-002",
+			"slug": "upgrade-other-deps",
+			"path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-002-upgrade-other-deps",
+			"milestone": 1,
+			"deps": ["T-001"],
+			"fileScope": [
+				"package.json",
+				"src/api/graphql.ts",
+				"src/components/Contact/Contact.tsx",
+				"src/app/about/page.tsx",
+				"next.config.mjs"
+			],
+			"coversFeatures": [
+				"Upgrade all other direct dependencies to latest stable"
+			],
+			"userTest": "Run `npm install && npm test` — verify all Jest tests pass",
+			"acceptanceCriteria": [
+				"All direct dependencies in package.json are bumped to their latest stable versions per the PRD dependency table",
+				"npm install completes with exit code 0 and zero peer dependency conflict warnings",
+				"npm test executes all 8 component test suites",
+				"npm run build still succeeds with zero new TypeScript errors",
+				"@graphcms/rich-text-react-renderer version is the latest stable (or pinned to a React 19-compatible version)",
+				"react-social-icons version is the latest stable (or pinned if incompatible with React 19)",
+				"tailwindcss stays on v3.x",
+				"npm test runs without crashes or import errors",
+				"npm run typecheck and npm run lint pass"
+			]
+		},
+		"T-003": {
+			"id": "T-003",
+			"slug": "fix-typescript-errors",
+			"path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-003-fix-typescript-errors",
+			"milestone": 1,
+			"deps": ["T-002"],
+			"fileScope": [
+				"src/app/page.tsx",
+				"src/app/about/page.tsx",
+				"src/app/projects/page.tsx",
+				"src/app/blog/page.tsx",
+				"src/app/uses/page.tsx",
+				"src/app/layout.tsx",
+				"src/components/*/Header.tsx",
+				"src/components/*/Footer.tsx",
+				"src/components/*/NavLinks.tsx",
+				"src/components/*/Contact.tsx",
+				"src/components/*/Experience.tsx",
+				"src/components/*/BlogPostCard.tsx",
+				"src/components/*/ProjectCard.tsx",
+				"src/components/*/RecentProjects.tsx",
+				"src/api/graphql.ts",
+				"src/api/rest.ts",
+				"src/types/*.ts",
+				"tsconfig.json"
+			],
+			"coversFeatures": ["Fix all resulting TypeScript errors"],
+			"userTest": "Run `npm run build` — verify zero TypeScript errors in build output",
+			"acceptanceCriteria": [
+				"npm run build exits with code 0",
+				"Build output contains zero TypeScript compilation errors",
+				"All 5 pages compile without type errors",
+				"All components in src/components/ compile without type errors",
+				"All API modules in src/api/ compile without type errors",
+				"All type definitions in src/types/ are compatible with upgraded packages",
+				"npm test runs without TypeScript errors in test files",
+				"npm run typecheck and npm run lint pass"
+			]
+		},
+		"T-004": {
+			"id": "T-004",
+			"slug": "migrate-eslint-flat-config",
+			"path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-004-migrate-eslint-flat-config",
+			"milestone": 2,
+			"deps": ["T-003"],
+			"fileScope": ["eslint.config.js", ".eslintrc.json", "package.json"],
+			"coversFeatures": ["Migrate ESLint v8 to v9 flat config"],
+			"userTest": "Run `npm run lint` — verify ESLint v9 runs with zero errors",
+			"acceptanceCriteria": [
+				"eslint.config.js (or eslint.config.mjs) exists at project root",
+				".eslintrc.json is removed",
+				"package.json lint script points to next lint (or eslint directly)",
+				"All existing rules are preserved in flat config: next/core-web-vitals, @typescript-eslint/recommended, prettier/recommended, jsx-a11y",
+				"eslint.config.js ignores e2e/, .next/, and node_modules/",
+				"npm run lint executes with zero errors",
+				"npm run typecheck and npm test pass"
+			]
+		},
+		"T-005": {
+			"id": "T-005",
+			"slug": "fix-eslint-errors",
+			"path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-005-fix-eslint-errors",
+			"milestone": 2,
+			"deps": ["T-004"],
+			"fileScope": [
+				"src/app/page.tsx",
+				"src/app/about/page.tsx",
+				"src/app/projects/page.tsx",
+				"src/app/blog/page.tsx",
+				"src/app/uses/page.tsx",
+				"src/components/*/"
+			],
+			"coversFeatures": ["Fix all resulting ESLint errors"],
+			"userTest": "Run `npm run lint` — verify zero ESLint errors",
+			"acceptanceCriteria": [
+				"npm run lint exits with code 0",
+				"Lint output contains zero errors",
+				"All source files in src/ pass linting",
+				"All test files in src/components/*/ pass linting",
+				"All E2E test files in e2e/ are properly ignored",
+				"npm run typecheck and npm test pass"
+			]
+		},
+		"T-006": {
+			"id": "T-006",
+			"slug": "update-ci-workflow",
+			"path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-006-update-ci-workflow",
+			"milestone": 2,
+			"deps": ["T-005"],
+			"fileScope": [".github/workflows/lint-test.yml"],
+			"coversFeatures": ["Update CI workflow to Node 24"],
+			"userTest": "Verify `.github/workflows/lint-test.yml` uses Node 24 and `setup-node@v4`",
+			"acceptanceCriteria": [
+				".github/workflows/lint-test.yml uses node-version: '24'",
+				"setup-node action is bumped to v4 (from v2)",
+				"All CI steps (npm ci, npm run lint, npm test) reference the updated Node version",
+				"Workflow syntax is valid",
+				"npm run typecheck and npm test pass"
+			]
+		},
+		"T-007": {
+			"id": "T-007",
+			"slug": "fix-jest-snapshots",
+			"path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-007-fix-jest-snapshots",
+			"milestone": 3,
+			"deps": ["T-003"],
+			"fileScope": [
+				"src/components/Header/__snapshots__/",
+				"src/components/Footer/__snapshots__/",
+				"src/components/NavLinks/__snapshots__/",
+				"src/components/Contact/__snapshots__/",
+				"src/components/Experience/__snapshots__/",
+				"src/components/BlogPostCard/__snapshots__/",
+				"src/components/ProjectCard/__snapshots__/",
+				"src/components/RecentProjects/__snapshots__/",
+				"jest.config.ts",
+				"jest.setup.ts",
+				"babel.config.json"
+			],
+			"coversFeatures": ["All Jest snapshot tests pass"],
+			"userTest": "Run `npm test` — verify all 8 component snapshot tests pass",
+			"acceptanceCriteria": [
+				"All 8 component snapshot tests pass with zero failures",
+				"Snapshots are updated to reflect React 19 output (if changed)",
+				"@graphcms/rich-text-react-renderer renders correctly on /about page snapshot",
+				"react-social-icons renders correctly in Contact component snapshot",
+				"npm test exits with code 0",
+				"npm run typecheck and npm run lint pass"
+			]
+		},
+		"T-008": {
+			"id": "T-008",
+			"slug": "fix-playwright-e2e",
+			"path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-008-fix-playwright-e2e",
+			"milestone": 3,
+			"deps": ["T-003"],
+			"fileScope": [
+				"e2e/home.spec.ts",
+				"e2e/setup.cjs",
+				"e2e/fixtures/hygraph-author.json",
+				"e2e/fixtures/devto-posts.json",
+				"e2e/playwright.config.ts",
+				"e2e/shared/intercept-api.ts"
+			],
+			"coversFeatures": ["All Playwright E2E tests pass"],
+			"userTest": "Run `npx playwright test` — verify all E2E tests pass",
+			"acceptanceCriteria": [
+				"All Playwright E2E tests pass with zero failures",
+				"Navigation tests (blog, about, uses, projects) pass",
+				"Mobile menu toggle test passes",
+				"Dark mode test passes",
+				"Footer links test passes",
+				"Nav active-state test passes",
+				"Mock fixtures match expected API response formats",
+				"e2e/setup.cjs correctly mocks Hygraph GraphQL and Dev.to REST endpoints",
+				"npx playwright test exits with code 0",
+				"npm run typecheck and npm run lint pass"
+			]
+		},
+		"T-009": {
+			"id": "T-009",
+			"slug": "verify-page-rendering",
+			"path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-009-verify-page-rendering",
+			"milestone": 3,
+			"deps": ["T-008"],
+			"fileScope": ["None (verification task only)"],
+			"coversFeatures": [
+				"All 5 pages render without runtime errors",
+				"Mobile menu toggles correctly",
+				"Navigation active state highlights correctly",
+				"Dark mode renders correctly on all pages"
+			],
+			"userTest": "Visit `/`, `/about`, `/projects`, `/blog`, `/uses` in browser — verify each page loads without errors and renders expected content",
+			"acceptanceCriteria": [
+				"All 5 pages (/ , /about, /projects, /blog, /uses) render without JavaScript runtime errors",
+				"Each page renders its expected content (greeting, bio, project grid, articles, tech stack list)",
+				"Mobile menu opens and closes correctly on mobile viewport",
+				"Navigation active-state highlights correctly on all pages",
+				"Dark mode renders correctly on all pages",
+				"No console errors in browser dev tools when visiting any page",
+				"npm run typecheck and npm run lint pass"
+			]
+		}
+	},
+	"review": {
+		"checked": true,
+		"passed": true,
+		"issues": []
+	},
+	"approved": true,
+	"completed": true,
+	"readTurn": 2
 }

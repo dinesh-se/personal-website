@@ -1,32 +1,32 @@
 {
-  "kind": "tech-design",
-  "documents": {
-    "architecture": {
-      "generated": true,
-      "regenCount": 1,
-      "changesRequested": []
-    },
-    "data-model": {
-      "generated": true,
-      "regenCount": 0,
-      "changesRequested": []
-    },
-    "api-spec": {
-      "generated": true,
-      "regenCount": 0,
-      "changesRequested": []
-    },
-    "ux-spec": {
-      "generated": true,
-      "regenCount": 0,
-      "changesRequested": []
-    }
-  },
-  "consistency": {
-    "checked": true,
-    "passed": true,
-    "issues": []
-  },
-  "resolutions": [],
-  "completed": true
+	"kind": "tech-design",
+	"documents": {
+		"architecture": {
+			"generated": true,
+			"regenCount": 1,
+			"changesRequested": []
+		},
+		"data-model": {
+			"generated": true,
+			"regenCount": 0,
+			"changesRequested": []
+		},
+		"api-spec": {
+			"generated": true,
+			"regenCount": 0,
+			"changesRequested": []
+		},
+		"ux-spec": {
+			"generated": true,
+			"regenCount": 0,
+			"changesRequested": []
+		}
+	},
+	"consistency": {
+		"checked": true,
+		"passed": true,
+		"issues": []
+	},
+	"resolutions": [],
+	"completed": true
 }

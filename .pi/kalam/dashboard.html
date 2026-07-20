@@ -66,20 +66,24 @@ header h1 { font-size: 18px; margin: 0; }
 <header>
   <h1>kalam pipeline</h1>
   <span class="chip">cycle 2 · brownfield</span>
-  <span class="timestamp">generated 20:07:03 UTC — auto-refreshes every 3s</span>
+  <span class="timestamp">generated 17:08:39 UTC — auto-refreshes every 3s</span>
 </header>
 <div class="readonly-note">Read-only view — control the pipeline from the TUI (/kalam …).</div>
 <div class="grid">
 <section class="card run-tile run-ended">
   <div class="card-head">
     <span class="glyph" aria-hidden="true">⏹</span>
-    <h2>Run — ended (7.7m)</h2>
+    <h2>Run — ended (-8.4m)</h2>
   </div>
   <div class="tile-row">
-<div class="tile"><div class="tile-label">Tasks committed</div><div class="tile-value">0</div></div>
-<div class="tile"><div class="tile-label">Child spawns</div><div class="tile-value">1</div></div>
-<div class="tile"><div class="tile-label">Wall clock</div><div class="tile-value">7.7</div></div>
-<div class="tile"><div class="tile-label">Tokens in/out</div><div class="tile-value">0/0</div></div>
+<div class="tile">
+    <div class="tile-label">Tasks committed</div>
+    <div class="tile-value">0 / 1</div>
+    <div class="meter-track"><div class="meter-fill meter-good" style="width:0.0%"></div></div>
+  </div>
+<div class="tile"><div class="tile-label">Child spawns</div><div class="tile-value">2</div></div>
+<div class="tile"><div class="tile-label">Wall clock</div><div class="tile-value">-8.4</div></div>
+<div class="tile"><div class="tile-label">Tokens in/out</div><div class="tile-value">1779458/20243</div></div>
   </div>
 </section>
 <section class="card status-complete">
@@ -188,33 +192,32 @@ header h1 { font-size: 18px; margin: 0; }
 <div class="line">  → Execute   : /kalam build</div>
   </div>
 </section>
-<section class="card status-complete">
+<section class="card status-in-progress">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">✅</span>
+    <span class="glyph" aria-hidden="true">⏳</span>
     <h2>Build · Implementation</h2>
-    <span class="status-word">Complete</span>
+    <span class="status-word">In progress</span>
   </div>
   <div class="card-body">
-<div class="line">  Status      : ✅ Complete</div>
-<div class="line">  Tasks       : 4/4 done</div>
+<div class="line">  Status      : ⏳ In progress</div>
+<div class="line">  Tasks       : 4/5 done</div>
+<div class="line">  Current     : FIX-001 (graceful-devto-fetch-failure)</div>
 <div class="line">  Skipped     : T-004</div>
-<div class="line">  Review notes: 18 open across T-001, T-002, T-003, T-004</div>
-<div class="line">  → Next      : /kalam integration-check</div>
+<div class="line">  Review notes: 23 open across T-001, T-002, T-003, T-004, FIX-001</div>
   </div>
 </section>
-<section class="card status-interrupted">
+<section class="card status-paused">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">⚠</span>
+    <span class="glyph" aria-hidden="true">⏸</span>
     <h2>Step 6 · Integration Check</h2>
-    <span class="status-word">Interrupted</span>
+    <span class="status-word">Paused</span>
   </div>
   <div class="card-body">
-<div class="line">  Status          : ⚠ Interrupted</div>
-<div class="line">  e2e specs       : 3 authored</div>
-<div class="line">  Cycles          : 5 completed</div>
-<div class="line">  Open issues     : 9</div>
-<div class="line">  Pending feedback: 0</div>
-<div class="line">  Last check      : 2026-07-19 16:39</div>
+<div class="line">  Status          : ⏸ Paused</div>
+<div class="line">  e2e specs       : 0 authored</div>
+<div class="line">  Cycles          : 0 completed</div>
+<div class="line">  Open issues     : 0</div>
+<div class="line">  Pending feedback: 1</div>
 <div class="line">  → Resume        : /kalam integration-check</div>
   </div>
 </section>

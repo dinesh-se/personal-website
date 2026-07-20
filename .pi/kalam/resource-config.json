@@ -1,37 +1,35 @@
 {
-  "dataPoints": [
-    {
-      "id": "no-new-data-sources",
-      "description": "No new external data sources required — feature re-architects existing Hygraph GraphQL and Dev.to REST data fetching patterns only.",
-      "fromRequirement": "Data Needs: None — uses existing integrations (Hygraph GraphQL API + Dev.to REST API). No new external data sources required.",
-      "coveredBy": "existing-integrations",
-      "acceptedGap": false
-    }
-  ],
-  "resources": [
-    {
-      "id": "existing-integrations",
-      "name": "Existing integrations (Hygraph + Dev.to)",
-      "type": "public-api",
-      "url": "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/master + https://dev.to/api/articles/me/published",
-      "coverageDataPoints": [
-        "no-new-data-sources"
-      ],
-      "status": "accepted-gap",
-      "confidence": 0.6,
-      "verificationMethod": "model-knowledge",
-      "authRequired": true,
-      "rateLimit": "unknown",
-      "dataFormat": "GraphQL/REST JSON",
-      "cost": "existing",
-      "accessible": true,
-      "issues": [
-        "No new data sources required — feature re-architects existing Hygraph GraphQL and Dev.to REST fetching only",
-        "provenance: model-knowledge only — no live verification this session; confidence capped at 0.6"
-      ],
-      "agentReasoning": "Data Needs explicitly states 'None — uses existing integrations.' Both Hygraph and Dev.to are already in codebase-map.json integrations. No new external APIs are introduced by this re-architecture feature."
-    }
-  ],
-  "gaps": [],
-  "generated-at": "2026-07-18T23:45:03.517Z"
+	"dataPoints": [
+		{
+			"id": "no-new-data-sources",
+			"description": "No new external data sources required — feature re-architects existing Hygraph GraphQL and Dev.to REST data fetching patterns only.",
+			"fromRequirement": "Data Needs: None — uses existing integrations (Hygraph GraphQL API + Dev.to REST API). No new external data sources required.",
+			"coveredBy": "existing-integrations",
+			"acceptedGap": false
+		}
+	],
+	"resources": [
+		{
+			"id": "existing-integrations",
+			"name": "Existing integrations (Hygraph + Dev.to)",
+			"type": "public-api",
+			"url": "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/master + https://dev.to/api/articles/me/published",
+			"coverageDataPoints": ["no-new-data-sources"],
+			"status": "accepted-gap",
+			"confidence": 0.6,
+			"verificationMethod": "model-knowledge",
+			"authRequired": true,
+			"rateLimit": "unknown",
+			"dataFormat": "GraphQL/REST JSON",
+			"cost": "existing",
+			"accessible": true,
+			"issues": [
+				"No new data sources required — feature re-architects existing Hygraph GraphQL and Dev.to REST fetching only",
+				"provenance: model-knowledge only — no live verification this session; confidence capped at 0.6"
+			],
+			"agentReasoning": "Data Needs explicitly states 'None — uses existing integrations.' Both Hygraph and Dev.to are already in codebase-map.json integrations. No new external APIs are introduced by this re-architecture feature."
+		}
+	],
+	"gaps": [],
+	"generated-at": "2026-07-18T23:45:03.517Z"
 }

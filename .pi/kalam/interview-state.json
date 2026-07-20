@@ -1,101 +1,101 @@
 {
-  "kind": "interview",
-  "mode": "brownfield",
-  "idea": "\"Re-architect to current Next.js 16 App Router standards/patterns: move all Hygraph + Dev.to fetching into Server Components (App Router data model); add per-route loading.tsx + error.tsx (streaming + Suspense boundaries); adopt Cache Components (use cache / cacheLife) + Partial Prerendering for cached remote data; upgrade Next to 16.3+ as the prerequisite; migrate to generateMetadata Metadata API + typed routes; fix Experience formatDate DD/MM/YYYY bug. No visual redesign, no new pages; keep Hygraph/Dto as the data sources.\"",
-  "round": 8,
-  "askedAtLeastOnce": true,
-  "boundaries": [
-    {
-      "id": "loading-state-pattern",
-      "question": "What loading state pattern should be used for per-route loading.tsx?",
-      "importance": "key",
-      "status": "resolved",
-      "resolution": "Skeleton loaders"
-    },
-    {
-      "id": "error-handling-strategy",
-      "question": "What error handling strategy should be adopted for error.tsx files?",
-      "importance": "key",
-      "status": "resolved",
-      "resolution": "Hybrid: root + per-route"
-    },
-    {
-      "id": "cache-strategy",
-      "question": "What caching strategy should be used for remote data (Hygraph + Dev.to)?",
-      "importance": "key",
-      "status": "resolved",
-      "resolution": "Default cacheLife profiles"
-    },
-    {
-      "id": "partial-prerendering",
-      "question": "Should Partial Prerendering (PPR) be adopted alongside ISR for cached remote data?",
-      "importance": "key",
-      "status": "resolved",
-      "resolution": "Yes — adopt PPR"
-    },
-    {
-      "id": "metadata-api-migration",
-      "question": "Should all routes migrate from static metadata exports to generateMetadata?",
-      "importance": "key",
-      "status": "resolved",
-      "resolution": "Yes — generateMetadata on all routes"
-    },
-    {
-      "id": "experience-formatdate-fix",
-      "question": "What should the Experience component's formatDate output be?",
-      "importance": "minor",
-      "status": "resolved",
-      "resolution": "MMM YYYY (keep current format — no change needed)"
-    }
-  ],
-  "transcript": [
-    {
-      "round": 1,
-      "topic": "loading-state-pattern",
-      "question": "What loading state pattern should per-route loading.tsx use?",
-      "answer": "Skeleton loaders"
-    },
-    {
-      "round": 2,
-      "topic": "error-handling-strategy",
-      "question": "What error handling strategy should be adopted for error.tsx files?",
-      "answer": "Hybrid: root + per-route"
-    },
-    {
-      "round": 3,
-      "topic": "cache-strategy",
-      "question": "What caching strategy should be used for remote data (Hygraph + Dev.to)?",
-      "answer": "Default cacheLife profiles"
-    },
-    {
-      "round": 4,
-      "topic": "partial-prerendering",
-      "question": "Should Partial Prerendering (PPR) be adopted alongside ISR for cached remote data?",
-      "answer": "Yes — adopt PPR"
-    },
-    {
-      "round": 5,
-      "topic": "metadata-api-migration",
-      "question": "Should all routes migrate from static metadata exports to generateMetadata?",
-      "answer": "Yes — generateMetadata on all routes"
-    },
-    {
-      "round": 7,
-      "topic": "experience-formatdate-fix",
-      "question": "What date format should the Experience component use? Currently it shows \"May 2023\" (month name + year).",
-      "answer": "MMM YYYY (keep current format)"
-    }
-  ],
-  "openQuestions": [
-    "loading-state-pattern",
-    "error-handling-strategy",
-    "cache-strategy",
-    "partial-prerendering",
-    "metadata-api-migration",
-    "experience-formatdate-fix"
-  ],
-  "completed": true,
-  "summaryReady": true,
-  "externalDataNeeded": false,
-  "askRejections": 0
+	"kind": "interview",
+	"mode": "brownfield",
+	"idea": "\"Re-architect to current Next.js 16 App Router standards/patterns: move all Hygraph + Dev.to fetching into Server Components (App Router data model); add per-route loading.tsx + error.tsx (streaming + Suspense boundaries); adopt Cache Components (use cache / cacheLife) + Partial Prerendering for cached remote data; upgrade Next to 16.3+ as the prerequisite; migrate to generateMetadata Metadata API + typed routes; fix Experience formatDate DD/MM/YYYY bug. No visual redesign, no new pages; keep Hygraph/Dto as the data sources.\"",
+	"round": 8,
+	"askedAtLeastOnce": true,
+	"boundaries": [
+		{
+			"id": "loading-state-pattern",
+			"question": "What loading state pattern should be used for per-route loading.tsx?",
+			"importance": "key",
+			"status": "resolved",
+			"resolution": "Skeleton loaders"
+		},
+		{
+			"id": "error-handling-strategy",
+			"question": "What error handling strategy should be adopted for error.tsx files?",
+			"importance": "key",
+			"status": "resolved",
+			"resolution": "Hybrid: root + per-route"
+		},
+		{
+			"id": "cache-strategy",
+			"question": "What caching strategy should be used for remote data (Hygraph + Dev.to)?",
+			"importance": "key",
+			"status": "resolved",
+			"resolution": "Default cacheLife profiles"
+		},
+		{
+			"id": "partial-prerendering",
+			"question": "Should Partial Prerendering (PPR) be adopted alongside ISR for cached remote data?",
+			"importance": "key",
+			"status": "resolved",
+			"resolution": "Yes — adopt PPR"
+		},
+		{
+			"id": "metadata-api-migration",
+			"question": "Should all routes migrate from static metadata exports to generateMetadata?",
+			"importance": "key",
+			"status": "resolved",
+			"resolution": "Yes — generateMetadata on all routes"
+		},
+		{
+			"id": "experience-formatdate-fix",
+			"question": "What should the Experience component's formatDate output be?",
+			"importance": "minor",
+			"status": "resolved",
+			"resolution": "MMM YYYY (keep current format — no change needed)"
+		}
+	],
+	"transcript": [
+		{
+			"round": 1,
+			"topic": "loading-state-pattern",
+			"question": "What loading state pattern should per-route loading.tsx use?",
+			"answer": "Skeleton loaders"
+		},
+		{
+			"round": 2,
+			"topic": "error-handling-strategy",
+			"question": "What error handling strategy should be adopted for error.tsx files?",
+			"answer": "Hybrid: root + per-route"
+		},
+		{
+			"round": 3,
+			"topic": "cache-strategy",
+			"question": "What caching strategy should be used for remote data (Hygraph + Dev.to)?",
+			"answer": "Default cacheLife profiles"
+		},
+		{
+			"round": 4,
+			"topic": "partial-prerendering",
+			"question": "Should Partial Prerendering (PPR) be adopted alongside ISR for cached remote data?",
+			"answer": "Yes — adopt PPR"
+		},
+		{
+			"round": 5,
+			"topic": "metadata-api-migration",
+			"question": "Should all routes migrate from static metadata exports to generateMetadata?",
+			"answer": "Yes — generateMetadata on all routes"
+		},
+		{
+			"round": 7,
+			"topic": "experience-formatdate-fix",
+			"question": "What date format should the Experience component use? Currently it shows \"May 2023\" (month name + year).",
+			"answer": "MMM YYYY (keep current format)"
+		}
+	],
+	"openQuestions": [
+		"loading-state-pattern",
+		"error-handling-strategy",
+		"cache-strategy",
+		"partial-prerendering",
+		"metadata-api-migration",
+		"experience-formatdate-fix"
+	],
+	"completed": true,
+	"summaryReady": true,
+	"externalDataNeeded": false,
+	"askRejections": 0
 }

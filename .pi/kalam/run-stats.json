@@ -1,15 +1,25 @@
 {
-  "startedAt": 1784479039638,
-  "totalSpawns": 1,
-  "checkerSpawns": 1,
-  "tasks": [],
-  "notes": [
-    "ISS-012 cleared by cycle 5 (not reproduced)"
+  "startedAt": 1784565914469,
+  "totalSpawns": 3,
+  "checkerSpawns": 0,
+  "tasks": [
+    {
+      "taskId": "FIX-001",
+      "coderSpawns": 2,
+      "reviewerSpawns": 1,
+      "verifyRuns": 2,
+      "tokensIn": 1914185,
+      "tokensOut": 24317,
+      "startedAt": 1784565914470,
+      "durationMs": 0,
+      "outcome": ""
+    }
   ],
-  "tokensIn": 201893,
-  "tokensOut": 22380,
-  "updatedAt": 1784479501800,
-  "endedAt": 1784479501800,
+  "notes": [],
+  "tokensIn": 1914185,
+  "tokensOut": 24317,
+  "updatedAt": 1784567423721,
+  "endedAt": 1784565411218,
   "caps": {
     "enabled": false,
     "maxRunMinutes": 240,
