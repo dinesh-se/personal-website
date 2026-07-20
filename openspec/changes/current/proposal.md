@@ -2,6 +2,12 @@
 
 **Feature:** "Re-architect to current Next.js 16 App Router standards/patterns: move all Hygraph + Dev.to fetching into Server Components (App Router data model); add per-route loading.tsx + error.tsx (streaming + Suspense boundaries); adopt Cache Components (use cache / cacheLife) + Partial Prerendering for cached remote data; upgrade Next to 16.3+ as the prerequisite; migrate to generateMetadata Metadata API + typed routes; fix Experience formatDate DD/MM/YYYY bug. No visual redesign, no new pages; keep Hygraph/Dto as the data sources."
 
+> **Correction — 2026-07-20:** Every "DD/MM/YYYY" reference below is wrong.
+> Real Hygraph data is ISO 8601 (`YYYY-MM-DD`). See T-002/TASK.md's
+> correction note — the original fix was verified against a fixture that
+> shared the same wrong assumption, not real data, and it broke
+> `formatDate()` for every real organization entry on the deployed site.
+
 ## Feature Scope
 
 Re-architect the existing 5-page personal website to align with Next.js 16 App Router conventions without adding new pages or changing visual design. The feature covers:

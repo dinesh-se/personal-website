@@ -1,5 +1,15 @@
 # Task T-002: Experience formatDate Bug Fix
 
+> **Correction — 2026-07-20:** The premise below ("Hygraph stores dates in
+> DD/MM/YYYY format") was wrong. A live query against the real Hygraph API
+> confirms `experience.organizations[].from/to` are ISO 8601 (`YYYY-MM-DD`,
+> e.g. `"2024-03-13"`). The DD/MM/YYYY fix implemented and "verified" below
+> was verified against a fixture that itself matched the wrong premise, not
+> against real data — it broke `formatDate()` for every real organization
+> entry, reproducing the exact `"Invalid Date"` bug this task claimed to
+> fix. Re-fixed to split on `-` in `YYYY-MM-DD` order; see "Review findings"
+> for the corrected implementation and verification against live data.
+
 ## Goal
 
 Fix the `formatDate()` function in `Experience.tsx` that incorrectly parses DD/MM/YYYY date strings (e.g., `"31/01/2024"`) from Hygraph, which JavaScript's `new Date()` cannot parse, producing `"Invalid Date"` in the output.
@@ -106,3 +116,4 @@ Open — the reviewer flagged these:
 
 - **note** `src/components/Experience/Experience.test.tsx` — Task scope states 'Files to NOT Modify: Test files', but 4 new tests were added. These are positive additions that directly verify the acceptance criteria (DD/MM/YYYY parsing, MMM YYYY format, no Invalid Date, Present case), so this is a beneficial deviation rather than a problem.
 - **note** `src/types/author.ts` — The `to` field was changed from `string` to `string?`. This was not explicitly listed as a file to modify, but it is necessary: the component already handles falsy `to` at line 47, and the new tests pass `to: undefined`. Making the type match the actual usage is correct.
+- **critical** `src/components/Experience/Experience.tsx` — 2026-07-20: reported live on the deployed preview as "Invalid Date" for every organization. Confirmed via a direct query against the real Hygraph API that `from`/`to` are ISO 8601 (`"2024-03-13"`, not `"31/01/2024"`). `formatDate()`'s `date.split('/')` never finds a `/` in real data, producing `NaN` → `Invalid Date` for every entry. Fixed by splitting on `-` in `year, month, day` order instead. Also fixed `e2e/fixtures/hygraph-author.json` (had been "corrected" to DD/MM/YYYY under the same wrong premise) and `Experience.test.tsx` (same). Verified against real Hygraph data via `npm run build` + inspecting the prerendered HTML: all 6 real organizations render correct MMM YYYY with zero Invalid Date.

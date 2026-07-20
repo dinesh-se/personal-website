@@ -5,15 +5,15 @@ import { Experience as ExperienceType } from '@types';
 import Experience from './Experience';
 
 describe('Experience', () => {
-	it('correctly parses DD/MM/YYYY date strings', () => {
+	it('correctly parses ISO 8601 (YYYY-MM-DD) date strings', () => {
 		const props: ExperienceType = {
 			organizations: [
 				{
 					orgName: 'Test Org',
 					orgLogo: { url: 'https://test.org/logo' },
 					title: 'Test Role',
-					from: '31/01/2024',
-					to: '29/02/2024',
+					from: '2024-01-31',
+					to: '2024-02-29',
 				},
 			],
 		};
@@ -29,8 +29,8 @@ describe('Experience', () => {
 					orgName: 'Test Org',
 					orgLogo: { url: 'https://test.org/logo' },
 					title: 'Test Role',
-					from: '15/05/2023',
-					to: '20/12/2024',
+					from: '2023-05-15',
+					to: '2024-12-20',
 				},
 			],
 		};
@@ -46,8 +46,8 @@ describe('Experience', () => {
 					orgName: 'Test Org',
 					orgLogo: { url: 'https://test.org/logo' },
 					title: 'Test Role',
-					from: '31/01/2024',
-					to: '29/02/2024',
+					from: '2024-01-31',
+					to: '2024-02-29',
 				},
 			],
 		};
@@ -62,7 +62,7 @@ describe('Experience', () => {
 					orgName: 'Current Org',
 					orgLogo: { url: 'https://test.org/logo' },
 					title: 'Current Role',
-					from: '01/03/2024',
+					from: '2024-03-01',
 					to: undefined,
 				},
 			],
@@ -80,8 +80,8 @@ describe('Experience', () => {
 						url: 'https://test.org/logo-1',
 					},
 					title: 'Title 1',
-					from: '01/01/2024',
-					to: '31/01/2024',
+					from: '2024-01-01',
+					to: '2024-01-31',
 				},
 				{
 					orgName: 'Organization 2',
@@ -89,8 +89,8 @@ describe('Experience', () => {
 						url: 'https://test.org/logo-2',
 					},
 					title: 'Title 2',
-					from: '01/02/2024',
-					to: '29/02/2024',
+					from: '2024-02-01',
+					to: '2024-02-29',
 				},
 			],
 		};

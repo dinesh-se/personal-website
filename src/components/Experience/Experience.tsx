@@ -6,7 +6,11 @@ import { Experience as ExperienceType } from '@types';
 
 const Experience = ({ organizations }: ExperienceType) => {
 	const formatDate = (date: string) => {
-		const [day, month, year] = date.split('/').map(Number);
+		// Hygraph returns ISO 8601 (YYYY-MM-DD). Parsing the components
+		// directly avoids new Date(isoString)'s UTC-midnight interpretation,
+		// which can shift the displayed month by one near midnight in
+		// timezones behind UTC.
+		const [year, month, day] = date.split('-').map(Number);
 		const d = new Date(year, month - 1, day);
 		return d.toLocaleDateString('en', {
 			year: 'numeric',
