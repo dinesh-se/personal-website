@@ -603,13 +603,48 @@
       "coversFeatures": [],
       "userTest": "1. Run `npx playwright test e2e/fix-001-graceful-devto-fetch-failure.spec.ts` — both tests should pass without ERR_CONNECTION_REFUSED.\n2. Visit http://localhost:3099/blog in a browser — Dev.to posts should render normally.\n3. Set DEVTO_KEY to an invalid value, restart the dev server, and visit /blog — the fallback message 'Blog posts are temporarily unavailable. Check back soon.' should appear.",
       "milestone": 3,
-      "status": "in-progress",
+      "status": "done",
       "attempts": 1,
       "origin": "check",
       "startedAt": "2026-07-20T17:20:13.361Z",
       "attemptCounts": {
         "verify": 1
-      }
+      },
+      "acceptanceManifest": [
+        {
+          "text": "Playwright config starts the Next.js dev server on port 3099 before running e2e tests (via webServer config)",
+          "met": true,
+          "evidence": "e2e/playwright.config.ts::webServer config block with port 3099"
+        },
+        {
+          "text": "A local API route exists at /api/articles/me/published that wraps the Dev.to fetch (reuses existing getBlogFetchResult logic from src/api/rest.ts)",
+          "met": true,
+          "evidence": "src/app/api/articles/me/published/route.ts"
+        },
+        {
+          "text": "BlogContent component is converted to a client component ('use client') that fetches from the local API route instead of receiving pre-fetched data from a server component",
+          "met": true,
+          "evidence": "src/app/blog/BlogContent.tsx::'use client' and fetch('/api/articles/me/published')"
+        },
+        {
+          "text": "The blog page.tsx becomes a thin server wrapper that renders BlogContent (now a client component)",
+          "met": true,
+          "evidence": "src/app/blog/page.tsx::renders BlogContent"
+        },
+        {
+          "text": "The e2e test's page.route('**/api/articles/me/published*') successfully intercepts the browser request and mocks the Dev.to response",
+          "met": true,
+          "evidence": "e2e/fix-001-graceful-devto-fetch-failure.spec.ts::shows fallback message when Dev.to API fails"
+        },
+        {
+          "text": "Both e2e spec tests pass: the auth-failure fallback path and the success path with mocked posts",
+          "met": true,
+          "evidence": "e2e/fix-001-graceful-devto-fetch-failure.spec.ts::2 passed"
+        }
+      ],
+      "reviewFindings": [],
+      "completedAt": "2026-07-20T19:50:26.649Z",
+      "commit": "10aee132e89135f7d3f571fcce876dc1030694e9"
     }
   ],
   "milestones": [
@@ -630,6 +665,6 @@
     }
   ],
   "currentTaskId": "FIX-002",
-  "completed": false,
+  "completed": true,
   "processedDeviationIds": []
 }
