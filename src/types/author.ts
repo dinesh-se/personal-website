@@ -38,7 +38,7 @@ interface Organization {
 	orgName: string;
 	title: string;
 	from: string;
-	to: string;
+	to?: string;
 	orgLogo: OrgLogo;
 }
 

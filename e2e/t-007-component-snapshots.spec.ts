@@ -187,11 +187,11 @@ test.describe('T-007 — Component Rendering After React 19 Upgrade', () => {
 		await page.goto('/about');
 
 		// The bio content should be rendered as HTML paragraphs
-		await expect(page.locator('h1')).toContainText(/about me/i);
+		await expect(page.getByRole('heading', { level: 1, name: /about me/i })).toBeVisible();
 
 		// Rich text paragraphs should be visible (not raw markdown)
 		const bioContent = page.locator('main').filter({
-			has: page.locator('h1').filter({ hasText: /about me/i }),
+			has: page.getByRole('heading', { level: 1, name: /about me/i }),
 		});
 		await expect(bioContent).toBeVisible();
 

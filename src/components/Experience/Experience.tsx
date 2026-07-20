@@ -5,11 +5,18 @@ import IconBriefcase from '@root/public/assets/briefcase.svg';
 import { Experience as ExperienceType } from '@types';
 
 const Experience = ({ organizations }: ExperienceType) => {
-	const formatDate = (date: string) =>
-		new Date(date).toLocaleDateString('en', {
+	const formatDate = (date: string) => {
+		// Hygraph returns ISO 8601 (YYYY-MM-DD). Parsing the components
+		// directly avoids new Date(isoString)'s UTC-midnight interpretation,
+		// which can shift the displayed month by one near midnight in
+		// timezones behind UTC.
+		const [year, month, day] = date.split('-').map(Number);
+		const d = new Date(year, month - 1, day);
+		return d.toLocaleDateString('en', {
 			year: 'numeric',
 			month: 'short',
 		});
+	};
 
 	return (
 		<div className="rounded-2xl border border-zinc-700/40 p-6">

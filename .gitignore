@@ -49,3 +49,6 @@ test-results/
 playwright-report/
 blob-report/
 playwright/.cache/
+
+# pi-kalam: subagent worker exhaust (transcripts/artifacts from spawned workers)
+.pi-subagents/

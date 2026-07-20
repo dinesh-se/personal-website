@@ -1,11 +1,15 @@
 {
-  "startedAt": 1784409841605,
-  "totalSpawns": 0,
-  "checkerSpawns": 0,
+  "startedAt": 1784479039638,
+  "totalSpawns": 1,
+  "checkerSpawns": 1,
   "tasks": [],
-  "notes": [],
-  "updatedAt": 1784409906497,
-  "endedAt": 1784409906497,
+  "notes": [
+    "ISS-012 cleared by cycle 5 (not reproduced)"
+  ],
+  "tokensIn": 201893,
+  "tokensOut": 22380,
+  "updatedAt": 1784479501800,
+  "endedAt": 1784479501800,
   "caps": {
     "enabled": false,
     "maxRunMinutes": 240,

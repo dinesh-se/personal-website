@@ -1,5 +1,7 @@
+'use cache';
+// cacheLife: medium
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { cache } from 'react';
 
 import { getBlogPosts } from '@api/rest';
 
@@ -7,16 +9,27 @@ import { BlogPostCard } from '@components/BlogPostCard';
 
 import { BlogPostUI } from '@root/src/types';
 
-export const revalidate = 600;
+export async function generateMetadata(): Promise<Metadata> {
+	return {
+		title: 'Blog — Dinesh Haribabu',
+		description:
+			'Blog posts about web development, software engineering, and other topics. Written on Dev.To.',
+		authors: {
+			name: 'Dinesh Haribabu',
+			url: 'https://dineshharibabu.in/',
+		},
+	};
+}
 
-const getPageData = cache(async () => {
+async function getPageData() {
 	try {
 		const blogPosts: BlogPostUI[] = await getBlogPosts();
 		return blogPosts;
-	} catch {
+	} catch (error) {
+		console.error('Failed to fetch blog posts from Dev.to:', error);
 		return [];
 	}
-});
+}
 
 export default async function Blog() {
 	const blogPosts = await getPageData();

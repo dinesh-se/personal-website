@@ -1,20 +1,32 @@
+'use cache';
+// cacheLife: medium
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { cache } from 'react';
 
 import { getUses } from '@api/graphql';
 
 import { Uses as UsesType } from '@types';
 
-const getPageData = cache(async () => {
+export async function generateMetadata(): Promise<Metadata> {
+	return {
+		title: 'Uses — Dinesh Haribabu',
+		description:
+			'My setup — hardware, software, tools, and configurations I use for work and personal projects.',
+		authors: {
+			name: 'Dinesh Haribabu',
+			url: 'https://dineshharibabu.in/',
+		},
+	};
+}
+
+async function getPageData() {
 	try {
 		const uses: UsesType[] = await getUses();
 		return uses;
 	} catch {
 		return [];
 	}
-});
-
-export const revalidate = 600;
+}
 
 export default async function Uses() {
 	const uses = await getPageData();

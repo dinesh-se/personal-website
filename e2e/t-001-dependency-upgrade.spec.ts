@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 test.describe('T-001 — Dependency Upgrade: All Pages Render', () => {
 	test('should render home page without runtime errors', async ({ page }) => {
 		await page.goto('/');
-		await expect(page.locator('h1')).toContainText('Dinesh Haribabu');
+		await expect(page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })).toBeVisible();
 		await expect(page.getByText(/Hello, I am/)).toBeVisible();
 		await expect(page.getByRole('navigation')).toBeVisible();
 		await expect(page.locator('footer')).toBeVisible();
@@ -11,28 +11,28 @@ test.describe('T-001 — Dependency Upgrade: All Pages Render', () => {
 
 	test('should render about page without runtime errors', async ({ page }) => {
 		await page.goto('/about');
-		await expect(page.locator('h1')).toContainText(/about me/i);
+		await expect(page.getByRole('heading', { level: 1, name: /about me/i })).toBeVisible();
 		await expect(page.getByRole('navigation')).toBeVisible();
 		await expect(page.locator('footer')).toBeVisible();
 	});
 
 	test('should render projects page without runtime errors', async ({ page }) => {
 		await page.goto('/projects');
-		await expect(page.locator('h1')).toContainText(/GitHub Projects/i);
+		await expect(page.getByRole('heading', { level: 1, name: /GitHub Projects/i })).toBeVisible();
 		await expect(page.getByRole('navigation')).toBeVisible();
 		await expect(page.locator('footer')).toBeVisible();
 	});
 
 	test('should render blog page without runtime errors', async ({ page }) => {
 		await page.goto('/blog');
-		await expect(page.locator('h1')).toContainText(/Blog Posts/i);
+		await expect(page.getByRole('heading', { level: 1, name: /Blog Posts/i })).toBeVisible();
 		await expect(page.getByRole('navigation')).toBeVisible();
 		await expect(page.locator('footer')).toBeVisible();
 	});
 
 	test('should render uses page without runtime errors', async ({ page }) => {
 		await page.goto('/uses');
-		await expect(page.locator('h1')).toContainText(/Uses/i);
+		await expect(page.getByRole('heading', { level: 1, name: /Uses/i })).toBeVisible();
 		await expect(page.getByRole('navigation')).toBeVisible();
 		await expect(page.locator('footer')).toBeVisible();
 	});

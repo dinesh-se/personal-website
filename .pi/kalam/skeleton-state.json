@@ -5,7 +5,8 @@
   "scaffoldVerified": true,
   "skeletonVerified": true,
   "log": [
-    "Skeleton verify: FAILED",
+    "Skeleton verify: passed",
+    "Hand-test flagged: (no details provided)",
     "Skeleton verify: passed"
   ],
   "completed": true

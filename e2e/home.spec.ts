@@ -10,7 +10,7 @@ test.describe('Home Page', () => {
 	});
 
 	test('should display the greeting', async ({ page }) => {
-		await expect(page.locator('h1')).toBeVisible();
+		await expect(page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })).toBeVisible();
 	});
 
 	test('should render the header navigation', async ({ page }) => {
@@ -29,7 +29,7 @@ test.describe('Home Page', () => {
 	test('should navigate to about page', async ({ page }) => {
 		await page.getByRole('navigation').getByRole('link', { name: 'About me' }).click();
 		await expect(page).toHaveURL('/about');
-		await expect(page.locator('h1')).toContainText(/about/i);
+		await expect(page.getByRole('heading', { level: 1, name: /about me/i })).toBeVisible();
 	});
 
 	test('should navigate to projects page', async ({ page }) => {

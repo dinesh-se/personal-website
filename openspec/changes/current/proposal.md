@@ -1,98 +1,78 @@
 # Feature Brief
 
-**Feature:** Upgrade core dependencies to their latest stable versions: Next.js 14 to 16, React 18 to 19, @vercel/analytics 1 to 2, and any other outdated packages. Bump the CI workflow's Node version to match the local dev environment (currently pinned to Node 18 in CI, but local dev uses Node 24). Goal is a clean, working upgrade with no regressions, so the e2e/unit test harness from the previous cycle can be used with confidence on a modern stack.
+**Feature:** "Re-architect to current Next.js 16 App Router standards/patterns: move all Hygraph + Dev.to fetching into Server Components (App Router data model); add per-route loading.tsx + error.tsx (streaming + Suspense boundaries); adopt Cache Components (use cache / cacheLife) + Partial Prerendering for cached remote data; upgrade Next to 16.3+ as the prerequisite; migrate to generateMetadata Metadata API + typed routes; fix Experience formatDate DD/MM/YYYY bug. No visual redesign, no new pages; keep Hygraph/Dto as the data sources."
+
+> **Correction — 2026-07-20:** Every "DD/MM/YYYY" reference below is wrong.
+> Real Hygraph data is ISO 8601 (`YYYY-MM-DD`). See T-002/TASK.md's
+> correction note — the original fix was verified against a fixture that
+> shared the same wrong assumption, not real data, and it broke
+> `formatDate()` for every real organization entry on the deployed site.
 
 ## Feature Scope
 
-**In scope:**
+Re-architect the existing 5-page personal website to align with Next.js 16 App Router conventions without adding new pages or changing visual design. The feature covers:
 
-- Upgrade `next` from `^14.2.21` to `^16.x` (latest stable)
-- Upgrade `react` from `^18.3.1` to `^19.x` (latest stable)
-- Upgrade `react-dom` from `^18.3.1` to `^19.x` (latest stable)
-- Upgrade `@vercel/analytics` from `^1.3.1` to `^2.x` (latest stable)
-- Upgrade `@types/react` and `@types/react-dom` from `^18` to `^19` (must match React 19)
-- Upgrade `typescript-eslint` packages (`@typescript-eslint/eslint-plugin`, `@typescript-eslint/parser`) to versions compatible with ESLint 9
-- Upgrade **all other direct dependencies** to their latest stable versions:
-  - `@heroicons/react`, `clsx`, `graphql-request`, `tailwindcss`, `prettier`, `eslint`, `jest`, `@testing-library/react`, `@testing-library/jest-dom`, `@svgr/webpack`, `@graphcms/rich-text-react-renderer`, `@graphcms/rich-text-types`, `react-social-icons`, `autoprefixer`, `postcss`, `ts-jest`, `babel-jest`, `jest-environment-jsdom`, `ts-node`, `@types/node`, `@types/jest`, `eslint-config-next`, `eslint-config-prettier`, `eslint-plugin-jsx-a11y`, `eslint-plugin-prettier`, `@trivago/prettier-plugin-sort-imports`, `prettier-plugin-tailwindcss`, `release-it`
-- Upgrade `eslint-config-next` to match Next.js 16 (requires ESLint 9)
-- Migrate ESLint from v8 (`.eslintrc.json`) to v9 with flat config (`eslint.config.js`)
-- Update CI workflow (`.github/workflows/lint-test.yml`) to use Node 24 and `setup-node@v4` (v2 does not support Node 24)
-- Fix all resulting TypeScript errors, lint errors, and test failures
-- Run full E2E + unit test suite to verify no regressions
+- **Server Components data model**: Move all Hygraph (GraphQL) and Dev.to (REST) fetching into the App Router data model — replace inline `cache()` wrappers with proper Server Component data fetching patterns.
+- **Per-route loading.tsx**: Add skeleton loader components for each route to enable streaming and Suspense boundaries.
+- **Per-route error.tsx (hybrid)**: Retain the root-level `error.tsx` as a catch-all fallback, and create route-specific error pages for key routes where custom error UI adds value.
+- **Cache Components**: Adopt `use cache` annotations and default `cacheLife` profiles for remote data caching, replacing the current `cache()` + `revalidate: 600` ISR pattern.
+- **Partial Prerendering (PPR)**: Enable PPR alongside existing ISR to stream the static shell on first paint while allowing per-segment revalidation of cached remote data.
+- **generateMetadata migration**: Migrate all routes from static `export const metadata` and standalone `robots.ts`/`sitemap.ts` to per-route `generateMetadata` functions.
+- **Typed routes**: Adopt Next.js 16 typed routes pattern.
+- **Experience formatDate bug fix**: `formatDate()` in `Experience.tsx` calls `new Date(date)` on DD/MM/YYYY strings (e.g. `"31/01/2024"`) which JavaScript cannot parse, producing `"Invalid Date"`. Fix the parser to correctly handle DD/MM/YYYY input and display as MMM YYYY — no visual change to the output format.
 
-**Out of scope:**
-
-- Rewriting application logic or components
-- Adding new features or pages
-- Visual design changes
-- Changing external API integrations (Hygraph, Dev.to)
-- Changing the testing infrastructure itself (Playwright E2E tests and Jest unit tests are used as-is to verify the upgrade)
+**Out of scope:** No visual redesign, no new pages, no new data sources, no changes to component UI (Header, Footer, BlogPostCard, ProjectCard, etc.).
 
 ## Acceptance Criteria
 
-1. **Given** all dependencies are upgraded in `package.json`, **when** `npm install` runs, **then** the install completes without peer dependency conflicts or errors.
-2. **Given** all dependencies are installed, **when** `npm run build` runs, **then** the build completes successfully with zero TypeScript errors and zero ESLint errors.
-3. **Given** all dependencies are installed, **when** `npm test` runs, **then** all existing Jest snapshot tests pass (8 component snapshots).
-4. **Given** the E2E test infrastructure is wired up, **when** `npx playwright test` runs, **then** all E2E tests pass against the upgraded app.
-5. **Given** the CI workflow is updated, **when** a PR is opened, **then** the CI job runs on Node 24 and passes lint + test steps.
-6. **Given** the upgraded app is built, **when** all 5 pages (/, /about, /projects, /blog, /uses) are rendered, **then** they load without runtime errors and render expected content.
-7. **Given** dark mode is active, **when** any page is visited, **then** dark mode styles apply correctly (CSS custom properties + Tailwind `dark:` variants).
-8. **Given** the ESLint migration is complete, **when** `npm run lint` runs, **then** it executes using the new flat config format with zero errors.
-9. **Given** mobile navigation is used, **when** the hamburger menu is toggled, **then** the mobile menu opens and closes correctly (verified by E2E).
-10. **Given** a route is active, **when** the Header or Footer renders, **then** the active link is highlighted correctly (verified by E2E).
+- [ ] All 5 pages (`/`, `/about`, `/projects`, `/blog`, `/uses`) fetch data using Server Component patterns (no client-side data fetching).
+- [ ] Each route has a `loading.tsx` with skeleton loaders that match the page layout.
+- [ ] Root-level `error.tsx` exists as catch-all; route-specific `error.tsx` files exist for key routes (hybrid pattern).
+- [ ] `use cache` annotations and `cacheLife` profiles replace `cache()` + `revalidate: 600` for remote data.
+- [ ] Partial Prerendering is enabled (`experimental_ppr: 'incremental'` in next.config) and static shell streams on first paint.
+- [ ] All routes use `generateMetadata` instead of static `export const metadata` or standalone `robots.ts`/`sitemap.ts`.
+- [ ] Next.js upgraded to 16.3+ and build succeeds without errors.
+- [ ] No visual changes — existing UI components render identically.
+- [ ] Existing tests (Jest snapshot tests for 8 components) continue to pass.
+- [ ] Experience component `formatDate()` correctly parses DD/MM/YYYY input (e.g. `"31/01/2024"`) and renders as `"Jan 2024"` — no `"Invalid Date"` strings.
+- [ ] Experience component displayed date format unchanged (MMM YYYY).
 
 ## Affected Areas
 
-| Area | Files | Impact |
-|------|-------|--------|
-| **Package manager** | `package.json`, `package-lock.json` | All dependency versions bumped |
-| **CI/CD** | `.github/workflows/lint-test.yml` | Node version 18→24, `setup-node` action v2→v4 |
-| **ESLint** | `.eslintrc.json` → `eslint.config.js` | Full migration from legacy to flat config |
-| **Next.js config** | `next.config.mjs` | May need updates for Next.js 15/16 API changes (e.g., `reactStrictMode` deprecation, new image/headers APIs) |
-| **TypeScript** | `tsconfig.json`, `next-env.d.ts` | May need updates for React 19 types, Next.js 16 compiler changes |
-| **Jest** | `jest.config.ts`, `jest.setup.ts`, `babel.config.json` (if present) | May need updates for React 19 testing, `ts-jest` compatibility |
-| **React types** | `@types/react`, `@types/react-dom` | Must match React 19; affects all `.tsx` files |
-| **Source code** | `src/app/**/*.tsx`, `src/components/**/*.tsx`, `src/api/**/*.ts`, `src/types/**/*.ts` | May need fixes for React 19 breaking changes (PropTypes removal, new hooks, context API changes, server component patterns) |
-| **CSS** | `src/styles/globals.css`, `tailwind.config.ts` | Unlikely to need changes unless Tailwind CSS v4 is included in "latest stable" |
-| **Metadata** | `src/app/robots.ts`, `src/app/sitemap.ts` | Unlikely to need changes |
+- **`src/app/`** — All 5 page routes: `page.tsx` (data fetching migration), `loading.tsx` (new), `error.tsx` (new/updated), `layout.tsx` (metadata migration)
+- **`src/app/robots.ts`** — Migrated to generateMetadata or removed
+- **`src/app/sitemap.ts`** — Migrated to generateMetadata or removed
+- **`src/api/graphql.ts`** — May need updates for Cache Components compatibility
+- **`src/api/rest.ts`** — May need updates for Cache Components compatibility
+- **`src/components/Experience/Experience.tsx`** — `formatDate()` parsing logic fix (DD/MM/YYYY → correct Date → MMM YYYY display)
+- **`next.config.mjs`** — PPR experimental flag, any Cache Components config
+- **`package.json`** — Next.js version bump to 16.3+
 
 ## Data Needs
 
-None — uses existing integrations (Hygraph GraphQL, Dev.to REST). No new data sources or migration scripts required.
+None — uses existing integrations (Hygraph GraphQL API + Dev.to REST API). No new external data sources required.
 
 ## Integration Concerns
 
-- **Hygraph GraphQL:** `graphql-request` may need version bump; verify compatibility with Next.js 16 server components. The GraphQL client uses `fetch` under the hood — verify no breaking changes in the library.
-- **Dev.to REST:** Uses native `fetch` (no library dependency) — no integration concerns.
-- **@graphcms/rich-text-react-renderer:** Verify v0.6.x+ is compatible with React 19. If not, check for a v1.x release or consider a fork/workaround.
-- **react-social-icons:** Verify compatibility with React 19. If using deprecated APIs, update or pin version.
-- **@svgr/webpack:** Verify compatibility with Next.js 16's webpack configuration. May need version bump.
-- **Vercel Analytics:** `@vercel/analytics@2.x` should be a drop-in replacement for `@vercel/analytics@1.x` in `<Analytics />` component in `src/app/layout.tsx`.
+- **Hygraph GraphQL** (`src/api/graphql.ts`): Data fetching layer must be compatible with Cache Components — ensure `cache()` annotations from React are used correctly and that GraphQL queries return cacheable data. The Hygraph endpoint and auth pattern remain unchanged.
+- **Dev.to REST** (`src/api/rest.ts`): Same as Hygraph — REST fetching must work within Server Component data model and be compatible with Cache Components.
+- **@graphcms/rich-text-react-renderer**: Used on `/about` page — must remain compatible with React 19 (part of the broader Next.js 16 upgrade).
+- **react-social-icons**: Dependency present — verify React 19 compatibility.
+- **Vercel Analytics**: `<Analytics />` in layout — must remain compatible with React 19 and Next.js 16.
+- **Tailwind CSS**: Existing v3.4.12 — verify compatibility with Next.js 16 build pipeline.
 
 ## Risks
 
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| React 19 breaking changes in Server Components | High — could break all pages | Fix TypeScript errors first, then run tests, then fix runtime issues one-by-one |
-| ESLint 9 flat config migration breaks existing rules | Medium — blocks CI | Start with `@eslint/js` flat config template, migrate rules one-by-one |
-| `@graphcms/rich-text-react-renderer` incompatible with React 19 | High — breaks /about page | Check for v1.x release; if none, pin to React 18 compat or fork |
-| `react-social-icons` uses deprecated React APIs | Medium — breaks Contact component | Check for updated version; if none, pin or replace with `@heroicons/react` |
-| Next.js 15/16 webpack config changes break SVG loading | Medium — breaks all SVG icons | Verify `@svgr/webpack` config in `next.config.mjs` still works after upgrade |
-| `ts-jest` incompatible with new TypeScript/React versions | Medium — blocks unit tests | Ensure `ts-jest` version supports the TypeScript version in use |
-| Node 24 in CI breaks on older GitHub Actions runners | Low — unlikely | `setup-node@v4` supports Node 24 on `ubuntu-latest` |
-| ESLint 8.57+ flat config as middle ground | Low — could simplify migration | If full ESLint 9 migration proves difficult, fall back to ESLint 8 with flat config |
+- **React 19 compatibility with existing libraries** — `@graphcms/rich-text-react-renderer` and `react-social-icons` may have incompatibilities. Mitigation: verify during upgrade; pin to React 18-compatible versions if needed.
+- **Cache Components + existing `cache()` usage** — The current `cache()` wrapper pattern from React needs to be replaced with `use cache` annotations. Mitigation: systematic migration per route, leveraging the `cache-components-instant-false` codemod.
+- **Partial Prerendering experimental status** — PPR in Next.js 16 may have edge cases with ISR. Mitigation: test thoroughly with each route's data fetching pattern; fall back to ISR-only if PPR causes issues.
+- **generateMetadata breaking changes** — Migrating from static exports to dynamic `generateMetadata` may affect build-time metadata generation. Mitigation: port existing metadata values verbatim; test build output.
+- **Typed routes API stability** — Next.js 16 typed routes may evolve. Mitigation: follow official migration guide; defer if API changes before implementation.
 
 ## Open Questions
 
-- **test-harness:** User deferred — implementation should run the full E2E + unit test suite to verify upgrade safety. If any test fails, the specific failure must be fixed before considering the upgrade complete.
+- None — all boundaries resolved during feature brief.
 
 ## Next Steps
 
-1. Install all upgraded dependencies and run `npm run build` — capture all TypeScript/ESLint errors
-2. Migrate ESLint from `.eslintrc.json` to `eslint.config.js` (flat config)
-3. Fix all TypeScript errors one-by-one
-4. Run `npm test` — fix any Jest/snapshot failures
-5. Wire up E2E tests (if not already wired) and run `npx playwright test`
-6. Update CI workflow (Node 24, `setup-node@v4`)
-7. Verify all 5 pages render correctly in dev mode
-8. Commit and open PR
+Write the feature brief to /home/dinesh-se/Dev/personal-website/openspec/changes/current/proposal.md, then call confirm_step_output.

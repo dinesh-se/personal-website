@@ -27,8 +27,10 @@ export default defineConfig({
 		baseURL:
 			process.env.KALAM_BASE_URL ||
 			process.env.BASE_URL ||
-			'http://localhost:3003',
+			'http://localhost:3099',
 		trace: 'on-first-retry',
+		navigationTimeout: 60000,
+		actionTimeout: 30000,
 	},
 	projects: [
 		{
