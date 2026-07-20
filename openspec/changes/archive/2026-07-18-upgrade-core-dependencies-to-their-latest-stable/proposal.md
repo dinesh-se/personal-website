@@ -43,18 +43,18 @@
 
 ## Affected Areas
 
-| Area | Files | Impact |
-|------|-------|--------|
-| **Package manager** | `package.json`, `package-lock.json` | All dependency versions bumped |
-| **CI/CD** | `.github/workflows/lint-test.yml` | Node version 18→24, `setup-node` action v2→v4 |
-| **ESLint** | `.eslintrc.json` → `eslint.config.js` | Full migration from legacy to flat config |
-| **Next.js config** | `next.config.mjs` | May need updates for Next.js 15/16 API changes (e.g., `reactStrictMode` deprecation, new image/headers APIs) |
-| **TypeScript** | `tsconfig.json`, `next-env.d.ts` | May need updates for React 19 types, Next.js 16 compiler changes |
-| **Jest** | `jest.config.ts`, `jest.setup.ts`, `babel.config.json` (if present) | May need updates for React 19 testing, `ts-jest` compatibility |
-| **React types** | `@types/react`, `@types/react-dom` | Must match React 19; affects all `.tsx` files |
-| **Source code** | `src/app/**/*.tsx`, `src/components/**/*.tsx`, `src/api/**/*.ts`, `src/types/**/*.ts` | May need fixes for React 19 breaking changes (PropTypes removal, new hooks, context API changes, server component patterns) |
-| **CSS** | `src/styles/globals.css`, `tailwind.config.ts` | Unlikely to need changes unless Tailwind CSS v4 is included in "latest stable" |
-| **Metadata** | `src/app/robots.ts`, `src/app/sitemap.ts` | Unlikely to need changes |
+| Area                | Files                                                                                 | Impact                                                                                                                      |
+| ------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **Package manager** | `package.json`, `package-lock.json`                                                   | All dependency versions bumped                                                                                              |
+| **CI/CD**           | `.github/workflows/lint-test.yml`                                                     | Node version 18→24, `setup-node` action v2→v4                                                                               |
+| **ESLint**          | `.eslintrc.json` → `eslint.config.js`                                                 | Full migration from legacy to flat config                                                                                   |
+| **Next.js config**  | `next.config.mjs`                                                                     | May need updates for Next.js 15/16 API changes (e.g., `reactStrictMode` deprecation, new image/headers APIs)                |
+| **TypeScript**      | `tsconfig.json`, `next-env.d.ts`                                                      | May need updates for React 19 types, Next.js 16 compiler changes                                                            |
+| **Jest**            | `jest.config.ts`, `jest.setup.ts`, `babel.config.json` (if present)                   | May need updates for React 19 testing, `ts-jest` compatibility                                                              |
+| **React types**     | `@types/react`, `@types/react-dom`                                                    | Must match React 19; affects all `.tsx` files                                                                               |
+| **Source code**     | `src/app/**/*.tsx`, `src/components/**/*.tsx`, `src/api/**/*.ts`, `src/types/**/*.ts` | May need fixes for React 19 breaking changes (PropTypes removal, new hooks, context API changes, server component patterns) |
+| **CSS**             | `src/styles/globals.css`, `tailwind.config.ts`                                        | Unlikely to need changes unless Tailwind CSS v4 is included in "latest stable"                                              |
+| **Metadata**        | `src/app/robots.ts`, `src/app/sitemap.ts`                                             | Unlikely to need changes                                                                                                    |
 
 ## Data Needs
 
@@ -71,16 +71,16 @@ None — uses existing integrations (Hygraph GraphQL, Dev.to REST). No new data 
 
 ## Risks
 
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| React 19 breaking changes in Server Components | High — could break all pages | Fix TypeScript errors first, then run tests, then fix runtime issues one-by-one |
-| ESLint 9 flat config migration breaks existing rules | Medium — blocks CI | Start with `@eslint/js` flat config template, migrate rules one-by-one |
-| `@graphcms/rich-text-react-renderer` incompatible with React 19 | High — breaks /about page | Check for v1.x release; if none, pin to React 18 compat or fork |
-| `react-social-icons` uses deprecated React APIs | Medium — breaks Contact component | Check for updated version; if none, pin or replace with `@heroicons/react` |
-| Next.js 15/16 webpack config changes break SVG loading | Medium — breaks all SVG icons | Verify `@svgr/webpack` config in `next.config.mjs` still works after upgrade |
-| `ts-jest` incompatible with new TypeScript/React versions | Medium — blocks unit tests | Ensure `ts-jest` version supports the TypeScript version in use |
-| Node 24 in CI breaks on older GitHub Actions runners | Low — unlikely | `setup-node@v4` supports Node 24 on `ubuntu-latest` |
-| ESLint 8.57+ flat config as middle ground | Low — could simplify migration | If full ESLint 9 migration proves difficult, fall back to ESLint 8 with flat config |
+| Risk                                                            | Impact                            | Mitigation                                                                          |
+| --------------------------------------------------------------- | --------------------------------- | ----------------------------------------------------------------------------------- |
+| React 19 breaking changes in Server Components                  | High — could break all pages      | Fix TypeScript errors first, then run tests, then fix runtime issues one-by-one     |
+| ESLint 9 flat config migration breaks existing rules            | Medium — blocks CI                | Start with `@eslint/js` flat config template, migrate rules one-by-one              |
+| `@graphcms/rich-text-react-renderer` incompatible with React 19 | High — breaks /about page         | Check for v1.x release; if none, pin to React 18 compat or fork                     |
+| `react-social-icons` uses deprecated React APIs                 | Medium — breaks Contact component | Check for updated version; if none, pin or replace with `@heroicons/react`          |
+| Next.js 15/16 webpack config changes break SVG loading          | Medium — breaks all SVG icons     | Verify `@svgr/webpack` config in `next.config.mjs` still works after upgrade        |
+| `ts-jest` incompatible with new TypeScript/React versions       | Medium — blocks unit tests        | Ensure `ts-jest` version supports the TypeScript version in use                     |
+| Node 24 in CI breaks on older GitHub Actions runners            | Low — unlikely                    | `setup-node@v4` supports Node 24 on `ubuntu-latest`                                 |
+| ESLint 8.57+ flat config as middle ground                       | Low — could simplify migration    | If full ESLint 9 migration proves difficult, fall back to ESLint 8 with flat config |
 
 ## Open Questions
 

@@ -48,8 +48,8 @@ against the snapshot taken when the change started).
 - [build:T-007] Task T-007 (fix-jest-snapshots) → All 8 component snapshot tests pass with 10 snapshots matching. No updates needed — snapshots were already current for React 19 output.
 - [build:T-008] Task T-008 (fix-playwright-e2e) → All 12 Playwright E2E tests pass with zero failures. No code changes were needed — the test suite was already working correctly with the upgraded stack.
 - [build-skip:T-009] Task T-009 (verify-page-rendering) — skipped after exhausting the acceptance manifest → skipped after 3 failed the acceptance manifest attempt(s). Final rejection detail:
-Evidence test "No JS console errors on /" not found in e2e/page-verification.spec.ts for "All 5 pages (/, /about, /projects, /blog, /uses) render without JavaScript runtime errors".
-Evidence test "Active nav link on /about (About me)" not found in e2e/page-verification.spec.ts for "Navigation active-state highlights correctly on all pages".
-Evidence test "Dark mode applies on /" not found in e2e/page-verification.spec.ts for "Dark mode renders correctly on all pages (via system preference or toggle)".
-Evidence test "No JS console errors on /uses" not found in e2e/page-verification.spec.ts for "No console errors in browser dev tools when visiting any page".
+  Evidence test "No JS console errors on /" not found in e2e/page-verification.spec.ts for "All 5 pages (/, /about, /projects, /blog, /uses) render without JavaScript runtime errors".
+  Evidence test "Active nav link on /about (About me)" not found in e2e/page-verification.spec.ts for "Navigation active-state highlights correctly on all pages".
+  Evidence test "Dark mode applies on /" not found in e2e/page-verification.spec.ts for "Dark mode renders correctly on all pages (via system preference or toggle)".
+  Evidence test "No JS console errors on /uses" not found in e2e/page-verification.spec.ts for "No console errors in browser dev tools when visiting any page".
 - [build:FIX-001] Task FIX-001 (hardcoded-path-in-playwright-webserver) → Removed the hardcoded absolute path `/home/dinesh-se/Dev/personal-website` from the Playwright webServer command. Playwright runs the command from process.cwd() (the project root), so the `cd` was unnecessary and the command works with just relative paths.

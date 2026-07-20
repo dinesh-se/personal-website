@@ -12,9 +12,9 @@ The current `next.config.mjs` has `cacheComponents: true` but no PPR configurati
 
 ```javascript
 const nextConfig = {
-  reactStrictMode: true,
-  cacheComponents: true,
-  // ... webpack and images config
+	reactStrictMode: true,
+	cacheComponents: true,
+	// ... webpack and images config
 };
 ```
 
@@ -22,12 +22,12 @@ const nextConfig = {
 
 ```javascript
 const nextConfig = {
-  reactStrictMode: true,
-  cacheComponents: true,
-  experimental: {
-    ppr: 'incremental',
-  },
-  // ... webpack and images config
+	reactStrictMode: true,
+	cacheComponents: true,
+	experimental: {
+		ppr: 'incremental',
+	},
+	// ... webpack and images config
 };
 ```
 
@@ -51,6 +51,7 @@ Typed routes in Next.js 16 provide compile-time type checking for route paramete
 - Page JSX structure
 
 ## Acceptance Criteria
+
 > ⏭️ Skipped 2026-07-19
 
 - [ ] `next.config.mjs` has `experimental.ppr: 'incremental'` enabled

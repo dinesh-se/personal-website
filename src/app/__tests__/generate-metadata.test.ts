@@ -1,6 +1,6 @@
 import { generateMetadata as aboutGenerateMetadata } from '../about/page';
 import { generateMetadata as blogGenerateMetadata } from '../blog/page';
-import { generateMetadata as rootGenerateMetadata } from '../layout';
+import { generateMetadata as rootGenerateMetadata } from '../metadata';
 import { generateMetadata as homeGenerateMetadata } from '../page';
 import { generateMetadata as projectsGenerateMetadata } from '../projects/page';
 import { generateMetadata as usesGenerateMetadata } from '../uses/page';

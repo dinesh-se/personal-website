@@ -1,33 +1,33 @@
 {
-  "startedAt": 1784576234290,
-  "totalSpawns": 5,
-  "checkerSpawns": 2,
-  "tasks": [
-    {
-      "taskId": "FIX-002",
-      "coderSpawns": 2,
-      "reviewerSpawns": 1,
-      "verifyRuns": 3,
-      "tokensIn": 900171,
-      "tokensOut": 21395,
-      "startedAt": 1784576234292,
-      "durationMs": 792358,
-      "outcome": "committed"
-    }
-  ],
-  "notes": [
-    "task FIX-002 starting with a dirty working tree (7 tracked file(s) modified outside .pi/kalam: e2e/playwright.config.ts, playwright-report/index.html, src/app/__tests__/__snapshots__/loading-components.test.tsx.snap, src/app/blog/BlogContent.tsx, src/app/blog/__tests__/BlogContent.test.tsx, …) — these will be swept into this task's commit",
-    "verify: `npm run lint` failed on FIX-002 — ran `npm run lint -- --fix` and re-verified clean, not charged to the task's verify budget"
-  ],
-  "tokensIn": 1162961,
-  "tokensOut": 27527,
-  "updatedAt": 1784577183276,
-  "endedAt": 1784577183276,
-  "caps": {
-    "enabled": false,
-    "maxRunMinutes": 240,
-    "maxSpawnsPerRun": 100,
-    "taskRestartLimit": 1,
-    "maxTaskMinutes": 45
-  }
+	"startedAt": 1784576234290,
+	"totalSpawns": 5,
+	"checkerSpawns": 2,
+	"tasks": [
+		{
+			"taskId": "FIX-002",
+			"coderSpawns": 2,
+			"reviewerSpawns": 1,
+			"verifyRuns": 3,
+			"tokensIn": 900171,
+			"tokensOut": 21395,
+			"startedAt": 1784576234292,
+			"durationMs": 792358,
+			"outcome": "committed"
+		}
+	],
+	"notes": [
+		"task FIX-002 starting with a dirty working tree (7 tracked file(s) modified outside .pi/kalam: e2e/playwright.config.ts, playwright-report/index.html, src/app/__tests__/__snapshots__/loading-components.test.tsx.snap, src/app/blog/BlogContent.tsx, src/app/blog/__tests__/BlogContent.test.tsx, …) — these will be swept into this task's commit",
+		"verify: `npm run lint` failed on FIX-002 — ran `npm run lint -- --fix` and re-verified clean, not charged to the task's verify budget"
+	],
+	"tokensIn": 1162961,
+	"tokensOut": 27527,
+	"updatedAt": 1784577183276,
+	"endedAt": 1784577183276,
+	"caps": {
+		"enabled": false,
+		"maxRunMinutes": 240,
+		"maxSpawnsPerRun": 100,
+		"taskRestartLimit": 1,
+		"maxTaskMinutes": 45
+	}
 }

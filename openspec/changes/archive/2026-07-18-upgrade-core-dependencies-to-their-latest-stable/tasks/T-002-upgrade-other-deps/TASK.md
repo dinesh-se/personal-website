@@ -19,6 +19,7 @@ Bump all remaining direct dependencies in `package.json` to their latest stable 
 - **Task:** T-001 (core dependencies must be upgraded first to establish a consistent baseline)
 
 ## Acceptance criteria
+
 > ✅ Verified 2026-07-17
 
 - [x] All direct dependencies in `package.json` are bumped to their latest stable versions per the PRD dependency table (FR-5)

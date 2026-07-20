@@ -80,7 +80,8 @@ test.describe('FIX-001 — Graceful Dev.to API Fetch Failure', () => {
 						{
 							id: '99999',
 							title: 'Test Post — FIX-001 Validation',
-							description: 'This post verifies that blog cards render correctly.',
+							description:
+								'This post verifies that blog cards render correctly.',
 							date: '2026-07-20T12:00:00.000Z',
 							url: 'https://dev.to/dinesh-se/test-post-fix-001',
 							commentsCount: 42,

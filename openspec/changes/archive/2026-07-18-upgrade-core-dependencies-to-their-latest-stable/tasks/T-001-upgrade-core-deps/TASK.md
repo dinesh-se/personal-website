@@ -22,6 +22,7 @@ Upgrade the four core dependencies (`next`, `react`/`react-dom`, `@types/react`/
 - **None**
 
 ## Acceptance criteria
+
 > ✅ Verified 2026-07-17
 
 - [x] `package.json` has `next: "^16.x"`, `react: "^19.x"`, `react-dom: "^19.x"`, `@types/react: "^19"`, `@types/react-dom: "^19"`, `@vercel/analytics: "^2.x"`

@@ -80,14 +80,14 @@ None — uses existing integrations (Hygraph GraphQL, Dev.to REST). No new exter
 
 ## Risks
 
-| Risk | Mitigation |
-|---|---|
-| `jsx-a11y` strict mode reveals many existing violations | Run audit first, fix incrementally, commit rule change separately |
-| Dark mode toggle changes layout slightly (new button in header) | Design toggle to match existing header height/padding |
-| Rich text renderer may not support semantic output customization | Fork or wrap renderer with custom element mappings if needed |
-| Color adjustments may shift brand appearance | Provide before/after screenshots for review before committing |
-| Focus trap adds complexity to mobile menu state management | Use existing `useState` in Header, test with Playwright keyboard scenarios |
-| Line-height/spacing changes may affect layout on some pages | Test all 5 pages after changes, use Tailwind's responsive modifiers where needed |
+| Risk                                                             | Mitigation                                                                       |
+| ---------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `jsx-a11y` strict mode reveals many existing violations          | Run audit first, fix incrementally, commit rule change separately                |
+| Dark mode toggle changes layout slightly (new button in header)  | Design toggle to match existing header height/padding                            |
+| Rich text renderer may not support semantic output customization | Fork or wrap renderer with custom element mappings if needed                     |
+| Color adjustments may shift brand appearance                     | Provide before/after screenshots for review before committing                    |
+| Focus trap adds complexity to mobile menu state management       | Use existing `useState` in Header, test with Playwright keyboard scenarios       |
+| Line-height/spacing changes may affect layout on some pages      | Test all 5 pages after changes, use Tailwind's responsive modifiers where needed |
 
 ## Open Questions
 

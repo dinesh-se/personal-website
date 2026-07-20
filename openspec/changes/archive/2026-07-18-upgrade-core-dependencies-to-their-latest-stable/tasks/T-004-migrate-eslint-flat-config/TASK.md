@@ -19,6 +19,7 @@ Migrate ESLint from v8 (legacy `.eslintrc.json`) to v9 with the new flat config 
 - **Task:** T-003 (TypeScript errors must be fixed first to ensure ESLint can run without TS-related noise)
 
 ## Acceptance criteria
+
 > ✅ Verified 2026-07-17
 
 - [x] `eslint.config.js` (or `eslint.config.mjs`) exists at project root

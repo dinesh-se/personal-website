@@ -12,72 +12,72 @@ The primary entity, representing the website owner's profile.
 
 ```typescript
 interface Author {
- profile: Profile;
+	profile: Profile;
 }
 
 interface Profile {
- fullName: string;
- summary: string;
- contactDetail: ContactDetail;
- experience: Experience;
- displayPicture: DisplayPicture;
- moreDetails: MoreDetails;
- githubRecentProjects: GithubRecentProjects;
- uses: Uses[];
+	fullName: string;
+	summary: string;
+	contactDetail: ContactDetail;
+	experience: Experience;
+	displayPicture: DisplayPicture;
+	moreDetails: MoreDetails;
+	githubRecentProjects: GithubRecentProjects;
+	uses: Uses[];
 }
 
 interface ContactDetail {
- email: string;
- mobileNumber: string[];
- socialMedia: SocialMedia;
+	email: string;
+	mobileNumber: string[];
+	socialMedia: SocialMedia;
 }
 
 interface SocialMedia {
- linkedin: string;
- github: string;
+	linkedin: string;
+	github: string;
 }
 
 interface Experience {
- organizations: Organization[];
+	organizations: Organization[];
 }
 
 interface Organization {
- orgName: string;
- title: string;
- from: string; // Format: "YYYY-MM"
- to: string; // Format: "YYYY-MM"
- orgLogo: OrgLogo;
+	orgName: string;
+	title: string;
+	from: string; // Format: "YYYY-MM"
+	to: string; // Format: "YYYY-MM"
+	orgLogo: OrgLogo;
 }
 
 interface OrgLogo {
- url: string;
+	url: string;
 }
 
 interface DisplayPicture {
- url: string;
+	url: string;
 }
 
 interface MoreDetails {
- raw: RichTextContent; // From @graphcms/rich-text-types
+	raw: RichTextContent; // From @graphcms/rich-text-types
 }
 
 interface Repo {
- id: string;
- name: string;
- description: string;
- url: string;
- primaryLanguage?: PrimaryLanguage;
+	id: string;
+	name: string;
+	description: string;
+	url: string;
+	primaryLanguage?: PrimaryLanguage;
 }
 
 interface PrimaryLanguage {
- name: string;
- color: string;
+	name: string;
+	color: string;
 }
 
 type GithubRecentProjects = {
- repositories: {
-  nodes: Repo[];
- };
+	repositories: {
+		nodes: Repo[];
+	};
 };
 ```
 
@@ -87,25 +87,25 @@ Represents a blog post from Dev.to.
 
 ```typescript
 interface BlogPost {
- id: string;
- title: string;
- description: string;
- published_at: string; // ISO date string
- url: string;
- comments_count: number;
- public_reactions_count: number;
- page_views_count: number;
+	id: string;
+	title: string;
+	description: string;
+	published_at: string; // ISO date string
+	url: string;
+	comments_count: number;
+	public_reactions_count: number;
+	page_views_count: number;
 }
 
 interface BlogPostUI {
- id?: string;
- title: string;
- description: string;
- url: string;
- date: Date; // Transformed from published_at
- commentsCount: number; // Transformed from comments_count
- reactionsCount: number; // Transformed from public_reactions_count
- pageViewsCount: number; // Transformed from page_views_count
+	id?: string;
+	title: string;
+	description: string;
+	url: string;
+	date: Date; // Transformed from published_at
+	commentsCount: number; // Transformed from comments_count
+	reactionsCount: number; // Transformed from public_reactions_count
+	pageViewsCount: number; // Transformed from page_views_count
 }
 ```
 
@@ -115,15 +115,15 @@ Represents a category of tools/tech with items.
 
 ```typescript
 interface Uses {
- id: string;
- title: string;
- list: Item[];
+	id: string;
+	title: string;
+	list: Item[];
 }
 
 interface Item {
- id: string;
- name: string;
- description: string;
+	id: string;
+	name: string;
+	description: string;
 }
 ```
 
@@ -133,15 +133,15 @@ Component props for navigation links.
 
 ```typescript
 interface NavLinks {
- links: Link[];
- linkActiveState: string;
- linkDefaultState?: string;
- otherStyleClasses?: string;
+	links: Link[];
+	linkActiveState: string;
+	linkDefaultState?: string;
+	otherStyleClasses?: string;
 }
 
 interface Link {
- label: string;
- href: string;
+	label: string;
+	href: string;
 }
 ```
 
@@ -153,7 +153,7 @@ interface Contact extends SocialMedia, Pick<ContactDetail, 'email'> {}
 
 // RepoUI (src/types/author.ts) — project card variant
 interface RepoUI extends Omit<Repo, 'id' | 'url'> {
- href: Repo['url'];
+	href: Repo['url'];
 }
 ```
 

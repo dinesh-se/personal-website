@@ -1,9 +1,9 @@
 {
-  "name": "frontend-design",
-  "repo": "https://github.com/anthropics/skills",
-  "ref": null,
-  "path": "skills/frontend-design",
-  "sha": "fa0fa64bdc967915dc8399e803be67759e1e62b8",
-  "installedAt": "2026-07-17T13:05:46.839Z",
-  "via": "catalog"
+	"name": "frontend-design",
+	"repo": "https://github.com/anthropics/skills",
+	"ref": null,
+	"path": "skills/frontend-design",
+	"sha": "fa0fa64bdc967915dc8399e803be67759e1e62b8",
+	"installedAt": "2026-07-17T13:05:46.839Z",
+	"via": "catalog"
 }

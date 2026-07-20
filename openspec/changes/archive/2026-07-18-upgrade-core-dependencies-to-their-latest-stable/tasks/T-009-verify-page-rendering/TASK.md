@@ -36,6 +36,7 @@ Perform final verification that all 5 pages render correctly on the upgraded sta
 - **Task:** T-008 (E2E tests must pass before final page rendering verification)
 
 ## Acceptance criteria
+
 > ⏭️ Skipped 2026-07-17
 
 - [ ] All 5 pages (`/`, `/about`, `/projects`, `/blog`, `/uses`) render without JavaScript runtime errors

@@ -149,10 +149,10 @@ No forms exist in this application. The Contact component renders social media b
 
 No new breakpoints are introduced. The existing Tailwind breakpoint configuration remains unchanged. **Feature changes:** `tailwind.config.ts` dark mode strategy from `media` to `class` (affects Tailwind config but not breakpoints).
 
-| Breakpoint | Size | Usage |
-|---|---|---|
+| Breakpoint | Size              | Usage                                                   |
+| ---------- | ----------------- | ------------------------------------------------------- |
 | **Mobile** | < 640px (default) | Single-column layouts, hamburger menu, stacked sections |
-| **sm** | ≥ 640px | 2-column grids, horizontal navigation |
-| **lg** | ≥ 1024px | 3-column grids, max-w-7xl centered container |
+| **sm**     | ≥ 640px           | 2-column grids, horizontal navigation                   |
+| **lg**     | ≥ 1024px          | 3-column grids, max-w-7xl centered container            |
 
 These breakpoints are defined in `tailwind.config.ts` and applied across all five pages. The feature modifies `tailwind.config.ts` only for the dark mode strategy (`media` → `class`) and color palette adjustments — no new breakpoint-dependent layouts are introduced (`proposal.md`, "Out of scope" → "Adding new pages, features, or components").

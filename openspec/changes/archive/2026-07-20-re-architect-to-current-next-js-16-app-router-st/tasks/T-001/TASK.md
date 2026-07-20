@@ -37,6 +37,7 @@ The architecture document (§5 Error Handling) confirms the hybrid pattern: root
 - `src/app/layout.tsx` (no changes needed — no Suspense boundaries required per proposal)
 
 ## Acceptance Criteria
+
 > ✅ Verified 2026-07-19
 
 - [x] Root `loading.tsx` exists and renders skeleton placeholders matching the root layout structure

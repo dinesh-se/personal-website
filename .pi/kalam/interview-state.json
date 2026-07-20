@@ -1,129 +1,129 @@
 {
-  "kind": "interview",
-  "mode": "brownfield",
-  "idea": "Improve the site's visual theming (light/dark mode consistency, color palette, typography, spacing) and bring the app up to WCAG 2.1 AA accessibility standards (semantic HTML, color contrast, keyboard navigation, ARIA labels, focus states) across all pages.",
-  "round": 6,
-  "askedAtLeastOnce": true,
-  "boundaries": [
-    {
-      "id": "dark-mode-strategy",
-      "question": "How should dark mode switching work?",
-      "importance": "key",
-      "status": "resolved",
-      "resolution": "Manual toggle button + system preference as default — change Tailwind dark mode strategy from 'media' to 'class', add toggle in Header, store preference in localStorage, detect system preference on initial load"
-    },
-    {
-      "id": "color-palette-scope",
-      "question": "What is the scope of the color palette overhaul?",
-      "importance": "key",
-      "status": "resolved",
-      "resolution": "Minor palette refinement — audit existing Tailwind colors for WCAG AA contrast compliance on both light/dark backgrounds, adjust custom colors in Tailwind config and globals.css to meet thresholds, ensure consistency across all 5 pages"
-    },
-    {
-      "id": "typography-system",
-      "question": "Should typography be changed from the current Tailwind defaults?",
-      "importance": "minor",
-      "status": "resolved",
-      "resolution": "No — keep current Tailwind font utilities, just fix line-height and letter-spacing for readability"
-    },
-    {
-      "id": "spacing-scale",
-      "question": "Should spacing be standardized with a new scale or refined from existing Tailwind utilities?",
-      "importance": "minor",
-      "status": "resolved",
-      "resolution": "No — use existing Tailwind spacing, fix inconsistent spacing in components"
-    },
-    {
-      "id": "a11y-testing-tools",
-      "question": "Which tools should be used for accessibility audit and testing?",
-      "importance": "minor",
-      "status": "resolved",
-      "resolution": "axe-core CLI for audit + Playwright for keyboard testing — both already in project as test harness; no new dependencies needed"
-    },
-    {
-      "id": "linter-a11y-rules",
-      "question": "Should jsx-a11y ESLint rules be tightened beyond current config?",
-      "importance": "minor",
-      "status": "resolved",
-      "resolution": "Already configured with plugin:jsx-a11y/recommended in ESLint per codebase-map.md; tighten to strict for this feature"
-    },
-    {
-      "id": "focus-management-scope",
-      "question": "Should focus management (trap, restore, skip links) be included?",
-      "importance": "key",
-      "status": "resolved",
-      "resolution": "Yes — skip navigation link, focus trap in mobile menu (Header), focus restore on close"
-    },
-    {
-      "id": "rich-text-a11y",
-      "question": "Should rich text rendered via @graphcms/rich-text-react-renderer (/about page) be checked for semantic output?",
-      "importance": "minor",
-      "status": "resolved",
-      "resolution": "Yes — the rich-text renderer on /about must produce semantic HTML (proper heading hierarchy, list elements, paragraph tags) as part of WCAG compliance"
-    },
-    {
-      "id": "testing-new-a11y",
-      "question": "Should new accessibility E2E tests be added to the Playwright suite?",
-      "importance": "minor",
-      "status": "resolved",
-      "resolution": "Yes — existing Playwright E2E suite (9 test files per tech-stack.md) gets new a11y test files for keyboard nav and color contrast verification"
-    },
-    {
-      "id": "components-scope",
-      "question": "Are all 5 pages and 8 components in scope for theming + a11y fixes?",
-      "importance": "key",
-      "status": "resolved",
-      "resolution": "Yes — all pages (/, /about, /projects, /blog, /uses) and all 8 components (Header, Footer, NavLinks, Contact, Experience, BlogPostCard, ProjectCard, RecentProjects) per codebase-map.md"
-    },
-    {
-      "id": "css-architecture",
-      "question": "Should CSS custom properties in globals.css be the primary theming mechanism, or is Tailwind config the source of truth?",
-      "importance": "key",
-      "status": "resolved",
-      "resolution": "Use Tailwind config as source of truth (colors, spacing, typography) and keep CSS custom properties in globals.css for any runtime values — existing pattern already established"
-    }
-  ],
-  "transcript": [
-    {
-      "round": 1,
-      "topic": "dark-mode-strategy",
-      "question": "How should dark mode switching work on the site?",
-      "answer": "Manual toggle button + system preference as default"
-    },
-    {
-      "round": 2,
-      "topic": "color-palette-scope",
-      "question": "What is the scope of the color palette overhaul?",
-      "answer": "Minor palette refinement (existing colors adjusted for contrast + consistency)"
-    },
-    {
-      "round": 3,
-      "topic": "focus-management-scope",
-      "question": "Should advanced focus management be included?",
-      "answer": "Yes — skip navigation link, focus trap in mobile menu, focus restore on close"
-    },
-    {
-      "round": 4,
-      "topic": "typography-system",
-      "question": "Should typography be changed from the current Tailwind defaults?",
-      "answer": "No — keep current Tailwind font utilities, just fix line-height and letter-spacing for readability"
-    },
-    {
-      "round": 5,
-      "topic": "spacing-scale",
-      "question": "Should spacing be standardized with a new scale or refined from existing Tailwind utilities?",
-      "answer": "No — use existing Tailwind spacing, fix inconsistent spacing in components"
-    }
-  ],
-  "openQuestions": [
-    "dark-mode-strategy",
-    "color-palette-scope",
-    "typography-system",
-    "spacing-scale",
-    "focus-management-scope"
-  ],
-  "completed": true,
-  "summaryReady": true,
-  "externalDataNeeded": false,
-  "askRejections": 0
+	"kind": "interview",
+	"mode": "brownfield",
+	"idea": "Improve the site's visual theming (light/dark mode consistency, color palette, typography, spacing) and bring the app up to WCAG 2.1 AA accessibility standards (semantic HTML, color contrast, keyboard navigation, ARIA labels, focus states) across all pages.",
+	"round": 6,
+	"askedAtLeastOnce": true,
+	"boundaries": [
+		{
+			"id": "dark-mode-strategy",
+			"question": "How should dark mode switching work?",
+			"importance": "key",
+			"status": "resolved",
+			"resolution": "Manual toggle button + system preference as default — change Tailwind dark mode strategy from 'media' to 'class', add toggle in Header, store preference in localStorage, detect system preference on initial load"
+		},
+		{
+			"id": "color-palette-scope",
+			"question": "What is the scope of the color palette overhaul?",
+			"importance": "key",
+			"status": "resolved",
+			"resolution": "Minor palette refinement — audit existing Tailwind colors for WCAG AA contrast compliance on both light/dark backgrounds, adjust custom colors in Tailwind config and globals.css to meet thresholds, ensure consistency across all 5 pages"
+		},
+		{
+			"id": "typography-system",
+			"question": "Should typography be changed from the current Tailwind defaults?",
+			"importance": "minor",
+			"status": "resolved",
+			"resolution": "No — keep current Tailwind font utilities, just fix line-height and letter-spacing for readability"
+		},
+		{
+			"id": "spacing-scale",
+			"question": "Should spacing be standardized with a new scale or refined from existing Tailwind utilities?",
+			"importance": "minor",
+			"status": "resolved",
+			"resolution": "No — use existing Tailwind spacing, fix inconsistent spacing in components"
+		},
+		{
+			"id": "a11y-testing-tools",
+			"question": "Which tools should be used for accessibility audit and testing?",
+			"importance": "minor",
+			"status": "resolved",
+			"resolution": "axe-core CLI for audit + Playwright for keyboard testing — both already in project as test harness; no new dependencies needed"
+		},
+		{
+			"id": "linter-a11y-rules",
+			"question": "Should jsx-a11y ESLint rules be tightened beyond current config?",
+			"importance": "minor",
+			"status": "resolved",
+			"resolution": "Already configured with plugin:jsx-a11y/recommended in ESLint per codebase-map.md; tighten to strict for this feature"
+		},
+		{
+			"id": "focus-management-scope",
+			"question": "Should focus management (trap, restore, skip links) be included?",
+			"importance": "key",
+			"status": "resolved",
+			"resolution": "Yes — skip navigation link, focus trap in mobile menu (Header), focus restore on close"
+		},
+		{
+			"id": "rich-text-a11y",
+			"question": "Should rich text rendered via @graphcms/rich-text-react-renderer (/about page) be checked for semantic output?",
+			"importance": "minor",
+			"status": "resolved",
+			"resolution": "Yes — the rich-text renderer on /about must produce semantic HTML (proper heading hierarchy, list elements, paragraph tags) as part of WCAG compliance"
+		},
+		{
+			"id": "testing-new-a11y",
+			"question": "Should new accessibility E2E tests be added to the Playwright suite?",
+			"importance": "minor",
+			"status": "resolved",
+			"resolution": "Yes — existing Playwright E2E suite (9 test files per tech-stack.md) gets new a11y test files for keyboard nav and color contrast verification"
+		},
+		{
+			"id": "components-scope",
+			"question": "Are all 5 pages and 8 components in scope for theming + a11y fixes?",
+			"importance": "key",
+			"status": "resolved",
+			"resolution": "Yes — all pages (/, /about, /projects, /blog, /uses) and all 8 components (Header, Footer, NavLinks, Contact, Experience, BlogPostCard, ProjectCard, RecentProjects) per codebase-map.md"
+		},
+		{
+			"id": "css-architecture",
+			"question": "Should CSS custom properties in globals.css be the primary theming mechanism, or is Tailwind config the source of truth?",
+			"importance": "key",
+			"status": "resolved",
+			"resolution": "Use Tailwind config as source of truth (colors, spacing, typography) and keep CSS custom properties in globals.css for any runtime values — existing pattern already established"
+		}
+	],
+	"transcript": [
+		{
+			"round": 1,
+			"topic": "dark-mode-strategy",
+			"question": "How should dark mode switching work on the site?",
+			"answer": "Manual toggle button + system preference as default"
+		},
+		{
+			"round": 2,
+			"topic": "color-palette-scope",
+			"question": "What is the scope of the color palette overhaul?",
+			"answer": "Minor palette refinement (existing colors adjusted for contrast + consistency)"
+		},
+		{
+			"round": 3,
+			"topic": "focus-management-scope",
+			"question": "Should advanced focus management be included?",
+			"answer": "Yes — skip navigation link, focus trap in mobile menu, focus restore on close"
+		},
+		{
+			"round": 4,
+			"topic": "typography-system",
+			"question": "Should typography be changed from the current Tailwind defaults?",
+			"answer": "No — keep current Tailwind font utilities, just fix line-height and letter-spacing for readability"
+		},
+		{
+			"round": 5,
+			"topic": "spacing-scale",
+			"question": "Should spacing be standardized with a new scale or refined from existing Tailwind utilities?",
+			"answer": "No — use existing Tailwind spacing, fix inconsistent spacing in components"
+		}
+	],
+	"openQuestions": [
+		"dark-mode-strategy",
+		"color-palette-scope",
+		"typography-system",
+		"spacing-scale",
+		"focus-management-scope"
+	],
+	"completed": true,
+	"summaryReady": true,
+	"externalDataNeeded": false,
+	"askRejections": 0
 }

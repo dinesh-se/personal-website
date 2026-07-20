@@ -1,0 +1,18 @@
+{
+  "kind": "skeleton",
+  "mode": "brownfield",
+  "scaffoldExecuted": true,
+  "scaffoldVerified": true,
+  "skeletonVerified": true,
+  "log": [
+    "Skeleton verify: FAILED",
+    "Skeleton verify: FAILED",
+    "Skeleton verify: passed",
+    "Hand-test flagged: src/app/layout.tsx was converted to 'use client' to hold the dark-mode toggle state, which broke the root generateMetadata export (Next.js App Router only reads metadata from layout.tsx/page.tsx files, not arbitrary siblings). The function was extracted to src/app/metadata.ts but nothing imports or re-exports it there - it is dead code, only exercised by generate-metadata.test.ts calling it directly. Fix: re-export it from layout.tsx (e.g. export { generateMetadata } from './metadata') or move the toggle state into a small client child component so layout.tsx can stay a server component and keep its own metadata export.",
+    "Skeleton verify: passed",
+    "Hand-test flagged: The DarkModeProvider/ThemeContext refactor (to fix the metadata issue) dropped the localStorage read and system-preference detection on mount - ThemeContext.tsx initializes dark state with useState(false) unconditionally, and DarkModeProvider.tsx only calls localStorage.setItem, never getItem or window.matchMedia. This regresses proposal.md Acceptance Criteria 1: the toggle must default to system preference on first visit and persist across page reloads. Fix: in ThemeProvider (or a useEffect in DarkModeProvider), on mount read localStorage.getItem('theme') first, falling back to window.matchMedia('(prefers-color-scheme: dark)').matches if unset, and setDark accordingly.",
+    "Skeleton verify: FAILED",
+    "Skeleton verify: passed"
+  ],
+  "completed": true
+}

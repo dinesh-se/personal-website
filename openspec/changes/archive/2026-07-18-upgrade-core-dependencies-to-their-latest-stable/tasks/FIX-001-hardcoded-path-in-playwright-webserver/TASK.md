@@ -5,6 +5,7 @@
 Replace the hardcoded absolute path in the Playwright webServer command with a relative path so the e2e tests can run in CI environments.
 
 ## Acceptance criteria
+
 > ✅ Verified 2026-07-17
 
 - [x] The webServer.command in e2e/playwright.config.ts must not contain the hardcoded path /home/dinesh-se/Dev/personal-website

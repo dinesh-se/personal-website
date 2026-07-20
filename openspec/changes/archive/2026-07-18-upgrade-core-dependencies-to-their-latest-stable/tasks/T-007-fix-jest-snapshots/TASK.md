@@ -19,6 +19,7 @@ Fix all Jest snapshot test failures introduced by the dependency upgrades and ve
 - **Task:** T-003 (TypeScript errors must be fixed first to ensure tests can run)
 
 ## Acceptance criteria
+
 > ✅ Verified 2026-07-17
 
 - [x] All 8 component snapshot tests pass with zero failures

@@ -6,6 +6,8 @@ import { Header } from '@components/Header';
 
 import '@styles/globals.css';
 
+import DarkModeProvider from './DarkModeProvider';
+
 export function generateMetadata(): Metadata {
 	return {
 		title: 'Dinesh Haribabu',
@@ -24,7 +26,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<DarkModeProvider>
 			<body className="antialiased">
 				<Header></Header>
 				<main className="dark:text-slate-20 m-auto min-h-full max-w-7xl p-8 pb-16 pt-12">
@@ -33,6 +35,6 @@ export default function RootLayout({
 				<Footer></Footer>
 				<Analytics />
 			</body>
-		</html>
+		</DarkModeProvider>
 	);
 }

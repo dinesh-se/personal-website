@@ -14,7 +14,9 @@ test.describe('T-007 — Component Rendering After React 19 Upgrade', () => {
 	 * Snapshot: src/components/Header/__snapshots__/Header.test.tsx.snap
 	 * Note: Header renders as <nav> (not <header>)
 	 */
-	test('Header renders top navigation with logo and links', async ({ page }) => {
+	test('Header renders top navigation with logo and links', async ({
+		page,
+	}) => {
 		await page.goto('/');
 
 		// Header renders as a nav element
@@ -22,9 +24,7 @@ test.describe('T-007 — Component Rendering After React 19 Upgrade', () => {
 		await expect(nav).toBeVisible();
 
 		// Logo link
-		await expect(
-			page.getByRole('link', { name: 'Home page' })
-		).toBeVisible();
+		await expect(page.getByRole('link', { name: 'Home page' })).toBeVisible();
 
 		// Desktop nav links
 		await expect(nav.getByRole('link', { name: 'About me' })).toBeVisible();
@@ -34,9 +34,7 @@ test.describe('T-007 — Component Rendering After React 19 Upgrade', () => {
 
 		// Mobile menu button (visible only at mobile viewport)
 		await page.setViewportSize({ width: 375, height: 812 });
-		await expect(
-			page.getByRole('button', { name: /menu/i })
-		).toBeVisible();
+		await expect(page.getByRole('button', { name: /menu/i })).toBeVisible();
 	});
 
 	/**
@@ -74,14 +72,14 @@ test.describe('T-007 — Component Rendering After React 19 Upgrade', () => {
 		const nav = page.getByRole('navigation');
 
 		// Active link should have the active class
-		await expect(
-			nav.getByRole('link', { name: 'About me' })
-		).toHaveClass(/bg-stone-300/);
+		await expect(nav.getByRole('link', { name: 'About me' })).toHaveClass(
+			/bg-stone-300/
+		);
 
 		// Inactive links should NOT have the active class
-		await expect(
-			nav.getByRole('link', { name: 'Projects' })
-		).not.toHaveClass(/bg-stone-300/);
+		await expect(nav.getByRole('link', { name: 'Projects' })).not.toHaveClass(
+			/bg-stone-300/
+		);
 	});
 
 	/**
@@ -110,9 +108,12 @@ test.describe('T-007 — Component Rendering After React 19 Upgrade', () => {
 		await page.goto('/');
 
 		// Experience section: div with h4 "Experience" (use .first() for strict mode)
-		const experienceSection = page.locator('div').filter({
-			has: page.locator('h4').filter({ hasText: /experience/i }),
-		}).first();
+		const experienceSection = page
+			.locator('div')
+			.filter({
+				has: page.locator('h4').filter({ hasText: /experience/i }),
+			})
+			.first();
 		await expect(experienceSection).toBeVisible();
 
 		// Each entry has org name and title
@@ -187,7 +188,9 @@ test.describe('T-007 — Component Rendering After React 19 Upgrade', () => {
 		await page.goto('/about');
 
 		// The bio content should be rendered as HTML paragraphs
-		await expect(page.getByRole('heading', { level: 1, name: /about me/i })).toBeVisible();
+		await expect(
+			page.getByRole('heading', { level: 1, name: /about me/i })
+		).toBeVisible();
 
 		// Rich text paragraphs should be visible (not raw markdown)
 		const bioContent = page.locator('main').filter({

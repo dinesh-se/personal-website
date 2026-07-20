@@ -21,6 +21,7 @@ Update the GitHub Actions CI workflow (`.github/workflows/lint-test.yml`) to use
 - **Task:** T-005 (lint must pass before CI workflow is updated, to ensure the workflow changes don't introduce new errors)
 
 ## Acceptance criteria
+
 > ✅ Verified 2026-07-17
 
 - [x] `.github/workflows/lint-test.yml` uses `node-version: '24'` (or `node-version: 24`)

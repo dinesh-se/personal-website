@@ -1,64 +1,64 @@
 {
-  "kind": "integration-check",
-  "specs": [
-    {
-      "taskId": "T-002",
-      "path": "e2e/c2-t-002-experience-date-format.spec.ts"
-    },
-    {
-      "taskId": "T-003",
-      "path": "e2e/c2-t-003-metadata.spec.ts"
-    },
-    {
-      "taskId": "FIX-001",
-      "path": "e2e/fix-001-graceful-devto-fetch-failure.spec.ts"
-    },
-    {
-      "taskId": "T-001",
-      "path": "e2e/c2-t-001-loading-and-error-pages.spec.ts"
-    },
-    {
-      "taskId": "FIX-002",
-      "path": "e2e/c2-fix-002-fix-blog-failure.spec.ts"
-    }
-  ],
-  "issues": [
-    {
-      "id": "ISS-001",
-      "detectedAt": "2026-07-20T17:17:59.849Z",
-      "kind": "e2e-failure",
-      "description": "e2e failure (milestone 3): e2e spec \"shows fallback message when Dev.to API fails\" (fix-001-graceful-devto-fetch-failure.spec.ts) failed: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/blog\", waiting until \"load\"\u001b[22m\n",
-      "source": "e2e spec \"shows fallback message when Dev.to API fails\" (fix-001-graceful-devto-fetch-failure.spec.ts) failed: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/blog\", waiting until \"load\"\u001b[22m\n",
-      "resolved": true,
-      "taskId": "FIX-002"
-    }
-  ],
-  "feedbackItems": [
-    {
-      "id": "FB-001",
-      "submittedAt": "2026-07-20T15:17:51.568Z",
-      "description": "Failed to fetch blog posts from Dev.to: Error: Failed to fetch blog posts\n    at getBlogPosts (src/api/rest.ts:11:9)\n    at async getPageData (src/app/blog/page.tsx:26:35)\n    at async Blog (src/app/blog/page.tsx:35:20)\n   9 |\n  10 |  if (!res.ok) {\n> 11 |          throw new Error('Failed to fetch blog posts');\n     |       ^\n  12 |  }\n  13 |\n  14 |  const data = await res.json();\n Cache  Failed to fetch blog posts from Dev.to: Error: Failed to fetch blog posts\n    at getBlogPosts (src/api/rest.ts:11:9)\n    at getPageData (src/app/blog/page.tsx:26:35)\n    at Blog (src/app/blog/page.tsx:35:20)\n   9 |\n  10 |  if (!res.ok) {\n> 11 |          throw new Error('Failed to fetch blog posts');\n     |       ^\n  12 |  }\n  13 |\n  14 |  const data = await res.json(); {\n  environmentName: 'Cache'\n}\n GET /blog 200 in 465ms (next.js: 312ms, application-code: 153ms)\n Cache  Failed to fetch blog posts from Dev.to: Error: Failed to fetch blog posts\n    at getBlogPosts (src/api/rest.ts:11:9)\n    at getPageData (src/app/blog/page.tsx:26:35)\n    at Blog (src/app/blog/page.tsx:35:20)\n   9 |\n  10 |  if (!res.ok) {\n> 11 |          throw new Error('Failed to fetch blog posts');\n     |       ^\n  12 |  }\n  13 |\n  14 |  const data = await res.json(); {\n  environmentName: 'Cache'\n}",
-      "resolved": false,
-      "category": "bug",
-      "taskId": "FIX-001"
-    }
-  ],
-  "cycles": [
-    {
-      "number": 1,
-      "startedAt": "2026-07-20T17:17:59.848Z",
-      "completedAt": "2026-07-20T17:17:59.849Z",
-      "issuesFound": 1
-    },
-    {
-      "number": 2,
-      "startedAt": "2026-07-20T19:53:03.276Z",
-      "completedAt": "2026-07-20T19:53:03.276Z",
-      "issuesFound": 0
-    }
-  ],
-  "cleanCycleCount": 0,
-  "active": false,
-  "completed": false,
-  "e2eAuthoredMilestones": []
+	"kind": "integration-check",
+	"specs": [
+		{
+			"taskId": "T-002",
+			"path": "e2e/c2-t-002-experience-date-format.spec.ts"
+		},
+		{
+			"taskId": "T-003",
+			"path": "e2e/c2-t-003-metadata.spec.ts"
+		},
+		{
+			"taskId": "FIX-001",
+			"path": "e2e/fix-001-graceful-devto-fetch-failure.spec.ts"
+		},
+		{
+			"taskId": "T-001",
+			"path": "e2e/c2-t-001-loading-and-error-pages.spec.ts"
+		},
+		{
+			"taskId": "FIX-002",
+			"path": "e2e/c2-fix-002-fix-blog-failure.spec.ts"
+		}
+	],
+	"issues": [
+		{
+			"id": "ISS-001",
+			"detectedAt": "2026-07-20T17:17:59.849Z",
+			"kind": "e2e-failure",
+			"description": "e2e failure (milestone 3): e2e spec \"shows fallback message when Dev.to API fails\" (fix-001-graceful-devto-fetch-failure.spec.ts) failed: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/blog\", waiting until \"load\"\u001b[22m\n",
+			"source": "e2e spec \"shows fallback message when Dev.to API fails\" (fix-001-graceful-devto-fetch-failure.spec.ts) failed: Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3099/blog\nCall log:\n\u001b[2m  - navigating to \"http://localhost:3099/blog\", waiting until \"load\"\u001b[22m\n",
+			"resolved": true,
+			"taskId": "FIX-002"
+		}
+	],
+	"feedbackItems": [
+		{
+			"id": "FB-001",
+			"submittedAt": "2026-07-20T15:17:51.568Z",
+			"description": "Failed to fetch blog posts from Dev.to: Error: Failed to fetch blog posts\n    at getBlogPosts (src/api/rest.ts:11:9)\n    at async getPageData (src/app/blog/page.tsx:26:35)\n    at async Blog (src/app/blog/page.tsx:35:20)\n   9 |\n  10 |  if (!res.ok) {\n> 11 |          throw new Error('Failed to fetch blog posts');\n     |       ^\n  12 |  }\n  13 |\n  14 |  const data = await res.json();\n Cache  Failed to fetch blog posts from Dev.to: Error: Failed to fetch blog posts\n    at getBlogPosts (src/api/rest.ts:11:9)\n    at getPageData (src/app/blog/page.tsx:26:35)\n    at Blog (src/app/blog/page.tsx:35:20)\n   9 |\n  10 |  if (!res.ok) {\n> 11 |          throw new Error('Failed to fetch blog posts');\n     |       ^\n  12 |  }\n  13 |\n  14 |  const data = await res.json(); {\n  environmentName: 'Cache'\n}\n GET /blog 200 in 465ms (next.js: 312ms, application-code: 153ms)\n Cache  Failed to fetch blog posts from Dev.to: Error: Failed to fetch blog posts\n    at getBlogPosts (src/api/rest.ts:11:9)\n    at getPageData (src/app/blog/page.tsx:26:35)\n    at Blog (src/app/blog/page.tsx:35:20)\n   9 |\n  10 |  if (!res.ok) {\n> 11 |          throw new Error('Failed to fetch blog posts');\n     |       ^\n  12 |  }\n  13 |\n  14 |  const data = await res.json(); {\n  environmentName: 'Cache'\n}",
+			"resolved": false,
+			"category": "bug",
+			"taskId": "FIX-001"
+		}
+	],
+	"cycles": [
+		{
+			"number": 1,
+			"startedAt": "2026-07-20T17:17:59.848Z",
+			"completedAt": "2026-07-20T17:17:59.849Z",
+			"issuesFound": 1
+		},
+		{
+			"number": 2,
+			"startedAt": "2026-07-20T19:53:03.276Z",
+			"completedAt": "2026-07-20T19:53:03.276Z",
+			"issuesFound": 0
+		}
+	],
+	"cleanCycleCount": 0,
+	"active": false,
+	"completed": false,
+	"e2eAuthoredMilestones": []
 }

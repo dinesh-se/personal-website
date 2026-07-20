@@ -5,6 +5,7 @@
 Make the FIX-001 e2e spec pass by starting the Next.js dev server in Playwright and enabling the test to mock the Dev.to API response via browser-side interception.
 
 ## Acceptance criteria
+
 > ✅ Verified 2026-07-20
 
 - [x] Playwright config starts the Next.js dev server on port 3099 before running e2e tests (via webServer config)

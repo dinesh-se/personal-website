@@ -66,63 +66,63 @@ The personal website uses Tailwind CSS with a `prefers-color-scheme`-only dark m
 
 ## 5. Functional Requirements
 
-| ID | Requirement | Priority |
-|----|-------------|----------|
-| FR-1 | Change Tailwind dark mode strategy from `media` to `class` | Must |
-| FR-2 | Add dark mode toggle button in Header with localStorage persistence | Must |
-| FR-3 | Detect and default to system `prefers-color-scheme` on first visit | Must |
-| FR-4 | Audit and fix all color contrast violations to meet WCAG 2.1 AA (4.5:1 text, 3:1 UI/large text) | Must |
-| FR-5 | Add skip navigation link to all pages | Must |
-| FR-6 | Implement focus trap in mobile menu (Header component) | Must |
-| FR-7 | Implement focus restore on mobile menu close | Must |
-| FR-8 | Ensure visible focus indicators on all interactive elements (≥ 3:1 contrast) | Must |
-| FR-9 | Add ARIA labels to all interactive elements lacking descriptive text | Must |
-| FR-10 | Ensure single `<h1>` per page and sequential heading hierarchy | Must |
-| FR-11 | Ensure landmark regions (`<main>`, `<nav>`, `<header>`, `<footer>`) on all pages | Must |
-| FR-12 | Verify rich text renderer on `/about` produces semantic HTML | Must |
-| FR-13 | Tighten ESLint `jsx-a11y` from `recommended` to `strict` and fix all violations | Must |
-| FR-14 | Fix line-height (≥ 1.5 body) and letter-spacing for readability | Should |
-| FR-15 | Fix inconsistent spacing between components and sections | Should |
-| FR-16 | Integrate axe-core CLI into CI pipeline | Should |
-| FR-17 | Add Playwright E2E tests for keyboard navigation and focus states | Should |
-| FR-18 | All 5 pages render without runtime errors after changes | Must |
-| FR-19 | All existing Jest snapshot tests pass (updated for new toggle button) | Must |
-| FR-20 | All existing Playwright E2E tests pass | Must |
+| ID    | Requirement                                                                                     | Priority |
+| ----- | ----------------------------------------------------------------------------------------------- | -------- |
+| FR-1  | Change Tailwind dark mode strategy from `media` to `class`                                      | Must     |
+| FR-2  | Add dark mode toggle button in Header with localStorage persistence                             | Must     |
+| FR-3  | Detect and default to system `prefers-color-scheme` on first visit                              | Must     |
+| FR-4  | Audit and fix all color contrast violations to meet WCAG 2.1 AA (4.5:1 text, 3:1 UI/large text) | Must     |
+| FR-5  | Add skip navigation link to all pages                                                           | Must     |
+| FR-6  | Implement focus trap in mobile menu (Header component)                                          | Must     |
+| FR-7  | Implement focus restore on mobile menu close                                                    | Must     |
+| FR-8  | Ensure visible focus indicators on all interactive elements (≥ 3:1 contrast)                    | Must     |
+| FR-9  | Add ARIA labels to all interactive elements lacking descriptive text                            | Must     |
+| FR-10 | Ensure single `<h1>` per page and sequential heading hierarchy                                  | Must     |
+| FR-11 | Ensure landmark regions (`<main>`, `<nav>`, `<header>`, `<footer>`) on all pages                | Must     |
+| FR-12 | Verify rich text renderer on `/about` produces semantic HTML                                    | Must     |
+| FR-13 | Tighten ESLint `jsx-a11y` from `recommended` to `strict` and fix all violations                 | Must     |
+| FR-14 | Fix line-height (≥ 1.5 body) and letter-spacing for readability                                 | Should   |
+| FR-15 | Fix inconsistent spacing between components and sections                                        | Should   |
+| FR-16 | Integrate axe-core CLI into CI pipeline                                                         | Should   |
+| FR-17 | Add Playwright E2E tests for keyboard navigation and focus states                               | Should   |
+| FR-18 | All 5 pages render without runtime errors after changes                                         | Must     |
+| FR-19 | All existing Jest snapshot tests pass (updated for new toggle button)                           | Must     |
+| FR-20 | All existing Playwright E2E tests pass                                                          | Must     |
 
 ## 6. Non-Functional Requirements
 
-| ID | Requirement | Priority |
-|----|-------------|----------|
-| NFR-1 | WCAG 2.1 AA compliance across all 5 pages | Must |
-| NFR-2 | No functional regressions — all existing tests must pass | Must |
-| NFR-3 | No changes to external API integrations (Hygraph, Dev.to) | Must |
-| NFR-4 | No new font families or custom spacing scales introduced | Should |
-| NFR-5 | Dark mode toggle adds minimal JS overhead (< 1KB gzipped) | Should |
-| NFR-6 | Changes are scoped to existing 5 pages and 8 components only | Must |
+| ID    | Requirement                                                  | Priority |
+| ----- | ------------------------------------------------------------ | -------- |
+| NFR-1 | WCAG 2.1 AA compliance across all 5 pages                    | Must     |
+| NFR-2 | No functional regressions — all existing tests must pass     | Must     |
+| NFR-3 | No changes to external API integrations (Hygraph, Dev.to)    | Must     |
+| NFR-4 | No new font families or custom spacing scales introduced     | Should   |
+| NFR-5 | Dark mode toggle adds minimal JS overhead (< 1KB gzipped)    | Should   |
+| NFR-6 | Changes are scoped to existing 5 pages and 8 components only | Must     |
 
 ## 7. Dependencies
 
-| Dependency | Role | Notes |
-|------------|------|-------|
-| `tailwindcss` `^3.4.12` | Dark mode strategy change (`media` → `class`) | No version bump required |
-| `@heroicons/react` `^2.1.5` | Icons for dark mode toggle button | Already in project |
-| `clsx` `^2.1.1` | Conditional class merging for theme state | Already in project |
-| `axe-core` (dev dependency, new) | CLI accessibility audit for CI | New dev dependency |
-| `@testing-library/react` `^16.0.1` | Existing test harness | No change |
-| `playwright` (existing in test harness) | Keyboard navigation E2E tests | New test files, no version change |
-| `eslint` (existing) | `jsx-a11y` rule level change | No version bump required |
+| Dependency                              | Role                                          | Notes                             |
+| --------------------------------------- | --------------------------------------------- | --------------------------------- |
+| `tailwindcss` `^3.4.12`                 | Dark mode strategy change (`media` → `class`) | No version bump required          |
+| `@heroicons/react` `^2.1.5`             | Icons for dark mode toggle button             | Already in project                |
+| `clsx` `^2.1.1`                         | Conditional class merging for theme state     | Already in project                |
+| `axe-core` (dev dependency, new)        | CLI accessibility audit for CI                | New dev dependency                |
+| `@testing-library/react` `^16.0.1`      | Existing test harness                         | No change                         |
+| `playwright` (existing in test harness) | Keyboard navigation E2E tests                 | New test files, no version change |
+| `eslint` (existing)                     | `jsx-a11y` rule level change                  | No version bump required          |
 
 ## 8. Risks and Mitigations
 
-| Risk | Likelihood | Impact | Mitigation |
-|------|-----------|--------|------------|
-| `jsx-a11y` strict mode reveals many existing violations | High | Medium | Run audit first, fix incrementally, commit rule change separately |
-| Dark mode toggle changes header layout slightly | Medium | Low | Design toggle to match existing header height/padding |
-| Rich text renderer may not support semantic output customization | Medium | High | Wrap renderer with custom element mappings if needed |
-| Color adjustments may shift brand appearance | Medium | Low | Provide before/after screenshots for review before committing |
-| Focus trap adds complexity to mobile menu state management | Medium | Medium | Use existing `useState` in Header, test with Playwright keyboard scenarios |
-| Line-height/spacing changes affect layout on some pages | Low | Low | Test all 5 pages after changes, use Tailwind responsive modifiers where needed |
-| axe-core CLI adds CI execution time | Low | Low | Run only on changed pages or limit to critical routes |
+| Risk                                                             | Likelihood | Impact | Mitigation                                                                     |
+| ---------------------------------------------------------------- | ---------- | ------ | ------------------------------------------------------------------------------ |
+| `jsx-a11y` strict mode reveals many existing violations          | High       | Medium | Run audit first, fix incrementally, commit rule change separately              |
+| Dark mode toggle changes header layout slightly                  | Medium     | Low    | Design toggle to match existing header height/padding                          |
+| Rich text renderer may not support semantic output customization | Medium     | High   | Wrap renderer with custom element mappings if needed                           |
+| Color adjustments may shift brand appearance                     | Medium     | Low    | Provide before/after screenshots for review before committing                  |
+| Focus trap adds complexity to mobile menu state management       | Medium     | Medium | Use existing `useState` in Header, test with Playwright keyboard scenarios     |
+| Line-height/spacing changes affect layout on some pages          | Low        | Low    | Test all 5 pages after changes, use Tailwind responsive modifiers where needed |
+| axe-core CLI adds CI execution time                              | Low        | Low    | Run only on changed pages or limit to critical routes                          |
 
 ## 9. Success Metrics
 
@@ -160,20 +160,20 @@ _Source: `openspec/changes/current/proposal.md` (Feature Brief); `openspec/specs
 
 ### In Scope (v1)
 
-| Area | Action | Source |
-|------|--------|--------|
-| Dark mode | Change Tailwind strategy `media` → `class`, add toggle in Header, localStorage persistence | proposal.md §Feature Scope |
-| Color palette | Audit and fix all contrast violations to WCAG 2.1 AA (4.5:1 text, 3:1 UI/large text) | proposal.md §Acceptance Criteria #2 |
-| Typography | Fix line-height (≥ 1.5 body) and letter-spacing within existing Tailwind utilities | proposal.md §Feature Scope |
-| Spacing | Fix inconsistent spacing between components and sections | proposal.md §Feature Scope |
-| Skip navigation | Add skip nav link to all pages | proposal.md §Acceptance Criteria #3 |
-| Focus management | Focus trap in mobile menu, focus restore on close | proposal.md §Acceptance Criteria #4, #5 |
-| ARIA labels | Add to all interactive elements lacking descriptive text | proposal.md §Acceptance Criteria #6 |
-| Semantic HTML | Single `<h1>` per page, sequential heading hierarchy, landmark regions | proposal.md §Acceptance Criteria #7 |
-| Rich text a11y | Ensure `/about` rich text renderer produces semantic HTML | proposal.md §Acceptance Criteria #8 |
-| ESLint | Tighten `jsx-a11y` from `recommended` to `strict` | proposal.md §Feature Scope |
-| Accessibility testing | axe-core CLI in CI, new Playwright E2E a11y tests | proposal.md §Feature Scope |
-| Component scope | All 5 pages (/, /about, /projects, /blog, /uses) and 8 components | proposal.md §Affected Areas |
+| Area                  | Action                                                                                     | Source                                  |
+| --------------------- | ------------------------------------------------------------------------------------------ | --------------------------------------- |
+| Dark mode             | Change Tailwind strategy `media` → `class`, add toggle in Header, localStorage persistence | proposal.md §Feature Scope              |
+| Color palette         | Audit and fix all contrast violations to WCAG 2.1 AA (4.5:1 text, 3:1 UI/large text)       | proposal.md §Acceptance Criteria #2     |
+| Typography            | Fix line-height (≥ 1.5 body) and letter-spacing within existing Tailwind utilities         | proposal.md §Feature Scope              |
+| Spacing               | Fix inconsistent spacing between components and sections                                   | proposal.md §Feature Scope              |
+| Skip navigation       | Add skip nav link to all pages                                                             | proposal.md §Acceptance Criteria #3     |
+| Focus management      | Focus trap in mobile menu, focus restore on close                                          | proposal.md §Acceptance Criteria #4, #5 |
+| ARIA labels           | Add to all interactive elements lacking descriptive text                                   | proposal.md §Acceptance Criteria #6     |
+| Semantic HTML         | Single `<h1>` per page, sequential heading hierarchy, landmark regions                     | proposal.md §Acceptance Criteria #7     |
+| Rich text a11y        | Ensure `/about` rich text renderer produces semantic HTML                                  | proposal.md §Acceptance Criteria #8     |
+| ESLint                | Tighten `jsx-a11y` from `recommended` to `strict`                                          | proposal.md §Feature Scope              |
+| Accessibility testing | axe-core CLI in CI, new Playwright E2E a11y tests                                          | proposal.md §Feature Scope              |
+| Component scope       | All 5 pages (/, /about, /projects, /blog, /uses) and 8 components                          | proposal.md §Affected Areas             |
 
 ### Out of Scope
 
@@ -190,26 +190,26 @@ _Source: `openspec/changes/current/proposal.md` (Feature Scope, Out of scope); `
 
 ## 3. Feature List (Prioritized)
 
-| # | Feature | Priority | Source |
-|---|---------|----------|--------|
-| 1 | Change Tailwind dark mode strategy `media` → `class` | P0 | proposal.md; prd.md FR-1 |
-| 2 | Add dark mode toggle button in Header with localStorage persistence | P0 | proposal.md; prd.md FR-2 |
-| 3 | Detect and default to system `prefers-color-scheme` on first visit | P0 | proposal.md; prd.md FR-3 |
-| 4 | Audit and fix all color contrast violations to WCAG 2.1 AA | P0 | proposal.md; prd.md FR-4 |
-| 5 | Add skip navigation link to all pages | P0 | proposal.md; prd.md FR-5 |
-| 6 | Implement focus trap in mobile menu | P0 | proposal.md; prd.md FR-6 |
-| 7 | Implement focus restore on mobile menu close | P0 | proposal.md; prd.md FR-7 |
-| 8 | Ensure visible focus indicators on all interactive elements | P0 | proposal.md; prd.md FR-8 |
-| 9 | Add ARIA labels to all interactive elements | P0 | proposal.md; prd.md FR-9 |
-| 10 | Ensure single `<h1>` and sequential heading hierarchy | P0 | proposal.md; prd.md FR-10 |
-| 11 | Ensure landmark regions on all pages | P0 | proposal.md; prd.md FR-11 |
-| 12 | Verify rich text renderer produces semantic HTML | P0 | proposal.md; prd.md FR-12 |
-| 13 | Tighten ESLint `jsx-a11y` to `strict` and fix violations | P0 | proposal.md; prd.md FR-13 |
-| 14 | Fix line-height and letter-spacing for readability | P1 | proposal.md; prd.md FR-14 |
-| 15 | Fix inconsistent spacing between components | P1 | proposal.md; prd.md FR-15 |
-| 16 | Integrate axe-core CLI into CI | P1 | proposal.md; prd.md FR-16 |
-| 17 | Add Playwright E2E tests for keyboard navigation | P1 | proposal.md; prd.md FR-17 |
-| 18 | All existing tests pass (updated snapshots) | P0 | proposal.md; prd.md FR-18–20 |
+| #   | Feature                                                             | Priority | Source                       |
+| --- | ------------------------------------------------------------------- | -------- | ---------------------------- |
+| 1   | Change Tailwind dark mode strategy `media` → `class`                | P0       | proposal.md; prd.md FR-1     |
+| 2   | Add dark mode toggle button in Header with localStorage persistence | P0       | proposal.md; prd.md FR-2     |
+| 3   | Detect and default to system `prefers-color-scheme` on first visit  | P0       | proposal.md; prd.md FR-3     |
+| 4   | Audit and fix all color contrast violations to WCAG 2.1 AA          | P0       | proposal.md; prd.md FR-4     |
+| 5   | Add skip navigation link to all pages                               | P0       | proposal.md; prd.md FR-5     |
+| 6   | Implement focus trap in mobile menu                                 | P0       | proposal.md; prd.md FR-6     |
+| 7   | Implement focus restore on mobile menu close                        | P0       | proposal.md; prd.md FR-7     |
+| 8   | Ensure visible focus indicators on all interactive elements         | P0       | proposal.md; prd.md FR-8     |
+| 9   | Add ARIA labels to all interactive elements                         | P0       | proposal.md; prd.md FR-9     |
+| 10  | Ensure single `<h1>` and sequential heading hierarchy               | P0       | proposal.md; prd.md FR-10    |
+| 11  | Ensure landmark regions on all pages                                | P0       | proposal.md; prd.md FR-11    |
+| 12  | Verify rich text renderer produces semantic HTML                    | P0       | proposal.md; prd.md FR-12    |
+| 13  | Tighten ESLint `jsx-a11y` to `strict` and fix violations            | P0       | proposal.md; prd.md FR-13    |
+| 14  | Fix line-height and letter-spacing for readability                  | P1       | proposal.md; prd.md FR-14    |
+| 15  | Fix inconsistent spacing between components                         | P1       | proposal.md; prd.md FR-15    |
+| 16  | Integrate axe-core CLI into CI                                      | P1       | proposal.md; prd.md FR-16    |
+| 17  | Add Playwright E2E tests for keyboard navigation                    | P1       | proposal.md; prd.md FR-17    |
+| 18  | All existing tests pass (updated snapshots)                         | P0       | proposal.md; prd.md FR-18–20 |
 
 _Source: `openspec/changes/current/proposal.md` (Feature Scope, Acceptance Criteria); `openspec/specs/prd.md` §5._
 
@@ -346,17 +346,17 @@ _Source: `openspec/specs/prd.md` §6 (preserved and adapted for this feature)._ 
 
 ## 6. Assumptions
 
-| # | Assumption | Source | Rationale |
-|---|------------|--------|-----------|
-| A1 | Tailwind CSS v3 supports `darkMode: 'class'` strategy without breaking changes | proposal.md (CSS architecture decision) | Existing Tailwind 3.4.12 already supports class-based dark mode. |
-| A2 | `@graphcms/rich-text-react-renderer` can be configured or wrapped to produce semantic HTML | proposal.md Integration Concerns | If the renderer forces `<div>` wrappers, a custom renderer mapping will be needed. |
-| A3 | `@heroicons/react` provides suitable icons for the dark mode toggle (sun/moon) | proposal.md (icons already in use) | No new icon dependency needed. |
-| A4 | axe-core CLI can be integrated into the existing CI pipeline without significant overhead | proposal.md (CI already runs lint + test) | New dev dependency, fast execution on static pages. |
-| A5 | Playwright is already configured and available for E2E tests | proposal.md (9 existing E2E test files) | No new test infrastructure needed, just new test files. |
-| A6 | CSS custom properties in `globals.css` can be updated to support both light and dark theme colors | proposal.md (existing pattern: CSS custom properties + Tailwind `dark:` variants) | Existing architecture supports this; no changes needed. |
-| A7 | The existing 8 components and 5 pages cover all user-visible surface area | proposal.md (UI Surface section) | No new pages or components are added. |
-| A8 | Color contrast adjustments can be achieved by tweaking existing Tailwind color values | proposal.md (minor palette refinement decision) | Full palette redesign is out of scope; adjustments stay within current color family. |
-| A9 | Skip navigation link does not visually disrupt the layout on mouse users | proposal.md (focus management scope) | Skip link is visually hidden until focused (standard pattern). |
-| A10 | Focus trap implementation can use a lightweight approach without new dependencies | proposal.md (focus management scope) | Custom implementation using existing `useState` and event listeners in Header component. |
+| #   | Assumption                                                                                        | Source                                                                            | Rationale                                                                                |
+| --- | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| A1  | Tailwind CSS v3 supports `darkMode: 'class'` strategy without breaking changes                    | proposal.md (CSS architecture decision)                                           | Existing Tailwind 3.4.12 already supports class-based dark mode.                         |
+| A2  | `@graphcms/rich-text-react-renderer` can be configured or wrapped to produce semantic HTML        | proposal.md Integration Concerns                                                  | If the renderer forces `<div>` wrappers, a custom renderer mapping will be needed.       |
+| A3  | `@heroicons/react` provides suitable icons for the dark mode toggle (sun/moon)                    | proposal.md (icons already in use)                                                | No new icon dependency needed.                                                           |
+| A4  | axe-core CLI can be integrated into the existing CI pipeline without significant overhead         | proposal.md (CI already runs lint + test)                                         | New dev dependency, fast execution on static pages.                                      |
+| A5  | Playwright is already configured and available for E2E tests                                      | proposal.md (9 existing E2E test files)                                           | No new test infrastructure needed, just new test files.                                  |
+| A6  | CSS custom properties in `globals.css` can be updated to support both light and dark theme colors | proposal.md (existing pattern: CSS custom properties + Tailwind `dark:` variants) | Existing architecture supports this; no changes needed.                                  |
+| A7  | The existing 8 components and 5 pages cover all user-visible surface area                         | proposal.md (UI Surface section)                                                  | No new pages or components are added.                                                    |
+| A8  | Color contrast adjustments can be achieved by tweaking existing Tailwind color values             | proposal.md (minor palette refinement decision)                                   | Full palette redesign is out of scope; adjustments stay within current color family.     |
+| A9  | Skip navigation link does not visually disrupt the layout on mouse users                          | proposal.md (focus management scope)                                              | Skip link is visually hidden until focused (standard pattern).                           |
+| A10 | Focus trap implementation can use a lightweight approach without new dependencies                 | proposal.md (focus management scope)                                              | Custom implementation using existing `useState` and event listeners in Header component. |
 
 _Source: `openspec/changes/current/proposal.md` (Integration Concerns, Risks, Feature Scope decisions); `openspec/specs/prd.md` §3, §10._
