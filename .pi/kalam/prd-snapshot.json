@@ -1,55 +1,75 @@
 {
-	"takenAt": "2026-07-18T23:14:58.718Z",
-	"requirements": [
-		{
-			"heading": "The dependency installation completes without peer dependency conflicts.",
-			"hash": "736af1102a5f",
-			"scenarioNames": ["Clean install after package.json bump"]
-		},
-		{
-			"heading": "The production build completes with zero TypeScript and zero ESLint errors.",
-			"hash": "c3cbba464c98",
-			"scenarioNames": ["Build succeeds after dependency upgrade"]
-		},
-		{
-			"heading": "All Jest snapshot tests pass after the upgrade.",
-			"hash": "8fed1250a3fe",
-			"scenarioNames": ["Jest snapshot suite passes"]
-		},
-		{
-			"heading": "All Playwright E2E tests pass after the upgrade.",
-			"hash": "f4b6d0c95f45",
-			"scenarioNames": ["Playwright E2E suite passes"]
-		},
-		{
-			"heading": "The CI workflow runs on Node 24 and passes lint and test steps.",
-			"hash": "c49b246f8f32",
-			"scenarioNames": ["CI job executes on Node 24"]
-		},
-		{
-			"heading": "All five pages render without runtime errors.",
-			"hash": "0e7b7c43c593",
-			"scenarioNames": ["Pages render without runtime errors"]
-		},
-		{
-			"heading": "Dark mode styles apply correctly on all pages.",
-			"hash": "daa79cc8288e",
-			"scenarioNames": ["Dark mode renders on all pages"]
-		},
-		{
-			"heading": "ESLint executes using the flat config format with zero errors.",
-			"hash": "45fc4359f5d9",
-			"scenarioNames": ["Lint runs on flat config"]
-		},
-		{
-			"heading": "The mobile navigation menu opens and closes correctly.",
-			"hash": "5637ec69b824",
-			"scenarioNames": ["Hamburger menu toggle works"]
-		},
-		{
-			"heading": "The active navigation link is highlighted in both Header and Footer.",
-			"hash": "6044a7028a34",
-			"scenarioNames": ["Active link highlighting"]
-		}
-	]
+  "takenAt": "2026-07-20T21:01:28.898Z",
+  "requirements": [
+    {
+      "heading": "The dependency installation completes without peer dependency conflicts.",
+      "hash": "736af1102a5f",
+      "scenarioNames": [
+        "Clean install after package.json bump"
+      ]
+    },
+    {
+      "heading": "The production build completes with zero TypeScript and zero ESLint errors.",
+      "hash": "c3cbba464c98",
+      "scenarioNames": [
+        "Build succeeds after dependency upgrade"
+      ]
+    },
+    {
+      "heading": "All Jest snapshot tests pass after the upgrade.",
+      "hash": "8fed1250a3fe",
+      "scenarioNames": [
+        "Jest snapshot suite passes"
+      ]
+    },
+    {
+      "heading": "All Playwright E2E tests pass after the upgrade.",
+      "hash": "f4b6d0c95f45",
+      "scenarioNames": [
+        "Playwright E2E suite passes"
+      ]
+    },
+    {
+      "heading": "The CI workflow runs on Node 24 and passes lint and test steps.",
+      "hash": "c49b246f8f32",
+      "scenarioNames": [
+        "CI job executes on Node 24"
+      ]
+    },
+    {
+      "heading": "All five pages render without runtime errors.",
+      "hash": "0e7b7c43c593",
+      "scenarioNames": [
+        "Pages render without runtime errors"
+      ]
+    },
+    {
+      "heading": "Dark mode styles apply correctly on all pages.",
+      "hash": "daa79cc8288e",
+      "scenarioNames": [
+        "Dark mode renders on all pages"
+      ]
+    },
+    {
+      "heading": "ESLint executes using the flat config format with zero errors.",
+      "hash": "45fc4359f5d9",
+      "scenarioNames": [
+        "Lint runs on flat config"
+      ]
+    },
+    {
+      "heading": "The mobile navigation menu opens and closes correctly.",
+      "hash": "5637ec69b824",
+      "scenarioNames": [
+        "Hamburger menu toggle works"
+      ]
+    },
+    {
+      "heading": "The active navigation link is highlighted in both Header and Footer.",
+      "hash": "6044a7028a34",
+      "scenarioNames": [
+        "Active link highlighting"
+      ]
+    }
+  ]
 }

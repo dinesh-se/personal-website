@@ -422,5 +422,109 @@
     "source": "build",
     "affects": [],
     "timestamp": "2026-07-20T19:50:26.649Z"
+  },
+  {
+    "id": "boundary:a11y-testing-tools",
+    "question": "Which tools should be used for accessibility audit and testing?",
+    "answer": "axe-core CLI for audit + Playwright for keyboard testing — both already in project as test harness; no new dependencies needed",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-20T21:02:13.236Z"
+  },
+  {
+    "id": "boundary:linter-a11y-rules",
+    "question": "Should jsx-a11y ESLint rules be tightened beyond current config?",
+    "answer": "Already configured with plugin:jsx-a11y/recommended in ESLint per codebase-map.md; tighten to strict for this feature",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-20T21:02:13.237Z"
+  },
+  {
+    "id": "boundary:rich-text-a11y",
+    "question": "Should rich text rendered via @graphcms/rich-text-react-renderer (/about page) be checked for semantic output?",
+    "answer": "Yes — the rich-text renderer on /about must produce semantic HTML (proper heading hierarchy, list elements, paragraph tags) as part of WCAG compliance",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-20T21:02:13.237Z"
+  },
+  {
+    "id": "boundary:testing-new-a11y",
+    "question": "Should new accessibility E2E tests be added to the Playwright suite?",
+    "answer": "Yes — existing Playwright E2E suite (9 test files per tech-stack.md) gets new a11y test files for keyboard nav and color contrast verification",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-20T21:02:13.237Z"
+  },
+  {
+    "id": "boundary:components-scope",
+    "question": "Are all 5 pages and 8 components in scope for theming + a11y fixes?",
+    "answer": "Yes — all pages (/, /about, /projects, /blog, /uses) and all 8 components (Header, Footer, NavLinks, Contact, Experience, BlogPostCard, ProjectCard, RecentProjects) per codebase-map.md",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-20T21:02:13.237Z"
+  },
+  {
+    "id": "boundary:css-architecture",
+    "question": "Should CSS custom properties in globals.css be the primary theming mechanism, or is Tailwind config the source of truth?",
+    "answer": "Use Tailwind config as source of truth (colors, spacing, typography) and keep CSS custom properties in globals.css for any runtime values — existing pattern already established",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-20T21:02:13.237Z"
+  },
+  {
+    "id": "boundary:dark-mode-strategy",
+    "question": "How should dark mode switching work?",
+    "answer": "Manual toggle button + system preference as default — change Tailwind dark mode strategy from 'media' to 'class', add toggle in Header, store preference in localStorage, detect system preference on initial load",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-20T21:02:40.981Z"
+  },
+  {
+    "id": "boundary:color-palette-scope",
+    "question": "What is the scope of the color palette overhaul?",
+    "answer": "Minor palette refinement — audit existing Tailwind colors for WCAG AA contrast compliance on both light/dark backgrounds, adjust custom colors in Tailwind config and globals.css to meet thresholds, ensure consistency across all 5 pages",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-20T21:02:57.296Z"
+  },
+  {
+    "id": "boundary:focus-management-scope",
+    "question": "Should focus management (trap, restore, skip links) be included?",
+    "answer": "Yes — skip navigation link, focus trap in mobile menu (Header), focus restore on close",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-20T21:03:11.832Z"
+  },
+  {
+    "id": "boundary:typography-system",
+    "question": "Should typography be changed from the current Tailwind defaults?",
+    "answer": "No — keep current Tailwind font utilities, just fix line-height and letter-spacing for readability",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-20T21:03:27.096Z"
+  },
+  {
+    "id": "boundary:spacing-scale",
+    "question": "Should spacing be standardized with a new scale or refined from existing Tailwind utilities?",
+    "answer": "No — use existing Tailwind spacing, fix inconsistent spacing in components",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-20T21:03:43.371Z"
+  },
+  {
+    "id": "profile:audience",
+    "question": "Who is this for?",
+    "answer": "personal",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-20T21:03:57.195Z"
+  },
+  {
+    "id": "profile:externalData",
+    "question": "Does this need external data sources?",
+    "answer": "none",
+    "source": "feature-brief",
+    "affects": [],
+    "timestamp": "2026-07-20T21:04:10.547Z"
   }
 ]
