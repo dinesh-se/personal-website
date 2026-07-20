@@ -80,7 +80,7 @@ test.describe('T-006 — Update CI Workflow to Node 24', () => {
 
 		for (const { path: route, title } of routes) {
 			await page.goto(route);
-			await expect(page.locator('h1')).toContainText(title);
+			await expect(page.getByRole('heading', { level: 1, name: title })).toBeVisible();
 		}
 
 		expect(errors).toEqual([]);
@@ -97,7 +97,7 @@ test.describe('T-006 — Update CI Workflow to Node 24', () => {
 		});
 
 		await page.goto('/');
-		await expect(page.locator('h1')).toContainText('Dinesh Haribabu');
+		await expect(page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })).toBeVisible();
 
 		const nav = page.getByRole('navigation');
 

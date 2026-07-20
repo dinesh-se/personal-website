@@ -7,7 +7,7 @@ test.describe('T-002 — Upgrade All Other Direct Dependencies', () => {
 		await page.goto('/about');
 
 		// Page renders without crashes — heading from the about page
-		await expect(page.locator('h1')).toContainText(/about me/i);
+		await expect(page.getByRole('heading', { level: 1, name: /about me/i })).toBeVisible();
 
 		// Social icons from react-social-icons render as accessible links
 		await expect(page.getByRole('link', { name: 'linkedin' })).toBeVisible();
@@ -24,7 +24,7 @@ test.describe('T-002 — Upgrade All Other Direct Dependencies', () => {
 		await page.goto('/');
 
 		// Core page content renders
-		await expect(page.locator('h1')).toContainText('Dinesh Haribabu');
+		await expect(page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })).toBeVisible();
 
 		// Contact component renders social icon links
 		await expect(page.getByRole('link', { name: 'linkedin' })).toBeVisible();
@@ -45,7 +45,7 @@ test.describe('T-002 — Upgrade All Other Direct Dependencies', () => {
 
 		for (const { path: route, title } of routes) {
 			await page.goto(route);
-			await expect(page.locator('h1')).toContainText(title);
+			await expect(page.getByRole('heading', { level: 1, name: title })).toBeVisible();
 			await expect(page.getByRole('navigation')).toBeVisible();
 			await expect(page.locator('footer')).toBeVisible();
 		}
@@ -55,25 +55,25 @@ test.describe('T-002 — Upgrade All Other Direct Dependencies', () => {
 		page,
 	}) => {
 		await page.goto('/');
-		await expect(page.locator('h1')).toContainText('Dinesh Haribabu');
+		await expect(page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })).toBeVisible();
 
 		const nav = page.getByRole('navigation');
 
 		await nav.getByRole('link', { name: 'About me' }).click();
 		await expect(page).toHaveURL('/about');
-		await expect(page.locator('h1')).toContainText(/about me/i);
+		await expect(page.getByRole('heading', { level: 1, name: /about me/i })).toBeVisible();
 
 		await nav.getByRole('link', { name: 'Projects' }).click();
 		await expect(page).toHaveURL('/projects');
-		await expect(page.locator('h1')).toContainText(/GitHub Projects/i);
+		await expect(page.getByRole('heading', { level: 1, name: /GitHub Projects/i })).toBeVisible();
 
 		await nav.getByRole('link', { name: 'Blog' }).click();
 		await expect(page).toHaveURL('/blog');
-		await expect(page.locator('h1')).toContainText(/Blog Posts/i);
+		await expect(page.getByRole('heading', { level: 1, name: /Blog Posts/i })).toBeVisible();
 
 		await nav.getByRole('link', { name: 'Uses' }).click();
 		await expect(page).toHaveURL('/uses');
-		await expect(page.locator('h1')).toContainText(/Uses/i);
+		await expect(page.getByRole('heading', { level: 1, name: /Uses/i })).toBeVisible();
 
 		// Navigate back
 		await nav.getByRole('link', { name: 'About me' }).click();
@@ -85,7 +85,7 @@ test.describe('T-002 — Upgrade All Other Direct Dependencies', () => {
 	}) => {
 		await page.goto('/uses');
 
-		await expect(page.locator('h1')).toContainText(/Uses/i);
+		await expect(page.getByRole('heading', { level: 1, name: /Uses/i })).toBeVisible();
 
 		// Intro text referencing Wes Bos's Uses.Tech should be present
 		await expect(
@@ -102,7 +102,7 @@ test.describe('T-002 — Upgrade All Other Direct Dependencies', () => {
 	}) => {
 		await page.goto('/blog');
 
-		await expect(page.locator('h1')).toContainText(/Blog Posts/i);
+		await expect(page.getByRole('heading', { level: 1, name: /Blog Posts/i })).toBeVisible();
 
 		// Blog post cards from the dev.to fixture should render
 		await expect(
@@ -115,7 +115,7 @@ test.describe('T-002 — Upgrade All Other Direct Dependencies', () => {
 	}) => {
 		await page.goto('/projects');
 
-		await expect(page.locator('h1')).toContainText(/GitHub Projects/i);
+		await expect(page.getByRole('heading', { level: 1, name: /GitHub Projects/i })).toBeVisible();
 
 		// Project cards from the Hygraph fixture should render
 		// ProjectCard renders the repo name as a link

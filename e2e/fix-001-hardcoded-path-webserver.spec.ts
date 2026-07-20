@@ -3,6 +3,7 @@ import { expect, test } from '@playwright/test';
 test.describe('Home Page — e2e smoke', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.goto('/');
+		await page.waitForLoadState('networkidle');
 	});
 
 	test('should render the page title', async ({ page }) => {
@@ -10,7 +11,7 @@ test.describe('Home Page — e2e smoke', () => {
 	});
 
 	test('should display the greeting', async ({ page }) => {
-		await expect(page.locator('h1')).toBeVisible();
+		await expect(page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })).toBeVisible();
 	});
 
 	test('should render the header navigation', async ({ page }) => {
@@ -27,23 +28,37 @@ test.describe('Home Page — e2e smoke', () => {
 	});
 
 	test('should navigate to about page', async ({ page }) => {
-		await page.getByRole('navigation').getByRole('link', { name: 'About me' }).click();
+		await page
+			.getByRole('navigation')
+			.getByRole('link', { name: 'About me' })
+			.click();
 		await expect(page).toHaveURL('/about');
-		await expect(page.locator('h1')).toContainText(/about/i);
+		await expect(
+			page.getByRole('heading', { level: 1, name: /about/i })
+		).toBeVisible();
 	});
 
 	test('should navigate to projects page', async ({ page }) => {
-		await page.getByRole('navigation').getByRole('link', { name: 'Projects' }).click();
+		await page
+			.getByRole('navigation')
+			.getByRole('link', { name: 'Projects' })
+			.click();
 		await expect(page).toHaveURL('/projects');
 	});
 
 	test('should navigate to blog page', async ({ page }) => {
-		await page.getByRole('navigation').getByRole('link', { name: 'Blog' }).click();
+		await page
+			.getByRole('navigation')
+			.getByRole('link', { name: 'Blog' })
+			.click();
 		await expect(page).toHaveURL('/blog');
 	});
 
 	test('should navigate to uses page', async ({ page }) => {
-		await page.getByRole('navigation').getByRole('link', { name: 'Uses' }).click();
+		await page
+			.getByRole('navigation')
+			.getByRole('link', { name: 'Uses' })
+			.click();
 		await expect(page).toHaveURL('/uses');
 	});
 });
@@ -62,15 +77,23 @@ test.describe('Mobile Menu', () => {
 
 		// Open menu
 		await menuButton.click();
-		await expect(page.locator('#mobile-menu')).not.toHaveClass(/(^|\s)hidden(\s|$)/);
+		await expect(page.locator('#mobile-menu')).not.toHaveClass(
+			/(^|\s)hidden(\s|$)/
+		);
 
 		// Close menu
 		await menuButton.click();
-		await expect(page.locator('#mobile-menu')).toHaveClass(/(^|\s)hidden(\s|$)/);
+		await expect(page.locator('#mobile-menu')).toHaveClass(
+			/(^|\s)hidden(\s|$)/
+		);
 	});
 });
 
 test.describe('Dark Mode', () => {
+	test.beforeEach(async ({ page }) => {
+		await page.setViewportSize({ width: 1280, height: 720 });
+	});
+
 	test('should respect system preference', async ({ page }) => {
 		await page.goto('/');
 
@@ -85,7 +108,9 @@ test.describe('Dark Mode', () => {
 		// Verify dark mode CSS custom properties are applied
 		// --foreground-rgb switches to #ffffff in dark mode (defined in globals.css media query)
 		const foregroundColor = await page.evaluate(() =>
-			getComputedStyle(document.documentElement).getPropertyValue('--foreground-rgb').trim()
+			getComputedStyle(document.documentElement)
+				.getPropertyValue('--foreground-rgb')
+				.trim()
 		);
 		expect(foregroundColor).toBe('#ffffff');
 	});
@@ -99,12 +124,16 @@ test.describe('Footer Links', () => {
 		await expect(footer).toBeVisible();
 
 		// Check for No Copyright link
-		await expect(footer.getByRole('link', { name: /No Copyright/i })).toBeVisible();
+		await expect(
+			footer.getByRole('link', { name: /No Copyright/i })
+		).toBeVisible();
 	});
 });
 
 test.describe('Nav Active State', () => {
-	test('should show active state on current navigation link', async ({ page }) => {
+	test('should show active state on current navigation link', async ({
+		page,
+	}) => {
 		await page.goto('/about');
 
 		// Navigate to the nav
