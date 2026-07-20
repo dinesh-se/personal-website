@@ -24,6 +24,11 @@
 		"react-dom": "^19.2.0",
 		"react-social-icons": "^6.26.0"
 	},
+	"overrides": {
+		"@vercel/analytics": {
+			"next": "$next"
+		}
+	},
 	"devDependencies": {
 		"@graphcms/rich-text-react-renderer": "^0.6.2",
 		"@graphcms/rich-text-types": "^0.5.1",
