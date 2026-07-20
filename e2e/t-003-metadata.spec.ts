@@ -29,11 +29,11 @@ test.describe('T-003 — Page Metadata via generateMetadata', () => {
 	test('robots.txt is served correctly', async ({ page }) => {
 		const response = await page.goto('/robots.txt');
 		expect(response?.status()).toBe(200);
-		const content = await page.content();
-		expect(content).toContain('User-agent');
+		const content = (await response?.text()) ?? '';
+		expect(content).toContain('User-Agent');
 		expect(content).toContain('Allow');
 		expect(content).toContain('/');
-		expect(content).toContain('sitemap: https://dineshharibabu.in/sitemap.xml');
+		expect(content).toContain('Sitemap: https://dineshharibabu.in/sitemap.xml');
 	});
 
 	test('sitemap.xml is served correctly', async ({ page }) => {

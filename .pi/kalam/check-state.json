@@ -1,45 +1,11 @@
 {
   "kind": "integration-check",
-  "specs": [
-    {
-      "taskId": "T-001",
-      "path": "e2e/t-001-loading-and-error-pages.spec.ts"
-    },
-    {
-      "taskId": "T-003",
-      "path": "e2e/t-003-metadata.spec.ts"
-    },
-    {
-      "taskId": "T-002",
-      "path": "e2e/t-002-experience-date-format.spec.ts"
-    }
-  ],
-  "issues": [
-    {
-      "id": "ISS-001",
-      "detectedAt": "2026-07-19T11:13:15.757Z",
-      "kind": "budget-violation",
-      "description": "The app did not respond on any candidate port (3099) within 30s.",
-      "source": "The app did not respond on any candidate port (3099) within 30s.",
-      "resolved": false
-    }
-  ],
+  "specs": [],
+  "issues": [],
   "feedbackItems": [],
-  "cycles": [
-    {
-      "number": 1,
-      "startedAt": "2026-07-19T09:42:05.686Z",
-      "completedAt": "2026-07-19T09:42:36.096Z",
-      "issuesFound": 1
-    },
-    {
-      "number": 2,
-      "startedAt": "2026-07-19T11:12:45.317Z",
-      "completedAt": "2026-07-19T11:13:15.758Z",
-      "issuesFound": 1
-    }
-  ],
+  "cycles": [],
   "cleanCycleCount": 0,
   "active": true,
-  "completed": false
+  "completed": false,
+  "e2eAuthoredMilestones": []
 }
