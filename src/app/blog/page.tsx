@@ -25,7 +25,8 @@ async function getPageData() {
 	try {
 		const blogPosts: BlogPostUI[] = await getBlogPosts();
 		return blogPosts;
-	} catch {
+	} catch (error) {
+		console.error('Failed to fetch blog posts from Dev.to:', error);
 		return [];
 	}
 }
