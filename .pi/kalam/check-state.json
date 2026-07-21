@@ -36,7 +36,14 @@
   ],
   "issues": [],
   "feedbackItems": [],
-  "cycles": [],
+  "cycles": [
+    {
+      "number": 1,
+      "startedAt": "2026-07-21T10:01:28.951Z",
+      "completedAt": "2026-07-21T10:01:28.951Z",
+      "issuesFound": 0
+    }
+  ],
   "cleanCycleCount": 0,
   "active": true,
   "completed": false,

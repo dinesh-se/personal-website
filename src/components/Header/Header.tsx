@@ -91,6 +91,9 @@ const Header = () => {
 							ref={toggleButtonRef}
 							type="button"
 							className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+							aria-label={
+								isMobileMenuOpen ? 'Close main menu' : 'Open main menu'
+							}
 							aria-controls="mobile-menu"
 							aria-expanded={isMobileMenuOpen}
 							onClick={() => toggleMobileMenuState(!isMobileMenuOpen)}
@@ -149,6 +152,7 @@ const Header = () => {
 					'sm:hidden'
 				)}
 				id="mobile-menu"
+				aria-label="Main navigation"
 				onKeyDown={(e) => {
 					if (e.key === 'Escape') {
 						closeMobileMenu();

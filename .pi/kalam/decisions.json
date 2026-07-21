@@ -592,5 +592,13 @@
     "source": "build",
     "affects": [],
     "timestamp": "2026-07-21T09:47:41.573Z"
+  },
+  {
+    "id": "build:T-003",
+    "question": "Task T-003 (focus-trap-mobile-menu)",
+    "answer": "Implemented focus trap in the mobile menu: Tab/Shift+Tab cycle focus through menu links, Escape closes the menu and returns focus to the toggle button. Added dynamic aria-expanded and aria-label to the toggle. Fixed 2 pre-existing test assertions that incorrectly matched `sm:hidden`.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-21T10:01:24.114Z"
   }
 ]

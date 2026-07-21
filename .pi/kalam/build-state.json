@@ -215,10 +215,70 @@
         "Focus restore on close"
       ],
       "userTest": "Run `npm run dev`, open the mobile menu on a mobile viewport (or resize browser), press Tab through all menu links, verify focus is trapped within the menu. Press Escape or click the close button, verify the menu closes and focus returns to the toggle button.",
-      "status": "in-progress",
+      "status": "done",
       "attempts": 0,
       "origin": "decomposition",
-      "startedAt": "2026-07-21T09:47:41.586Z"
+      "startedAt": "2026-07-21T09:47:41.586Z",
+      "acceptanceManifest": [
+        {
+          "text": "AC-1: When mobile menu is open, Tab key cycles focus only through menu's focusable elements (links, close button)",
+          "met": true,
+          "evidence": "e2e/c3-t-003-focus-trap-mobile-menu.spec.ts::Tab cycles focus through menu focusable elements"
+        },
+        {
+          "text": "AC-2: Shift+Tab cycles focus backwards through menu's focusable elements",
+          "met": true,
+          "evidence": "e2e/c3-t-003-focus-trap-mobile-menu.spec.ts::Shift+Tab cycles focus backwards through menu elements"
+        },
+        {
+          "text": "AC-3: Escape key closes the mobile menu",
+          "met": true,
+          "evidence": "e2e/c3-t-003-focus-trap-mobile-menu.spec.ts::Escape key closes the mobile menu"
+        },
+        {
+          "text": "AC-4: When menu closes (via Escape or close button), focus returns to the hamburger toggle button",
+          "met": true,
+          "evidence": "e2e/c3-t-003-focus-trap-mobile-menu.spec.ts::focus returns to toggle button when menu closes via Escape"
+        },
+        {
+          "text": "AC-5: Focus trap does not interfere with desktop navigation (menu not open on desktop)",
+          "met": true,
+          "evidence": "e2e/c3-t-003-focus-trap-mobile-menu.spec.ts::focus trap does not interfere with desktop navigation"
+        },
+        {
+          "text": "AC-6: Playwright E2E test verifies focus trap behavior",
+          "met": true,
+          "evidence": "e2e/c3-t-003-focus-trap-mobile-menu.spec.ts::6 tests passed"
+        }
+      ],
+      "reviewFindings": [
+        {
+          "severity": "warning",
+          "file": "src/components/Header/Header.tsx",
+          "issue": "Duplicate Escape key handling: both the document-level keydown listener (inside useEffect) and the mobile-menu div's onKeyDown handler independently handle Escape. This causes toggleMobileMenuState(false) and toggleButtonRef.current?.focus() to be called twice per Escape press. Harmless but redundant — the div's onKeyDown calls closeMobileMenu() while the document listener calls toggleMobileMenuState(false) directly, both doing the same thing.",
+          "line": 79,
+          "round": 1,
+          "addressed": false
+        },
+        {
+          "severity": "note",
+          "file": "src/components/Header/Header.tsx",
+          "issue": "closeMobileMenu() is only invoked from the div's onKeyDown handler for Escape; the hamburger toggle's onClick calls toggleMobileMenuState(!isMobileMenuOpen) directly without using closeMobileMenu. Focus restoration on toggle click relies on the browser's natural button-focus behavior rather than explicit code.",
+          "line": 72,
+          "round": 1,
+          "addressed": false
+        },
+        {
+          "severity": "note",
+          "file": "src/components/Header/Header.tsx",
+          "issue": "Type assertion on querySelectorAll is typed as HTMLButtonElement | HTMLAnchorElement but the selector string includes input, select, textarea, [tabindex] elements, making the type overly restrictive.",
+          "line": 44,
+          "round": 1,
+          "addressed": false
+        }
+      ],
+      "completedAt": "2026-07-21T10:01:24.113Z",
+      "commit": "81bd623d8c65abd8bf668c2551495ef5b6adfe56"
     },
     {
       "id": "T-004",
@@ -232,9 +292,13 @@
         "ARIA labels"
       ],
       "userTest": "Run `npm run dev`, open the site in a screen reader (or use axe DevTools), navigate to the Header. Verify the dark mode toggle is announced as \"Toggle dark mode\", the mobile menu toggle announces \"Open main menu\" (or \"Close main menu\" when open), and the logo link announces \"Home page\".",
-      "status": "pending",
-      "attempts": 0,
-      "origin": "decomposition"
+      "status": "in-progress",
+      "attempts": 1,
+      "origin": "decomposition",
+      "startedAt": "2026-07-21T10:01:28.967Z",
+      "attemptCounts": {
+        "verify": 1
+      }
     },
     {
       "id": "T-005",
@@ -299,7 +363,7 @@
     {
       "number": 1,
       "title": "Walking skeleton",
-      "confirmed": false
+      "confirmed": true
     },
     {
       "number": 2,
@@ -312,7 +376,7 @@
       "confirmed": false
     }
   ],
-  "currentTaskId": "T-003",
+  "currentTaskId": "T-004",
   "completed": false,
   "processedDeviationIds": []
 }

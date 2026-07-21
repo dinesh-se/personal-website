@@ -1,6 +1,6 @@
 {
   "startedAt": 1784625419814,
-  "totalSpawns": 8,
+  "totalSpawns": 11,
   "checkerSpawns": 0,
   "tasks": [
     {
@@ -33,6 +33,17 @@
       "tokensIn": 449456,
       "tokensOut": 23396,
       "startedAt": 1784627261574,
+      "durationMs": 822540,
+      "outcome": "committed"
+    },
+    {
+      "taskId": "T-004",
+      "coderSpawns": 2,
+      "reviewerSpawns": 1,
+      "verifyRuns": 3,
+      "tokensIn": 533071,
+      "tokensOut": 24835,
+      "startedAt": 1784628088952,
       "durationMs": 0,
       "outcome": ""
     }
@@ -40,11 +51,12 @@
   "notes": [
     "task T-001 starting with a dirty working tree (4 tracked file(s) modified outside .pi/kalam: jest.setup.ts, src/app/DarkModeProvider.tsx, src/app/ThemeContext.tsx, src/components/Header/Header.test.tsx) — these will be swept into this task's commit",
     "verify: `npm run lint` failed on T-001 — ran `npm run lint -- --fix` and re-verified clean, not charged to the task's verify budget",
-    "verify: `npm run lint` failed on T-003 — ran `npm run lint -- --fix` and re-verified clean, not charged to the task's verify budget"
+    "verify: `npm run lint` failed on T-003 — ran `npm run lint -- --fix` and re-verified clean, not charged to the task's verify budget",
+    "verify: `npm run lint` failed on T-004 — ran `npm run lint -- --fix` and re-verified clean, not charged to the task's verify budget"
   ],
-  "tokensIn": 1822853,
-  "tokensOut": 70624,
-  "updatedAt": 1784628082525,
+  "tokensIn": 2355924,
+  "tokensOut": 95459,
+  "updatedAt": 1784628862317,
   "endedAt": 1784624038047,
   "caps": {
     "enabled": false,

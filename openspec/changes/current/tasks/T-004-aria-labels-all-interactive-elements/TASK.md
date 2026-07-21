@@ -17,13 +17,14 @@ Add descriptive ARIA labels to all interactive elements in the Header component 
 - **Task:** T-001 (dark mode toggle button must exist before adding its aria-label)
 
 ## Acceptance criteria
+> ✅ Verified 2026-07-21
 
-- [ ] **AC-1:** Dark mode toggle button has `aria-label="Toggle dark mode"`
-- [ ] **AC-2:** Mobile menu toggle button has dynamic `aria-label` — "Open main menu" when closed, "Close main menu" when open
-- [ ] **AC-3:** Logo link has `aria-label="Home page"` (verify existing, do not remove)
-- [ ] **AC-4:** Mobile menu container has `role="menu"` or `aria-label="Main navigation"`
-- [ ] **AC-5:** All nav links in Header have visible text (already satisfied, verify no regression)
-- [ ] **AC-6:** Playwright E2E test verifies all Header interactive elements have accessible names
+- [x] **AC-1:** Dark mode toggle button has `aria-label="Toggle dark mode"`
+- [x] **AC-2:** Mobile menu toggle button has dynamic `aria-label` — "Open main menu" when closed, "Close main menu" when open
+- [x] **AC-3:** Logo link has `aria-label="Home page"` (verify existing, do not remove)
+- [x] **AC-4:** Mobile menu container has `role="menu"` or `aria-label="Main navigation"`
+- [x] **AC-5:** All nav links in Header have visible text (already satisfied, verify no regression)
+- [x] **AC-6:** Playwright E2E test verifies all Header interactive elements have accessible names
 
 ## User test
 
