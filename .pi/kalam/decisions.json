@@ -704,5 +704,13 @@
     "source": "build",
     "affects": [],
     "timestamp": "2026-07-21T12:49:57.206Z"
+  },
+  {
+    "id": "build-pause:T-007",
+    "question": "Task T-007 (typography-spacing-refinements) — paused after exhausting the acceptance manifest",
+    "answer": "Build paused on task T-007 (the acceptance manifest). Resume with /kalam build once you've investigated.\nFinal rejection detail:\nThe coder did not call submit_result (and no fenced JSON result block or valid RESULT.json was found) — the acceptance manifest is empty, so every criterion reads as unaccounted for.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-21T12:53:30.943Z"
   }
 ]

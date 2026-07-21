@@ -490,9 +490,14 @@
         "Spacing"
       ],
       "userTest": "Run `npm run dev`, visit `/blog`. Inspect blog post body text — verify line-height is at least 1.5. Check spacing between post cards is consistent. Verify no ad-hoc pixel values in spacing classes.",
-      "status": "pending",
-      "attempts": 0,
-      "origin": "decomposition"
+      "status": "in-progress",
+      "attempts": 1,
+      "origin": "decomposition",
+      "startedAt": "2026-07-21T12:50:08.450Z",
+      "attemptCounts": {
+        "stall": 3,
+        "verify": 1
+      }
     },
     {
       "id": "T-009",
@@ -608,7 +613,7 @@
     {
       "number": 2,
       "title": "Milestone 2",
-      "confirmed": false
+      "confirmed": true
     },
     {
       "number": 3,
@@ -616,7 +621,7 @@
       "confirmed": false
     }
   ],
-  "currentTaskId": "FIX-005",
+  "currentTaskId": "T-007",
   "completed": false,
   "processedDeviationIds": []
 }

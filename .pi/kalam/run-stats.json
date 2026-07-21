@@ -1,27 +1,27 @@
 {
-  "startedAt": 1784638124878,
+  "startedAt": 1784639018111,
   "totalSpawns": 3,
   "checkerSpawns": 0,
   "tasks": [
     {
-      "taskId": "FIX-005",
-      "coderSpawns": 3,
-      "reviewerSpawns": 0,
-      "verifyRuns": 0,
-      "tokensIn": 0,
-      "tokensOut": 0,
-      "startedAt": 1784638124878,
+      "taskId": "T-007",
+      "coderSpawns": 2,
+      "reviewerSpawns": 1,
+      "verifyRuns": 3,
+      "tokensIn": 510671,
+      "tokensOut": 17112,
+      "startedAt": 1784639018113,
       "durationMs": 0,
       "outcome": ""
     }
   ],
   "notes": [
-    "task FIX-005 starting with a dirty working tree (1 tracked file(s) modified outside .pi/kalam: playwright-report/index.html) — these will be swept into this task's commit"
+    "verify: `npm run lint` failed on T-007 — ran `npm run lint -- --fix` and re-verified clean, not charged to the task's verify budget"
   ],
-  "tokensIn": 0,
-  "tokensOut": 0,
-  "updatedAt": 1784638168592,
-  "endedAt": 1784637996165,
+  "tokensIn": 510671,
+  "tokensOut": 17112,
+  "updatedAt": 1784639750827,
+  "endedAt": 1784638410944,
   "caps": {
     "enabled": false,
     "maxRunMinutes": 240,
