@@ -1,7 +1,7 @@
 {
   "startedAt": 1784639018111,
-  "totalSpawns": 7,
-  "checkerSpawns": 0,
+  "totalSpawns": 10,
+  "checkerSpawns": 1,
   "tasks": [
     {
       "taskId": "T-007",
@@ -22,6 +22,17 @@
       "tokensIn": 2195831,
       "tokensOut": 41246,
       "startedAt": 1784639752500,
+      "durationMs": 1446467,
+      "outcome": "committed"
+    },
+    {
+      "taskId": "FIX-006",
+      "coderSpawns": 1,
+      "reviewerSpawns": 1,
+      "verifyRuns": 1,
+      "tokensIn": 158699,
+      "tokensOut": 3801,
+      "startedAt": 1784641285234,
       "durationMs": 0,
       "outcome": ""
     }
@@ -29,9 +40,9 @@
   "notes": [
     "verify: `npm run lint` failed on T-007 — ran `npm run lint -- --fix` and re-verified clean, not charged to the task's verify budget"
   ],
-  "tokensIn": 2706502,
-  "tokensOut": 58358,
-  "updatedAt": 1784641197192,
+  "tokensIn": 2953561,
+  "tokensOut": 64857,
+  "updatedAt": 1784641464657,
   "endedAt": 1784638410944,
   "caps": {
     "enabled": false,

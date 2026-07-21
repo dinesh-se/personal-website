@@ -39,9 +39,11 @@ test.describe('T-007: Blog Page Typography and Spacing', () => {
 			const letterSpacing = await bodyTexts
 				.first()
 				.evaluate((el) => getComputedStyle(el).letterSpacing);
-			// letterSpacing should be "normal" (0px) or positive
-			// Negative values indicate tighter spacing
-			const numericValue = parseFloat(letterSpacing);
+			// letterSpacing can be "normal" (CSS default), which equals 0
+			// Convert "normal" to "0px" before parseFloat to avoid NaN
+			const normalizedValue =
+				letterSpacing === 'normal' ? '0px' : letterSpacing;
+			const numericValue = parseFloat(normalizedValue);
 			expect(numericValue).toBeGreaterThanOrEqual(0);
 		}
 	});
@@ -50,12 +52,12 @@ test.describe('T-007: Blog Page Typography and Spacing', () => {
 		// GIVEN: /blog page is loaded
 		// WHEN: inspect blog post cards
 		// THEN: spacing between cards uses consistent Tailwind spacing values
-		const postCards = page.locator('[class*="gap-"]');
-		const count = await postCards.count();
+		const blogPostGrid = page.locator('[data-testid="blog-post-grid"]');
+		const count = await blogPostGrid.count();
 		if (count > 0) {
-			// Check that gap classes use consistent values (e.g., gap-6, gap-8)
-			const gapClass = await postCards.first().getAttribute('class');
-			expect(gapClass).toMatch(/gap-(4|6|8|10|12)/);
+			// Check that gap classes use consistent values (e.g., gap-6, gap-y-6)
+			const gridClass = await blogPostGrid.getAttribute('class');
+			expect(gridClass).toMatch(/gap(?:-[xy])?-(4|6|8|10|12)/);
 		}
 	});
 

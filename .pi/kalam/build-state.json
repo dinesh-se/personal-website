@@ -564,7 +564,7 @@
         "Accessibility testing"
       ],
       "userTest": "Run `npm test` and verify all Jest snapshot tests and Playwright E2E tests pass, including the new a11y test files for keyboard navigation and focus states.",
-      "status": "in-progress",
+      "status": "done",
       "attempts": 1,
       "origin": "decomposition",
       "startedAt": "2026-07-21T13:15:52.509Z",
@@ -574,33 +574,72 @@
           "file": ".github/workflows/lint-test.yml",
           "issue": "Port mismatch: CI workflow runs 'npm run dev' (defaults to port 3000) but 'npm run a11y:audit' targets http://localhost:3099. The axe-core audit will fail with connection refused because nothing listens on port 3099. Fix: either add '--port 3099' to the dev command or change the audit URL to port 3000. This breaks AC-4 and AC-7 — the workflow cannot run the audit at all.",
           "round": 1,
-          "addressed": false
+          "addressed": true
         },
         {
           "severity": "critical",
           "file": ".github/workflows/lint-test.yml",
           "issue": "The axe CLI uses chromedriver/selenium-webdriver to launch a headless browser for auditing. GitHub Actions ubuntu-latest runners do not have Chrome/Chromium pre-installed. The workflow installs Playwright's Chromium ('npx playwright install chromium') but that does not place Chrome in the PATH where the axe CLI's chromedriver can find it. The audit will fail even if the port were fixed.",
           "round": 1,
-          "addressed": false
+          "addressed": true
         },
         {
           "severity": "note",
           "file": "e2e/c3-t-009-axe-core-ci-playwright-a11y-tests.spec.ts",
           "issue": "Duplicate of a11y-keyboard.spec.ts and a11y-focus.spec.ts. The first two tests ('axe-core dependency is declared' and 'axe-core CLI script is available') are no-ops that just assert true. These add no value and should be removed or replaced with actual checks.",
           "round": 1,
-          "addressed": false
+          "addressed": true
         },
         {
           "severity": "note",
           "file": "e2e/a11y-focus.spec.ts",
           "issue": "The mobile menu tests use page.setViewportSize followed by page.reload(). The reload resets the page state, so the subsequent menuButton.click() opens the menu fresh. This works but is fragile — if the page takes time to hydrate after reload, the click may fail. The existing c3-t-003-focus-trap-mobile-menu.spec.ts uses the same pattern, so this is consistent with the existing codebase.",
           "round": 1,
-          "addressed": false
+          "addressed": true
         }
       ],
       "attemptCounts": {
         "review": 1
-      }
+      },
+      "acceptanceManifest": [
+        {
+          "text": "AC-1: axe-core added as a dev dependency in package.json",
+          "met": true,
+          "evidence": "package.json — \"axe-core\": \"^4.12.1\" and \"@axe-core/cli\": \"^4.12.1\" in devDependencies"
+        },
+        {
+          "text": "AC-2: axe-core CLI command added to package.json scripts (a11y:audit)",
+          "met": true,
+          "evidence": "package.json — \"a11y:audit\": \"axe --exit http://localhost:3099\" in scripts"
+        },
+        {
+          "text": "AC-3: ESLint jsx-a11y plugin level set to strict in eslint.config.js",
+          "met": true,
+          "evidence": "eslint.config.mjs — jsxA11yPlugin.flatConfigs.strict applied, npm run lint exits 0"
+        },
+        {
+          "text": "AC-4: GitHub Actions workflow runs axe-core audit on PR to main",
+          "met": true,
+          "evidence": ".github/workflows/lint-test.yml — Chrome installation step + axe-core audit step with matching --port 3099"
+        },
+        {
+          "text": "AC-5: Playwright E2E test file e2e/a11y-keyboard.spec.ts verifies keyboard navigation",
+          "met": true,
+          "evidence": "e2e/a11y-keyboard.spec.ts::skip navigation link is visible on Tab and all pages are keyboard accessible — both pass"
+        },
+        {
+          "text": "AC-6: Playwright E2E test file e2e/a11y-focus.spec.ts verifies focus states",
+          "met": true,
+          "evidence": "e2e/a11y-focus.spec.ts::focus indicators are visible, mobile menu traps focus, focus returns to toggle on menu close — all pass"
+        },
+        {
+          "text": "AC-7: CI job fails if any WCAG AA violations are detected",
+          "met": true,
+          "evidence": "manual: axe --exit flag in a11y:audit script causes non-zero exit on violations, CI step uses || (kill $DEV_PID; exit 1) to propagate failure"
+        }
+      ],
+      "completedAt": "2026-07-21T13:39:58.966Z",
+      "commit": "8aa67b7dbdf063c54950856c83037a9a1792881c"
     },
     {
       "id": "FIX-001",
@@ -691,6 +730,19 @@
       },
       "completedAt": "2026-07-21T12:49:57.205Z",
       "skipReason": "skipped after 3 failed the acceptance manifest attempt(s). Final rejection detail:\nThe coder did not call submit_result (and no fenced JSON result block or valid RESULT.json was found) — the acceptance manifest is empty, so every criterion reads as unaccounted for."
+    },
+    {
+      "id": "FIX-006",
+      "slug": "fix-letter-spacing-normal-parsing-and-gap-locator",
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/FIX-006-fix-letter-spacing-normal-parsing-and-gap-locator",
+      "deps": [],
+      "coversFeatures": [],
+      "userTest": "Run: npx playwright test e2e/c3-t-007-typography-spacing-refinements.spec.ts --reporter=line. Verify both the 'blog post letter-spacing is appropriate for readability' and 'spacing between blog post cards is consistent' tests pass (status: expected).",
+      "milestone": 3,
+      "status": "in-progress",
+      "attempts": 0,
+      "origin": "check",
+      "startedAt": "2026-07-21T13:41:25.244Z"
     }
   ],
   "milestones": [
@@ -710,7 +762,7 @@
       "confirmed": false
     }
   ],
-  "currentTaskId": "T-009",
+  "currentTaskId": "FIX-006",
   "completed": false,
   "processedDeviationIds": []
 }
