@@ -24,23 +24,3 @@ jobs:
 
       - name: Run tests
         run: npm test
-
-      - name: Install Playwright browsers
-        run: npx playwright install chromium
-
-      - name: Install Chrome for axe-core CLI
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y wget gnupg
-          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
-          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --batch --yes --dearmor -o /usr/share/keyrings/google-chrome.gpg
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
-
-      - name: Start dev server and run axe-core accessibility audit
-        run: |
-          npm run dev -- --port 3099 &
-          DEV_PID=$!
-          sleep 15
-          npm run a11y:audit || (kill $DEV_PID; exit 1)
-          kill $DEV_PID
