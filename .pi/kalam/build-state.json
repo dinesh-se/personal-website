@@ -159,10 +159,50 @@
         "Skip navigation"
       ],
       "userTest": "Run `npm run dev`, visit any page, press Tab on page load, verify a skip navigation link becomes visible and clicking it jumps to the main content area.",
-      "status": "in-progress",
+      "status": "done",
       "attempts": 0,
       "origin": "decomposition",
-      "startedAt": "2026-07-21T09:39:16.737Z"
+      "startedAt": "2026-07-21T09:39:16.737Z",
+      "acceptanceManifest": [
+        {
+          "text": "AC-1: Skip navigation link rendered at the top of every page (before Header or inside Header at the top)",
+          "met": true,
+          "evidence": "src/app/layout.tsx::skip nav link placed before <Header> in RootLayout"
+        },
+        {
+          "text": "AC-2: Link is visually hidden by default (opacity-0 or visually-hidden utility)",
+          "met": true,
+          "evidence": "e2e/c3-t-002-skip-navigation-link.spec.ts::skip navigation link is hidden by default"
+        },
+        {
+          "text": "AC-3: Link becomes visible on :focus with sufficient contrast",
+          "met": true,
+          "evidence": "e2e/c3-t-002-skip-navigation-link.spec.ts::skip navigation link becomes visible on first Tab press"
+        },
+        {
+          "text": "AC-4: Link text is \"Skip to main content\"",
+          "met": true,
+          "evidence": "src/app/layout.tsx::anchor text is 'Skip to main content'"
+        },
+        {
+          "text": "AC-5: Clicking the link scrolls to the <main> element",
+          "met": true,
+          "evidence": "e2e/c3-t-002-skip-navigation-link.spec.ts::clicking the skip link jumps to the main content area"
+        },
+        {
+          "text": "AC-6: Skip link does not visually disrupt layout for mouse users",
+          "met": true,
+          "evidence": "e2e/c3-t-002-skip-navigation-link.spec.ts::skip link is hidden for mouse users and hover does not reveal it"
+        },
+        {
+          "text": "AC-7: Playwright E2E test verifies skip link visibility on Tab press",
+          "met": true,
+          "evidence": "e2e/c3-t-002-skip-navigation-link.spec.ts::skip navigation link becomes visible on first Tab press"
+        }
+      ],
+      "reviewFindings": [],
+      "completedAt": "2026-07-21T09:47:41.573Z",
+      "commit": "c4b04e1f0908c952f6bda62e1c6a86d6e156fd43"
     },
     {
       "id": "T-003",
@@ -175,9 +215,10 @@
         "Focus restore on close"
       ],
       "userTest": "Run `npm run dev`, open the mobile menu on a mobile viewport (or resize browser), press Tab through all menu links, verify focus is trapped within the menu. Press Escape or click the close button, verify the menu closes and focus returns to the toggle button.",
-      "status": "pending",
+      "status": "in-progress",
       "attempts": 0,
-      "origin": "decomposition"
+      "origin": "decomposition",
+      "startedAt": "2026-07-21T09:47:41.586Z"
     },
     {
       "id": "T-004",
@@ -271,7 +312,7 @@
       "confirmed": false
     }
   ],
-  "currentTaskId": "T-002",
+  "currentTaskId": "T-003",
   "completed": false,
   "processedDeviationIds": []
 }

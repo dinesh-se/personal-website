@@ -584,5 +584,13 @@
     "source": "build",
     "affects": [],
     "timestamp": "2026-07-21T09:39:16.722Z"
+  },
+  {
+    "id": "build:T-002",
+    "question": "Task T-002 (skip-navigation-link)",
+    "answer": "Added skip navigation link to all pages. Link uses sr-only CSS pattern (hidden by default, visible on focus) and jumps to the main content area via fragment identifier.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-21T09:47:41.573Z"
   }
 ]

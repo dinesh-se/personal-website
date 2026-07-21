@@ -10,7 +10,7 @@ test.describe('T-003: Focus Trap in Mobile Menu', () => {
 		// GIVEN: mobile menu is open
 		const menuButton = page.getByRole('button', { name: /open main menu/i });
 		await menuButton.click();
-		await expect(page.locator('#mobile-menu')).not.toHaveClass(/hidden/);
+		await expect(page.locator('#mobile-menu')).toHaveClass(/block/);
 
 		// WHEN: Tab through menu elements
 		await page.keyboard.press('Tab');
@@ -56,13 +56,13 @@ test.describe('T-003: Focus Trap in Mobile Menu', () => {
 		// GIVEN: mobile menu is open
 		const menuButton = page.getByRole('button', { name: /open main menu/i });
 		await menuButton.click();
-		await expect(page.locator('#mobile-menu')).not.toHaveClass(/hidden/);
+		await expect(page.locator('#mobile-menu')).toHaveClass(/block/);
 
 		// WHEN: press Escape
 		await page.keyboard.press('Escape');
 
 		// THEN: menu closes
-		await expect(page.locator('#mobile-menu')).toHaveClass(/hidden/);
+		await expect(page.locator('#mobile-menu')).not.toHaveClass(/block/);
 	});
 
 	test('focus returns to toggle button when menu closes via Escape', async ({ page }) => {
