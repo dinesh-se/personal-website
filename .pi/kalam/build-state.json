@@ -525,6 +525,24 @@
       },
       "completedAt": "2026-07-21T12:33:01.275Z",
       "skipReason": "skipped after 3 failed the acceptance manifest attempt(s). Final rejection detail:\nThe coder did not call submit_result (and no fenced JSON result block or valid RESULT.json was found) — the acceptance manifest is empty, so every criterion reads as unaccounted for."
+    },
+    {
+      "id": "FIX-002",
+      "slug": "fix-heading-contrast-test-gradient-text",
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/FIX-002-fix-heading-contrast-test-gradient-text",
+      "deps": [],
+      "coversFeatures": [],
+      "userTest": "Run: npx playwright test e2e/c3-t-006-color-contrast-audit-fix.spec.ts --grep 'heading text meets large text contrast'. The 'heading text meets large text contrast ratio (≥ 3:1)' test should pass. Also verify the other 4 tests in the same file still pass.",
+      "milestone": 2,
+      "status": "skipped",
+      "attempts": 3,
+      "origin": "check",
+      "startedAt": "2026-07-21T12:34:32.186Z",
+      "attemptCounts": {
+        "stall": 3
+      },
+      "completedAt": "2026-07-21T12:36:05.754Z",
+      "skipReason": "skipped after 3 failed the acceptance manifest attempt(s). Final rejection detail:\nThe coder did not call submit_result (and no fenced JSON result block or valid RESULT.json was found) — the acceptance manifest is empty, so every criterion reads as unaccounted for."
     }
   ],
   "milestones": [
@@ -544,7 +562,7 @@
       "confirmed": false
     }
   ],
-  "currentTaskId": "FIX-001",
+  "currentTaskId": "FIX-002",
   "completed": false,
   "processedDeviationIds": []
 }

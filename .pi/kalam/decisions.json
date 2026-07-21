@@ -656,5 +656,13 @@
     "source": "build",
     "affects": [],
     "timestamp": "2026-07-21T12:33:01.276Z"
+  },
+  {
+    "id": "build-skip:FIX-002",
+    "question": "Task FIX-002 (fix-heading-contrast-test-gradient-text) — skipped after exhausting the acceptance manifest",
+    "answer": "skipped after 3 failed the acceptance manifest attempt(s). Final rejection detail:\nThe coder did not call submit_result (and no fenced JSON result block or valid RESULT.json was found) — the acceptance manifest is empty, so every criterion reads as unaccounted for.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-21T12:36:05.755Z"
   }
 ]
