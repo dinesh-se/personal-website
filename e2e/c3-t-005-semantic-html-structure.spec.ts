@@ -12,7 +12,9 @@ test.describe('T-005: About Page Rich Text Semantic HTML', () => {
 		expect(h1Count).toBe(1);
 	});
 
-	test('rich text headings render as h2-h6 (not div wrappers)', async ({ page }) => {
+	test('rich text headings render as h2-h6 (not div wrappers)', async ({
+		page,
+	}) => {
 		// GIVEN: /about page is loaded with rich text content
 		// THEN: rich text headings use proper heading elements
 		const headings = page.locator('main').locator('h2, h3, h4, h5, h6');
@@ -21,7 +23,9 @@ test.describe('T-005: About Page Rich Text Semantic HTML', () => {
 		expect(count).toBeGreaterThan(0);
 	});
 
-	test('rich text paragraphs render as p elements (not div)', async ({ page }) => {
+	test('rich text paragraphs render as p elements (not div)', async ({
+		page,
+	}) => {
 		// GIVEN: /about page is loaded with rich text content
 		// THEN: rich text paragraphs use <p> elements
 		const paragraphs = page.locator('main').locator('p');
@@ -29,7 +33,9 @@ test.describe('T-005: About Page Rich Text Semantic HTML', () => {
 		expect(count).toBeGreaterThan(0);
 	});
 
-	test('rich text lists render as ul/ol with li children (not div)', async ({ page }) => {
+	test('rich text lists render as ul/ol with li children (not div)', async ({
+		page,
+	}) => {
 		// GIVEN: /about page is loaded with rich text content
 		// THEN: lists use semantic <ul>/<ol> with <li> children
 		const lists = page.locator('main').locator('ul, ol');
@@ -41,7 +47,9 @@ test.describe('T-005: About Page Rich Text Semantic HTML', () => {
 		}
 	});
 
-	test('rich text code blocks render as pre with code inside', async ({ page }) => {
+	test('rich text code blocks render as pre with code inside', async ({
+		page,
+	}) => {
 		// GIVEN: /about page is loaded with rich text content
 		// THEN: code blocks use <pre><code> structure
 		const codeBlocks = page.locator('main').locator('pre code');
@@ -54,10 +62,14 @@ test.describe('T-005: About Page Rich Text Semantic HTML', () => {
 	test('heading hierarchy has no skipped levels', async ({ page }) => {
 		// GIVEN: /about page is loaded
 		// THEN: heading levels are sequential (no skips)
-		const headings = page.locator('main h2, main h3, main h4, main h5, main h6');
+		const headings = page.locator(
+			'main h2, main h3, main h4, main h5, main h6'
+		);
 		const levels: number[] = [];
-		for (let i = 0; i < await headings.count(); i++) {
-			const tag = await headings.nth(i).evaluate(el => el.tagName.toLowerCase());
+		for (let i = 0; i < (await headings.count()); i++) {
+			const tag = await headings
+				.nth(i)
+				.evaluate((el) => el.tagName.toLowerCase());
 			const level = parseInt(tag.replace('h', ''), 10);
 			levels.push(level);
 		}

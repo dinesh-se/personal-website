@@ -1,101 +1,97 @@
 {
-  "kind": "integration-check",
-  "specs": [
-    {
-      "taskId": "T-001",
-      "path": "e2e/dark-mode.spec.ts"
-    },
-    {
-      "taskId": "T-002",
-      "path": "e2e/skip-navigation.spec.ts"
-    },
-    {
-      "taskId": "T-004",
-      "path": "e2e/c3-t-004-aria-labels-all-interactive-elements.spec.ts"
-    },
-    {
-      "taskId": "T-005",
-      "path": "e2e/c3-t-005-semantic-html-structure.spec.ts"
-    },
-    {
-      "taskId": "T-006",
-      "path": "e2e/c3-t-006-color-contrast-audit-fix.spec.ts"
-    },
-    {
-      "taskId": "T-007",
-      "path": "e2e/c3-t-007-typography-spacing-refinements.spec.ts"
-    },
-    {
-      "taskId": "T-009",
-      "path": "e2e/c3-t-009-axe-core-ci-playwright-a11y-tests.spec.ts"
-    },
-    {
-      "taskId": "T-003",
-      "path": "e2e/c3-t-003-focus-trap-mobile-menu.spec.ts"
-    }
-  ],
-  "issues": [
-    {
-      "id": "ISS-001",
-      "detectedAt": "2026-07-21T12:44:36.913Z",
-      "kind": "e2e-failure",
-      "description": "e2e failure (milestone 2): e2e spec \"heading text meets large text contrast ratio (≥ 3:1)\" (c3-t-006-color-contrast-audit-fix.spec.ts) failed: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"rgba(0, 0, 0, 0)\"\u001b[39m",
-      "source": "e2e spec \"heading text meets large text contrast ratio (≥ 3:1)\" (c3-t-006-color-contrast-audit-fix.spec.ts) failed: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"rgba(0, 0, 0, 0)\"\u001b[39m",
-      "resolved": true,
-      "taskId": "FIX-005"
-    }
-  ],
-  "feedbackItems": [],
-  "cycles": [
-    {
-      "number": 1,
-      "startedAt": "2026-07-21T10:01:28.951Z",
-      "completedAt": "2026-07-21T10:01:28.951Z",
-      "issuesFound": 0
-    },
-    {
-      "number": 2,
-      "startedAt": "2026-07-21T12:19:37.864Z",
-      "completedAt": "2026-07-21T12:19:37.865Z",
-      "issuesFound": 1
-    },
-    {
-      "number": 3,
-      "startedAt": "2026-07-21T12:33:13.248Z",
-      "completedAt": "2026-07-21T12:33:13.248Z",
-      "issuesFound": 1
-    },
-    {
-      "number": 4,
-      "startedAt": "2026-07-21T12:36:16.933Z",
-      "completedAt": "2026-07-21T12:36:16.933Z",
-      "issuesFound": 1
-    },
-    {
-      "number": 5,
-      "startedAt": "2026-07-21T12:39:26.440Z",
-      "completedAt": "2026-07-21T12:39:26.440Z",
-      "issuesFound": 1
-    },
-    {
-      "number": 6,
-      "startedAt": "2026-07-21T12:44:36.913Z",
-      "completedAt": "2026-07-21T12:44:36.913Z",
-      "issuesFound": 1
-    },
-    {
-      "number": 7,
-      "startedAt": "2026-07-21T12:50:08.437Z",
-      "completedAt": "2026-07-21T12:50:08.437Z",
-      "issuesFound": 0
-    }
-  ],
-  "cleanCycleCount": 0,
-  "active": true,
-  "completed": false,
-  "e2eAuthoredMilestones": [
-    1,
-    2,
-    3
-  ]
+	"kind": "integration-check",
+	"specs": [
+		{
+			"taskId": "T-001",
+			"path": "e2e/dark-mode.spec.ts"
+		},
+		{
+			"taskId": "T-002",
+			"path": "e2e/skip-navigation.spec.ts"
+		},
+		{
+			"taskId": "T-004",
+			"path": "e2e/c3-t-004-aria-labels-all-interactive-elements.spec.ts"
+		},
+		{
+			"taskId": "T-005",
+			"path": "e2e/c3-t-005-semantic-html-structure.spec.ts"
+		},
+		{
+			"taskId": "T-006",
+			"path": "e2e/c3-t-006-color-contrast-audit-fix.spec.ts"
+		},
+		{
+			"taskId": "T-007",
+			"path": "e2e/c3-t-007-typography-spacing-refinements.spec.ts"
+		},
+		{
+			"taskId": "T-009",
+			"path": "e2e/c3-t-009-axe-core-ci-playwright-a11y-tests.spec.ts"
+		},
+		{
+			"taskId": "T-003",
+			"path": "e2e/c3-t-003-focus-trap-mobile-menu.spec.ts"
+		}
+	],
+	"issues": [
+		{
+			"id": "ISS-001",
+			"detectedAt": "2026-07-21T12:44:36.913Z",
+			"kind": "e2e-failure",
+			"description": "e2e failure (milestone 2): e2e spec \"heading text meets large text contrast ratio (≥ 3:1)\" (c3-t-006-color-contrast-audit-fix.spec.ts) failed: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"rgba(0, 0, 0, 0)\"\u001b[39m",
+			"source": "e2e spec \"heading text meets large text contrast ratio (≥ 3:1)\" (c3-t-006-color-contrast-audit-fix.spec.ts) failed: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"rgba(0, 0, 0, 0)\"\u001b[39m",
+			"resolved": true,
+			"taskId": "FIX-005"
+		}
+	],
+	"feedbackItems": [],
+	"cycles": [
+		{
+			"number": 1,
+			"startedAt": "2026-07-21T10:01:28.951Z",
+			"completedAt": "2026-07-21T10:01:28.951Z",
+			"issuesFound": 0
+		},
+		{
+			"number": 2,
+			"startedAt": "2026-07-21T12:19:37.864Z",
+			"completedAt": "2026-07-21T12:19:37.865Z",
+			"issuesFound": 1
+		},
+		{
+			"number": 3,
+			"startedAt": "2026-07-21T12:33:13.248Z",
+			"completedAt": "2026-07-21T12:33:13.248Z",
+			"issuesFound": 1
+		},
+		{
+			"number": 4,
+			"startedAt": "2026-07-21T12:36:16.933Z",
+			"completedAt": "2026-07-21T12:36:16.933Z",
+			"issuesFound": 1
+		},
+		{
+			"number": 5,
+			"startedAt": "2026-07-21T12:39:26.440Z",
+			"completedAt": "2026-07-21T12:39:26.440Z",
+			"issuesFound": 1
+		},
+		{
+			"number": 6,
+			"startedAt": "2026-07-21T12:44:36.913Z",
+			"completedAt": "2026-07-21T12:44:36.913Z",
+			"issuesFound": 1
+		},
+		{
+			"number": 7,
+			"startedAt": "2026-07-21T12:50:08.437Z",
+			"completedAt": "2026-07-21T12:50:08.437Z",
+			"issuesFound": 0
+		}
+	],
+	"cleanCycleCount": 0,
+	"active": true,
+	"completed": false,
+	"e2eAuthoredMilestones": [1, 2, 3]
 }

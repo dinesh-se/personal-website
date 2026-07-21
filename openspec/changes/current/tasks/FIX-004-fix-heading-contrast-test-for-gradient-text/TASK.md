@@ -5,6 +5,7 @@
 Update the heading contrast test in c3-t-006-color-contrast-audit-fix.spec.ts to correctly handle the gradient-text pattern used on the h1, where text-transparent is on the h1 and the gradient lives on an inner span via bg-clip-text.
 
 ## Acceptance criteria
+
 > ⏭️ Skipped 2026-07-21
 
 - [ ] The heading contrast test no longer fails — it passes in both light and dark mode

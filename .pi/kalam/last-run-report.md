@@ -4,10 +4,10 @@
 - Child spawns: 6 (0 checker)
 - Tokens: 0 in / 0 out
 
-| Task | Outcome | Coder spawns | Reviewer spawns | Verify runs | Tokens in/out | Duration |
-|---|---|---|---|---|---|---|
-| FIX-005 | skipped | 3 | 0 | 0 | 0/0 | 1.2m |
-| T-007 | paused | 3 | 0 | 0 | 0/0 | 3.4m |
+| Task    | Outcome | Coder spawns | Reviewer spawns | Verify runs | Tokens in/out | Duration |
+| ------- | ------- | ------------ | --------------- | ----------- | ------------- | -------- |
+| FIX-005 | skipped | 3            | 0               | 0           | 0/0           | 1.2m     |
+| T-007   | paused  | 3            | 0               | 0           | 0/0           | 3.4m     |
 
 ## Run notes
 

@@ -19,6 +19,7 @@ Ensure the `/about` page's rich text content (rendered from Hygraph via `@graphc
 - **None**
 
 ## Acceptance criteria
+
 > ✅ Verified 2026-07-21
 
 - [x] **AC-1:** `/about` page has exactly one `<h1>` element (the page title, not from rich text) — Tests: `e2e/about-semantic.spec.ts` asserts `page.locator('h1').count() === 1`

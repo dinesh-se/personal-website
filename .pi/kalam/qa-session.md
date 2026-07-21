@@ -58,8 +58,10 @@
 **Affects:** openspec/specs/ux-spec.md
 
 ### Step 5 Approval
+
 Decision: Changes requested
 Feedback: T-003 (focus-trap-mobile-menu) has acceptance criteria AC-1 through AC-4 but no e2e spec was authored for it - only T-001, T-002, T-004, T-005, T-006, T-007, T-009 got specs (all prefixed c3-t-*). Please author e2e/c3-t-003-focus-trap-mobile-menu.spec.ts covering Tab/Shift+Tab focus cycling inside the open mobile menu, Escape closing it, and focus returning to the hamburger toggle on close. Also: e2e/dark-mode.spec.ts and e2e/skip-navigation.spec.ts are leftover duplicates from before a host interruption (they cover the same ground as c3-t-001-dark-mode-toggle.spec.ts and c3-t-002-skip-navigation-link.spec.ts, but with more test cases) - please reconcile by merging any test cases from the old files that aren't already in the c3-t-001/c3-t-002 versions, then delete the unprefixed duplicates.
 
 ### Step 5 Approval
+
 Decision: Approved — 8 task(s)

@@ -5,6 +5,7 @@
 Fix the heading contrast test (c3-t-006-color-contrast-audit-fix.spec.ts) so it correctly handles headings that use the bg-clip-text / text-transparent gradient technique instead of flagging them as having 1:1 contrast ratio.
 
 ## Acceptance criteria
+
 > ⏭️ Skipped 2026-07-21
 
 - [ ] The 'heading text meets large text contrast ratio (≥ 3:1)' test passes when run against the home page

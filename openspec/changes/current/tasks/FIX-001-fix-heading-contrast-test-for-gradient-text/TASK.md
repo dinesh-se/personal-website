@@ -5,6 +5,7 @@
 Update the heading contrast test in c3-t-006-color-contrast-audit-fix.spec.ts so it checks the actual visible text color of the h1 (the inner span with bg-clip-text gradient) instead of the h1 wrapper itself, which uses text-transparent for the gradient text effect.
 
 ## Acceptance criteria
+
 > ⏭️ Skipped 2026-07-21
 
 - [ ] The heading contrast test no longer fails on the h1 element with text-transparent

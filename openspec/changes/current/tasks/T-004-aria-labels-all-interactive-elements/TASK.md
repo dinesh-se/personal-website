@@ -17,6 +17,7 @@ Add descriptive ARIA labels to all interactive elements in the Header component 
 - **Task:** T-001 (dark mode toggle button must exist before adding its aria-label)
 
 ## Acceptance criteria
+
 > ✅ Verified 2026-07-21
 
 - [x] **AC-1:** Dark mode toggle button has `aria-label="Toggle dark mode"`

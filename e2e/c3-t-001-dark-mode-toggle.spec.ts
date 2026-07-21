@@ -7,7 +7,9 @@ test.describe('T-001: Dark Mode Toggle', () => {
 
 	test('clicking the dark mode toggle switches the theme', async ({ page }) => {
 		// GIVEN: site is running, page is loaded (light mode by default)
-		const toggleButton = page.getByRole('button', { name: /toggle dark mode/i });
+		const toggleButton = page.getByRole('button', {
+			name: /toggle dark mode/i,
+		});
 		await expect(toggleButton).toBeVisible();
 
 		// WHEN: click the dark mode toggle in the header
@@ -19,7 +21,9 @@ test.describe('T-001: Dark Mode Toggle', () => {
 
 	test('theme preference persists on page reload', async ({ page }) => {
 		// GIVEN: user has toggled to dark mode
-		const toggleButton = page.getByRole('button', { name: /toggle dark mode/i });
+		const toggleButton = page.getByRole('button', {
+			name: /toggle dark mode/i,
+		});
 		await toggleButton.click();
 		await expect(page.locator('html')).toHaveClass(/dark/);
 
@@ -52,7 +56,9 @@ test.describe('T-001: Dark Mode Toggle', () => {
 
 	test('toggle button contains sun/moon SVG icons', async ({ page }) => {
 		// GIVEN: page is loaded
-		const toggleButton = page.getByRole('button', { name: /toggle dark mode/i });
+		const toggleButton = page.getByRole('button', {
+			name: /toggle dark mode/i,
+		});
 		await expect(toggleButton).toBeVisible();
 
 		// THEN: button contains SVG icons

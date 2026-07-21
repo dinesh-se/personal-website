@@ -5,6 +5,7 @@
 Fix the heading contrast e2e test so it reads the visible text color from gradient-text headings instead of the transparent wrapper element.
 
 ## Acceptance criteria
+
 > ⏭️ Skipped 2026-07-21
 
 - [ ] The 'heading text meets large text contrast ratio' test passes in both light and dark mode

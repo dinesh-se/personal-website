@@ -11,11 +11,11 @@ test.describe('T-006: Home Page Color Contrast Fixes', () => {
 		await page.reload();
 
 		// THEN: body text has sufficient contrast (≥ 4.5:1)
-		const bodyTextColor = await page.evaluate(() =>
-			getComputedStyle(document.body).color
+		const bodyTextColor = await page.evaluate(
+			() => getComputedStyle(document.body).color
 		);
-		const bodyBgColor = await page.evaluate(() =>
-			getComputedStyle(document.body).backgroundColor
+		const bodyBgColor = await page.evaluate(
+			() => getComputedStyle(document.body).backgroundColor
 		);
 
 		// Verify colors are not identical (would indicate 1:1 ratio)
@@ -31,11 +31,11 @@ test.describe('T-006: Home Page Color Contrast Fixes', () => {
 		await page.reload();
 
 		// THEN: body text has sufficient contrast (≥ 4.5:1)
-		const bodyTextColor = await page.evaluate(() =>
-			getComputedStyle(document.body).color
+		const bodyTextColor = await page.evaluate(
+			() => getComputedStyle(document.body).color
 		);
-		const bodyBgColor = await page.evaluate(() =>
-			getComputedStyle(document.body).backgroundColor
+		const bodyBgColor = await page.evaluate(
+			() => getComputedStyle(document.body).backgroundColor
 		);
 
 		// Verify colors are not identical (would indicate 1:1 ratio)
@@ -45,7 +45,9 @@ test.describe('T-006: Home Page Color Contrast Fixes', () => {
 		expect(bodyTextColor).not.toBe('rgba(0, 0, 0, 0)');
 	});
 
-	test('heading text meets large text contrast ratio (≥ 3:1)', async ({ page }) => {
+	test('heading text meets large text contrast ratio (≥ 3:1)', async ({
+		page,
+	}) => {
 		// GIVEN: Home page is loaded
 		await page.emulateMedia({ colorScheme: 'light' });
 		await page.reload();
@@ -63,24 +65,26 @@ test.describe('T-006: Home Page Color Contrast Fixes', () => {
 		const count = await headings.count();
 		for (let i = 0; i < count; i++) {
 			const heading = headings.nth(i);
-			const isGradientText = await heading.evaluate(el =>
-				el.querySelector('span.bg-clip-text') !== null
+			const isGradientText = await heading.evaluate(
+				(el) => el.querySelector('span.bg-clip-text') !== null
 			);
 			if (isGradientText) {
 				continue;
 			}
-			const headingColor = await heading.evaluate(el =>
-				getComputedStyle(el).color
+			const headingColor = await heading.evaluate(
+				(el) => getComputedStyle(el).color
 			);
-			const headingBg = await heading.evaluate(el =>
-				getComputedStyle(el.parentElement || el).backgroundColor
+			const headingBg = await heading.evaluate(
+				(el) => getComputedStyle(el.parentElement || el).backgroundColor
 			);
 			expect(headingColor).not.toBe(headingBg);
 			expect(headingColor).not.toBe('rgba(0, 0, 0, 0)');
 		}
 	});
 
-	test('interactive elements meet contrast ratio in both modes', async ({ page }) => {
+	test('interactive elements meet contrast ratio in both modes', async ({
+		page,
+	}) => {
 		// GIVEN: Home page is loaded in light mode
 		await page.emulateMedia({ colorScheme: 'light' });
 		await page.reload();
@@ -89,9 +93,9 @@ test.describe('T-006: Home Page Color Contrast Fixes', () => {
 		const links = page.locator('nav a');
 		const linkCount = await links.count();
 		if (linkCount > 0) {
-			const linkColor = await links.first().evaluate(el =>
-				getComputedStyle(el).color
-			);
+			const linkColor = await links
+				.first()
+				.evaluate((el) => getComputedStyle(el).color);
 			expect(linkColor).not.toBe('');
 		}
 
@@ -102,14 +106,16 @@ test.describe('T-006: Home Page Color Contrast Fixes', () => {
 		const darkLinks = page.locator('nav a');
 		const darkLinkCount = await darkLinks.count();
 		if (darkLinkCount > 0) {
-			const darkLinkColor = await darkLinks.first().evaluate(el =>
-				getComputedStyle(el).color
-			);
+			const darkLinkColor = await darkLinks
+				.first()
+				.evaluate((el) => getComputedStyle(el).color);
 			expect(darkLinkColor).not.toBe('');
 		}
 	});
 
-	test('focus indicators have visible contrast in both modes', async ({ page }) => {
+	test('focus indicators have visible contrast in both modes', async ({
+		page,
+	}) => {
 		// GIVEN: Home page is loaded in light mode
 		await page.emulateMedia({ colorScheme: 'light' });
 		await page.reload();
@@ -119,7 +125,7 @@ test.describe('T-006: Home Page Color Contrast Fixes', () => {
 		await firstLink.focus();
 
 		// THEN: focus indicator is visible (outline or box-shadow)
-		const focusStyle = await firstLink.evaluate(el => {
+		const focusStyle = await firstLink.evaluate((el) => {
 			const style = getComputedStyle(el);
 			return style.outline || style.boxShadow || '';
 		});

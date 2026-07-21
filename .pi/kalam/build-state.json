@@ -490,14 +490,69 @@
         "Spacing"
       ],
       "userTest": "Run `npm run dev`, visit `/blog`. Inspect blog post body text — verify line-height is at least 1.5. Check spacing between post cards is consistent. Verify no ad-hoc pixel values in spacing classes.",
-      "status": "in-progress",
+      "status": "done",
       "attempts": 1,
       "origin": "decomposition",
       "startedAt": "2026-07-21T12:50:08.450Z",
       "attemptCounts": {
         "stall": 3,
         "verify": 1
-      }
+      },
+      "acceptanceManifest": [
+        {
+          "text": "AC-1: Blog post body text has line-height >= 1.5 (leading-relaxed)",
+          "met": true,
+          "evidence": "e2e/blog-typography.spec.ts::AC-1: blog post body text has line-height >= 1.5"
+        },
+        {
+          "text": "AC-2: Blog post letter-spacing is appropriate (no tighter than default)",
+          "met": true,
+          "evidence": "e2e/blog-typography.spec.ts::AC-2: blog post letter-spacing is appropriate (no tighter than default)"
+        },
+        {
+          "text": "AC-3: Spacing between blog post cards uses consistent Tailwind spacing values",
+          "met": true,
+          "evidence": "e2e/blog-typography.spec.ts::AC-3: spacing between blog post cards uses consistent Tailwind spacing values"
+        },
+        {
+          "text": "AC-4: Blog page section spacing uses Tailwind utilities (no ad-hoc pixels)",
+          "met": true,
+          "evidence": "e2e/blog-typography.spec.ts::AC-4: blog page section spacing uses Tailwind utilities (no ad-hoc pixels)"
+        },
+        {
+          "text": "AC-5: No new CSS custom properties or Tailwind config entries added",
+          "met": true,
+          "evidence": "manual: verified tailwind.config.ts and globals.css unchanged — only Tailwind utilities used"
+        },
+        {
+          "text": "AC-6: Blog page layout is not visually disrupted (scrollHeight stable)",
+          "met": true,
+          "evidence": "e2e/blog-typography.spec.ts::AC-6: blog page layout is not visually disrupted (scrollHeight stable)"
+        },
+        {
+          "text": "AC-7: All blog post cards render without layout shifts",
+          "met": true,
+          "evidence": "e2e/blog-typography.spec.ts::AC-7: all blog post cards render without layout shifts"
+        }
+      ],
+      "reviewFindings": [
+        {
+          "severity": "note",
+          "file": "src/components/BlogPostCard/BlogPostCard.tsx",
+          "issue": "Added data-testid attributes (blog-post-card, blog-post-body) to production DOM — common testing pattern but technically pollutes the DOM with test-only attributes. Not a blocking issue.",
+          "round": 1,
+          "addressed": false
+        },
+        {
+          "severity": "note",
+          "file": "src/app/blog/BlogContent.tsx",
+          "issue": "Added data-testid='blog-post-grid' to production DOM — same note as above.",
+          "round": 1,
+          "addressed": false
+        }
+      ],
+      "completedAt": "2026-07-21T13:15:52.498Z",
+      "commit": "a966de346e8154cfe414366d05150ccff8119a9c"
     },
     {
       "id": "T-009",
@@ -509,9 +564,43 @@
         "Accessibility testing"
       ],
       "userTest": "Run `npm test` and verify all Jest snapshot tests and Playwright E2E tests pass, including the new a11y test files for keyboard navigation and focus states.",
-      "status": "pending",
-      "attempts": 0,
-      "origin": "decomposition"
+      "status": "in-progress",
+      "attempts": 1,
+      "origin": "decomposition",
+      "startedAt": "2026-07-21T13:15:52.509Z",
+      "reviewFindings": [
+        {
+          "severity": "critical",
+          "file": ".github/workflows/lint-test.yml",
+          "issue": "Port mismatch: CI workflow runs 'npm run dev' (defaults to port 3000) but 'npm run a11y:audit' targets http://localhost:3099. The axe-core audit will fail with connection refused because nothing listens on port 3099. Fix: either add '--port 3099' to the dev command or change the audit URL to port 3000. This breaks AC-4 and AC-7 — the workflow cannot run the audit at all.",
+          "round": 1,
+          "addressed": false
+        },
+        {
+          "severity": "critical",
+          "file": ".github/workflows/lint-test.yml",
+          "issue": "The axe CLI uses chromedriver/selenium-webdriver to launch a headless browser for auditing. GitHub Actions ubuntu-latest runners do not have Chrome/Chromium pre-installed. The workflow installs Playwright's Chromium ('npx playwright install chromium') but that does not place Chrome in the PATH where the axe CLI's chromedriver can find it. The audit will fail even if the port were fixed.",
+          "round": 1,
+          "addressed": false
+        },
+        {
+          "severity": "note",
+          "file": "e2e/c3-t-009-axe-core-ci-playwright-a11y-tests.spec.ts",
+          "issue": "Duplicate of a11y-keyboard.spec.ts and a11y-focus.spec.ts. The first two tests ('axe-core dependency is declared' and 'axe-core CLI script is available') are no-ops that just assert true. These add no value and should be removed or replaced with actual checks.",
+          "round": 1,
+          "addressed": false
+        },
+        {
+          "severity": "note",
+          "file": "e2e/a11y-focus.spec.ts",
+          "issue": "The mobile menu tests use page.setViewportSize followed by page.reload(). The reload resets the page state, so the subsequent menuButton.click() opens the menu fresh. This works but is fragile — if the page takes time to hydrate after reload, the click may fail. The existing c3-t-003-focus-trap-mobile-menu.spec.ts uses the same pattern, so this is consistent with the existing codebase.",
+          "round": 1,
+          "addressed": false
+        }
+      ],
+      "attemptCounts": {
+        "review": 1
+      }
     },
     {
       "id": "FIX-001",
@@ -621,7 +710,7 @@
       "confirmed": false
     }
   ],
-  "currentTaskId": "T-007",
+  "currentTaskId": "T-009",
   "completed": false,
   "processedDeviationIds": []
 }

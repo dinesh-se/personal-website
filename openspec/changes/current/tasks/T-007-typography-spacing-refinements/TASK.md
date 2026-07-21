@@ -18,6 +18,7 @@ Fix line-height, letter-spacing, and spacing inconsistencies on the Blog page (`
 - **None**
 
 ## Acceptance criteria
+
 > ✅ Verified 2026-07-21
 
 - [x] **AC-1:** Blog post body text has line-height ≥ 1.5 (`leading-relaxed` or `leading-[1.625]`) — Tests: `e2e/blog-typography.spec.ts` checks computed `lineHeight` on blog post body text

@@ -5,15 +5,21 @@ test.describe('T-004: Header Component ARIA Labels', () => {
 		await page.goto('/');
 	});
 
-	test('dark mode toggle has accessible name "Toggle dark mode"', async ({ page }) => {
+	test('dark mode toggle has accessible name "Toggle dark mode"', async ({
+		page,
+	}) => {
 		// GIVEN: page is loaded, Header is rendered
-		const toggleButton = page.getByRole('button', { name: /toggle dark mode/i });
+		const toggleButton = page.getByRole('button', {
+			name: /toggle dark mode/i,
+		});
 
 		// THEN: button is discoverable by its accessible name
 		await expect(toggleButton).toBeVisible();
 	});
 
-	test('mobile menu toggle announces "Open main menu" when closed', async ({ page }) => {
+	test('mobile menu toggle announces "Open main menu" when closed', async ({
+		page,
+	}) => {
 		// GIVEN: page is loaded, mobile menu is closed
 		await page.setViewportSize({ width: 375, height: 812 });
 		await page.reload();
@@ -24,7 +30,9 @@ test.describe('T-004: Header Component ARIA Labels', () => {
 		await expect(menuButton).toBeVisible();
 	});
 
-	test('mobile menu toggle announces "Close main menu" when open', async ({ page }) => {
+	test('mobile menu toggle announces "Close main menu" when open', async ({
+		page,
+	}) => {
 		// GIVEN: page is loaded, mobile menu is open
 		await page.setViewportSize({ width: 375, height: 812 });
 		await page.reload();
@@ -46,7 +54,9 @@ test.describe('T-004: Header Component ARIA Labels', () => {
 		await expect(logoLink).toBeVisible();
 	});
 
-	test('mobile menu container has navigation role or label', async ({ page }) => {
+	test('mobile menu container has navigation role or label', async ({
+		page,
+	}) => {
 		// GIVEN: page is loaded
 		await page.setViewportSize({ width: 375, height: 812 });
 		await page.reload();
@@ -61,7 +71,9 @@ test.describe('T-004: Header Component ARIA Labels', () => {
 		expect(role === 'menu' || ariaLabel === 'Main navigation').toBe(true);
 	});
 
-	test('axe-core reports zero aria-label violations on Header', async ({ page }) => {
+	test('axe-core reports zero aria-label violations on Header', async ({
+		page,
+	}) => {
 		// GIVEN: page is loaded
 		await page.goto('/');
 

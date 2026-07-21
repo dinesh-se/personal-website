@@ -22,14 +22,16 @@ test.describe('T-003: Focus Trap in Mobile Menu', () => {
 		await expect(focusedElement).toBeVisible();
 
 		// Verify focused element is inside the mobile menu
-		const isInsideMenu = await focusedElement.evaluate(el => {
+		const isInsideMenu = await focusedElement.evaluate((el) => {
 			const menu = document.getElementById('mobile-menu');
 			return menu && menu.contains(el);
 		});
 		expect(isInsideMenu).toBe(true);
 	});
 
-	test('Shift+Tab cycles focus backwards through menu elements', async ({ page }) => {
+	test('Shift+Tab cycles focus backwards through menu elements', async ({
+		page,
+	}) => {
 		// GIVEN: mobile menu is open, focus is on last element
 		const menuButton = page.getByRole('button', { name: /open main menu/i });
 		await menuButton.click();
@@ -45,7 +47,7 @@ test.describe('T-003: Focus Trap in Mobile Menu', () => {
 		// THEN: focus moves to previous element within menu
 		const focusedElement = page.locator(':focus');
 		await expect(focusedElement).toBeVisible();
-		const isInsideMenu = await focusedElement.evaluate(el => {
+		const isInsideMenu = await focusedElement.evaluate((el) => {
 			const menu = document.getElementById('mobile-menu');
 			return menu && menu.contains(el);
 		});
@@ -65,7 +67,9 @@ test.describe('T-003: Focus Trap in Mobile Menu', () => {
 		await expect(page.locator('#mobile-menu')).not.toHaveClass(/block/);
 	});
 
-	test('focus returns to toggle button when menu closes via Escape', async ({ page }) => {
+	test('focus returns to toggle button when menu closes via Escape', async ({
+		page,
+	}) => {
 		// GIVEN: mobile menu is open
 		const menuButton = page.getByRole('button', { name: /open main menu/i });
 		await menuButton.click();
@@ -77,13 +81,17 @@ test.describe('T-003: Focus Trap in Mobile Menu', () => {
 		await expect(menuButton).toBeFocused();
 	});
 
-	test('focus returns to toggle button when menu closes via close button', async ({ page }) => {
+	test('focus returns to toggle button when menu closes via close button', async ({
+		page,
+	}) => {
 		// GIVEN: mobile menu is open
 		const menuButton = page.getByRole('button', { name: /open main menu/i });
 		await menuButton.click();
 
 		// WHEN: click close button
-		const closeButton = page.getByRole('button', { name: /close/i, exact: true }).first();
+		const closeButton = page
+			.getByRole('button', { name: /close/i, exact: true })
+			.first();
 		if (await closeButton.isVisible().catch(() => false)) {
 			await closeButton.click();
 		} else {
@@ -96,7 +104,9 @@ test.describe('T-003: Focus Trap in Mobile Menu', () => {
 		await expect(menuButton).toBeFocused();
 	});
 
-	test('focus trap does not interfere with desktop navigation', async ({ page }) => {
+	test('focus trap does not interfere with desktop navigation', async ({
+		page,
+	}) => {
 		// GIVEN: desktop viewport (menu should not be open by default)
 		await page.setViewportSize({ width: 1280, height: 720 });
 		await page.goto('/');

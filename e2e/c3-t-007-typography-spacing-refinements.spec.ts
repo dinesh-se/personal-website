@@ -12,12 +12,12 @@ test.describe('T-007: Blog Page Typography and Spacing', () => {
 		const bodyTexts = page.locator('main p');
 		const count = await bodyTexts.count();
 		if (count > 0) {
-			const lineHeight = await bodyTexts.first().evaluate(el =>
-				getComputedStyle(el).lineHeight
-			);
+			const lineHeight = await bodyTexts
+				.first()
+				.evaluate((el) => getComputedStyle(el).lineHeight);
 			// lineHeight can be a string like "24px" or "normal"
 			// Convert to numeric ratio relative to fontSize
-			const computed = await bodyTexts.first().evaluate(el => {
+			const computed = await bodyTexts.first().evaluate((el) => {
 				const style = getComputedStyle(el);
 				const lh = parseFloat(style.lineHeight);
 				const fs = parseFloat(style.fontSize);
@@ -27,16 +27,18 @@ test.describe('T-007: Blog Page Typography and Spacing', () => {
 		}
 	});
 
-	test('blog post letter-spacing is appropriate for readability', async ({ page }) => {
+	test('blog post letter-spacing is appropriate for readability', async ({
+		page,
+	}) => {
 		// GIVEN: /blog page is loaded
 		// WHEN: inspect blog post body text
 		// THEN: letter-spacing is not tighter than Tailwind default (normal)
 		const bodyTexts = page.locator('main p');
 		const count = await bodyTexts.count();
 		if (count > 0) {
-			const letterSpacing = await bodyTexts.first().evaluate(el =>
-				getComputedStyle(el).letterSpacing
-			);
+			const letterSpacing = await bodyTexts
+				.first()
+				.evaluate((el) => getComputedStyle(el).letterSpacing);
 			// letterSpacing should be "normal" (0px) or positive
 			// Negative values indicate tighter spacing
 			const numericValue = parseFloat(letterSpacing);
@@ -57,7 +59,9 @@ test.describe('T-007: Blog Page Typography and Spacing', () => {
 		}
 	});
 
-	test('blog page section spacing uses Tailwind utilities', async ({ page }) => {
+	test('blog page section spacing uses Tailwind utilities', async ({
+		page,
+	}) => {
 		// GIVEN: /blog page is loaded
 		// WHEN: inspect page section spacing
 		// THEN: no ad-hoc pixel values in spacing classes

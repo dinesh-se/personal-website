@@ -5,6 +5,7 @@
 Implement a manual dark mode toggle that switches the site theme and persists the user's choice in localStorage, defaulting to system preference on first visit.
 
 ## Acceptance Criteria
+
 > ✅ Verified 2026-07-21
 
 - [x] **AC-1:** Tailwind `darkMode` strategy changed from `media` to `class` in `tailwind.config.ts`

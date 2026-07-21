@@ -11,6 +11,7 @@
 		"format:fix": "prettier --write --ignore-path .gitignore .",
 		"test": "jest",
 		"test:watch": "jest --watch",
+		"a11y:audit": "axe --exit http://localhost:3099",
 		"typecheck": "tsc --noEmit",
 		"release": "release-it"
 	},
@@ -30,6 +31,7 @@
 		}
 	},
 	"devDependencies": {
+		"@axe-core/cli": "^4.12.1",
 		"@graphcms/rich-text-react-renderer": "^0.6.2",
 		"@graphcms/rich-text-types": "^0.5.1",
 		"@playwright/test": "^1.61.1",
@@ -57,6 +59,7 @@
 		"tailwindcss": "^3.4.12",
 		"ts-jest": "^29.4.0",
 		"ts-node": "^10.9.2",
-		"typescript": "^5.0.0"
+		"typescript": "^5.0.0",
+		"axe-core": "^4.12.1"
 	}
 }

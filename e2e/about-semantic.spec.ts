@@ -10,28 +10,36 @@ test.describe('T-005: About Page Rich Text Semantic HTML', () => {
 		expect(h1Count).toBe(1);
 	});
 
-	test('AC-2: rich text headings render as h2-h6 (not div wrappers)', async ({ page }) => {
+	test('AC-2: rich text headings render as h2-h6 (not div wrappers)', async ({
+		page,
+	}) => {
 		const headings = page.locator('main').locator('h2, h3, h4, h5, h6');
 		const count = await headings.count();
 		expect(count).toBeGreaterThan(0);
 	});
 
-	test('AC-3: rich text paragraphs render as p elements (not div)', async ({ page }) => {
+	test('AC-3: rich text paragraphs render as p elements (not div)', async ({
+		page,
+	}) => {
 		const paragraphs = page.locator('main').locator('p');
 		const count = await paragraphs.count();
 		expect(count).toBeGreaterThan(0);
 	});
 
-	test('AC-4: rich text lists render as ul/ol with li children (not div)', async ({ page }) => {
+	test('AC-4: rich text lists render as ul/ol with li children (not div)', async ({
+		page,
+	}) => {
 		const lists = page.locator('main').locator('ul, ol');
 		const count = await lists.count();
 
 		if (count === 0) {
 			/* No lists in content — verify the default renderers produce semantic
 			 * markup by checking that no div-based list wrappers exist instead. */
-			const fakeLists = page.locator('main').locator(
-				'div[class*="list"], div[class*="bullet"], div[class*="ordered"]',
-			);
+			const fakeLists = page
+				.locator('main')
+				.locator(
+					'div[class*="list"], div[class*="bullet"], div[class*="ordered"]'
+				);
 			const fakeCount = await fakeLists.count();
 			expect(fakeCount).toBe(0);
 			return;
@@ -46,7 +54,9 @@ test.describe('T-005: About Page Rich Text Semantic HTML', () => {
 		}
 	});
 
-	test('AC-5: rich text code blocks render as pre with code inside', async ({ page }) => {
+	test('AC-5: rich text code blocks render as pre with code inside', async ({
+		page,
+	}) => {
 		const codeBlocks = page.locator('main').locator('pre code');
 		const count = await codeBlocks.count();
 
@@ -70,12 +80,14 @@ test.describe('T-005: About Page Rich Text Semantic HTML', () => {
 	});
 
 	test('AC-6: heading hierarchy has no skipped levels', async ({ page }) => {
-		const headings = page.locator('main h2, main h3, main h4, main h5, main h6');
+		const headings = page.locator(
+			'main h2, main h3, main h4, main h5, main h6'
+		);
 		const levels: number[] = [];
-		for (let i = 0; i < await headings.count(); i++) {
-			const tag = await headings.nth(i).evaluate(
-				(el) => el.tagName.toLowerCase(),
-			);
+		for (let i = 0; i < (await headings.count()); i++) {
+			const tag = await headings
+				.nth(i)
+				.evaluate((el) => el.tagName.toLowerCase());
 			const level = parseInt(tag.replace('h', ''), 10);
 			levels.push(level);
 		}
@@ -99,7 +111,9 @@ test.describe('T-005: About Page Rich Text Semantic HTML', () => {
 		});
 
 		/* Wait for axe to be available */
-		await page.waitForFunction(() => typeof (window as any).axe !== 'undefined');
+		await page.waitForFunction(
+			() => typeof (window as any).axe !== 'undefined'
+		);
 
 		const violations = await page.evaluate(async () => {
 			const { axe } = window as any;

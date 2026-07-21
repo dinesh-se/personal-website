@@ -5,6 +5,7 @@
 Add a skip navigation link to all pages that becomes visible on first Tab press and jumps to the main content area.
 
 ## Acceptance Criteria
+
 > ✅ Verified 2026-07-21
 
 - [x] **AC-1:** Skip navigation link rendered at the top of every page (before Header or inside Header at the top)
@@ -23,7 +24,7 @@ Add a skip navigation link to all pages that becomes visible on first Tab press 
 
   ```css
   .skip-nav {
-    @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-gray-900 focus:text-white focus:rounded-md;
+  	@apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-gray-900 focus:px-4 focus:py-2 focus:text-white;
   }
   ```
 
@@ -31,7 +32,7 @@ Add a skip navigation link to all pages that becomes visible on first Tab press 
 
   ```tsx
   <a href="#main-content" className="skip-nav">
-    Skip to main content
+  	Skip to main content
   </a>
   ```
 

@@ -5,6 +5,7 @@
 Update the heading contrast test in c3-t-006-color-contrast-audit-fix.spec.ts to skip or handle elements that use the `text-transparent` + `bg-clip-text` gradient pattern, since their computed color is transparent by design and cannot be validated with a simple solid-color comparison.
 
 ## Acceptance criteria
+
 > ⏭️ Skipped 2026-07-21
 
 - [ ] The 'heading text meets large text contrast ratio (≥ 3:1)' test passes in both light and dark mode

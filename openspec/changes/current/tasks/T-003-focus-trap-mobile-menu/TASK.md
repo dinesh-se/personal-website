@@ -5,6 +5,7 @@
 Implement focus trap within the mobile menu when it's open, and restore focus to the toggle button when the menu closes.
 
 ## Acceptance Criteria
+
 > ✅ Verified 2026-07-21
 
 - [x] **AC-1:** When mobile menu is open, Tab key cycles focus only through menu's focusable elements (links, close button)
@@ -28,36 +29,38 @@ Use a `useRef` to store the mobile menu element, then add a `useEffect` that lis
 const mobileMenuRef = useRef<HTMLDivElement>(null);
 
 useEffect(() => {
-  if (!isMobileMenuOpen || !mobileMenuRef.current) return;
+	if (!isMobileMenuOpen || !mobileMenuRef.current) return;
 
-  const focusableElements = mobileMenuRef.current.querySelectorAll(
-    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-  );
-  const firstFocusable = focusableElements[0] as HTMLElement;
-  const lastFocusable = focusableElements[focusableElements.length - 1] as HTMLElement;
+	const focusableElements = mobileMenuRef.current.querySelectorAll(
+		'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+	);
+	const firstFocusable = focusableElements[0] as HTMLElement;
+	const lastFocusable = focusableElements[
+		focusableElements.length - 1
+	] as HTMLElement;
 
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Tab') {
-      if (e.shiftKey) {
-        if (document.activeElement === firstFocusable) {
-          e.preventDefault();
-          lastFocusable.focus();
-        }
-      } else {
-        if (document.activeElement === lastFocusable) {
-          e.preventDefault();
-          firstFocusable.focus();
-        }
-      }
-    }
-    if (e.key === 'Escape') {
-      toggleMobileMenuState(false);
-      firstFocusable?.focus(); // Return focus to toggle button
-    }
-  };
+	const handleKeyDown = (e: KeyboardEvent) => {
+		if (e.key === 'Tab') {
+			if (e.shiftKey) {
+				if (document.activeElement === firstFocusable) {
+					e.preventDefault();
+					lastFocusable.focus();
+				}
+			} else {
+				if (document.activeElement === lastFocusable) {
+					e.preventDefault();
+					firstFocusable.focus();
+				}
+			}
+		}
+		if (e.key === 'Escape') {
+			toggleMobileMenuState(false);
+			firstFocusable?.focus(); // Return focus to toggle button
+		}
+	};
 
-  document.addEventListener('keydown', handleKeyDown);
-  return () => document.removeEventListener('keydown', handleKeyDown);
+	document.addEventListener('keydown', handleKeyDown);
+	return () => document.removeEventListener('keydown', handleKeyDown);
 }, [isMobileMenuOpen]);
 ```
 

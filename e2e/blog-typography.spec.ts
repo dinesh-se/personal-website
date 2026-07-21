@@ -8,14 +8,15 @@ test.describe('T-007: Blog Page Typography and Spacing', () => {
 
 	test('AC-1: blog post body text has line-height >= 1.5', async ({ page }) => {
 		// Check intro paragraph (always present)
-		const introLineHeight = await page.locator('main > p').first().evaluate(
-			(el) => {
+		const introLineHeight = await page
+			.locator('main > p')
+			.first()
+			.evaluate((el) => {
 				const style = getComputedStyle(el);
 				const lh = parseFloat(style.lineHeight);
 				const fs = parseFloat(style.fontSize);
 				return lh / fs;
-			}
-		);
+			});
 		expect(introLineHeight).toBeGreaterThanOrEqual(1.5);
 
 		// Check blog post body text if cards are rendered

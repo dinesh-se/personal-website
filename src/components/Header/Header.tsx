@@ -153,11 +153,6 @@ const Header = () => {
 				)}
 				id="mobile-menu"
 				aria-label="Main navigation"
-				onKeyDown={(e) => {
-					if (e.key === 'Escape') {
-						closeMobileMenu();
-					}
-				}}
 			>
 				<div className="space-y-1 px-2 pb-3 pt-2">
 					<NavLinks
