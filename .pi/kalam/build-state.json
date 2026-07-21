@@ -739,10 +739,40 @@
       "coversFeatures": [],
       "userTest": "Run: npx playwright test e2e/c3-t-007-typography-spacing-refinements.spec.ts --reporter=line. Verify both the 'blog post letter-spacing is appropriate for readability' and 'spacing between blog post cards is consistent' tests pass (status: expected).",
       "milestone": 3,
-      "status": "in-progress",
+      "status": "done",
       "attempts": 0,
       "origin": "check",
-      "startedAt": "2026-07-21T13:41:25.244Z"
+      "startedAt": "2026-07-21T13:41:25.244Z",
+      "acceptanceManifest": [
+        {
+          "text": "letterSpacing test handles 'normal' keyword by converting it to '0px' (or 0) before parseFloat, so default-styles paragraphs pass",
+          "met": true,
+          "evidence": "e2e/c3-t-007-typography-spacing-refinements.spec.ts::blog post letter-spacing is appropriate for readability"
+        },
+        {
+          "text": "gap/spacing test targets the blog post grid via data-testid='blog-post-grid' instead of the generic [class*='gap-'] selector",
+          "met": true,
+          "evidence": "e2e/c3-t-007-typography-spacing-refinements.spec.ts::spacing between blog post cards is consistent"
+        },
+        {
+          "text": "The regex for gap values should match both 'gap-6' and 'gap-y-6' variants (e.g., /gap(?:-[xy])?-(4|6|8|10|12)/)",
+          "met": true,
+          "evidence": "e2e/c3-t-007-typography-spacing-refinements.spec.ts::spacing between blog post cards is consistent"
+        },
+        {
+          "text": "Both tests pass when running npx playwright test c3-t-007-typography-spacing-refinements",
+          "met": true,
+          "evidence": "manual: all 6 tests passed (3.4s) with line reporter"
+        },
+        {
+          "text": "The test still correctly rejects negative letter-spacing values (e.g., '-0.05em') if they were present",
+          "met": true,
+          "evidence": "e2e/c3-t-007-typography-spacing-refinements.spec.ts::blog post letter-spacing is appropriate for readability"
+        }
+      ],
+      "reviewFindings": [],
+      "completedAt": "2026-07-21T13:44:26.077Z",
+      "commit": "e92bd2b26684694883a312912631ae3bc89ab275"
     }
   ],
   "milestones": [
@@ -763,6 +793,6 @@
     }
   ],
   "currentTaskId": "FIX-006",
-  "completed": false,
+  "completed": true,
   "processedDeviationIds": []
 }

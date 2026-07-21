@@ -728,5 +728,13 @@
     "source": "build",
     "affects": [],
     "timestamp": "2026-07-21T13:39:58.967Z"
+  },
+  {
+    "id": "build:FIX-006",
+    "question": "Task FIX-006 (fix-letter-spacing-normal-parsing-and-gap-locator)",
+    "answer": "Fixed two bugs in the blog typography/spacing e2e test: (1) handle CSS 'normal' keyword for letterSpacing by converting to '0px' before parseFloat, and (2) target the blog post grid via data-testid instead of generic gap selector with improved regex supporting gap-y/gap-x variants.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-21T13:44:26.078Z"
   }
 ]
