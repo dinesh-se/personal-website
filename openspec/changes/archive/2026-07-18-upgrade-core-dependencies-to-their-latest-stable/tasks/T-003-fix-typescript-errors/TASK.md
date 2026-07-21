@@ -19,6 +19,7 @@ Fix all remaining TypeScript compilation errors introduced by the dependency upg
 - **Task:** T-002 (all dependencies must be upgraded before TypeScript errors can be accurately identified and fixed)
 
 ## Acceptance criteria
+
 > ✅ Verified 2026-07-17
 
 - [x] `npm run build` exits with code 0

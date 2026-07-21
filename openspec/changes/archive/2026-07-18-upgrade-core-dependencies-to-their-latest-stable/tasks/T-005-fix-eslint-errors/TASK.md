@@ -19,6 +19,7 @@ Fix all remaining ESLint errors introduced by the flat config migration and/or d
 - **Task:** T-004 (ESLint flat config must be in place before errors can be accurately identified and fixed)
 
 ## Acceptance criteria
+
 > ✅ Verified 2026-07-17
 
 - [x] `npm run lint` exits with code 0

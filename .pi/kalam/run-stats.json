@@ -1,28 +1,49 @@
 {
-  "startedAt": 1784576234290,
-  "totalSpawns": 5,
+  "startedAt": 1784639018111,
+  "totalSpawns": 11,
   "checkerSpawns": 2,
   "tasks": [
     {
-      "taskId": "FIX-002",
+      "taskId": "T-007",
       "coderSpawns": 2,
       "reviewerSpawns": 1,
       "verifyRuns": 3,
-      "tokensIn": 900171,
-      "tokensOut": 21395,
-      "startedAt": 1784576234292,
-      "durationMs": 792358,
+      "tokensIn": 510671,
+      "tokensOut": 17112,
+      "startedAt": 1784639018113,
+      "durationMs": 734387,
+      "outcome": "committed"
+    },
+    {
+      "taskId": "T-009",
+      "coderSpawns": 2,
+      "reviewerSpawns": 2,
+      "verifyRuns": 2,
+      "tokensIn": 2195831,
+      "tokensOut": 41246,
+      "startedAt": 1784639752500,
+      "durationMs": 1446467,
+      "outcome": "committed"
+    },
+    {
+      "taskId": "FIX-006",
+      "coderSpawns": 1,
+      "reviewerSpawns": 1,
+      "verifyRuns": 1,
+      "tokensIn": 158699,
+      "tokensOut": 3801,
+      "startedAt": 1784641285234,
+      "durationMs": 180844,
       "outcome": "committed"
     }
   ],
   "notes": [
-    "task FIX-002 starting with a dirty working tree (7 tracked file(s) modified outside .pi/kalam: e2e/playwright.config.ts, playwright-report/index.html, src/app/__tests__/__snapshots__/loading-components.test.tsx.snap, src/app/blog/BlogContent.tsx, src/app/blog/__tests__/BlogContent.test.tsx, …) — these will be swept into this task's commit",
-    "verify: `npm run lint` failed on FIX-002 — ran `npm run lint -- --fix` and re-verified clean, not charged to the task's verify budget"
+    "verify: `npm run lint` failed on T-007 — ran `npm run lint -- --fix` and re-verified clean, not charged to the task's verify budget"
   ],
-  "tokensIn": 1162961,
-  "tokensOut": 27527,
-  "updatedAt": 1784577183276,
-  "endedAt": 1784577183276,
+  "tokensIn": 2996004,
+  "tokensOut": 66259,
+  "updatedAt": 1784641512851,
+  "endedAt": 1784641512851,
   "caps": {
     "enabled": false,
     "maxRunMinutes": 240,

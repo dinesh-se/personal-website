@@ -2,6 +2,7 @@ import nextPlugin from '@next/eslint-plugin-next';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import prettierConfig from 'eslint-config-prettier';
+import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import prettierPlugin from 'eslint-plugin-prettier';
 
 export default [
@@ -28,6 +29,10 @@ export default [
 		},
 	},
 	...tsPlugin.configs['flat/recommended'],
+	{
+		...jsxA11yPlugin.flatConfigs.strict,
+		files: ['**/*.ts', '**/*.tsx'],
+	},
 	{
 		files: ['**/*.ts', '**/*.tsx'],
 		rules: {

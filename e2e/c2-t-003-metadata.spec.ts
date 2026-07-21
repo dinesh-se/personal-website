@@ -141,8 +141,12 @@ test.describe('C2-T-003 — generateMetadata Migration', () => {
 
 		const mobileMenu = page.locator('#mobile-menu');
 		await expect(mobileMenu).toBeVisible();
-		await expect(mobileMenu.getByRole('link', { name: 'About me' })).toBeVisible();
-		await expect(mobileMenu.getByRole('link', { name: 'Projects' })).toBeVisible();
+		await expect(
+			mobileMenu.getByRole('link', { name: 'About me' })
+		).toBeVisible();
+		await expect(
+			mobileMenu.getByRole('link', { name: 'Projects' })
+		).toBeVisible();
 		await expect(mobileMenu.getByRole('link', { name: 'Blog' })).toBeVisible();
 		await expect(mobileMenu.getByRole('link', { name: 'Uses' })).toBeVisible();
 
@@ -197,9 +201,9 @@ test.describe('C2-T-003 — generateMetadata Migration', () => {
 
 			const footer = page.locator('footer');
 
-			await expect(
-				footer.getByRole('link', { name: activeLabel })
-			).toHaveClass(/font-semibold/);
+			await expect(footer.getByRole('link', { name: activeLabel })).toHaveClass(
+				/font-semibold/
+			);
 		}
 	});
 });

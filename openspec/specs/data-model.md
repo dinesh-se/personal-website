@@ -4,7 +4,7 @@
 
 **No persistent data model — stateless service.** All data types are TypeScript interfaces in `src/types/`. Data is fetched from external APIs (Hygraph GraphQL, Dev.to REST) at build/runtime with ISR revalidation (600s).
 
-This feature (upgrade core dependencies to Next.js 16, React 19) introduces **no new entities and no new fields**. The existing type definitions in `src/types/` remain unchanged in shape; only their runtime compatibility with the upgraded frameworks is verified.
+This feature (visual theming and WCAG 2.1 AA accessibility) introduces **no new entities and no new fields**. The existing type definitions in `src/types/` remain unchanged in shape; only their runtime rendering is affected by semantic HTML and ARIA label changes.
 
 ### Author (`src/types/author.ts`)
 
@@ -157,7 +157,7 @@ interface RepoUI extends Omit<Repo, 'id' | 'url'> {
 }
 ```
 
-**Source:** Baseline scan (`openspec/specs/data-model.md` as-is, `baseline/data-model.md`); feature proposal confirms no new entities or fields (`proposal.md`, "Data Needs: None").
+**Source:** Baseline scan (`openspec/specs/data-model.md` as-is, `baseline/data-model.md`); feature proposal confirms no new entities or fields (`proposal.md`, "Data Needs: None — uses existing integrations").
 
 ## 2. Relationships
 
@@ -173,13 +173,13 @@ interface RepoUI extends Omit<Repo, 'id' | 'url'> {
 
 This feature introduces **no new relationships**.
 
-**Source:** Baseline (`baseline/data-model.md`); feature proposal confirms no data model changes (`proposal.md`, "Data Needs: None").
+**Source:** Baseline (`baseline/data-model.md`); feature proposal confirms no data model changes (`proposal.md`, "Data Needs: None — uses existing integrations").
 
 ## 3. Migration Strategy
 
 **Not applicable.** No database, no ORM, no migrations. Data schema is defined by external APIs (Hygraph GraphQL schema, Dev.to REST API schema). Type definitions in `src/types/` reflect the API responses.
 
-This feature does not introduce any database schema changes, migration scripts, or data transformations. The upgrade is confined to dependency versions and TypeScript/ESLint configuration.
+This feature does not introduce any database schema changes, migration scripts, or data transformations. The scope is confined to UI rendering changes (semantic HTML, ARIA labels, focus indicators) — no type definitions are modified.
 
 **Source:** Baseline (`baseline/data-model.md`); feature proposal (`proposal.md`, "Data Needs: None — uses existing integrations. No new data sources or migration scripts required.").
 
@@ -198,6 +198,6 @@ This feature introduces **no seed data**.
 
 **Not applicable.** This is a static site with no user data collection, no local storage, no sessions. Data is fetched fresh on each build/revalidation (600s ISR). No data is persisted client-side.
 
-This feature does not change the data retention policy.
+This feature does not change the data retention policy. The dark mode preference stored in localStorage is client-side only and not tracked as user data.
 
-**Source:** Baseline (`baseline/data-model.md`); feature proposal (`proposal.md`, "Out of scope: Changing external API integrations").
+**Source:** Baseline (`baseline/data-model.md`); feature proposal (`proposal.md`, "Out of scope: Modifying external API integrations").

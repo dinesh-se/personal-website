@@ -11,7 +11,9 @@ test.describe('Home Page — e2e smoke', () => {
 	});
 
 	test('should display the greeting', async ({ page }) => {
-		await expect(page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })).toBeVisible();
+		await expect(
+			page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })
+		).toBeVisible();
 	});
 
 	test('should render the header navigation', async ({ page }) => {

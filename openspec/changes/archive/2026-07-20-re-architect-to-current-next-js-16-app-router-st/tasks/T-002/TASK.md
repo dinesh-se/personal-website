@@ -28,22 +28,22 @@ The fix must:
 
 ```typescript
 const formatDate = (date: string) =>
-  new Date(date).toLocaleDateString('en', {
-    year: 'numeric',
-    month: 'short',
-  });
+	new Date(date).toLocaleDateString('en', {
+		year: 'numeric',
+		month: 'short',
+	});
 ```
 
 ### Fixed Code (example)
 
 ```typescript
 const formatDate = (date: string) => {
-  const [day, month, year] = date.split('/').map(Number);
-  const d = new Date(year, month - 1, day);
-  return d.toLocaleDateString('en', {
-    year: 'numeric',
-    month: 'short',
-  });
+	const [day, month, year] = date.split('/').map(Number);
+	const d = new Date(year, month - 1, day);
+	return d.toLocaleDateString('en', {
+		year: 'numeric',
+		month: 'short',
+	});
 };
 ```
 
@@ -60,6 +60,7 @@ const formatDate = (date: string) => {
 - Test files (the snapshot will auto-update if CSS changes, but the format output is unchanged)
 
 ## Acceptance Criteria
+
 > ✅ Verified 2026-07-19
 
 - [x] `formatDate()` correctly parses DD/MM/YYYY date strings (e.g., `"31/01/2024"` → `"Jan 2024"`)

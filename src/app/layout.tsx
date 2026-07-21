@@ -26,11 +26,17 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className="antialiased">
-				<Header></Header>
-				<main className="dark:text-slate-20 m-auto min-h-full max-w-7xl p-8 pb-16 pt-12">
+				<a href="#main-content" className="skip-nav">
+					Skip to main content
+				</a>
+				<Header />
+				<main
+					id="main-content"
+					className="dark:text-slate-200 m-auto min-h-full max-w-7xl p-8 pb-16 pt-12"
+				>
 					{children}
 				</main>
-				<Footer></Footer>
+				<Footer />
 				<Analytics />
 			</body>
 		</html>

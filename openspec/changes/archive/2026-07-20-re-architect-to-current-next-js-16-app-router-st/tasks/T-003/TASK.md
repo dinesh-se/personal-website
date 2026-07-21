@@ -18,9 +18,10 @@ The proposal specifies migrating all routes to `generateMetadata` functions. Thi
 
 ```typescript
 export const metadata: Metadata = {
-  title: 'Dinesh Haribabu',
-  description: 'A front-end web developer focused on crafting clean and intuitive interfaces providing better UX.',
-  authors: [{ name: 'Dinesh Haribabu', url: 'https://dineshharibabu.in/' }],
+	title: 'Dinesh Haribabu',
+	description:
+		'A front-end web developer focused on crafting clean and intuitive interfaces providing better UX.',
+	authors: [{ name: 'Dinesh Haribabu', url: 'https://dineshharibabu.in/' }],
 };
 ```
 
@@ -28,10 +29,10 @@ export const metadata: Metadata = {
 
 ```typescript
 export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: { userAgent: '*', allow: '/' },
-    sitemap: 'https://dineshharibabu.in/sitemap.xml',
-  };
+	return {
+		rules: { userAgent: '*', allow: '/' },
+		sitemap: 'https://dineshharibabu.in/sitemap.xml',
+	};
 }
 ```
 
@@ -39,13 +40,13 @@ export default function robots(): MetadataRoute.Robots {
 
 ```typescript
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ['', '/about', '/projects', '/blog', '/uses'];
-  return routes.map((path) => ({
-    url: `https://dineshharibabu.in${path}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: path ? 0.8 : 1,
-  }));
+	const routes = ['', '/about', '/projects', '/blog', '/uses'];
+	return routes.map((path) => ({
+		url: `https://dineshharibabu.in${path}`,
+		lastModified: new Date(),
+		changeFrequency: 'monthly' as const,
+		priority: path ? 0.8 : 1,
+	}));
 }
 ```
 
@@ -71,6 +72,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 - Page JSX structure
 
 ## Acceptance Criteria
+
 > ✅ Verified 2026-07-19
 
 - [x] Root `layout.tsx` uses `generateMetadata` instead of static `export const metadata`
@@ -129,7 +131,7 @@ Run `npm run build` — verify zero errors and that all 5 pages produce correct 
 
 Open — the reviewer flagged these:
 
-- **note** `jest.config.ts:28` — Added moduleNameMapper for '^@vercel/analytics/react$' pointing to __mocks__/vercel-analytics.ts. This is a necessary addition since layout.tsx imports Analytics from @vercel/analytics/react and Jest needs the mock. The mock file (__mocks__/vercel-analytics.ts) is currently untracked and must be committed.
+- **note** `jest.config.ts:28` — Added moduleNameMapper for '^@vercel/analytics/react$' pointing to **mocks**/vercel-analytics.ts. This is a necessary addition since layout.tsx imports Analytics from @vercel/analytics/react and Jest needs the mock. The mock file (**mocks**/vercel-analytics.ts) is currently untracked and must be committed.
 - **note** `src/app/layout.tsx:9` — The layout.tsx generateMetadata is synchronous (no params needed), while all 5 page generateMetadata functions are async. Both are valid Next.js patterns. The async on pages is a reasonable consistency choice even though none use params/searchParams.
 - **note** `e2e/t-003-metadata.spec.ts:1` — New E2E test file is untracked. Contains 7 tests covering all 5 page titles, robots.txt, and sitemap.xml. All pass. Must be committed alongside code changes.
 - **note** `src/app/__tests__/generate-metadata.test.ts:1` — New unit test file is untracked. Contains 20 tests verifying each generateMetadata function returns correct title, description, and authors. Also verifies all 5 routes have unique titles. All pass. Must be committed.

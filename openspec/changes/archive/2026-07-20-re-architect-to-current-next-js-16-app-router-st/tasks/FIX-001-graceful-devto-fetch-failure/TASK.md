@@ -5,6 +5,7 @@
 Handle Dev.to API fetch failures gracefully on the blog page so that users see a meaningful fallback instead of an empty page when the external API is unavailable.
 
 ## Acceptance criteria
+
 > ✅ Verified 2026-07-20
 
 - [x] When Dev.to API fails (network error, rate limit, missing/invalid API key), the blog page still renders without console errors

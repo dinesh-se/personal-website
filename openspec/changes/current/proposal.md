@@ -1,77 +1,101 @@
 # Feature Brief
 
-**Feature:** "Re-architect to current Next.js 16 App Router standards/patterns: move all Hygraph + Dev.to fetching into Server Components (App Router data model); add per-route loading.tsx + error.tsx (streaming + Suspense boundaries); adopt Cache Components (use cache / cacheLife) + Partial Prerendering for cached remote data; upgrade Next to 16.3+ as the prerequisite; migrate to generateMetadata Metadata API + typed routes; fix Experience formatDate DD/MM/YYYY bug. No visual redesign, no new pages; keep Hygraph/Dto as the data sources."
-
-> **Correction — 2026-07-20:** Every "DD/MM/YYYY" reference below is wrong.
-> Real Hygraph data is ISO 8601 (`YYYY-MM-DD`). See T-002/TASK.md's
-> correction note — the original fix was verified against a fixture that
-> shared the same wrong assumption, not real data, and it broke
-> `formatDate()` for every real organization entry on the deployed site.
+**Feature:** Improve the site's visual theming (light/dark mode consistency, color palette, typography, spacing) and bring the app up to WCAG 2.1 AA accessibility standards (semantic HTML, color contrast, keyboard navigation, ARIA labels, focus states) across all pages.
 
 ## Feature Scope
 
-Re-architect the existing 5-page personal website to align with Next.js 16 App Router conventions without adding new pages or changing visual design. The feature covers:
+### In Scope
 
-- **Server Components data model**: Move all Hygraph (GraphQL) and Dev.to (REST) fetching into the App Router data model — replace inline `cache()` wrappers with proper Server Component data fetching patterns.
-- **Per-route loading.tsx**: Add skeleton loader components for each route to enable streaming and Suspense boundaries.
-- **Per-route error.tsx (hybrid)**: Retain the root-level `error.tsx` as a catch-all fallback, and create route-specific error pages for key routes where custom error UI adds value.
-- **Cache Components**: Adopt `use cache` annotations and default `cacheLife` profiles for remote data caching, replacing the current `cache()` + `revalidate: 600` ISR pattern.
-- **Partial Prerendering (PPR)**: Enable PPR alongside existing ISR to stream the static shell on first paint while allowing per-segment revalidation of cached remote data.
-- **generateMetadata migration**: Migrate all routes from static `export const metadata` and standalone `robots.ts`/`sitemap.ts` to per-route `generateMetadata` functions.
-- **Typed routes**: Adopt Next.js 16 typed routes pattern.
-- **Experience formatDate bug fix**: `formatDate()` in `Experience.tsx` calls `new Date(date)` on DD/MM/YYYY strings (e.g. `"31/01/2024"`) which JavaScript cannot parse, producing `"Invalid Date"`. Fix the parser to correctly handle DD/MM/YYYY input and display as MMM YYYY — no visual change to the output format.
+- **Dark mode**: Replace `prefers-color-scheme`-only dark mode with a manual toggle button (stored in localStorage) that defaults to system preference. Change Tailwind dark mode strategy from `media` to `class`.
+- **Color palette**: Audit all colors used across the site for WCAG 2.1 AA contrast compliance (4.5:1 for normal text, 3:1 for large text and UI components) on both light and dark backgrounds. Adjust custom colors in `tailwind.config.ts` and `globals.css` to meet thresholds.
+- **Typography**: Keep current Tailwind font utilities. Fix line-height and letter-spacing values for improved readability (minimum 1.5 line-height for body text, appropriate letter-spacing for headings).
+- **Spacing**: Use existing Tailwind spacing utilities. Fix inconsistent spacing between components and sections across all pages.
+- **Semantic HTML**: Audit all 5 pages for proper heading hierarchy, landmark regions (`<main>`, `<nav>`, `<header>`, `<footer>`), and semantic elements (`<article>`, `<section>`, `<ul>`).
+- **ARIA labels**: Add ARIA labels to all interactive elements (buttons, links, form controls, mobile menu toggle) where visual labels are insufficient or absent.
+- **Focus states**: Ensure all interactive elements have visible focus indicators (minimum 3:1 contrast against adjacent colors). Add skip navigation link, focus trap in mobile menu (Header component), and focus restore on close.
+- **Rich text accessibility**: Ensure `@graphcms/rich-text-react-renderer` output on `/about` produces semantic HTML (proper heading hierarchy, list elements, paragraph tags).
+- **Accessibility testing**: Add axe-core CLI audit to CI pipeline and new Playwright E2E tests for keyboard navigation and color contrast verification.
+- **ESLint**: Tighten `jsx-a11y` plugin from `recommended` to `strict`.
 
-**Out of scope:** No visual redesign, no new pages, no new data sources, no changes to component UI (Header, Footer, BlogPostCard, ProjectCard, etc.).
+### Out of Scope
+
+- New pages or features
+- New font families or Google Fonts integration
+- Custom spacing scale or design system
+- Screen reader content beyond ARIA labels
+- Colorblind mode or other specialized accessibility features
+- Performance optimizations beyond a11y requirements
 
 ## Acceptance Criteria
 
-- [ ] All 5 pages (`/`, `/about`, `/projects`, `/blog`, `/uses`) fetch data using Server Component patterns (no client-side data fetching).
-- [ ] Each route has a `loading.tsx` with skeleton loaders that match the page layout.
-- [ ] Root-level `error.tsx` exists as catch-all; route-specific `error.tsx` files exist for key routes (hybrid pattern).
-- [ ] `use cache` annotations and `cacheLife` profiles replace `cache()` + `revalidate: 600` for remote data.
-- [ ] Partial Prerendering is enabled (`experimental_ppr: 'incremental'` in next.config) and static shell streams on first paint.
-- [ ] All routes use `generateMetadata` instead of static `export const metadata` or standalone `robots.ts`/`sitemap.ts`.
-- [ ] Next.js upgraded to 16.3+ and build succeeds without errors.
-- [ ] No visual changes — existing UI components render identically.
-- [ ] Existing tests (Jest snapshot tests for 8 components) continue to pass.
-- [ ] Experience component `formatDate()` correctly parses DD/MM/YYYY input (e.g. `"31/01/2024"`) and renders as `"Jan 2024"` — no `"Invalid Date"` strings.
-- [ ] Experience component displayed date format unchanged (MMM YYYY).
+1. **Dark mode toggle**: Given a user visits the site, when they click the dark mode toggle in the header, then the site switches to the opposite theme and the preference persists across page reloads and defaults to system preference on first visit.
+
+2. **Color contrast**: Given any text or interactive element on any page, when measured with a color contrast tool, then the contrast ratio meets WCAG 2.1 AA (4.5:1 for normal text, 3:1 for large text ≥18pt or 14pt bold, 3:1 for UI components).
+
+3. **Keyboard navigation**: Given a user navigates via keyboard only, when they tab through all interactive elements on any page, then focus is visible on every element, the mobile menu can be opened and closed, and no focus is trapped unexpectedly.
+
+4. **Skip navigation**: Given a user presses Tab on page load, when they reach the first focusable element, then a skip navigation link is visible and jumping to the main content area.
+
+5. **Semantic structure**: Given any page, when inspected for HTML structure, then it contains a single `<h1>`, heading hierarchy is sequential (no skipped levels), and landmark regions are present (`<main>`, `<nav>`, `<header>`, `<footer>`).
+
+6. **ARIA labels**: Given any interactive element, when checked for ARIA attributes, then all buttons, links, and controls have descriptive labels (either visible text or `aria-label`/`aria-labelledby`).
+
+7. **Focus management**: Given the mobile menu is open, when the user tabs through focusable elements, then focus is trapped within the menu. When the menu closes, then focus returns to the toggle button.
+
+8. **Rich text semantics**: Given the `/about` page renders rich text content, when the output HTML is inspected, then headings, lists, and paragraphs are semantic elements (not wrapped in generic `<div>` or `<span>`).
+
+9. **Linting**: Given the ESLint config, when `npm run lint` is run, then `jsx-a11y` rules at `strict` level pass without errors.
+
+10. **Testing**: Given the test suite, when `npm test` and Playwright E2E tests are run, then new a11y tests for keyboard navigation and focus states pass.
 
 ## Affected Areas
 
-- **`src/app/`** — All 5 page routes: `page.tsx` (data fetching migration), `loading.tsx` (new), `error.tsx` (new/updated), `layout.tsx` (metadata migration)
-- **`src/app/robots.ts`** — Migrated to generateMetadata or removed
-- **`src/app/sitemap.ts`** — Migrated to generateMetadata or removed
-- **`src/api/graphql.ts`** — May need updates for Cache Components compatibility
-- **`src/api/rest.ts`** — May need updates for Cache Components compatibility
-- **`src/components/Experience/Experience.tsx`** — `formatDate()` parsing logic fix (DD/MM/YYYY → correct Date → MMM YYYY display)
-- **`next.config.mjs`** — PPR experimental flag, any Cache Components config
-- **`package.json`** — Next.js version bump to 16.3+
+- **`tailwind.config.ts`**: Dark mode strategy change (`media` → `class`), color palette adjustments, spacing fixes
+- **`src/styles/globals.css`**: CSS custom property updates for theme colors, focus indicator styles, skip nav styles
+- **`src/app/layout.tsx`**: Dark mode toggle state management, skip navigation link
+- **`src/app/page.tsx`**, **`src/app/about/page.tsx`**, **`src/app/projects/page.tsx`**, **`src/app/blog/page.tsx`**, **`src/app/uses/page.tsx`**: Semantic HTML fixes, heading hierarchy, ARIA labels
+- **`src/components/Header/`**: Dark mode toggle button, mobile menu focus trap and focus restore
+- **`src/components/Footer/`**: Semantic structure, ARIA labels
+- **`src/components/NavLinks/`**: ARIA labels, focus states
+- **`src/components/Contact/`**: ARIA labels on social links, focus indicators
+- **`src/components/Experience/`**: Semantic list structure, ARIA labels
+- **`src/components/BlogPostCard/`**: Semantic markup, ARIA labels
+- **`src/components/ProjectCard/`**: Semantic markup, ARIA labels
+- **`src/components/RecentProjects/`**: Semantic list structure
+- **`eslint.config.js`**: `jsx-a11y` plugin level `recommended` → `strict`
+- **`e2e/`**: New accessibility test files for keyboard nav and focus management
+- **CI/CD (`.github/workflows/lint-test.yml`)**: axe-core CLI integration
 
 ## Data Needs
 
-None — uses existing integrations (Hygraph GraphQL API + Dev.to REST API). No new external data sources required.
+None — uses existing integrations (Hygraph GraphQL, Dev.to REST). No new external data sources required.
 
 ## Integration Concerns
 
-- **Hygraph GraphQL** (`src/api/graphql.ts`): Data fetching layer must be compatible with Cache Components — ensure `cache()` annotations from React are used correctly and that GraphQL queries return cacheable data. The Hygraph endpoint and auth pattern remain unchanged.
-- **Dev.to REST** (`src/api/rest.ts`): Same as Hygraph — REST fetching must work within Server Component data model and be compatible with Cache Components.
-- **@graphcms/rich-text-react-renderer**: Used on `/about` page — must remain compatible with React 19 (part of the broader Next.js 16 upgrade).
-- **react-social-icons**: Dependency present — verify React 19 compatibility.
-- **Vercel Analytics**: `<Analytics />` in layout — must remain compatible with React 19 and Next.js 16.
-- **Tailwind CSS**: Existing v3.4.12 — verify compatibility with Next.js 16 build pipeline.
+- **Tailwind dark mode `class` strategy**: Requires a `<html class="dark">` or `<html class="">` toggle on the root element. The Header component (client component with `useState`) will manage the toggle state and persist to localStorage. The layout (`layout.tsx`) will initialize the class based on system preference.
+- **`@graphcms/rich-text-react-renderer`**: May require custom renderers to ensure semantic HTML output. The existing rich-text rendering on `/about` needs inspection to confirm it produces proper heading/list/paragraph elements.
+- **ESLint jsx-a11y strict mode**: May surface existing violations that need fixing before the rule level change is merged.
+- **Existing snapshot tests**: Component changes (especially Header with new toggle button) will break existing Jest snapshot tests — snapshots need updating.
+- **Playwright E2E tests**: New a11y tests will run against all 5 pages; existing tests should remain unaffected.
 
 ## Risks
 
-- **React 19 compatibility with existing libraries** — `@graphcms/rich-text-react-renderer` and `react-social-icons` may have incompatibilities. Mitigation: verify during upgrade; pin to React 18-compatible versions if needed.
-- **Cache Components + existing `cache()` usage** — The current `cache()` wrapper pattern from React needs to be replaced with `use cache` annotations. Mitigation: systematic migration per route, leveraging the `cache-components-instant-false` codemod.
-- **Partial Prerendering experimental status** — PPR in Next.js 16 may have edge cases with ISR. Mitigation: test thoroughly with each route's data fetching pattern; fall back to ISR-only if PPR causes issues.
-- **generateMetadata breaking changes** — Migrating from static exports to dynamic `generateMetadata` may affect build-time metadata generation. Mitigation: port existing metadata values verbatim; test build output.
-- **Typed routes API stability** — Next.js 16 typed routes may evolve. Mitigation: follow official migration guide; defer if API changes before implementation.
+| Risk                                                             | Mitigation                                                                       |
+| ---------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `jsx-a11y` strict mode reveals many existing violations          | Run audit first, fix incrementally, commit rule change separately                |
+| Dark mode toggle changes layout slightly (new button in header)  | Design toggle to match existing header height/padding                            |
+| Rich text renderer may not support semantic output customization | Fork or wrap renderer with custom element mappings if needed                     |
+| Color adjustments may shift brand appearance                     | Provide before/after screenshots for review before committing                    |
+| Focus trap adds complexity to mobile menu state management       | Use existing `useState` in Header, test with Playwright keyboard scenarios       |
+| Line-height/spacing changes may affect layout on some pages      | Test all 5 pages after changes, use Tailwind's responsive modifiers where needed |
 
 ## Open Questions
 
-- None — all boundaries resolved during feature brief.
+- dark-mode-strategy
+- color-palette-scope
+- typography-system
+- spacing-scale
+- focus-management-scope
 
 ## Next Steps
 

@@ -1,6 +1,6 @@
+import { expect, test } from '@playwright/test';
 import { execSync } from 'child_process';
 import path from 'path';
-import { expect, test } from '@playwright/test';
 
 const root = path.resolve(__dirname, '..');
 

@@ -1,9 +1,15 @@
 import { expect, test } from '@playwright/test';
-import { readFileSync } from 'node:fs';
 import { execSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const workflowPath = join(__dirname, '..', '.github', 'workflows', 'lint-test.yml');
+const workflowPath = join(
+	__dirname,
+	'..',
+	'.github',
+	'workflows',
+	'lint-test.yml'
+);
 
 test.describe('T-006 — Update CI Workflow to Node 24', () => {
 	/**
@@ -80,7 +86,9 @@ test.describe('T-006 — Update CI Workflow to Node 24', () => {
 
 		for (const { path: route, title } of routes) {
 			await page.goto(route);
-			await expect(page.getByRole('heading', { level: 1, name: title })).toBeVisible();
+			await expect(
+				page.getByRole('heading', { level: 1, name: title })
+			).toBeVisible();
 		}
 
 		expect(errors).toEqual([]);
@@ -97,7 +105,9 @@ test.describe('T-006 — Update CI Workflow to Node 24', () => {
 		});
 
 		await page.goto('/');
-		await expect(page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })).toBeVisible();
+		await expect(
+			page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })
+		).toBeVisible();
 
 		const nav = page.getByRole('navigation');
 

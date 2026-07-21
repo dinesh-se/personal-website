@@ -18,10 +18,16 @@ const BlogPostCard: React.FC<BlogPostUI> = ({
 	pageViewsCount,
 }) => {
 	return (
-		<div className="w-full rounded overflow-hidden shadow-lg p-4 bg-neutral-300 dark:bg-slate-900">
+		<div
+			className="w-full rounded overflow-hidden shadow-lg p-4 bg-neutral-300 dark:bg-slate-900"
+			data-testid="blog-post-card"
+		>
 			<Link href={url} target="_blank">
 				<h2 className="font-semibold text-xl mb-2">{title}</h2>
-				<p className="text-gray-600 dark:text-gray-300 text-base">
+				<p
+					className="text-gray-600 dark:text-gray-300 text-base leading-relaxed"
+					data-testid="blog-post-body"
+				>
 					{description}
 				</p>
 				<div className="flex flex-row text-gray-500 text-sm mt-4">

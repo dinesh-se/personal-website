@@ -3,7 +3,7 @@
 exports[`Header renders correctly 1`] = `
 <div>
   <nav
-    class="bg-gray-900 p-4"
+    class="site-header bg-gray-900 p-4"
   >
     <div
       class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8"
@@ -17,6 +17,7 @@ exports[`Header renders correctly 1`] = `
           <button
             aria-controls="mobile-menu"
             aria-expanded="false"
+            aria-label="Open main menu"
             class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
             type="button"
           >
@@ -58,25 +59,25 @@ exports[`Header renders correctly 1`] = `
               class="flex space-x-4"
             >
               <a
-                class="rounded-md px-3 py-2 text-sm font-medium block sm:inline hover:text-black dark:hover:bg-gray-700 dark:hover:text-white"
+                class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
                 href="/about"
               >
                 About me
               </a>
               <a
-                class="rounded-md px-3 py-2 text-sm font-medium block sm:inline hover:text-black dark:hover:bg-gray-700 dark:hover:text-white"
+                class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
                 href="/projects"
               >
                 Projects
               </a>
               <a
-                class="rounded-md px-3 py-2 text-sm font-medium block sm:inline hover:text-black dark:hover:bg-gray-700 dark:hover:text-white"
+                class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
                 href="/blog"
               >
                 Blog
               </a>
               <a
-                class="rounded-md px-3 py-2 text-sm font-medium block sm:inline hover:text-black dark:hover:bg-gray-700 dark:hover:text-white"
+                class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
                 href="/uses"
               >
                 Uses
@@ -87,6 +88,7 @@ exports[`Header renders correctly 1`] = `
       </div>
     </div>
     <div
+      aria-label="Main navigation"
       class="hidden sm:hidden"
       id="mobile-menu"
     >
@@ -94,25 +96,25 @@ exports[`Header renders correctly 1`] = `
         class="space-y-1 px-2 pb-3 pt-2"
       >
         <a
-          class="rounded-md px-3 py-2 text-sm font-medium block sm:inline hover:text-black dark:hover:bg-gray-700 dark:hover:text-white"
+          class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
           href="/about"
         >
           About me
         </a>
         <a
-          class="rounded-md px-3 py-2 text-sm font-medium block sm:inline hover:text-black dark:hover:bg-gray-700 dark:hover:text-white"
+          class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
           href="/projects"
         >
           Projects
         </a>
         <a
-          class="rounded-md px-3 py-2 text-sm font-medium block sm:inline hover:text-black dark:hover:bg-gray-700 dark:hover:text-white"
+          class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
           href="/blog"
         >
           Blog
         </a>
         <a
-          class="rounded-md px-3 py-2 text-sm font-medium block sm:inline hover:text-black dark:hover:bg-gray-700 dark:hover:text-white"
+          class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
           href="/uses"
         >
           Uses

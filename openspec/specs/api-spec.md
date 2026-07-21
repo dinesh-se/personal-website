@@ -10,7 +10,7 @@ This is a **static site with no internal API**. All APIs are external:
 - **Dev.to REST:** `https://dev.to/api`
   - Version: Not versioned (standard Dev.to API)
 
-**Feature impact (proposal: `openspec/changes/current/proposal.md`):** No change. The upgrade does not modify external API integrations or versioning strategy.
+**Feature impact (proposal: `openspec/changes/current/proposal.md`):** No change. The feature does not modify external API integrations, versioning strategy, or endpoint contracts.
 
 ## 2. Authentication
 
@@ -28,7 +28,7 @@ This is a **static site with no internal API**. All APIs are external:
 - **Env var:** `DEVTO_KEY`
 - **Headers:** `{ 'api-key': process.env.DEVTO_KEY || '' }`
 
-**Feature impact (proposal: `openspec/changes/current/proposal.md`):** No change. The upgrade does not modify auth mechanisms, env var handling, or expose any credentials to the client.
+**Feature impact (proposal: `openspec/changes/current/proposal.md`):** No change. The feature does not modify auth mechanisms, env var handling, or expose any credentials to the client.
 
 ## 3. Endpoints
 
@@ -98,7 +98,7 @@ All queries target the same endpoint with different GraphQL operations.
 - **Error handling:** Throws `Error('Failed to fetch blog posts')` if `!res.ok`
 - **Used by:** `src/app/blog/page.tsx` (Blog)
 
-**Feature impact (proposal: `openspec/changes/current/proposal.md`):** No change. The upgrade explicitly excludes changing external API integrations. No new endpoints are added. Existing endpoints remain functionally identical; only the `graphql-request` library version is bumped, which is a client-side concern and does not alter the endpoint contract.
+**Feature impact (proposal: `openspec/changes/current/proposal.md`):** No change. The feature explicitly excludes changing external API integrations. No new endpoints are added. Existing endpoints remain functionally identical; the `graphql-request` library version is not bumped for this feature.
 
 ## 4. Common Error Format
 
@@ -106,7 +106,7 @@ All queries target the same endpoint with different GraphQL operations.
 - **GraphQL:** `graphql-request` library throws on GraphQL errors (response-level errors). No custom error formatting.
 - **No unified error handler:** Each API call handles errors independently. Server components propagate errors to Next.js error boundary.
 
-**Feature impact (proposal: `openspec/changes/current/proposal.md`):** No change. The upgrade does not add new error categories or modify existing error handling paths. The `graphql-request` library version bump may change the specific error type thrown by the library, but the error handling strategy (propagate to Next.js error boundary) remains the same.
+**Feature impact (proposal: `openspec/changes/current/proposal.md`):** No change. The feature does not add new error categories or modify existing error handling paths. The error handling strategy (propagate to Next.js error boundary) remains the same.
 
 ## 5. Rate Limits
 
@@ -117,4 +117,4 @@ All queries target the same endpoint with different GraphQL operations.
 
 No retry logic, caching headers, or rate limit handling implemented.
 
-**Feature impact (proposal: `openspec/changes/current/proposal.md`):** No change. The upgrade does not introduce new rate-limited endpoints or modify rate limit behavior.
+**Feature impact (proposal: `openspec/changes/current/proposal.md`):** No change. The feature does not introduce new rate-limited endpoints or modify rate limit behavior.

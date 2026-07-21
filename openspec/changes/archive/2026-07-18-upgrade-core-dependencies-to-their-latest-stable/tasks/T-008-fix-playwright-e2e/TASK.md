@@ -19,6 +19,7 @@ Fix all Playwright E2E test failures introduced by the dependency upgrades and v
 - **Task:** T-003 (TypeScript errors must be fixed first to ensure the app renders correctly for E2E tests)
 
 ## Acceptance criteria
+
 > ✅ Verified 2026-07-17
 
 - [x] All Playwright E2E tests pass with zero failures

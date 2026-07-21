@@ -4,6 +4,7 @@ exports[`BlogPostCard renders correctly 1`] = `
 <div>
   <div
     class="w-full rounded overflow-hidden shadow-lg p-4 bg-neutral-300 dark:bg-slate-900"
+    data-testid="blog-post-card"
   >
     <a
       href="https://example.com/test-blog-post"
@@ -15,7 +16,8 @@ exports[`BlogPostCard renders correctly 1`] = `
         Test Blog Post
       </h2>
       <p
-        class="text-gray-600 dark:text-gray-300 text-base"
+        class="text-gray-600 dark:text-gray-300 text-base leading-relaxed"
+        data-testid="blog-post-body"
       >
         This is a test description for the blog post.
       </p>

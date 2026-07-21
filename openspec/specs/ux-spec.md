@@ -2,7 +2,7 @@
 
 ## 1. Screen Inventory
 
-No new screens are introduced by this feature. The upgrade upgrades core dependencies (Next.js, React, tooling) without adding pages, routes, or visual changes (`proposal.md`, "Out of scope" → "Adding new features or pages", "Visual design changes"). The existing five screens remain unchanged:
+No new screens are introduced by this feature. The feature adds a dark mode toggle button to the existing Header and adjusts color palette/typography, but does not add pages, routes, or fundamentally change screen layouts (`proposal.md`, "Out of scope" → "Adding new pages, features, or components"). The existing five screens remain unchanged:
 
 ### Home (`/`) — `src/app/page.tsx`
 
@@ -92,7 +92,7 @@ No new routes or navigation connections are introduced. All existing navigation 
 
 ## 3. Component Library
 
-No new components are introduced. All eight existing components remain unchanged:
+No new components are introduced. Seven of eight existing components remain unchanged in structure; the Header component gains a dark mode toggle button and focus trap for the mobile menu.
 
 ### Layout Components
 
@@ -113,7 +113,7 @@ No new components are introduced. All eight existing components remain unchanged
 
 ### Styling
 
-- **Dark mode:** `prefers-color-scheme: dark` media query + Tailwind `dark:` variants
+- **Dark mode:** `prefers-color-scheme: dark` media query + Tailwind `dark:` variants. **Feature changes:** strategy from `media` to `class` — root `<html>` toggled via `class="dark"` by Header component.
 - **CSS custom properties:** `--primary-color`, `--foreground-rgb`, `--background-start-rgb`, `--background-end-rgb`, `--logo-filter`, `--social-icon-fill`
 - **Responsive breakpoints:** sm (640px), lg (1024px)
 - **Typography:** Tailwind utility classes (text-3xl, text-5xl, font-bold, etc.)
@@ -147,12 +147,12 @@ No forms exist in this application. The Contact component renders social media b
 
 ## 6. Responsive Breakpoints
 
-No new breakpoints are introduced. The existing Tailwind breakpoint configuration remains unchanged:
+No new breakpoints are introduced. The existing Tailwind breakpoint configuration remains unchanged. **Feature changes:** `tailwind.config.ts` dark mode strategy from `media` to `class` (affects Tailwind config but not breakpoints).
 
-| Breakpoint | Size | Usage |
-|---|---|---|
+| Breakpoint | Size              | Usage                                                   |
+| ---------- | ----------------- | ------------------------------------------------------- |
 | **Mobile** | < 640px (default) | Single-column layouts, hamburger menu, stacked sections |
-| **sm** | ≥ 640px | 2-column grids, horizontal navigation |
-| **lg** | ≥ 1024px | 3-column grids, max-w-7xl centered container |
+| **sm**     | ≥ 640px           | 2-column grids, horizontal navigation                   |
+| **lg**     | ≥ 1024px          | 3-column grids, max-w-7xl centered container            |
 
-These breakpoints are defined in `tailwind.config.ts` and applied across all five pages. The upgrade does not modify the Tailwind configuration or introduce new breakpoint-dependent layouts (`proposal.md`, "Out of scope" → "Visual design changes").
+These breakpoints are defined in `tailwind.config.ts` and applied across all five pages. The feature modifies `tailwind.config.ts` only for the dark mode strategy (`media` → `class`) and color palette adjustments — no new breakpoint-dependent layouts are introduced (`proposal.md`, "Out of scope" → "Adding new pages, features, or components").

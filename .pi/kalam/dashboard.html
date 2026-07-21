@@ -65,25 +65,25 @@ header h1 { font-size: 18px; margin: 0; }
 <body>
 <header>
   <h1>kalam pipeline</h1>
-  <span class="chip">cycle 2 · brownfield</span>
-  <span class="timestamp">generated 19:53:03 UTC — auto-refreshes every 3s</span>
+  <span class="chip">cycle 3 · brownfield</span>
+  <span class="timestamp">generated 13:45:09 UTC — auto-refreshes every 3s</span>
 </header>
 <div class="readonly-note">Read-only view — control the pipeline from the TUI (/kalam …).</div>
 <div class="grid">
 <section class="card run-tile run-ended">
   <div class="card-head">
     <span class="glyph" aria-hidden="true">⏹</span>
-    <h2>Run — ended (15.8m)</h2>
+    <h2>Run — ended (-10.1m)</h2>
   </div>
   <div class="tile-row">
 <div class="tile">
     <div class="tile-label">Tasks committed</div>
-    <div class="tile-value">1 / 1</div>
+    <div class="tile-value">3 / 3</div>
     <div class="meter-track"><div class="meter-fill meter-critical" style="width:100.0%"></div></div>
   </div>
-<div class="tile"><div class="tile-label">Child spawns</div><div class="tile-value">5</div></div>
-<div class="tile"><div class="tile-label">Wall clock</div><div class="tile-value">15.8</div></div>
-<div class="tile"><div class="tile-label">Tokens in/out</div><div class="tile-value">900171/21395</div></div>
+<div class="tile"><div class="tile-label">Child spawns</div><div class="tile-value">11</div></div>
+<div class="tile"><div class="tile-label">Wall clock</div><div class="tile-value">-10.1</div></div>
+<div class="tile"><div class="tile-label">Tokens in/out</div><div class="tile-value">2865201/62159</div></div>
   </div>
 </section>
 <section class="card status-complete">
@@ -109,8 +109,8 @@ header h1 { font-size: 18px; margin: 0; }
   </div>
   <div class="card-body">
 <div class="line">  Status : ✅ Complete</div>
-<div class="line">  Feature: &quot;&quot;Re-architect to current Next.js 16 App Router standards/patterns: move all Hygraph + Dev.to fetching into Server Components (App Router data model); add per-route loading.tsx + error.tsx (streaming + Suspense boundaries); adopt Cache Components (use cache / cacheLife) + Partial Prerendering for cached remote data; upgrade Next to 16.3+ as the prerequisite; migrate to generateMetadata Metadata API + typed routes; fix Experience formatDate DD/MM/YYYY bug. No visual redesign, no new pages; keep Hygraph/Dto as the data sources.&quot;&quot;</div>
-<div class="line">  Boundaries: 6/6 addressed | asked: true</div>
+<div class="line">  Feature: &quot;Improve the site&#39;s visual theming (light/dark mode consistency, color palette, typography, spacing) and bring the app up to WCAG 2.1 AA accessibility standards (semantic HTML, color contrast, keyboard navigation, ARIA labels, focus states) across all pages.&quot;</div>
+<div class="line">  Boundaries: 11/11 addressed | asked: true</div>
 <div class="line">  Output : proposal.md ✅</div>
   </div>
 </section>
@@ -125,17 +125,14 @@ header h1 { font-size: 18px; margin: 0; }
 <div class="line">  → Start : /kalam new &lt;idea&gt;</div>
   </div>
 </section>
-<section class="card status-complete">
+<section class="card status-blocked">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">✅</span>
+    <span class="glyph" aria-hidden="true">🔒</span>
     <h2>Step 2 · Data Preparation</h2>
-    <span class="status-word">Complete</span>
+    <span class="status-word">Blocked</span>
   </div>
   <div class="card-body">
-<div class="line">  Status      : ✅ Complete</div>
-<div class="line">  Data points : 1 total | 1 covered | 0 accepted gaps</div>
-<div class="line">  Resources   : 1 found</div>
-<div class="line">  Output      : resource-config.json ✅  resource-inventory.md ❌</div>
+<div class="line">  Status : 🔒 Blocked (complete Step 1 first)</div>
   </div>
 </section>
 <section class="card status-complete">
@@ -185,40 +182,39 @@ header h1 { font-size: 18px; margin: 0; }
   </div>
   <div class="card-body">
 <div class="line">  Status      : ✅ Complete</div>
-<div class="line">  Tasks       : 4 recorded</div>
+<div class="line">  Tasks       : 8 recorded</div>
 <div class="line">  Review      : ✅ passed</div>
 <div class="line">  Approved    : ✅</div>
 <div class="line">  Tasks root  : /home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks</div>
 <div class="line">  → Execute   : /kalam build</div>
   </div>
 </section>
-<section class="card status-complete">
+<section class="card status-in-progress">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">✅</span>
+    <span class="glyph" aria-hidden="true">⏳</span>
     <h2>Build · Implementation</h2>
-    <span class="status-word">Complete</span>
+    <span class="status-word">In progress</span>
   </div>
   <div class="card-body">
-<div class="line">  Status      : ✅ Complete</div>
-<div class="line">  Tasks       : 6/6 done</div>
-<div class="line">  Skipped     : T-004</div>
-<div class="line">  Review notes: 19 open across T-001, T-002, T-003, T-004, FIX-001</div>
-<div class="line">  → Next      : /kalam integration-check</div>
+<div class="line">  Status      : ⏳ In progress</div>
+<div class="line">  Tasks       : 14/14 done</div>
+<div class="line">  Skipped     : T-006, FIX-001, FIX-002, FIX-003, FIX-004, FIX-005</div>
+<div class="line">  Review notes: 12 open across T-001, T-003, T-005, T-007</div>
   </div>
 </section>
-<section class="card status-paused">
+<section class="card status-interrupted">
   <div class="card-head">
-    <span class="glyph" aria-hidden="true">⏸</span>
+    <span class="glyph" aria-hidden="true">⚠</span>
     <h2>Step 6 · Integration Check</h2>
-    <span class="status-word">Paused</span>
+    <span class="status-word">Interrupted</span>
   </div>
   <div class="card-body">
-<div class="line">  Status          : ⏸ Paused</div>
-<div class="line">  e2e specs       : 5 authored</div>
-<div class="line">  Cycles          : 2 completed</div>
-<div class="line">  Open issues     : 0</div>
+<div class="line">  Status          : ⚠ Interrupted</div>
+<div class="line">  e2e specs       : 9 authored</div>
+<div class="line">  Cycles          : 8 completed</div>
+<div class="line">  Open issues     : 1</div>
 <div class="line">  Pending feedback: 0</div>
-<div class="line">  Last check      : 2026-07-20 19:53</div>
+<div class="line">  Last check      : 2026-07-21 13:40</div>
 <div class="line">  → Resume        : /kalam integration-check</div>
   </div>
 </section>

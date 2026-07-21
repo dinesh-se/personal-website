@@ -54,7 +54,7 @@ export function BlogContent({ result }: BlogContentProps) {
 		return (
 			<>
 				<h1 className="text-3xl">Blog Posts</h1>
-				<p className="mt-4">
+				<p className="mt-4 leading-relaxed">
 					I write about web development, software engineering, and other topics.
 					Written on&nbsp;
 					<Link
@@ -73,7 +73,7 @@ export function BlogContent({ result }: BlogContentProps) {
 		return (
 			<>
 				<h1 className="text-3xl">Blog Posts</h1>
-				<p className="mt-4">
+				<p className="mt-4 leading-relaxed">
 					I write about web development, software engineering, and other topics.
 					Written on&nbsp;
 					<Link
@@ -91,7 +91,7 @@ export function BlogContent({ result }: BlogContentProps) {
 	return (
 		<>
 			<h1 className="text-3xl">Blog Posts</h1>
-			<p className="mt-4">
+			<p className="mt-4 leading-relaxed">
 				I write about web development, software engineering, and other topics.
 				Written on&nbsp;
 				<Link
@@ -102,7 +102,10 @@ export function BlogContent({ result }: BlogContentProps) {
 				</Link>
 				.
 			</p>
-			<div className="sm:mx-16 md:mx-24 lg:mx-32 grid grid-cols-1 gap-4 pb-6 pt-4">
+			<div
+				className="sm:mx-16 md:mx-24 lg:mx-32 grid grid-cols-1 gap-6 pb-8 pt-6"
+				data-testid="blog-post-grid"
+			>
 				{currentResult.success
 					? currentResult.posts.map(({ id, ...rest }) => (
 							<BlogPostCard key={id} {...rest} />

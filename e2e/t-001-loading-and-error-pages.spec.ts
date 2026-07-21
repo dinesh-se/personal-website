@@ -34,7 +34,9 @@ test.describe('T-001 — Per-Route Loading and Error Pages', () => {
 			// After hydration the actual page content replaces the skeleton.
 			// If loading.tsx is broken, the page would show skeleton artifacts
 			// or fail to hydrate. We assert the real content is visible.
-			await expect(page.getByRole('heading', { level: 1, name: heading })).toBeVisible();
+			await expect(
+				page.getByRole('heading', { level: 1, name: heading })
+			).toBeVisible();
 			await expect(page.getByRole('navigation')).toBeVisible();
 			await expect(page.locator('footer')).toBeVisible();
 		}
@@ -61,7 +63,9 @@ test.describe('T-001 — Per-Route Loading and Error Pages', () => {
 			await page.goto(route);
 			// Error pages only render on throw. Normal page load confirms
 			// the error boundary files don't break the route.
-			await expect(page.getByRole('heading', { level: 1, name: heading })).toBeVisible();
+			await expect(
+				page.getByRole('heading', { level: 1, name: heading })
+			).toBeVisible();
 		}
 	});
 
@@ -86,7 +90,9 @@ test.describe('T-001 — Per-Route Loading and Error Pages', () => {
 
 		for (const { path: route, title } of routes) {
 			await page.goto(route);
-			await expect(page.getByRole('heading', { level: 1, name: title })).toBeVisible();
+			await expect(
+				page.getByRole('heading', { level: 1, name: title })
+			).toBeVisible();
 			await expect(page.getByRole('navigation')).toBeVisible();
 			await expect(page.locator('footer')).toBeVisible();
 		}
@@ -111,7 +117,9 @@ test.describe('T-001 — Per-Route Loading and Error Pages', () => {
 
 		for (const { path: route, title } of routes) {
 			await page.goto(route);
-			await expect(page.getByRole('heading', { level: 1, name: title })).toBeVisible();
+			await expect(
+				page.getByRole('heading', { level: 1, name: title })
+			).toBeVisible();
 			await expect(page.getByRole('navigation')).toBeVisible();
 			await expect(page.locator('footer')).toBeVisible();
 		}
@@ -139,8 +147,12 @@ test.describe('T-001 — Per-Route Loading and Error Pages', () => {
 		// Mobile menu links should be visible inside the mobile menu container
 		const mobileMenu = page.locator('#mobile-menu');
 		await expect(mobileMenu).toBeVisible();
-		await expect(mobileMenu.getByRole('link', { name: 'About me' })).toBeVisible();
-		await expect(mobileMenu.getByRole('link', { name: 'Projects' })).toBeVisible();
+		await expect(
+			mobileMenu.getByRole('link', { name: 'About me' })
+		).toBeVisible();
+		await expect(
+			mobileMenu.getByRole('link', { name: 'Projects' })
+		).toBeVisible();
 		await expect(mobileMenu.getByRole('link', { name: 'Blog' })).toBeVisible();
 		await expect(mobileMenu.getByRole('link', { name: 'Uses' })).toBeVisible();
 
@@ -200,9 +212,9 @@ test.describe('T-001 — Per-Route Loading and Error Pages', () => {
 			const footer = page.locator('footer');
 
 			// Active link should have the active class (font-semibold)
-			await expect(
-				footer.getByRole('link', { name: activeLabel })
-			).toHaveClass(/font-semibold/);
+			await expect(footer.getByRole('link', { name: activeLabel })).toHaveClass(
+				/font-semibold/
+			);
 		}
 	});
 });

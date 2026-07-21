@@ -1,4 +1,4 @@
-# Architecture — As-Is (Upgraded)
+# Architecture — Visual Theming & Accessibility
 
 ## 1. Module / Service Boundaries
 
@@ -12,13 +12,14 @@ This is a **single-module Next.js application** with internal module boundaries:
 - **`public/`** — Static assets (SVG icons for tech stack logos, close/hamburger icons, logo, favicons).
 - **`__mocks__/`** — Jest mock files (`svg.ts` mocks SVG imports for tests).
 
-**Upgrade impact (proposal: `openspec/changes/current/proposal.md`):** No new modules introduced. The feature upgrades existing modules to newer versions:
+**Feature impact (proposal: `openspec/changes/current/proposal.md`):** No new modules introduced. The feature modifies existing modules for dark mode toggle, accessibility, and theming:
 
-- `src/app/` — May need adjustments for React 19 Server Component patterns and Next.js 16 API changes (source: `proposal.md`, "Affected Areas" → "Next.js config").
-- `src/components/` — May need fixes for React 19 breaking changes (PropTypes removal, new hooks, context API changes, server component patterns) (source: `proposal.md`, "Affected Areas" → "Source code").
-- `src/api/` — `graphql-request` version bump; verify compatibility with Next.js 16 server components (source: `proposal.md`, "Integration Concerns" → Hygraph GraphQL).
-- `@graphcms/rich-text-react-renderer` — Verify v0.6.x+ compatibility with React 19; if not, check for v1.x release (source: `proposal.md`, "Integration Concerns" → `@graphcms/rich-text-react-renderer`).
-- `react-social-icons` — Verify compatibility with React 19; if using deprecated APIs, update or pin version (source: `proposal.md`, "Integration Concerns" → `react-social-icons`).
+- `src/app/` — Dark mode state initialization in `layout.tsx`, skip navigation link, semantic HTML fixes in all 5 page files (source: `proposal.md`, "Affected Areas").
+- `src/components/Header/` — Dark mode toggle button (client component), mobile menu focus trap and focus restore (source: `proposal.md`, "Affected Areas").
+- `src/components/Footer/`, `NavLinks/`, `Contact/`, `Experience/`, `BlogPostCard/`, `ProjectCard/`, `RecentProjects/` — ARIA labels, focus indicators, semantic markup (source: `proposal.md`, "Affected Areas").
+- `src/styles/globals.css` — CSS custom property updates for theme colors, focus indicator styles, skip nav styles (source: `proposal.md`, "Affected Areas").
+- `tailwind.config.ts` — Dark mode strategy change (`media` → `class`), color palette adjustments (source: `proposal.md`, "Affected Areas").
+- `eslint.config.js` — `jsx-a11y` plugin level `recommended` → `strict` (source: `proposal.md`, "Affected Areas").
 
 ## 2. Folder Structure
 
@@ -69,11 +70,12 @@ This is a **single-module Next.js application** with internal module boundaries:
 └── postcss.config.js           # PostCSS config
 ```
 
-**Upgrade impact (proposal: `openspec/changes/current/proposal.md`):**
+**Feature impact (proposal: `openspec/changes/current/proposal.md`):**
 
-- **New file:** `eslint.config.js` — replaces `.eslintrc.json` with ESLint v9 flat config format (source: `proposal.md`, "In scope" → "Migrate ESLint from v8 to v9 with flat config").
-- **Removed file:** `.eslintrc.json` — legacy ESLint v8 config replaced by flat config (source: `proposal.md`, "Affected Areas" → "ESLint").
-- **Modified file:** `.github/workflows/lint-test.yml` — Node version 18→24, `setup-node` action v2→v4 (source: `proposal.md`, "In scope" → "Update CI workflow").
+- **Modified files:** `tailwind.config.ts` (dark mode strategy `media` → `class`, color palette), `src/styles/globals.css` (CSS custom properties, focus indicators, skip nav styles), `src/app/layout.tsx` (dark mode state, skip nav link), all 5 page files (semantic HTML), all 8 component files (ARIA labels, focus management), `eslint.config.js` (jsx-a11y strict)
+- **New files:** `e2e/a11y-*.spec.ts` — Playwright E2E tests for keyboard navigation, focus states, skip navigation
+- **Modified file:** `.github/workflows/lint-test.yml` — add axe-core CLI step for WCAG audit
+- **New dev dependency:** `axe-core` — CLI accessibility audit for CI pipeline
 
 ## 3. Data Flow
 
@@ -91,12 +93,11 @@ This is a **single-module Next.js application** with internal module boundaries:
 - **Hygraph (GraphQL):** Profile, experience, projects, uses — fetched via `getUser()`, `getMoreDetails()`, `getRepos()`, `getUses()`.
 - **Dev.to (REST):** Blog posts — fetched via `getBlogPosts()`.
 
-**Upgrade impact (proposal: `openspec/changes/current/proposal.md`):**
+**Feature impact (proposal: `openspec/changes/current/proposal.md`):**
 
-- The data flow architecture is unchanged — same Next.js App Router, same Server Components, same ISR pattern.
-- `graphql-request` version bump: verify the library's `fetch`-based client remains compatible with Next.js 16's server component execution model (source: `proposal.md`, "Integration Concerns" → Hygraph GraphQL).
-- No new data sources or migration scripts required (source: `proposal.md`, "Data Needs").
-- The `@graphcms/rich-text-react-renderer` component on `/about` may need version adjustment for React 19 compatibility (source: `proposal.md`, "Integration Concerns" → `@graphcms/rich-text-react-renderer`).
+- The data flow architecture is unchanged — same Next.js App Router, same Server Components, same ISR pattern, same external APIs (Hygraph, Dev.to).
+- No new data sources or API changes (source: `proposal.md`, "Data Needs").
+- The `@graphcms/rich-text-react-renderer` component on `/about` must produce semantic HTML output (headings, lists, paragraphs) — if the renderer forces `<div>` wrappers, a custom element mapping wrapper is needed (source: `proposal.md`, "Integration Concerns" → `@graphcms/rich-text-react-renderer`).
 
 ## 4. Authentication Flow
 
@@ -105,7 +106,7 @@ This is a **single-module Next.js application** with internal module boundaries:
 - Hygraph: Bearer token from `HYGRAPH_AUTH_TOKEN` env var (never exposed to client).
 - Dev.to: API key from `DEVTO_KEY` env var (never exposed to client).
 
-**Upgrade impact (proposal: `openspec/changes/current/proposal.md`):** No changes to authentication flow. The feature does not modify auth mechanisms, env var handling, or expose any credentials to the client (source: `proposal.md`, "Out of scope" → "Changing external API integrations").
+**Feature impact (proposal: `openspec/changes/current/proposal.md`):** No changes to authentication flow. The feature does not modify auth mechanisms, env var handling, or expose any credentials to the client (source: `proposal.md`, "Out of scope" → "Modifying external API integrations").
 
 ## 5. Error Handling Strategy
 
@@ -122,7 +123,7 @@ This is a **single-module Next.js application** with internal module boundaries:
 - **No application logging:** No console.log statements in production code. No logging library configured.
 - **No error tracking:** No Sentry, LogRocket, or similar integration.
 
-**Upgrade impact (proposal: `openspec/changes/current/proposal.md`):** No changes to logging or observability. The feature upgrades `@vercel/analytics` from v1 to v2, which is a drop-in replacement (source: `proposal.md`, "Integration Concerns" → Vercel Analytics).
+**Feature impact (proposal: `openspec/changes/current/proposal.md`):** No changes to logging or observability. The `@vercel/analytics` component is unchanged (no version bump for this feature) (source: `proposal.md`, "Out of scope" → "Performance optimizations beyond a11y requirements").
 
 ## 7. Deployment Topology
 
@@ -137,27 +138,27 @@ This is a **single-module Next.js application** with internal module boundaries:
   5. `npm test`
 - **No separate staging/production environments:** Single deployment target.
 
-**Upgrade impact (proposal: `openspec/changes/current/proposal.md`):**
+**Feature impact (proposal: `openspec/changes/current/proposal.md`):**
 
-- CI workflow updated: Node version 18→24, `setup-node` action v2→v4 (source: `proposal.md`, "In scope" → "Update CI workflow").
-- Node 24 on `ubuntu-latest` runner is supported by `setup-node@v4` (source: `proposal.md`, "Risks" → Node 24 in CI).
-- No new deployment services or topology changes (source: `proposal.md`, "Out of scope" → "Changing external API integrations").
+- CI workflow updated: add axe-core CLI step to audit all 5 pages for WCAG AA violations on every PR (source: `proposal.md`, "Affected Areas" → CI/CD).
+- No Node version changes, no `setup-node` changes for this feature.
+- No new deployment services or topology changes (source: `proposal.md`, "Out of scope" → "Modifying external API integrations").
 
 ## 8. Cross-Cutting Concerns
 
 - **Path Aliases:** `tsconfig.json` defines `@components/*`, `@api/*`, `@styles/*`, `@root/*`, `@types` for cleaner imports.
 - **Import Ordering:** Prettier config enforces import order (THIRD_PARTY_MODULES → @api → @components → @styles → @root → @types → relative).
-- **Dark Mode:** CSS custom properties in `:root` and `@media (prefers-color-scheme: dark)`. Tailwind `dark:` variants applied in components.
+- **Dark Mode:** CSS custom properties in `:root` and `@media (prefers-color-scheme: dark)`. Tailwind `dark:` variants applied in components. Feature changes strategy from `media` to `class` — root `<html>` toggled via `class="dark"` by Header component, preference persisted in localStorage, defaults to system preference on first visit.
 - **Responsive Design:** Tailwind breakpoints (sm:, lg:) with mobile-first approach. Header has mobile menu toggle.
 - **SVG Processing:** `@svgr/webpack` in `next.config.mjs` converts SVG imports to React components. Jest mocks SVGs to `'div'`.
 - **Image Optimization:** `next.config.mjs` restricts `images.remotePatterns` to `**.graphassets.com` (Hygraph CDN).
 - **TypeScript Strict Mode:** `"strict": true` in `tsconfig.json`. No `skipLibCheck` for library types.
-- **ESLint:** Migrated from v8 (`.eslintrc.json`) to v9 with flat config (`eslint.config.js`). Uses `@eslint/js` flat config template with `@typescript-eslint`, `prettier`, and `jsx-a11y` rules (source: `proposal.md`, "In scope" → "Migrate ESLint from v8 to v9 with flat config"; "Risks" → ESLint 9 flat config migration).
+- **ESLint:** Uses flat config (`eslint.config.js`). Feature tightens `jsx-a11y` plugin level from `"recommended"` to `"strict"` (source: `proposal.md`, "Affected Areas" → `eslint.config.js`; "Feature Scope").
 
-**Upgrade impact (proposal: `openspec/changes/current/proposal.md`):**
+**Feature impact (proposal: `openspec/changes/current/proposal.md`):**
 
-- **ESLint flat config:** Full migration from legacy `.eslintrc.json` to `eslint.config.js` (source: `proposal.md`, "Affected Areas" → "ESLint"; "In scope" → "Migrate ESLint from v8 to v9 with flat config").
-- **ESLint config package:** `eslint-config-next` upgraded to match Next.js 16, requiring ESLint 9 (source: `proposal.md`, "In scope" → "Upgrade `eslint-config-next` to match Next.js 16").
-- **TypeScript config:** `tsconfig.json` may need updates for React 19 types and Next.js 16 compiler changes (source: `proposal.md`, "Affected Areas" → "TypeScript").
-- **Jest config:** `jest.config.ts`, `jest.setup.ts`, and `babel.config.json` may need updates for React 19 testing and `ts-jest` compatibility (source: `proposal.md`, "Affected Areas" → "Jest").
-- **Tailwind CSS:** May need updates if upgrading to Tailwind CSS v4 (source: `proposal.md`, "Affected Areas" → "CSS"; "Risks" → Next.js 15/16 webpack config changes).
+- **Dark mode strategy:** Tailwind `tailwind.config.ts` changes `darkMode` from `"media"` to `"class"`. Root `<html>` element gets `class="dark"` or `class=""` toggled by Header component via `useState` and persisted to localStorage (source: `proposal.md`, "Affected Areas" → `tailwind.config.ts`; "Integration Concerns" → Tailwind dark mode `class` strategy).
+- **CSS custom properties:** `globals.css` updates theme colors for WCAG AA contrast compliance, adds focus indicator styles (`:focus-visible`), adds skip nav link styles (visually hidden until focused) (source: `proposal.md`, "Affected Areas" → `globals.css`).
+- **ESLint jsx-a11y:** `eslint.config.js` changes `jsx-a11y` plugin level from `"recommended"` to `"strict"` (source: `proposal.md`, "Affected Areas" → `eslint.config.js`; "Feature Scope").
+- **Jest snapshots:** Existing snapshot tests for 8 components will need updating (Header gets new toggle button) — not a config change, just snapshot regeneration (source: `proposal.md`, "Integration Concerns" → Existing snapshot tests).
+- **axe-core CI:** New dev dependency added for CLI accessibility audits in `.github/workflows/lint-test.yml` (source: `proposal.md`, "Affected Areas" → CI/CD; "Feature Scope").
