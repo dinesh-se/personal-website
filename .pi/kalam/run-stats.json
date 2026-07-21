@@ -1,47 +1,25 @@
 {
-  "startedAt": 1784637038537,
-  "totalSpawns": 11,
-  "checkerSpawns": 2,
+  "startedAt": 1784637781450,
+  "totalSpawns": 3,
+  "checkerSpawns": 0,
   "tasks": [
     {
-      "taskId": "FIX-001",
+      "taskId": "FIX-004",
       "coderSpawns": 3,
       "reviewerSpawns": 0,
       "verifyRuns": 0,
       "tokensIn": 0,
       "tokensOut": 0,
-      "startedAt": 1784637038538,
-      "durationMs": 144677,
-      "outcome": "skipped"
-    },
-    {
-      "taskId": "FIX-002",
-      "coderSpawns": 3,
-      "reviewerSpawns": 0,
-      "verifyRuns": 0,
-      "tokensIn": 0,
-      "tokensOut": 0,
-      "startedAt": 1784637272175,
-      "durationMs": 94968,
-      "outcome": "skipped"
-    },
-    {
-      "taskId": "FIX-003",
-      "coderSpawns": 3,
-      "reviewerSpawns": 0,
-      "verifyRuns": 0,
-      "tokensIn": 0,
-      "tokensOut": 0,
-      "startedAt": 1784637438055,
+      "startedAt": 1784637781450,
       "durationMs": 0,
       "outcome": ""
     }
   ],
   "notes": [],
-  "tokensIn": 204194,
-  "tokensOut": 5671,
-  "updatedAt": 1784637481733,
-  "endedAt": 1784636987023,
+  "tokensIn": 0,
+  "tokensOut": 0,
+  "updatedAt": 1784637825087,
+  "endedAt": 1784637718952,
   "caps": {
     "enabled": false,
     "maxRunMinutes": 240,
