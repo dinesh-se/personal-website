@@ -15,19 +15,27 @@ interface ThemeContextValue {
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
+function getInitialTheme(): boolean {
+	if (typeof window === 'undefined') {
+		return false;
+	}
+	const stored = localStorage.getItem('theme');
+	if (stored === 'dark') {
+		return true;
+	}
+	if (stored === 'light') {
+		return false;
+	}
+	return window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-	const [dark, setDark] = useState(false);
+	const [dark, setDark] = useState(getInitialTheme);
 
 	useEffect(() => {
-		const stored = localStorage.getItem('theme');
-		if (stored === 'dark') {
-			setDark(true);
-		} else if (stored === 'light') {
-			setDark(false);
-		} else {
-			setDark(window.matchMedia('(prefers-color-scheme: dark)').matches);
-		}
-	}, []);
+		document.documentElement.classList.toggle('dark', dark);
+		localStorage.setItem('theme', dark ? 'dark' : 'light');
+	}, [dark]);
 
 	const toggleDark = useCallback(() => setDark((d) => !d), []);
 

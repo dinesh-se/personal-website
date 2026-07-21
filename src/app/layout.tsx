@@ -26,15 +26,33 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<DarkModeProvider>
+		<html lang="en" suppressHydrationWarning>
+			<head>
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `
+(function() {
+  try {
+    var theme = localStorage.getItem('theme');
+    if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  } catch(e) {}
+})();
+`,
+					}}
+				/>
+			</head>
 			<body className="antialiased">
-				<Header></Header>
-				<main className="dark:text-slate-20 m-auto min-h-full max-w-7xl p-8 pb-16 pt-12">
-					{children}
-				</main>
-				<Footer></Footer>
-				<Analytics />
+				<DarkModeProvider>
+					<Header />
+					<main className="dark:text-slate-20 m-auto min-h-full max-w-7xl p-8 pb-16 pt-12">
+						{children}
+					</main>
+					<Footer />
+					<Analytics />
+				</DarkModeProvider>
 			</body>
-		</DarkModeProvider>
+		</html>
 	);
 }
