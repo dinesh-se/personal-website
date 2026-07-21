@@ -1,7 +1,7 @@
 {
   "startedAt": 1784637038537,
-  "totalSpawns": 7,
-  "checkerSpawns": 1,
+  "totalSpawns": 11,
+  "checkerSpawns": 2,
   "tasks": [
     {
       "taskId": "FIX-001",
@@ -22,14 +22,25 @@
       "tokensIn": 0,
       "tokensOut": 0,
       "startedAt": 1784637272175,
+      "durationMs": 94968,
+      "outcome": "skipped"
+    },
+    {
+      "taskId": "FIX-003",
+      "coderSpawns": 3,
+      "reviewerSpawns": 0,
+      "verifyRuns": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "startedAt": 1784637438055,
       "durationMs": 0,
       "outcome": ""
     }
   ],
   "notes": [],
-  "tokensIn": 140878,
-  "tokensOut": 2986,
-  "updatedAt": 1784637315925,
+  "tokensIn": 204194,
+  "tokensOut": 5671,
+  "updatedAt": 1784637481733,
   "endedAt": 1784636987023,
   "caps": {
     "enabled": false,
