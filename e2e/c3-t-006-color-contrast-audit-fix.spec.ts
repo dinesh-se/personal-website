@@ -50,18 +50,33 @@ test.describe('T-006: Home Page Color Contrast Fixes', () => {
 		await page.emulateMedia({ colorScheme: 'light' });
 		await page.reload();
 
-		// THEN: heading elements have sufficient contrast
+		// THEN: heading elements have sufficient contrast. A heading may use
+		// text-transparent with a bg-clip-text gradient span for its visible
+		// text (e.g. the Home page h1) — the CSS clip-text technique renders
+		// the visible color via the background gradient, not the `color`
+		// property, so getComputedStyle().color is transparent by design on
+		// both the wrapper and its gradient span. There is no `color` value
+		// to assert against for that case; gradient-text contrast is verified
+		// manually per T-006 AC-6, so skip the automated check for it here
+		// and only assert on plain (non-gradient) headings.
 		const headings = page.locator('h1, h2, h3');
 		const count = await headings.count();
-		if (count > 0) {
-			const headingColor = await headings.first().evaluate(el =>
+		for (let i = 0; i < count; i++) {
+			const heading = headings.nth(i);
+			const isGradientText = await heading.evaluate(el =>
+				el.querySelector('span.bg-clip-text') !== null
+			);
+			if (isGradientText) {
+				continue;
+			}
+			const headingColor = await heading.evaluate(el =>
 				getComputedStyle(el).color
 			);
-			const headingBg = await headings.first().evaluate(el =>
+			const headingBg = await heading.evaluate(el =>
 				getComputedStyle(el.parentElement || el).backgroundColor
 			);
-			// Verify heading color differs from background
 			expect(headingColor).not.toBe(headingBg);
+			expect(headingColor).not.toBe('rgba(0, 0, 0, 0)');
 		}
 	});
 
