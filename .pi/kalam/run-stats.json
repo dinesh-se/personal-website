@@ -1,63 +1,27 @@
 {
-  "startedAt": 1784625419814,
-  "totalSpawns": 11,
+  "startedAt": 1784631419627,
+  "totalSpawns": 2,
   "checkerSpawns": 0,
   "tasks": [
     {
-      "taskId": "T-001",
-      "coderSpawns": 2,
-      "reviewerSpawns": 2,
-      "verifyRuns": 3,
-      "tokensIn": 901301,
-      "tokensOut": 38248,
-      "startedAt": 1784625419815,
-      "durationMs": 1336908,
-      "outcome": "committed"
-    },
-    {
-      "taskId": "T-002",
+      "taskId": "T-005",
       "coderSpawns": 1,
       "reviewerSpawns": 1,
       "verifyRuns": 1,
-      "tokensIn": 472096,
-      "tokensOut": 8980,
-      "startedAt": 1784626756723,
-      "durationMs": 504851,
-      "outcome": "committed"
-    },
-    {
-      "taskId": "T-003",
-      "coderSpawns": 1,
-      "reviewerSpawns": 1,
-      "verifyRuns": 2,
-      "tokensIn": 449456,
-      "tokensOut": 23396,
-      "startedAt": 1784627261574,
-      "durationMs": 822540,
-      "outcome": "committed"
-    },
-    {
-      "taskId": "T-004",
-      "coderSpawns": 2,
-      "reviewerSpawns": 1,
-      "verifyRuns": 3,
-      "tokensIn": 533071,
-      "tokensOut": 24835,
-      "startedAt": 1784628088952,
+      "tokensIn": 385915,
+      "tokensOut": 33146,
+      "startedAt": 1784631419628,
       "durationMs": 0,
       "outcome": ""
     }
   ],
   "notes": [
-    "task T-001 starting with a dirty working tree (4 tracked file(s) modified outside .pi/kalam: jest.setup.ts, src/app/DarkModeProvider.tsx, src/app/ThemeContext.tsx, src/components/Header/Header.test.tsx) — these will be swept into this task's commit",
-    "verify: `npm run lint` failed on T-001 — ran `npm run lint -- --fix` and re-verified clean, not charged to the task's verify budget",
-    "verify: `npm run lint` failed on T-003 — ran `npm run lint -- --fix` and re-verified clean, not charged to the task's verify budget",
-    "verify: `npm run lint` failed on T-004 — ran `npm run lint -- --fix` and re-verified clean, not charged to the task's verify budget"
+    "task T-005 starting with a dirty working tree (2 tracked file(s) modified outside .pi/kalam: playwright-report/index.html, src/app/about/page.tsx) — these will be swept into this task's commit"
   ],
-  "tokensIn": 2355924,
-  "tokensOut": 95459,
-  "updatedAt": 1784628862317,
-  "endedAt": 1784624038047,
+  "tokensIn": 385915,
+  "tokensOut": 33146,
+  "updatedAt": 1784632251184,
+  "endedAt": 1784631014709,
   "caps": {
     "enabled": false,
     "maxRunMinutes": 240,

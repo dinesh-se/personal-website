@@ -1,5 +1,6 @@
 'use cache';
 // cacheLife: medium
+import type { DefaultElementProps } from '@graphcms/rich-text-react-renderer';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import type { Metadata } from 'next';
 import Image from 'next/image';
@@ -75,11 +76,22 @@ export default async function About() {
 					<RichText
 						content={richContent}
 						renderers={{
-							p: ({ children }) => <p className="">{children}</p>,
-							code: ({ children }) => (
-								<span className="text-amber-700 dark:text-amber-500">
+							h1: ({ children }: DefaultElementProps) => <h2>{children}</h2>,
+							h2: ({ children }: DefaultElementProps) => <h3>{children}</h3>,
+							h3: ({ children }: DefaultElementProps) => <h4>{children}</h4>,
+							h4: ({ children }: DefaultElementProps) => <h5>{children}</h5>,
+							h5: ({ children }: DefaultElementProps) => <h6>{children}</h6>,
+							h6: ({ children }: DefaultElementProps) => <h6>{children}</h6>,
+							p: ({ children }: DefaultElementProps) => <p>{children}</p>,
+							code: ({ children }: DefaultElementProps) => (
+								<code className="text-amber-700 dark:text-amber-500">
 									{children}
-								</span>
+								</code>
+							),
+							code_block: ({ children }: DefaultElementProps) => (
+								<pre className="overflow-x-auto whitespace-pre">
+									<code>{children}</code>
+								</pre>
 							),
 						}}
 					/>

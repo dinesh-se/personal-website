@@ -292,13 +292,48 @@
         "ARIA labels"
       ],
       "userTest": "Run `npm run dev`, open the site in a screen reader (or use axe DevTools), navigate to the Header. Verify the dark mode toggle is announced as \"Toggle dark mode\", the mobile menu toggle announces \"Open main menu\" (or \"Close main menu\" when open), and the logo link announces \"Home page\".",
-      "status": "in-progress",
+      "status": "done",
       "attempts": 1,
       "origin": "decomposition",
       "startedAt": "2026-07-21T10:01:28.967Z",
       "attemptCounts": {
         "verify": 1
-      }
+      },
+      "acceptanceManifest": [
+        {
+          "text": "AC-1: Dark mode toggle button has aria-label=\"Toggle dark mode\"",
+          "met": true,
+          "evidence": "e2e/header-aria.spec.ts::dark mode toggle has aria-label \"Toggle dark mode\""
+        },
+        {
+          "text": "AC-2: Mobile menu toggle button has dynamic aria-label — \"Open main menu\" when closed, \"Close main menu\" when open",
+          "met": true,
+          "evidence": "e2e/header-aria.spec.ts::mobile menu toggle has aria-label \"Open main menu\" when closed"
+        },
+        {
+          "text": "AC-3: Logo link has aria-label=\"Home page\" (verify existing, do not remove)",
+          "met": true,
+          "evidence": "e2e/header-aria.spec.ts::logo link has aria-label \"Home page\""
+        },
+        {
+          "text": "AC-4: Mobile menu container has role=\"menu\" or aria-label=\"Main navigation\"",
+          "met": true,
+          "evidence": "e2e/header-aria.spec.ts::mobile menu container has aria-label \"Main navigation\""
+        },
+        {
+          "text": "AC-5: All nav links in Header have visible text (already satisfied, verify no regression)",
+          "met": true,
+          "evidence": "e2e/header-aria.spec.ts::nav links have visible text content"
+        },
+        {
+          "text": "AC-6: Playwright E2E test verifies all Header interactive elements have accessible names",
+          "met": true,
+          "evidence": "e2e/header-aria.spec.ts::all header buttons are discoverable by role and name"
+        }
+      ],
+      "reviewFindings": [],
+      "completedAt": "2026-07-21T10:14:23.816Z",
+      "commit": "f58f7f3a43f69967e62c3ad374a6c30eef98c8f4"
     },
     {
       "id": "T-005",
@@ -311,9 +346,47 @@
         "Rich text a11y"
       ],
       "userTest": "Run `npm run dev`, visit `/about`, open browser dev tools, inspect the rich text content section. Verify headings use `<h2>`–`<h6>`, paragraphs use `<p>`, lists use `<ul>`/`<ol>` with `<li>`, and code blocks use `<pre><code>`. Run `npx axe-core http://localhost:3000/about --rules landmark, heading-order` and verify zero violations.",
-      "status": "pending",
-      "attempts": 0,
-      "origin": "decomposition"
+      "status": "in-progress",
+      "attempts": 1,
+      "origin": "decomposition",
+      "startedAt": "2026-07-21T10:14:23.830Z",
+      "reviewFindings": [
+        {
+          "severity": "critical",
+          "file": "e2e/about-semantic.spec.ts",
+          "issue": "AC-5 test is vacuous: expect(count).toBeGreaterThanOrEqual(0) at line 38 is always true regardless of whether code blocks exist or render correctly. The claimed evidence provides zero verification of the actual behavior, so AC-5 is not genuinely met.",
+          "line": 38,
+          "round": 1,
+          "addressed": false
+        },
+        {
+          "severity": "critical",
+          "file": "e2e/about-semantic.spec.ts",
+          "issue": "AC-7 not met: no axe-core verification exists. The coder claims the task prohibits adding dependencies, but npx axe-core runs without installing a project dependency. The Playwright tests (AC-1 through AC-6) do not cover axe-core's landmark and heading-order rules.",
+          "line": 1,
+          "round": 1,
+          "addressed": false
+        },
+        {
+          "severity": "warning",
+          "file": "e2e/about-semantic.spec.ts",
+          "issue": "AC-4 test has a guard clause (line 28: if (count > 0)) that skips all verification if Hygraph content has no lists. The test passes vacuously for pages with no list content, providing no evidence that list rendering is semantic.",
+          "line": 28,
+          "round": 1,
+          "addressed": false
+        },
+        {
+          "severity": "warning",
+          "file": "src/app/about/page.tsx",
+          "issue": "Inline code elements (code renderer, line 86) use <span> instead of the semantic <code> element. The library default wraps inline code in <code>, but the custom renderer replaces it with a styled <span>, losing semantic meaning for screen readers.",
+          "line": 86,
+          "round": 1,
+          "addressed": false
+        }
+      ],
+      "attemptCounts": {
+        "review": 1
+      }
     },
     {
       "id": "T-006",
@@ -376,7 +449,7 @@
       "confirmed": false
     }
   ],
-  "currentTaskId": "T-004",
+  "currentTaskId": "T-005",
   "completed": false,
   "processedDeviationIds": []
 }

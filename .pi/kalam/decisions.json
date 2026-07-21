@@ -600,5 +600,13 @@
     "source": "build",
     "affects": [],
     "timestamp": "2026-07-21T10:01:24.114Z"
+  },
+  {
+    "id": "build:T-004",
+    "question": "Task T-004 (aria-labels-all-interactive-elements)",
+    "answer": "Updated the Header snapshot to include the new ARIA labels (mobile menu toggle and navigation container), and fixed the e2e test for nav links to scope queries to the header nav element to avoid strict mode violations from duplicate link text on the page.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-21T10:14:23.816Z"
   }
 ]
