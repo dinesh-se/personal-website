@@ -1,6 +1,6 @@
 {
   "startedAt": 1784625419814,
-  "totalSpawns": 4,
+  "totalSpawns": 6,
   "checkerSpawns": 0,
   "tasks": [
     {
@@ -11,6 +11,17 @@
       "tokensIn": 901301,
       "tokensOut": 38248,
       "startedAt": 1784625419815,
+      "durationMs": 1336908,
+      "outcome": "committed"
+    },
+    {
+      "taskId": "T-002",
+      "coderSpawns": 1,
+      "reviewerSpawns": 1,
+      "verifyRuns": 1,
+      "tokensIn": 472096,
+      "tokensOut": 8980,
+      "startedAt": 1784626756723,
       "durationMs": 0,
       "outcome": ""
     }
@@ -19,9 +30,9 @@
     "task T-001 starting with a dirty working tree (4 tracked file(s) modified outside .pi/kalam: jest.setup.ts, src/app/DarkModeProvider.tsx, src/app/ThemeContext.tsx, src/components/Header/Header.test.tsx) — these will be swept into this task's commit",
     "verify: `npm run lint` failed on T-001 — ran `npm run lint -- --fix` and re-verified clean, not charged to the task's verify budget"
   ],
-  "tokensIn": 901301,
-  "tokensOut": 38248,
-  "updatedAt": 1784626755131,
+  "tokensIn": 1373397,
+  "tokensOut": 47228,
+  "updatedAt": 1784627260010,
   "endedAt": 1784624038047,
   "caps": {
     "enabled": false,

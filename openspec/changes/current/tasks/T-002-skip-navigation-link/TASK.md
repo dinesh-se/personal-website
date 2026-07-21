@@ -5,14 +5,15 @@
 Add a skip navigation link to all pages that becomes visible on first Tab press and jumps to the main content area.
 
 ## Acceptance Criteria
+> ✅ Verified 2026-07-21
 
-- [ ] **AC-1:** Skip navigation link rendered at the top of every page (before Header or inside Header at the top)
-- [ ] **AC-2:** Link is visually hidden by default (opacity-0 or visually-hidden utility)
-- [ ] **AC-3:** Link becomes visible on `:focus` with sufficient contrast
-- [ ] **AC-4:** Link text is "Skip to main content"
-- [ ] **AC-5:** Clicking the link scrolls to the `<main>` element
-- [ ] **AC-6:** Skip link does not visually disrupt layout for mouse users
-- [ ] **AC-7:** Playwright E2E test verifies skip link visibility on Tab press
+- [x] **AC-1:** Skip navigation link rendered at the top of every page (before Header or inside Header at the top)
+- [x] **AC-2:** Link is visually hidden by default (opacity-0 or visually-hidden utility)
+- [x] **AC-3:** Link becomes visible on `:focus` with sufficient contrast
+- [x] **AC-4:** Link text is "Skip to main content"
+- [x] **AC-5:** Clicking the link scrolls to the `<main>` element
+- [x] **AC-6:** Skip link does not visually disrupt layout for mouse users
+- [x] **AC-7:** Playwright E2E test verifies skip link visibility on Tab press
 
 ## Implementation Notes
 

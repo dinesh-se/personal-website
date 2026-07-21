@@ -45,8 +45,14 @@ export default function RootLayout({
 			</head>
 			<body className="antialiased">
 				<DarkModeProvider>
+					<a href="#main-content" className="skip-nav">
+						Skip to main content
+					</a>
 					<Header />
-					<main className="dark:text-slate-20 m-auto min-h-full max-w-7xl p-8 pb-16 pt-12">
+					<main
+						id="main-content"
+						className="dark:text-slate-20 m-auto min-h-full max-w-7xl p-8 pb-16 pt-12"
+					>
 						{children}
 					</main>
 					<Footer />

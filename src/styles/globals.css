@@ -55,6 +55,10 @@ body {
 	fill: var(--social-icon-fill-hover) !important;
 }
 
+.skip-nav {
+	@apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-gray-900 focus:text-white focus:rounded-md;
+}
+
 @layer utilities {
 	.text-balance {
 		text-wrap: balance;
