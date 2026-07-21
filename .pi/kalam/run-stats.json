@@ -1,25 +1,27 @@
 {
-  "startedAt": 1784637781450,
+  "startedAt": 1784638124878,
   "totalSpawns": 3,
   "checkerSpawns": 0,
   "tasks": [
     {
-      "taskId": "FIX-004",
+      "taskId": "FIX-005",
       "coderSpawns": 3,
       "reviewerSpawns": 0,
       "verifyRuns": 0,
       "tokensIn": 0,
       "tokensOut": 0,
-      "startedAt": 1784637781450,
+      "startedAt": 1784638124878,
       "durationMs": 0,
       "outcome": ""
     }
   ],
-  "notes": [],
+  "notes": [
+    "task FIX-005 starting with a dirty working tree (1 tracked file(s) modified outside .pi/kalam: playwright-report/index.html) — these will be swept into this task's commit"
+  ],
   "tokensIn": 0,
   "tokensOut": 0,
-  "updatedAt": 1784637825087,
-  "endedAt": 1784637718952,
+  "updatedAt": 1784638168592,
+  "endedAt": 1784637996165,
   "caps": {
     "enabled": false,
     "maxRunMinutes": 240,
