@@ -43,6 +43,18 @@ body {
 	fill: var(--logo-filter-hover);
 }
 
+/* The header nav bar stays a fixed dark background (bg-gray-900) in both
+   themes, so its logo needs a fill that doesn't track the theme-driven
+   --logo-filter used elsewhere (which is dark in light mode and would be
+   near-invisible against the always-dark header). */
+.site-header .svg-icon {
+	fill: theme('colors.gray.400');
+}
+
+.site-header .svg-icon:hover {
+	fill: theme('colors.white');
+}
+
 .social:first-child {
 	margin-left: -0.85rem;
 }

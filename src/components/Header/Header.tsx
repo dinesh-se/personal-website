@@ -1,4 +1,3 @@
-import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
@@ -8,15 +7,14 @@ import { NavLinks } from '@components/NavLinks';
 import Close from '@root/public/assets/close.svg';
 import Hamburger from '@root/public/assets/hamburger.svg';
 import Logo from '@root/public/assets/logo.svg';
-import { useTheme } from '@root/src/app/ThemeContext';
 
 import { Link as LinkType } from '@types';
 
 const Header = () => {
-	const { toggleDark } = useTheme();
-	const linkActiveState = 'block sm:inline bg-stone-300 dark:bg-gray-900';
+	const linkActiveState =
+		'block sm:inline bg-stone-300 text-gray-900 dark:bg-gray-900 dark:text-white';
 	const linkDefaultState =
-		'block sm:inline hover:text-black dark:hover:bg-gray-700 dark:hover:text-white';
+		'block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white';
 	const otherStyleClasses = 'rounded-md px-3 py-2 text-sm font-medium';
 	const links: LinkType[] = [
 		{
@@ -83,7 +81,7 @@ const Header = () => {
 	};
 
 	return (
-		<nav className="bg-gray-900 p-4">
+		<nav className="site-header bg-gray-900 p-4">
 			<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
 				<div className="relative flex h-16 items-center justify-between">
 					<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -121,15 +119,6 @@ const Header = () => {
 							<Link href="/" aria-label="Home page">
 								<Logo className="svg-icon h-12 sm:h-14 w-12 sm:w-14" />
 							</Link>
-							<button
-								type="button"
-								aria-label="Toggle dark mode"
-								onClick={toggleDark}
-								className="ml-4 rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-							>
-								<SunIcon className="h-5 w-5 dark:hidden" />
-								<MoonIcon className="hidden h-5 w-5 dark:block" />
-							</button>
 						</div>
 						<div className="hidden sm:flex sm:items-center sm:flex-auto">
 							<div className="flex space-x-4">

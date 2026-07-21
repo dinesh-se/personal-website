@@ -5,18 +5,6 @@ test.describe('T-004: Header Component ARIA Labels', () => {
 		await page.goto('/');
 	});
 
-	test('dark mode toggle has accessible name "Toggle dark mode"', async ({
-		page,
-	}) => {
-		// GIVEN: page is loaded, Header is rendered
-		const toggleButton = page.getByRole('button', {
-			name: /toggle dark mode/i,
-		});
-
-		// THEN: button is discoverable by its accessible name
-		await expect(toggleButton).toBeVisible();
-	});
-
 	test('mobile menu toggle announces "Open main menu" when closed', async ({
 		page,
 	}) => {

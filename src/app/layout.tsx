@@ -6,8 +6,6 @@ import { Header } from '@components/Header';
 
 import '@styles/globals.css';
 
-import DarkModeProvider from './DarkModeProvider';
-
 export function generateMetadata(): Metadata {
 	return {
 		title: 'Dinesh Haribabu',
@@ -26,38 +24,20 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" suppressHydrationWarning>
-			<head>
-				<script
-					dangerouslySetInnerHTML={{
-						__html: `
-(function() {
-  try {
-    var theme = localStorage.getItem('theme');
-    if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    }
-  } catch(e) {}
-})();
-`,
-					}}
-				/>
-			</head>
+		<html lang="en">
 			<body className="antialiased">
-				<DarkModeProvider>
-					<a href="#main-content" className="skip-nav">
-						Skip to main content
-					</a>
-					<Header />
-					<main
-						id="main-content"
-						className="dark:text-slate-20 m-auto min-h-full max-w-7xl p-8 pb-16 pt-12"
-					>
-						{children}
-					</main>
-					<Footer />
-					<Analytics />
-				</DarkModeProvider>
+				<a href="#main-content" className="skip-nav">
+					Skip to main content
+				</a>
+				<Header />
+				<main
+					id="main-content"
+					className="dark:text-slate-200 m-auto min-h-full max-w-7xl p-8 pb-16 pt-12"
+				>
+					{children}
+				</main>
+				<Footer />
+				<Analytics />
 			</body>
 		</html>
 	);

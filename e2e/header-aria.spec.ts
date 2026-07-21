@@ -5,17 +5,6 @@ test.describe('Header ARIA Labels', () => {
 		await page.goto('/');
 	});
 
-	test('dark mode toggle has aria-label "Toggle dark mode"', async ({
-		page,
-	}) => {
-		const toggleButton = page.getByRole('button', { name: 'Toggle dark mode' });
-		await expect(toggleButton).toBeVisible();
-		await expect(toggleButton).toHaveAttribute(
-			'aria-label',
-			'Toggle dark mode'
-		);
-	});
-
 	test('mobile menu toggle has aria-label "Open main menu" when closed', async ({
 		page,
 	}) => {
@@ -97,10 +86,6 @@ test.describe('Header ARIA Labels', () => {
 	test('all header buttons are discoverable by role and name', async ({
 		page,
 	}) => {
-		// Dark mode toggle
-		await expect(
-			page.getByRole('button', { name: 'Toggle dark mode' })
-		).toBeVisible();
 		await expect(page.getByRole('link', { name: 'Home page' })).toBeVisible();
 
 		// Mobile menu toggle (only visible on small screens)

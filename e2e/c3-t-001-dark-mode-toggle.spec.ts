@@ -1,68 +1,63 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('T-001: Dark Mode Toggle', () => {
+test.describe('T-001: System-Driven Dark Mode (No Manual Toggle)', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.goto('/');
 	});
 
-	test('clicking the dark mode toggle switches the theme', async ({ page }) => {
-		// GIVEN: site is running, page is loaded (light mode by default)
+	test('no manual dark mode toggle is rendered in the header', async ({
+		page,
+	}) => {
+		// GIVEN: page is loaded
+		// THEN: there is no button offering to switch themes — theme always
+		// follows the OS preference, by design
 		const toggleButton = page.getByRole('button', {
-			name: /toggle dark mode/i,
+			name: /toggle dark mode|switch theme|dark mode/i,
 		});
-		await expect(toggleButton).toBeVisible();
-
-		// WHEN: click the dark mode toggle in the header
-		await toggleButton.click();
-
-		// THEN: verify theme switches — html gets class="dark"
-		await expect(page.locator('html')).toHaveClass(/dark/);
+		await expect(toggleButton).toHaveCount(0);
 	});
 
-	test('theme preference persists on page reload', async ({ page }) => {
-		// GIVEN: user has toggled to dark mode
-		const toggleButton = page.getByRole('button', {
-			name: /toggle dark mode/i,
-		});
-		await toggleButton.click();
-		await expect(page.locator('html')).toHaveClass(/dark/);
-
-		// WHEN: reload the page
+	test('page renders dark background when system prefers dark', async ({
+		page,
+	}) => {
+		// GIVEN: system preference is dark
+		await page.emulateMedia({ colorScheme: 'dark' });
 		await page.reload();
 
-		// THEN: verify the preference persists — still in dark mode
-		await expect(page.locator('html')).toHaveClass(/dark/);
+		// THEN: body background reflects the dark palette (not the light one)
+		const bodyBg = await page.evaluate(
+			() => getComputedStyle(document.body).backgroundColor
+		);
+		expect(bodyBg).toContain('0, 0, 0');
 	});
 
-	test('first visit defaults to system dark preference', async ({ page }) => {
-		// GIVEN: no localStorage value, system preference is dark
-		await page.evaluate(() => localStorage.clear());
-		await page.emulateMedia({ colorScheme: 'dark' });
-		await page.goto('/');
-
-		// THEN: defaults to system preference (dark mode)
-		await expect(page.locator('html')).toHaveClass(/dark/);
-	});
-
-	test('first visit defaults to system light preference', async ({ page }) => {
-		// GIVEN: no localStorage value, system preference is light
-		await page.evaluate(() => localStorage.clear());
+	test('page renders light background when system prefers light', async ({
+		page,
+	}) => {
+		// GIVEN: system preference is light
 		await page.emulateMedia({ colorScheme: 'light' });
-		await page.goto('/');
+		await page.reload();
 
-		// THEN: defaults to system preference (light mode)
-		await expect(page.locator('html')).not.toHaveClass(/dark/);
+		// THEN: body background reflects the light palette
+		const bodyBg = await page.evaluate(
+			() => getComputedStyle(document.body).backgroundColor
+		);
+		expect(bodyBg).not.toContain('0, 0, 0');
 	});
 
-	test('toggle button contains sun/moon SVG icons', async ({ page }) => {
-		// GIVEN: page is loaded
-		const toggleButton = page.getByRole('button', {
-			name: /toggle dark mode/i,
-		});
-		await expect(toggleButton).toBeVisible();
+	test('theme has no user-facing override — localStorage plays no role', async ({
+		page,
+	}) => {
+		// GIVEN: some stale localStorage theme value is present
+		await page.evaluate(() => localStorage.setItem('theme', 'dark'));
+		await page.emulateMedia({ colorScheme: 'light' });
+		await page.reload();
 
-		// THEN: button contains SVG icons
-		const buttonContent = await toggleButton.innerHTML();
-		expect(buttonContent).toContain('<svg');
+		// THEN: rendering still follows the OS preference (light), ignoring
+		// any stored value — there is no app-level theme override
+		const bodyBg = await page.evaluate(
+			() => getComputedStyle(document.body).backgroundColor
+		);
+		expect(bodyBg).not.toContain('0, 0, 0');
 	});
 });
