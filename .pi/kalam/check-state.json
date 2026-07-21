@@ -1,0 +1,48 @@
+{
+  "kind": "integration-check",
+  "specs": [
+    {
+      "taskId": "T-001",
+      "path": "e2e/dark-mode.spec.ts"
+    },
+    {
+      "taskId": "T-002",
+      "path": "e2e/skip-navigation.spec.ts"
+    },
+    {
+      "taskId": "T-004",
+      "path": "e2e/c3-t-004-aria-labels-all-interactive-elements.spec.ts"
+    },
+    {
+      "taskId": "T-005",
+      "path": "e2e/c3-t-005-semantic-html-structure.spec.ts"
+    },
+    {
+      "taskId": "T-006",
+      "path": "e2e/c3-t-006-color-contrast-audit-fix.spec.ts"
+    },
+    {
+      "taskId": "T-007",
+      "path": "e2e/c3-t-007-typography-spacing-refinements.spec.ts"
+    },
+    {
+      "taskId": "T-009",
+      "path": "e2e/c3-t-009-axe-core-ci-playwright-a11y-tests.spec.ts"
+    },
+    {
+      "taskId": "T-003",
+      "path": "e2e/c3-t-003-focus-trap-mobile-menu.spec.ts"
+    }
+  ],
+  "issues": [],
+  "feedbackItems": [],
+  "cycles": [],
+  "cleanCycleCount": 0,
+  "active": true,
+  "completed": false,
+  "e2eAuthoredMilestones": [
+    1,
+    2,
+    3
+  ]
+}

@@ -1,0 +1,320 @@
+{
+  "kind": "task-pipeline",
+  "tasksRoot": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks",
+  "plan": [
+    {
+      "id": "T-001",
+      "slug": "dark-mode-toggle",
+      "milestone": 1,
+      "coversFeatures": [
+        "Dark mode strategy change",
+        "Dark mode toggle button",
+        "System preference detection"
+      ],
+      "deps": [],
+      "userTest": "Run `npm run dev`, visit any page, click the dark mode toggle in the header, verify theme switches. Reload the page, verify the preference persists. First visit should default to system preference."
+    },
+    {
+      "id": "T-002",
+      "slug": "skip-navigation-link",
+      "milestone": 1,
+      "coversFeatures": [
+        "Skip navigation"
+      ],
+      "deps": [],
+      "userTest": "Run `npm run dev`, visit any page, press Tab on page load, verify a skip navigation link becomes visible and clicking it jumps to the main content area."
+    },
+    {
+      "id": "T-003",
+      "slug": "focus-trap-mobile-menu",
+      "milestone": 1,
+      "coversFeatures": [
+        "Focus trap in mobile menu",
+        "Focus restore on close"
+      ],
+      "deps": [],
+      "userTest": "Run `npm run dev`, open the mobile menu on a mobile viewport (or resize browser), press Tab through all menu links, verify focus is trapped within the menu. Press Escape or click the close button, verify the menu closes and focus returns to the toggle button."
+    },
+    {
+      "id": "T-004",
+      "slug": "aria-labels-all-interactive-elements",
+      "milestone": 2,
+      "coversFeatures": [
+        "ARIA labels"
+      ],
+      "deps": [
+        "T-001"
+      ],
+      "userTest": "Run `npm run dev`, open the site in a screen reader (or use axe DevTools), navigate to the Header. Verify the dark mode toggle is announced as \"Toggle dark mode\", the mobile menu toggle announces \"Open main menu\" (or \"Close main menu\" when open), and the logo link announces \"Home page\"."
+    },
+    {
+      "id": "T-005",
+      "slug": "semantic-html-structure",
+      "milestone": 2,
+      "coversFeatures": [
+        "Semantic HTML",
+        "Rich text a11y"
+      ],
+      "deps": [],
+      "userTest": "Run `npm run dev`, visit `/about`, open browser dev tools, inspect the rich text content section. Verify headings use `<h2>`–`<h6>`, paragraphs use `<p>`, lists use `<ul>`/`<ol>` with `<li>`, and code blocks use `<pre><code>`. Run `npx axe-core http://localhost:3000/about --rules landmark, heading-order` and verify zero violations."
+    },
+    {
+      "id": "T-006",
+      "slug": "color-contrast-audit-fix",
+      "milestone": 2,
+      "coversFeatures": [
+        "Color palette"
+      ],
+      "deps": [],
+      "userTest": "Run `npm run dev`, visit `/`, switch to dark mode via the toggle. Use the axe DevTools browser extension (or run `npx axe-core http://localhost:3000 --rules color-contrast`) on both light and dark modes. Verify zero contrast violations."
+    },
+    {
+      "id": "T-007",
+      "slug": "typography-spacing-refinements",
+      "milestone": 3,
+      "coversFeatures": [
+        "Typography",
+        "Spacing"
+      ],
+      "deps": [],
+      "userTest": "Run `npm run dev`, visit `/blog`. Inspect blog post body text — verify line-height is at least 1.5. Check spacing between post cards is consistent. Verify no ad-hoc pixel values in spacing classes."
+    },
+    {
+      "id": "T-009",
+      "slug": "axe-core-ci-playwright-a11y-tests",
+      "milestone": 3,
+      "coversFeatures": [
+        "Accessibility testing"
+      ],
+      "deps": [],
+      "userTest": "Run `npm test` and verify all Jest snapshot tests and Playwright E2E tests pass, including the new a11y test files for keyboard navigation and focus states."
+    }
+  ],
+  "planComplete": true,
+  "tasks": {
+    "T-001": {
+      "id": "T-001",
+      "slug": "dark-mode-toggle",
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-001-dark-mode-toggle",
+      "milestone": 1,
+      "deps": [],
+      "fileScope": [
+        "tailwind.config.ts",
+        "src/app/layout.tsx",
+        "src/app/DarkModeProvider.tsx",
+        "src/app/ThemeContext.tsx",
+        "src/components/Header/Header.tsx",
+        "src/components/Header/Header.test.tsx",
+        "jest.setup.ts"
+      ],
+      "coversFeatures": [
+        "Dark mode strategy change",
+        "Dark mode toggle button",
+        "System preference detection"
+      ],
+      "userTest": "Run `npm run dev`, visit any page, click the dark mode toggle in the header, verify theme switches. Reload the page, verify the preference persists. First visit should default to system preference.",
+      "acceptanceCriteria": [
+        "AC-1: Tailwind darkMode strategy changed from media to class in tailwind.config.ts",
+        "AC-2: Root <html> element gets class=\"dark\" or class=\"\" toggled by Header component",
+        "AC-3: Dark mode toggle button rendered in Header with sun/moon icons",
+        "AC-4: Preference persisted to localStorage on toggle",
+        "AC-5: On first visit, defaults to prefers-color-scheme: dark if no localStorage value",
+        "AC-6: All existing dark: Tailwind variants continue to work without changes",
+        "AC-7: Jest snapshot for Header updated to include toggle button",
+        "AC-8: All existing Jest tests pass"
+      ]
+    },
+    "T-002": {
+      "id": "T-002",
+      "slug": "skip-navigation-link",
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-002-skip-navigation-link",
+      "milestone": 1,
+      "deps": [],
+      "fileScope": [
+        "src/styles/globals.css",
+        "src/app/layout.tsx",
+        "src/app/page.tsx",
+        "src/app/about/page.tsx",
+        "src/app/projects/page.tsx",
+        "src/app/blog/page.tsx",
+        "src/app/uses/page.tsx",
+        "e2e/skip-navigation.spec.ts"
+      ],
+      "coversFeatures": [
+        "Skip navigation"
+      ],
+      "userTest": "Run `npm run dev`, visit any page, press Tab on page load, verify a skip navigation link becomes visible and clicking it jumps to the main content area.",
+      "acceptanceCriteria": [
+        "AC-1: Skip navigation link rendered at the top of every page (before Header or inside Header at the top)",
+        "AC-2: Link is visually hidden by default (opacity-0 or visually-hidden utility)",
+        "AC-3: Link becomes visible on :focus with sufficient contrast",
+        "AC-4: Link text is \"Skip to main content\"",
+        "AC-5: Clicking the link scrolls to the <main> element",
+        "AC-6: Skip link does not visually disrupt layout for mouse users",
+        "AC-7: Playwright E2E test verifies skip link visibility on Tab press"
+      ]
+    },
+    "T-003": {
+      "id": "T-003",
+      "slug": "focus-trap-mobile-menu",
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-003-focus-trap-mobile-menu",
+      "milestone": 1,
+      "deps": [],
+      "fileScope": [
+        "src/components/Header/Header.tsx"
+      ],
+      "coversFeatures": [
+        "Focus trap in mobile menu",
+        "Focus restore on close"
+      ],
+      "userTest": "Run `npm run dev`, open the mobile menu on a mobile viewport (or resize browser), press Tab through all menu links, verify focus is trapped within the menu. Press Escape or click the close button, verify the menu closes and focus returns to the toggle button.",
+      "acceptanceCriteria": [
+        "AC-1: When mobile menu is open, Tab key cycles focus only through menu's focusable elements (links, close button)",
+        "AC-2: Shift+Tab cycles focus backwards through menu's focusable elements",
+        "AC-3: Escape key closes the mobile menu",
+        "AC-4: When menu closes (via Escape or close button), focus returns to the hamburger toggle button",
+        "AC-5: Focus trap does not interfere with desktop navigation (menu not open on desktop)",
+        "AC-6: Playwright E2E test verifies focus trap behavior"
+      ]
+    },
+    "T-004": {
+      "id": "T-004",
+      "slug": "aria-labels-all-interactive-elements",
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-004-aria-labels-all-interactive-elements",
+      "milestone": 2,
+      "deps": [
+        "T-001"
+      ],
+      "fileScope": [
+        "src/components/Header/Header.tsx",
+        "e2e/header-aria.spec.ts"
+      ],
+      "coversFeatures": [
+        "ARIA labels"
+      ],
+      "userTest": "Run `npm run dev`, open the site in a screen reader (or use axe DevTools), navigate to the Header. Verify the dark mode toggle is announced as \"Toggle dark mode\", the mobile menu toggle announces \"Open main menu\" (or \"Close main menu\" when open), and the logo link announces \"Home page\".",
+      "acceptanceCriteria": [
+        "AC-1: Dark mode toggle button has aria-label=\"Toggle dark mode\"",
+        "AC-2: Mobile menu toggle button has dynamic aria-label — \"Open main menu\" when closed, \"Close main menu\" when open",
+        "AC-3: Logo link has aria-label=\"Home page\" (verify existing, do not remove)",
+        "AC-4: Mobile menu container has role=\"menu\" or aria-label=\"Main navigation\"",
+        "AC-5: All nav links in Header have visible text (already satisfied, verify no regression)",
+        "AC-6: Playwright E2E test verifies all Header interactive elements have accessible names"
+      ]
+    },
+    "T-005": {
+      "id": "T-005",
+      "slug": "semantic-html-structure",
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-005-semantic-html-structure",
+      "milestone": 2,
+      "deps": [],
+      "fileScope": [
+        "src/app/about/page.tsx",
+        "src/app/about/RichText.tsx",
+        "e2e/about-semantic.spec.ts"
+      ],
+      "coversFeatures": [
+        "Semantic HTML",
+        "Rich text a11y"
+      ],
+      "userTest": "Run `npm run dev`, visit `/about`, open browser dev tools, inspect the rich text content section. Verify headings use `<h2>`–`<h6>`, paragraphs use `<p>`, lists use `<ul>`/`<ol>` with `<li>`, and code blocks use `<pre><code>`. Run `npx axe-core http://localhost:3000/about --rules landmark, heading-order` and verify zero violations.",
+      "acceptanceCriteria": [
+        "AC-1: /about page has exactly one <h1> element (the page title, not from rich text) — Tests: e2e/about-semantic.spec.ts asserts page.locator('h1').count() === 1",
+        "AC-2: Rich text headings from Hygraph render as <h2>–<h6> (not <div> with heading styles) — Tests: e2e/about-semantic.spec.ts asserts page.locator('main').locator('h2, h3, h4, h5, h6') finds expected elements",
+        "AC-3: Rich text paragraphs render as <p> elements (not <div>) — Tests: e2e/about-semantic.spec.ts asserts page.locator('main').locator('p') finds expected elements",
+        "AC-4: Rich text ordered/unordered lists render as <ol>/<ul> with <li> children (not <div>) — Tests: e2e/about-semantic.spec.ts asserts page.locator('main').locator('ul, ol') finds expected elements",
+        "AC-5: Rich text code blocks render as <pre> with <code> inside — Tests: e2e/about-semantic.spec.ts asserts page.locator('main').locator('pre code') finds expected elements",
+        "AC-6: No skipped heading levels in the rich text (e.g., <h3> followed by <h5> without <h4>) — Tests: e2e/about-semantic.spec.ts checks heading sequence via page.locator('main h2, h3, h4, h5, h6') order",
+        "AC-7: axe-core CLI reports zero landmark and heading-order violations on /about — Tests: npx axe-core http://localhost:3000/about --rules landmark, heading-order exits 0"
+      ]
+    },
+    "T-006": {
+      "id": "T-006",
+      "slug": "color-contrast-audit-fix",
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-006-color-contrast-audit-fix",
+      "milestone": 2,
+      "deps": [],
+      "fileScope": [
+        "tailwind.config.ts",
+        "src/styles/globals.css",
+        "src/app/page.tsx",
+        "src/components/Header/Header.tsx",
+        "e2e/contrast-home.spec.ts"
+      ],
+      "coversFeatures": [
+        "Color palette"
+      ],
+      "userTest": "Run `npm run dev`, visit `/`, switch to dark mode via the toggle. Use the axe DevTools browser extension (or run `npx axe-core http://localhost:3000 --rules color-contrast`) on both light and dark modes. Verify zero contrast violations.",
+      "acceptanceCriteria": [
+        "AC-1: Body text on Home page meets ≥ 4.5:1 contrast ratio in light mode — Tests: e2e/contrast-home.spec.ts checks computed color and backgroundColor on body text in light mode",
+        "AC-2: Body text on Home page meets ≥ 4.5:1 contrast ratio in dark mode — Tests: e2e/contrast-home.spec.ts checks computed color and backgroundColor on body text in dark mode",
+        "AC-3: Heading text on Home page meets ≥ 3:1 contrast ratio (large text threshold) — Tests: e2e/contrast-home.spec.ts checks computed colors on heading elements",
+        "AC-4: Interactive elements (links, buttons) meet ≥ 3:1 contrast ratio in both modes — Tests: e2e/contrast-home.spec.ts checks computed colors on interactive elements",
+        "AC-5: Focus indicators have ≥ 3:1 contrast against adjacent colors in both modes — Tests: e2e/contrast-home.spec.ts checks outline or box-shadow on :focus-visible elements",
+        "AC-6: No brand appearance shift — adjustments stay within current color family (stone/neutral grays) — Tests: manual visual check against original design",
+        "AC-7: axe-core CLI reports zero color-contrast violations on / in both light and dark modes — Tests: npx axe-core http://localhost:3000 --rules color-contrast exits 0 in both modes"
+      ]
+    },
+    "T-007": {
+      "id": "T-007",
+      "slug": "typography-spacing-refinements",
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-007-typography-spacing-refinements",
+      "milestone": 3,
+      "deps": [],
+      "fileScope": [
+        "src/app/blog/page.tsx",
+        "src/components/BlogPostCard/BlogPostCard.tsx",
+        "src/styles/globals.css",
+        "e2e/blog-typography.spec.ts"
+      ],
+      "coversFeatures": [
+        "Typography",
+        "Spacing"
+      ],
+      "userTest": "Run `npm run dev`, visit `/blog`. Inspect blog post body text — verify line-height is at least 1.5. Check spacing between post cards is consistent. Verify no ad-hoc pixel values in spacing classes.",
+      "acceptanceCriteria": [
+        "AC-1: Blog post body text has line-height ≥ 1.5 (leading-relaxed or leading-[1.625]) — Tests: e2e/blog-typography.spec.ts checks computed lineHeight on blog post body text",
+        "AC-2: Blog post letter-spacing is appropriate for readability (no tighter than Tailwind default) — Tests: e2e/blog-typography.spec.ts checks computed letterSpacing on blog post body text",
+        "AC-3: Spacing between blog post cards uses consistent Tailwind spacing values (e.g., gap-6 or gap-8) — Tests: e2e/blog-typography.spec.ts checks computed margin/padding on post cards",
+        "AC-4: Blog page section spacing uses Tailwind utilities (py-8, py-12, or py-16) — no ad-hoc pixel values — Tests: e2e/blog-typography.spec.ts verifies no ad-hoc pixel values in spacing classes",
+        "AC-5: No new CSS custom properties or Tailwind config entries added — Tests: manual check of globals.css and tailwind.config.ts",
+        "AC-6: Blog page layout is not visually disrupted after changes — Tests: e2e/blog-typography.spec.ts verifies document.body.scrollHeight is stable",
+        "AC-7: All blog post cards render without layout shifts — Tests: e2e/blog-typography.spec.ts verifies all post cards are visible and positioned correctly"
+      ]
+    },
+    "T-009": {
+      "id": "T-009",
+      "slug": "axe-core-ci-playwright-a11y-tests",
+      "path": "/home/dinesh-se/Dev/personal-website/openspec/changes/current/tasks/T-009-axe-core-ci-playwright-a11y-tests",
+      "milestone": 3,
+      "deps": [],
+      "fileScope": [
+        "package.json",
+        ".github/workflows/lint-test.yml",
+        "e2e/a11y-keyboard.spec.ts",
+        "e2e/a11y-focus.spec.ts"
+      ],
+      "coversFeatures": [
+        "Accessibility testing"
+      ],
+      "userTest": "Run `npm test` and verify all Jest snapshot tests and Playwright E2E tests pass, including the new a11y test files for keyboard navigation and focus states.",
+      "acceptanceCriteria": [
+        "AC-1: axe-core added as a dev dependency in package.json — Tests: package.json contains \"axe-core\": \"^4.x.x\" in devDependencies",
+        "AC-2: axe-core CLI command added to package.json scripts (e.g., npm run a11y:audit) — Tests: npm run a11y:audit runs axe-core CLI",
+        "AC-3: ESLint jsx-a11y plugin level set to strict in eslint.config.js — Tests: npm run lint exits 0 with zero jsx-a11y errors",
+        "AC-4: GitHub Actions workflow (lint-test.yml) runs axe-core audit on PR to main — Tests: .github/workflows/lint-test.yml contains axe-core step",
+        "AC-5: Playwright E2E test file e2e/a11y-keyboard.spec.ts verifies keyboard navigation — Tests: npx playwright test e2e/a11y-keyboard.spec.ts passes",
+        "AC-6: Playwright E2E test file e2e/a11y-focus.spec.ts verifies focus states — Tests: npx playwright test e2e/a11y-focus.spec.ts passes",
+        "AC-7: CI job fails if any WCAG AA violations are detected — Tests: axe-core --exit flag causes non-zero exit on violations"
+      ]
+    }
+  },
+  "review": {
+    "checked": true,
+    "passed": true,
+    "issues": []
+  },
+  "approved": true,
+  "completed": true,
+  "readTurn": 2
+}
