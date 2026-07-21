@@ -640,5 +640,21 @@
     "source": "build",
     "affects": [],
     "timestamp": "2026-07-21T12:19:25.858Z"
+  },
+  {
+    "id": "build-pause:FIX-001",
+    "question": "Task FIX-001 (fix-heading-contrast-test-for-gradient-text) — paused after exhausting the acceptance manifest",
+    "answer": "Build paused on task FIX-001 (the acceptance manifest). Resume with /kalam build once you've investigated.\nFinal rejection detail:\nThe coder did not call submit_result (and no fenced JSON result block or valid RESULT.json was found) — the acceptance manifest is empty, so every criterion reads as unaccounted for.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-21T12:29:47.021Z"
+  },
+  {
+    "id": "build-skip:FIX-001",
+    "question": "Task FIX-001 (fix-heading-contrast-test-for-gradient-text) — skipped after exhausting the acceptance manifest",
+    "answer": "skipped after 3 failed the acceptance manifest attempt(s). Final rejection detail:\nThe coder did not call submit_result (and no fenced JSON result block or valid RESULT.json was found) — the acceptance manifest is empty, so every criterion reads as unaccounted for.",
+    "source": "build",
+    "affects": [],
+    "timestamp": "2026-07-21T12:33:01.276Z"
   }
 ]

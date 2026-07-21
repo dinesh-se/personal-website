@@ -1,16 +1,16 @@
 {
-  "startedAt": 1784636306442,
+  "startedAt": 1784637038537,
   "totalSpawns": 3,
   "checkerSpawns": 0,
   "tasks": [
     {
-      "taskId": "T-006",
+      "taskId": "FIX-001",
       "coderSpawns": 3,
       "reviewerSpawns": 0,
       "verifyRuns": 0,
       "tokensIn": 0,
       "tokensOut": 0,
-      "startedAt": 1784636306443,
+      "startedAt": 1784637038538,
       "durationMs": 0,
       "outcome": ""
     }
@@ -18,8 +18,8 @@
   "notes": [],
   "tokensIn": 0,
   "tokensOut": 0,
-  "updatedAt": 1784636350152,
-  "endedAt": 1784635896345,
+  "updatedAt": 1784637082362,
+  "endedAt": 1784636987023,
   "caps": {
     "enabled": false,
     "maxRunMinutes": 240,

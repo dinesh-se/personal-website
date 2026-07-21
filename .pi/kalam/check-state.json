@@ -34,7 +34,17 @@
       "path": "e2e/c3-t-003-focus-trap-mobile-menu.spec.ts"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "id": "ISS-001",
+      "detectedAt": "2026-07-21T12:19:37.865Z",
+      "kind": "e2e-failure",
+      "description": "e2e failure (milestone 2): e2e spec \"heading text meets large text contrast ratio (≥ 3:1)\" (c3-t-006-color-contrast-audit-fix.spec.ts) failed: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"rgba(0, 0, 0, 0)\"\u001b[39m",
+      "source": "e2e spec \"heading text meets large text contrast ratio (≥ 3:1)\" (c3-t-006-color-contrast-audit-fix.spec.ts) failed: Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"rgba(0, 0, 0, 0)\"\u001b[39m",
+      "resolved": false,
+      "taskId": "FIX-001"
+    }
+  ],
   "feedbackItems": [],
   "cycles": [
     {
@@ -42,6 +52,12 @@
       "startedAt": "2026-07-21T10:01:28.951Z",
       "completedAt": "2026-07-21T10:01:28.951Z",
       "issuesFound": 0
+    },
+    {
+      "number": 2,
+      "startedAt": "2026-07-21T12:19:37.864Z",
+      "completedAt": "2026-07-21T12:19:37.865Z",
+      "issuesFound": 1
     }
   ],
   "cleanCycleCount": 0,
