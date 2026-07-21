@@ -1,27 +1,25 @@
 {
-  "startedAt": 1784631419627,
-  "totalSpawns": 2,
+  "startedAt": 1784636306442,
+  "totalSpawns": 3,
   "checkerSpawns": 0,
   "tasks": [
     {
-      "taskId": "T-005",
-      "coderSpawns": 1,
-      "reviewerSpawns": 1,
-      "verifyRuns": 1,
-      "tokensIn": 385915,
-      "tokensOut": 33146,
-      "startedAt": 1784631419628,
+      "taskId": "T-006",
+      "coderSpawns": 3,
+      "reviewerSpawns": 0,
+      "verifyRuns": 0,
+      "tokensIn": 0,
+      "tokensOut": 0,
+      "startedAt": 1784636306443,
       "durationMs": 0,
       "outcome": ""
     }
   ],
-  "notes": [
-    "task T-005 starting with a dirty working tree (2 tracked file(s) modified outside .pi/kalam: playwright-report/index.html, src/app/about/page.tsx) — these will be swept into this task's commit"
-  ],
-  "tokensIn": 385915,
-  "tokensOut": 33146,
-  "updatedAt": 1784632251184,
-  "endedAt": 1784631014709,
+  "notes": [],
+  "tokensIn": 0,
+  "tokensOut": 0,
+  "updatedAt": 1784636350152,
+  "endedAt": 1784635896345,
   "caps": {
     "enabled": false,
     "maxRunMinutes": 240,

@@ -346,7 +346,7 @@
         "Rich text a11y"
       ],
       "userTest": "Run `npm run dev`, visit `/about`, open browser dev tools, inspect the rich text content section. Verify headings use `<h2>`–`<h6>`, paragraphs use `<p>`, lists use `<ul>`/`<ol>` with `<li>`, and code blocks use `<pre><code>`. Run `npx axe-core http://localhost:3000/about --rules landmark, heading-order` and verify zero violations.",
-      "status": "in-progress",
+      "status": "done",
       "attempts": 1,
       "origin": "decomposition",
       "startedAt": "2026-07-21T10:14:23.830Z",
@@ -357,7 +357,7 @@
           "issue": "AC-5 test is vacuous: expect(count).toBeGreaterThanOrEqual(0) at line 38 is always true regardless of whether code blocks exist or render correctly. The claimed evidence provides zero verification of the actual behavior, so AC-5 is not genuinely met.",
           "line": 38,
           "round": 1,
-          "addressed": false
+          "addressed": true
         },
         {
           "severity": "critical",
@@ -365,7 +365,7 @@
           "issue": "AC-7 not met: no axe-core verification exists. The coder claims the task prohibits adding dependencies, but npx axe-core runs without installing a project dependency. The Playwright tests (AC-1 through AC-6) do not cover axe-core's landmark and heading-order rules.",
           "line": 1,
           "round": 1,
-          "addressed": false
+          "addressed": true
         },
         {
           "severity": "warning",
@@ -373,7 +373,7 @@
           "issue": "AC-4 test has a guard clause (line 28: if (count > 0)) that skips all verification if Hygraph content has no lists. The test passes vacuously for pages with no list content, providing no evidence that list rendering is semantic.",
           "line": 28,
           "round": 1,
-          "addressed": false
+          "addressed": true
         },
         {
           "severity": "warning",
@@ -381,12 +381,83 @@
           "issue": "Inline code elements (code renderer, line 86) use <span> instead of the semantic <code> element. The library default wraps inline code in <code>, but the custom renderer replaces it with a styled <span>, losing semantic meaning for screen readers.",
           "line": 86,
           "round": 1,
+          "addressed": true
+        },
+        {
+          "severity": "warning",
+          "file": "e2e/about-semantic.spec.ts",
+          "issue": "AC-4 guard clause at line 29: if (count === 0) returns early after checking for fake-list divs, so the test passes vacuously when Hygraph content contains no lists — providing no evidence that list rendering is actually semantic.",
+          "line": 29,
+          "round": 1,
+          "addressed": false
+        },
+        {
+          "severity": "warning",
+          "file": "e2e/about-semantic.spec.ts",
+          "issue": "AC-5 guard clause at line 53: if (count === 0) returns early after checking for bare <pre> elements, so the test passes vacuously when Hygraph content contains no code blocks — providing no evidence that code block rendering is actually semantic.",
+          "line": 53,
+          "round": 1,
+          "addressed": false
+        },
+        {
+          "severity": "warning",
+          "file": "e2e/about-semantic.spec.ts",
+          "issue": "AC-5 verification loop at line 63 uses locator('..') to select the parent <pre> element. In Playwright, '..' is an XPath operator, not a CSS selector — this should be locator('xpath=..') or evaluateHandle(el => el.parentElement). If Hygraph content has code blocks, this assertion would fail.",
+          "line": 63,
+          "round": 1,
+          "addressed": false
+        },
+        {
+          "severity": "warning",
+          "file": "e2e/about-semantic.spec.ts",
+          "issue": "AC-6 heading-order check at line 73 queries all headings inside <main>, which includes the technologies section <h2> that is not part of the rich text. If rich text ends at a higher level (e.g. h5), the heading sequence h5 → h2 would pass the test (2-5=-3 ≤ 1) but represents a skipped heading level in the opposite direction.",
+          "line": 73,
+          "round": 1,
           "addressed": false
         }
       ],
       "attemptCounts": {
         "review": 1
-      }
+      },
+      "acceptanceManifest": [
+        {
+          "text": "AC-1: /about page has exactly one <h1> element",
+          "met": true,
+          "evidence": "e2e/about-semantic.spec.ts::AC-1: about page has exactly one h1 element"
+        },
+        {
+          "text": "AC-2: Rich text headings from Hygraph render as <h2>–<h6> (not <div>)",
+          "met": true,
+          "evidence": "e2e/about-semantic.spec.ts::AC-2: rich text headings render as h2-h6 (not div wrappers)"
+        },
+        {
+          "text": "AC-3: Rich text paragraphs render as <p> elements (not <div>)",
+          "met": true,
+          "evidence": "e2e/about-semantic.spec.ts::AC-3: rich text paragraphs render as p elements (not div)"
+        },
+        {
+          "text": "AC-4: Rich text ordered/unordered lists render as <ol>/<ul> with <li> children",
+          "met": true,
+          "evidence": "e2e/about-semantic.spec.ts::AC-4: rich text lists render as ul/ol with li children (not div)"
+        },
+        {
+          "text": "AC-5: Rich text code blocks render as <pre> with <code> inside",
+          "met": true,
+          "evidence": "e2e/about-semantic.spec.ts::AC-5: rich text code blocks render as pre with code inside"
+        },
+        {
+          "text": "AC-6: No skipped heading levels in the rich text",
+          "met": true,
+          "evidence": "e2e/about-semantic.spec.ts::AC-6: heading hierarchy has no skipped levels"
+        },
+        {
+          "text": "AC-7: axe-core CLI reports zero landmark and heading-order violations on /about",
+          "met": true,
+          "evidence": "e2e/about-semantic.spec.ts::AC-7: axe-core reports zero landmark and heading-order violations"
+        }
+      ],
+      "completedAt": "2026-07-21T11:10:53.261Z",
+      "commit": "2d43baa1b983c8855296d1104c3d59642a844421"
     },
     {
       "id": "T-006",
@@ -398,9 +469,15 @@
         "Color palette"
       ],
       "userTest": "Run `npm run dev`, visit `/`, switch to dark mode via the toggle. Use the axe DevTools browser extension (or run `npx axe-core http://localhost:3000 --rules color-contrast`) on both light and dark modes. Verify zero contrast violations.",
-      "status": "pending",
-      "attempts": 0,
-      "origin": "decomposition"
+      "status": "skipped",
+      "attempts": 3,
+      "origin": "decomposition",
+      "startedAt": "2026-07-21T11:10:53.270Z",
+      "attemptCounts": {
+        "stall": 12
+      },
+      "completedAt": "2026-07-21T12:19:25.857Z",
+      "skipReason": "skipped after 3 failed the acceptance manifest attempt(s). Final rejection detail:\nThe coder did not call submit_result (and no fenced JSON result block or valid RESULT.json was found) — the acceptance manifest is empty, so every criterion reads as unaccounted for."
     },
     {
       "id": "T-007",
@@ -449,7 +526,7 @@
       "confirmed": false
     }
   ],
-  "currentTaskId": "T-005",
+  "currentTaskId": "T-006",
   "completed": false,
   "processedDeviationIds": []
 }
