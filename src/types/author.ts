@@ -13,7 +13,6 @@ interface Profile {
 	experience: Experience;
 	displayPicture: DisplayPicture;
 	moreDetails: MoreDetails;
-	githubRecentProjects: GithubRecentProjects;
 	uses: Uses[];
 }
 
@@ -53,30 +52,3 @@ interface DisplayPicture {
 interface MoreDetails {
 	raw: RichTextContent;
 }
-
-interface Repo {
-	id: string;
-	name: string;
-	description: string;
-	url: string;
-	primaryLanguage?: PrimaryLanguage;
-}
-
-interface PrimaryLanguage {
-	name: string;
-	color: string;
-}
-
-export interface RepoUI extends Omit<Repo, 'id' | 'url'> {
-	href: Repo['url'];
-}
-
-export interface Projects {
-	projects: Repo[];
-}
-
-type GithubRecentProjects = {
-	repositories: {
-		nodes: Repo[];
-	};
-};

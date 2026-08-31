@@ -22,10 +22,6 @@ const Header = () => {
 			href: '/about',
 		},
 		{
-			label: 'Projects',
-			href: '/projects',
-		},
-		{
 			label: 'Blog',
 			href: '/blog',
 		},
@@ -74,11 +70,6 @@ const Header = () => {
 		document.addEventListener('keydown', handleKeyDown);
 		return () => document.removeEventListener('keydown', handleKeyDown);
 	}, [isMobileMenuOpen]);
-
-	const closeMobileMenu = () => {
-		toggleMobileMenuState(false);
-		toggleButtonRef.current?.focus();
-	};
 
 	return (
 		<nav className="site-header bg-gray-900 p-4">

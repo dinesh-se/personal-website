@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 const sitemap = (): MetadataRoute.Sitemap => {
-	const routes: string[] = ['', '/about', '/projects', '/blog', '/uses'];
+	const routes: string[] = ['', '/about', '/blog', '/uses'];
 
 	return routes.map((path) => ({
 		url: `https://dineshharibabu.in${path}`,
