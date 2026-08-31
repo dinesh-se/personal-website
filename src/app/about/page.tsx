@@ -1,8 +1,8 @@
 'use cache';
-// cacheLife: medium
 import type { DefaultElementProps } from '@graphcms/rich-text-react-renderer';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import type { Metadata } from 'next';
+import { cacheLife } from 'next/cache';
 import Image from 'next/image';
 
 import { getMoreDetails } from '@api/graphql';
@@ -34,26 +34,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 async function getPageData() {
-	try {
-		const {
-			profile: {
-				displayPicture: { url },
-				moreDetails: { raw },
-				contactDetail: {
-					email,
-					socialMedia: { linkedin, github },
-				},
-			},
-		}: Author = await getMoreDetails();
+	const result = await getMoreDetails();
 
-		return {
-			displayPictureUrl: url,
-			richContent: raw,
-			email,
-			linkedin,
-			github,
-		};
-	} catch {
+	if (!result.success) {
 		return {
 			displayPictureUrl: '',
 			richContent: [],
@@ -62,9 +45,30 @@ async function getPageData() {
 			github: '',
 		};
 	}
+
+	const {
+		profile: {
+			displayPicture: { url },
+			moreDetails: { raw },
+			contactDetail: {
+				email,
+				socialMedia: { linkedin, github },
+			},
+		},
+	}: Author = result.data;
+
+	return {
+		displayPictureUrl: url,
+		richContent: raw,
+		email,
+		linkedin,
+		github,
+	};
 }
 
 export default async function About() {
+	cacheLife('days');
+
 	const { displayPictureUrl, richContent, email, linkedin, github } =
 		await getPageData();
 
@@ -106,6 +110,28 @@ export default async function About() {
 					/>
 					<Contact linkedin={linkedin} github={github} email={email} />
 				</section>
+			</section>
+			<section
+				className="mt-12 rounded-2xl border border-zinc-700/40 bg-neutral-200/60 p-6 dark:bg-zinc-800/50"
+				aria-label="Self-hosted AI stack"
+			>
+				<h2 className="mb-3 flex items-center space-x-4 font-semibold tracking-wider">
+					<span>Self-hosted AI stack</span>
+				</h2>
+				<p className="max-w-3xl leading-relaxed text-zinc-700 dark:text-zinc-300">
+					Away from the browser I run my own local AI stack — a 128&nbsp;GB AMD
+					Strix Halo mini-PC serving local models for coding, automation, and my
+					always-on personal assistant. Fully self-hosted; configs and
+					benchmarks live in the repo.
+				</p>
+				<a
+					className="mt-3 inline-block text-sky-500 hover:text-sky-600 dark:hover:text-sky-400"
+					href="https://github.com/dinesh-se/strix-halo-llm-stack"
+					target="_blank"
+					rel="noreferrer"
+				>
+					View the repo →
+				</a>
 			</section>
 			<section className="-mx-8 bg-neutral-200 px-4 py-8 dark:bg-gray-950">
 				<h2 className="headline mt-10 text-center text-xl md:text-2xl lg:text-3xl">

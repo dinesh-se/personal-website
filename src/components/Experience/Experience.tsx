@@ -61,20 +61,6 @@ const Experience = ({ organizations }: ExperienceType) => {
 					</div>
 				))}
 			</div>
-			<a
-				className="mt-6 flex cursor-pointer
-          items-center
-          justify-center rounded-md
-          bg-gray-300 px-3 py-2
-          text-sm
-          font-semibold transition hover:bg-gray-500
-           hover:text-gray-100 focus:ring active:ring
-           dark:bg-zinc-800/50
-           dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
-				href="https://link.dineshharibabu.in/resume"
-			>
-				Download Resume
-			</a>
 		</div>
 	);
 };

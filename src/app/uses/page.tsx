@@ -1,6 +1,6 @@
 'use cache';
-// cacheLife: medium
 import type { Metadata } from 'next';
+import { cacheLife } from 'next/cache';
 import Link from 'next/link';
 
 import { getUses } from '@api/graphql';
@@ -20,15 +20,18 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 async function getPageData() {
-	try {
-		const uses: UsesType[] = await getUses();
-		return uses;
-	} catch {
-		return [];
+	const result = await getUses();
+
+	if (!result.success) {
+		return [] as UsesType[];
 	}
+
+	return result.data.profile.uses as UsesType[];
 }
 
 export default async function Uses() {
+	cacheLife('days');
+
 	const uses = await getPageData();
 
 	return (
