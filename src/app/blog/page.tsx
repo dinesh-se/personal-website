@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import { getBlogFeed } from '@api/blog';
+
 import { BlogContent } from './BlogContent';
 
 export function generateMetadata(): Metadata {
@@ -14,6 +16,15 @@ export function generateMetadata(): Metadata {
 	};
 }
 
-export default function Blog() {
-	return <BlogContent />;
+export default async function Blog() {
+	// Server-side cached fetch; BlogContent keeps its client-side fallback for
+	// graceful degradation when a render has no cached result.
+	const feed = await getBlogFeed();
+
+	const result =
+		feed.total > 0
+			? ({ success: true, posts: feed.posts } as const)
+			: ({ success: false, errorType: 'unknown' } as const);
+
+	return <BlogContent result={result} />;
 }
