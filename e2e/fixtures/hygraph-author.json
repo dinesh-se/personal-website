@@ -39,24 +39,6 @@
 				}
 			]
 		},
-		"githubRecentProjects": {
-			"repositories": {
-				"nodes": [
-					{
-						"id": "repo1",
-						"name": "project-one",
-						"description": "A modern web application built with Next.js and TypeScript",
-						"url": "https://github.com/dinesh-se/project-one"
-					},
-					{
-						"id": "repo2",
-						"name": "project-two",
-						"description": "A React component library with accessibility focus",
-						"url": "https://github.com/dinesh-se/project-two"
-					}
-				]
-			}
-		},
 		"uses": [
 			{
 				"id": "use1",

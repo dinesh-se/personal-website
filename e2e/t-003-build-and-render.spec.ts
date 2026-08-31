@@ -6,7 +6,7 @@ test.describe('T-003 — Build Clean & All Pages Render Without Runtime Errors',
 	 * WHEN: I visit each page
 	 * THEN: Each page loads without console errors
 	 */
-	test('all 5 pages load without runtime/console errors', async ({ page }) => {
+	test('all 4 pages load without runtime/console errors', async ({ page }) => {
 		const errors: string[] = [];
 		const warnings: string[] = [];
 
@@ -23,7 +23,6 @@ test.describe('T-003 — Build Clean & All Pages Render Without Runtime Errors',
 		const routes = [
 			{ path: '/', title: 'Dinesh Haribabu' },
 			{ path: '/about', title: /about me/i },
-			{ path: '/projects', title: /GitHub Projects/i },
 			{ path: '/blog', title: /Blog Posts/i },
 			{ path: '/uses', title: /Uses/i },
 		];
@@ -70,12 +69,6 @@ test.describe('T-003 — Build Clean & All Pages Render Without Runtime Errors',
 			page.getByRole('heading', { level: 1, name: /about me/i })
 		).toBeVisible();
 
-		await nav.getByRole('link', { name: 'Projects' }).first().click();
-		await expect(page).toHaveURL('/projects');
-		await expect(
-			page.getByRole('heading', { level: 1, name: /GitHub Projects/i })
-		).toBeVisible();
-
 		await nav.getByRole('link', { name: 'Blog' }).first().click();
 		await expect(page).toHaveURL('/blog');
 		await expect(
@@ -114,15 +107,11 @@ test.describe('T-003 — Build Clean & All Pages Render Without Runtime Errors',
 		).toBeVisible();
 		await expect(page.getByRole('navigation')).toBeVisible();
 		await expect(page.locator('footer')).toBeVisible();
-		// Tech stack section (h2) should be present
-		await expect(page.locator('h2')).toContainText(/technologies/i);
-
-		await page.goto('/projects');
+		// Tech stack section (h2) should be present. The about page also has a
+		// "Self-hosted AI stack" h2 callout, so scope to the technologies heading.
 		await expect(
-			page.getByRole('heading', { level: 1, name: /GitHub Projects/i })
+			page.getByRole('heading', { name: /Some of my favorite/i })
 		).toBeVisible();
-		await expect(page.getByRole('navigation')).toBeVisible();
-		await expect(page.locator('footer')).toBeVisible();
 
 		await page.goto('/blog');
 		await expect(
@@ -186,8 +175,9 @@ test.describe('T-003 — Build Clean & All Pages Render Without Runtime Errors',
 		await expect(
 			page.getByRole('heading', { level: 1, name: /Uses/i })
 		).toBeVisible();
-		await expect(page.locator('h2')).toContainText(/Development/i);
-		await expect(page.getByText('VS Code')).toBeVisible();
+		// Uses categories render from live Hygraph data (content-managed, so
+		// assert at least one category heading renders rather than fixture data).
+		await expect(page.getByRole('heading', { level: 2 }).first()).toBeVisible();
 	});
 
 	/**
@@ -201,26 +191,9 @@ test.describe('T-003 — Build Clean & All Pages Render Without Runtime Errors',
 		await expect(
 			page.getByRole('heading', { level: 1, name: /Blog Posts/i })
 		).toBeVisible();
-		await expect(
-			page.getByRole('link', { name: /Building Modern Web Apps/i })
-		).toBeVisible();
+		// Blog post cards render from live Dev.to data (content-managed, so
+		// assert at least one dev.to link renders rather than fixture data).
+		await expect(page.locator('a[href*="dev.to"]').first()).toBeVisible();
 	});
 
-	/**
-	 * GIVEN: The dev server is running
-	 * WHEN: I visit the projects page with data from fixtures
-	 * THEN: Project cards render with repo links (verifying graphql-request + Next.js 16 compatibility)
-	 */
-	test('projects page renders project cards with repo links', async ({
-		page,
-	}) => {
-		await page.goto('/projects');
-
-		await expect(
-			page.getByRole('heading', { level: 1, name: /GitHub Projects/i })
-		).toBeVisible();
-
-		const projectLinks = page.locator('a[href*="github"]');
-		await expect(projectLinks.first()).toBeVisible();
-	});
 });

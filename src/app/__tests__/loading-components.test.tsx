@@ -3,7 +3,6 @@ import { render } from '@testing-library/react';
 import AboutLoading from '../about/loading';
 import BlogLoading from '../blog/loading';
 import RootLoading from '../loading';
-import ProjectsLoading from '../projects/loading';
 import UsesLoading from '../uses/loading';
 
 describe('Loading Components', () => {
@@ -17,21 +16,27 @@ describe('Loading Components', () => {
 			expect(skeletons.length).toBeGreaterThan(0);
 		});
 
-		it('renders greeting, name, and summary skeletons', () => {
+		it('renders greeting, name, and subline skeletons', () => {
 			const { container } = render(<RootLoading />);
 			// Greeting <p> with skeleton
 			expect(container.querySelector('p')).toBeInTheDocument();
 			// Name <h1> with skeleton
 			expect(container.querySelector('h1')).toBeInTheDocument();
-			// Summary <h2> with skeleton
-			expect(container.querySelector('h2')).toBeInTheDocument();
+			// Subline paragraph (no longer a heading — home subline is hardcoded text)
+			expect(
+				container.querySelector('p[class*="max-w-2xl"]')
+			).toBeInTheDocument();
 		});
 
-		it('renders recent projects and experience section skeletons', () => {
+		it('renders blog strip and experience section skeletons', () => {
 			const { container } = render(<RootLoading />);
-			// Two-column layout section
-			const section = container.querySelector('section[class*="lg:flex-row"]');
-			expect(section).toBeInTheDocument();
+			// Blog strip grid section
+			const blogSection = container.querySelector('section[class*="mt-16"]');
+			expect(blogSection).toBeInTheDocument();
+			// Experience card
+			expect(
+				container.querySelector('div[class*="rounded-2xl"]')
+			).toBeInTheDocument();
 		});
 	});
 
@@ -67,23 +72,6 @@ describe('Loading Components', () => {
 			expect(classes).not.toContain('w-90');
 			expect(classes).toContain('h-[360px]');
 			expect(classes).toContain('w-[360px]');
-		});
-	});
-
-	describe('Projects Loading', () => {
-		it('renders skeleton placeholders matching projects page structure', () => {
-			const { container } = render(<ProjectsLoading />);
-			expect(container).toMatchSnapshot();
-		});
-
-		it('renders grid of project card skeletons', () => {
-			const { container } = render(<ProjectsLoading />);
-			const grid = container.querySelector(
-				'section[class*="grid-cols-1"][class*="sm:grid-cols-2"]'
-			);
-			expect(grid).toBeInTheDocument();
-			const cards = grid?.querySelectorAll('[class*="rounded-md"]');
-			expect(cards?.length).toBe(6);
 		});
 	});
 

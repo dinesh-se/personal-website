@@ -2,7 +2,6 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 import AboutError from '../about/error';
 import RootError from '../error';
-import ProjectsError from '../projects/error';
 import UsesError from '../uses/error';
 
 jest.mock('next/link', () => ({
@@ -71,30 +70,6 @@ describe('Error Components', () => {
 		it('renders "Try again" button and "Go Home" link', () => {
 			const reset = jest.fn();
 			const { container } = render(<AboutError reset={reset} />);
-			fireEvent.click(screen.getByText('Try again'));
-			expect(reset).toHaveBeenCalled();
-			expect(container.querySelector('a[href="/"]')).toHaveTextContent(
-				'Go Home'
-			);
-		});
-	});
-
-	describe('Projects Error', () => {
-		it('renders route-specific error message', () => {
-			render(<ProjectsError reset={jest.fn()} />);
-			expect(screen.getByText('Failed to load projects')).toBeInTheDocument();
-		});
-
-		it('renders route-specific descriptive text', () => {
-			render(<ProjectsError reset={jest.fn()} />);
-			expect(
-				screen.getByText(/Unable to load GitHub projects/)
-			).toBeInTheDocument();
-		});
-
-		it('renders "Try again" button and "Go Home" link', () => {
-			const reset = jest.fn();
-			const { container } = render(<ProjectsError reset={reset} />);
 			fireEvent.click(screen.getByText('Try again'));
 			expect(reset).toHaveBeenCalled();
 			expect(container.querySelector('a[href="/"]')).toHaveTextContent(

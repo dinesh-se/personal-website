@@ -142,26 +142,6 @@ test.describe('T-002 — Experience formatDate Bug Fix', () => {
 		expect(errors).toEqual([]);
 	});
 
-	test('Projects page renders without runtime errors', async ({ page }) => {
-		const errors: string[] = [];
-		page.on('console', (message) => {
-			if (
-				message.type() === 'error' &&
-				!message.text().includes('Failed to load resource')
-			) {
-				errors.push(message.text());
-			}
-		});
-
-		await page.goto('/projects');
-		await expect(
-			page.getByRole('heading', { level: 1, name: /github projects/i })
-		).toBeVisible();
-
-		expect(await page.getByText('Invalid Date').count()).toBe(0);
-		expect(errors).toEqual([]);
-	});
-
 	test('Blog page renders without runtime errors', async ({ page }) => {
 		const errors: string[] = [];
 		page.on('console', (message) => {
@@ -212,35 +192,17 @@ test.describe('T-002 — Experience formatDate Bug Fix', () => {
 	}) => {
 		await page.goto('/about');
 
-		// Header nav
-		const headerNav = page.locator('header nav');
+		// Header nav (the Header component renders its own <nav class="site-header">,
+		// not a <nav> nested inside a <header> wrapper)
+		const headerNav = page.locator('nav.site-header');
 		const aboutLink = headerNav.getByRole('link', { name: 'About me' });
 		await expect(aboutLink).toHaveClass(/bg-stone-300/);
 
-		// Footer nav
-		const footerNav = page.locator('footer nav');
-		const footerAboutLink = footerNav.getByRole('link', { name: 'About me' });
+		// Footer links (NavLinks renders bare <Link>s — no <nav> wrapper)
+		const footerAboutLink = page
+			.locator('footer')
+			.getByRole('link', { name: 'About me' });
 		await expect(footerAboutLink).toHaveClass(/font-semibold/);
 	});
 
-	/**
-	 * GIVEN: The user is on any page
-	 * WHEN: Navigation renders in both Header and Footer
-	 * THEN: The active navigation link is highlighted
-	 */
-	test('active navigation link highlighted in Header and Footer on /projects', async ({
-		page,
-	}) => {
-		await page.goto('/projects');
-
-		const headerNav = page.locator('header nav');
-		const projectsLink = headerNav.getByRole('link', { name: 'Projects' });
-		await expect(projectsLink).toHaveClass(/bg-stone-300/);
-
-		const footerNav = page.locator('footer nav');
-		const footerProjectsLink = footerNav.getByRole('link', {
-			name: 'Projects',
-		});
-		await expect(footerProjectsLink).toHaveClass(/font-semibold/);
-	});
 });

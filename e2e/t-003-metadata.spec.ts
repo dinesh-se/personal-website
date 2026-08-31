@@ -11,11 +11,6 @@ test.describe('T-003 — Page Metadata via generateMetadata', () => {
 		await expect(page).toHaveTitle('About me — Dinesh Haribabu');
 	});
 
-	test('projects page has correct title', async ({ page }) => {
-		await page.goto('/projects');
-		await expect(page).toHaveTitle('Projects — Dinesh Haribabu');
-	});
-
 	test('blog page has correct title', async ({ page }) => {
 		await page.goto('/blog');
 		await expect(page).toHaveTitle('Blog — Dinesh Haribabu');
@@ -42,7 +37,6 @@ test.describe('T-003 — Page Metadata via generateMetadata', () => {
 		const content = await page.content();
 		expect(content).toContain('https://dineshharibabu.in/');
 		expect(content).toContain('/about');
-		expect(content).toContain('/projects');
 		expect(content).toContain('/blog');
 		expect(content).toContain('/uses');
 	});

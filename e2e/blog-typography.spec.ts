@@ -41,13 +41,15 @@ test.describe('T-007: Blog Page Typography and Spacing', () => {
 	test('AC-2: blog post letter-spacing is appropriate (no tighter than default)', async ({
 		page,
 	}) => {
-		// Check intro paragraph
+		// Check intro paragraph. `letter-spacing: normal` computes to the string
+		// "normal" — treat that as 0 (the default) so the ratio isn't NaN.
 		const introLetterSpacing = await page
 			.locator('main > p')
 			.first()
 			.evaluate((el) => {
 				const style = getComputedStyle(el);
-				return parseFloat(style.letterSpacing);
+				const raw = style.letterSpacing;
+				return raw === 'normal' ? 0 : parseFloat(raw);
 			});
 		expect(introLetterSpacing).toBeGreaterThanOrEqual(0);
 
@@ -58,7 +60,8 @@ test.describe('T-007: Blog Page Typography and Spacing', () => {
 			for (let i = 0; i < count; i++) {
 				const letterSpacing = await bodyTexts.nth(i).evaluate((el) => {
 					const style = getComputedStyle(el);
-					return parseFloat(style.letterSpacing);
+					const raw = style.letterSpacing;
+					return raw === 'normal' ? 0 : parseFloat(raw);
 				});
 				expect(
 					letterSpacing,

@@ -66,12 +66,6 @@ exports[`Header renders correctly 1`] = `
               </a>
               <a
                 class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
-                href="/projects"
-              >
-                Projects
-              </a>
-              <a
-                class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
                 href="/blog"
               >
                 Blog
@@ -100,12 +94,6 @@ exports[`Header renders correctly 1`] = `
           href="/about"
         >
           About me
-        </a>
-        <a
-          class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
-          href="/projects"
-        >
-          Projects
         </a>
         <a
           class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"

@@ -22,7 +22,6 @@ interface Profile {
 	experience: Experience;
 	displayPicture: DisplayPicture;
 	moreDetails: MoreDetails;
-	githubRecentProjects: GithubRecentProjects;
 	uses: Uses[];
 }
 
@@ -61,24 +60,6 @@ interface MoreDetails {
 	raw: RichTextContent; // From @graphcms/rich-text-types
 }
 
-interface Repo {
-	id: string;
-	name: string;
-	description: string;
-	url: string;
-	primaryLanguage?: PrimaryLanguage;
-}
-
-interface PrimaryLanguage {
-	name: string;
-	color: string;
-}
-
-type GithubRecentProjects = {
-	repositories: {
-		nodes: Repo[];
-	};
-};
 ```
 
 ### BlogPost (`src/types/blog-post.ts`)
@@ -150,12 +131,8 @@ interface Link {
 ```typescript
 // Contact (src/types/author.ts) — combines social media and email
 interface Contact extends SocialMedia, Pick<ContactDetail, 'email'> {}
-
-// RepoUI (src/types/author.ts) — project card variant
-interface RepoUI extends Omit<Repo, 'id' | 'url'> {
-	href: Repo['url'];
-}
 ```
+
 
 **Source:** Baseline scan (`openspec/specs/data-model.md` as-is, `baseline/data-model.md`); feature proposal confirms no new entities or fields (`proposal.md`, "Data Needs: None — uses existing integrations").
 
@@ -165,8 +142,6 @@ interface RepoUI extends Omit<Repo, 'id' | 'url'> {
 - **Profile → ContactDetail:** One-to-one
 - **Profile → Experience:** One-to-one
 - **Experience → Organization:** One-to-many
-- **Profile → GithubRecentProjects:** One-to-one
-- **GithubRecentProjects → Repo:** One-to-many (via `repositories.nodes`)
 - **Profile → Uses:** One-to-many
 - **Uses → Item:** One-to-many
 - **BlogPost → BlogPostUI:** Transformation (not relational)
@@ -187,7 +162,7 @@ This feature does not introduce any database schema changes, migration scripts, 
 
 **Not applicable.** No local data. All data comes from:
 
-- **Hygraph:** Live GraphQL queries (profile, experience, projects, uses) — fetched via `getUser()`, `getMoreDetails()`, `getRepos()`, `getUses()` in `src/api/graphql.ts`.
+- **Hygraph:** Live GraphQL queries (profile, experience, uses) — fetched via `getUser()`, `getMoreDetails()`, `getUses()` in `src/api/graphql.ts`. The GitHub projects query (`getRepos`) was removed with the Projects page.
 - **Dev.to:** Live REST API calls (blog posts) — fetched via `getBlogPosts()` in `src/api/rest.ts`.
 
 This feature introduces **no seed data**.

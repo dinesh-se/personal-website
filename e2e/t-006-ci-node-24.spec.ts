@@ -79,7 +79,6 @@ test.describe('T-006 — Update CI Workflow to Node 24', () => {
 		const routes = [
 			{ path: '/', title: 'Dinesh Haribabu' },
 			{ path: '/about', title: /about me/i },
-			{ path: '/projects', title: /GitHub Projects/i },
 			{ path: '/blog', title: /Blog Posts/i },
 			{ path: '/uses', title: /Uses/i },
 		];
@@ -113,9 +112,6 @@ test.describe('T-006 — Update CI Workflow to Node 24', () => {
 
 		await nav.getByRole('link', { name: 'About me' }).click();
 		await expect(page).toHaveURL('/about');
-
-		await nav.getByRole('link', { name: 'Projects' }).first().click();
-		await expect(page).toHaveURL('/projects');
 
 		await nav.getByRole('link', { name: 'Blog' }).click();
 		await expect(page).toHaveURL('/blog');

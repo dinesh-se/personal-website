@@ -9,7 +9,7 @@ test.describe('Keyboard Navigation', () => {
 	});
 
 	test('all pages are keyboard accessible', async ({ page }) => {
-		const pages = ['/', '/about', '/projects', '/blog', '/uses'];
+		const pages = ['/', '/about', '/blog', '/uses'];
 		for (const path of pages) {
 			await page.goto(path);
 			await page.keyboard.press('Tab');

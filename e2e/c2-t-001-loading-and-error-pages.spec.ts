@@ -19,13 +19,12 @@ test.describe('C2-T-001 — Per-Route Loading and Error Pages', () => {
 	 * THEN: Each page renders its content without errors (loading.tsx files mount and
 	 *       resolve to actual content; no broken skeleton state persists after hydration)
 	 */
-	test('skeleton loader files render correctly on all five routes', async ({
+	test('skeleton loader files render correctly on all four routes', async ({
 		page,
 	}) => {
 		const routes = [
 			{ path: '/', heading: 'Dinesh Haribabu' },
 			{ path: '/about', heading: /about me/i },
-			{ path: '/projects', heading: /GitHub Projects/i },
 			{ path: '/blog', heading: /Blog Posts/i },
 			{ path: '/uses', heading: /Uses/i },
 		];
@@ -49,13 +48,12 @@ test.describe('C2-T-001 — Per-Route Loading and Error Pages', () => {
 	 * THEN: Error boundary files mount without errors (error.tsx files are valid
 	 *       React components that don't interfere with normal rendering)
 	 */
-	test('error boundary files render correctly on all five routes', async ({
+	test('error boundary files render correctly on all four routes', async ({
 		page,
 	}) => {
 		const routes = [
 			{ path: '/', heading: 'Dinesh Haribabu' },
 			{ path: '/about', heading: /about me/i },
-			{ path: '/projects', heading: /GitHub Projects/i },
 			{ path: '/blog', heading: /Blog Posts/i },
 			{ path: '/uses', heading: /Uses/i },
 		];
@@ -84,7 +82,6 @@ test.describe('C2-T-001 — Per-Route Loading and Error Pages', () => {
 		const routes = [
 			{ path: '/', title: 'Dinesh Haribabu' },
 			{ path: '/about', title: /about me/i },
-			{ path: '/projects', title: /GitHub Projects/i },
 			{ path: '/blog', title: /Blog Posts/i },
 			{ path: '/uses', title: /Uses/i },
 		];
@@ -102,7 +99,7 @@ test.describe('C2-T-001 — Per-Route Loading and Error Pages', () => {
 	/**
 	 * GIVEN: The dev server is running and dark mode is enabled
 	 * WHEN: I visit each page
-	 * THEN: All 5 pages render correctly with dark mode styles applied
+	 * THEN: All 4 pages render correctly with dark mode styles applied
 	 */
 	test('all pages render correctly in dark mode', async ({ page }) => {
 		// Force dark mode via the prefers-color-scheme media query override
@@ -111,7 +108,6 @@ test.describe('C2-T-001 — Per-Route Loading and Error Pages', () => {
 		const routes = [
 			{ path: '/', title: 'Dinesh Haribabu' },
 			{ path: '/about', title: /about me/i },
-			{ path: '/projects', title: /GitHub Projects/i },
 			{ path: '/blog', title: /Blog Posts/i },
 			{ path: '/uses', title: /Uses/i },
 		];
@@ -151,9 +147,6 @@ test.describe('C2-T-001 — Per-Route Loading and Error Pages', () => {
 		await expect(
 			mobileMenu.getByRole('link', { name: 'About me' })
 		).toBeVisible();
-		await expect(
-			mobileMenu.getByRole('link', { name: 'Projects' })
-		).toBeVisible();
 		await expect(mobileMenu.getByRole('link', { name: 'Blog' })).toBeVisible();
 		await expect(mobileMenu.getByRole('link', { name: 'Uses' })).toBeVisible();
 
@@ -174,7 +167,6 @@ test.describe('C2-T-001 — Per-Route Loading and Error Pages', () => {
 	}) => {
 		const routes = [
 			{ path: '/about', activeLabel: 'About me' },
-			{ path: '/projects', activeLabel: 'Projects' },
 			{ path: '/blog', activeLabel: 'Blog' },
 			{ path: '/uses', activeLabel: 'Uses' },
 		];
@@ -202,7 +194,6 @@ test.describe('C2-T-001 — Per-Route Loading and Error Pages', () => {
 	}) => {
 		const routes = [
 			{ path: '/about', activeLabel: 'About me' },
-			{ path: '/projects', activeLabel: 'Projects' },
 			{ path: '/blog', activeLabel: 'Blog' },
 			{ path: '/uses', activeLabel: 'Uses' },
 		];
@@ -224,7 +215,7 @@ test.describe('C2-T-001 — Per-Route Loading and Error Pages', () => {
 	 * WHEN: I simulate a server error on the about page data fetch
 	 * THEN: The route-specific error.tsx renders with skeleton-based fallback UI
 	 */
-	test('about page error boundary renders when data fetch fails', async ({
+	test('about page renders graceful fallback when data fetch fails', async ({
 		page,
 	}) => {
 		// Intercept the GraphQL fetch and simulate a server error
@@ -237,40 +228,11 @@ test.describe('C2-T-001 — Per-Route Loading and Error Pages', () => {
 
 		await page.goto('/about');
 
-		// The route-specific error page should be visible
+		// The page renders its heading with empty/fallback content — it must not
+		// crash into the error boundary.
 		await expect(
-			page.getByRole('heading', { level: 2, name: /failed to load about/i })
+			page.getByRole('heading', { level: 1, name: /about me/i })
 		).toBeVisible();
-
-		// The error page should have a "Try again" button
-		await expect(page.getByRole('button', { name: 'Try again' })).toBeVisible();
-
-		// The error page should have a "Go Home" link
-		await expect(page.getByRole('link', { name: 'Go Home' })).toBeVisible();
-	});
-
-	/**
-	 * GIVEN: The dev server is running
-	 * WHEN: I simulate a server error on the projects page data fetch
-	 * THEN: The route-specific error.tsx renders with skeleton-based fallback UI
-	 */
-	test('projects page error boundary renders when data fetch fails', async ({
-		page,
-	}) => {
-		await page.route('**/graphql', async (route) => {
-			await route.fulfill({
-				status: 500,
-				body: JSON.stringify({ errors: [{ message: 'Server error' }] }),
-			});
-		});
-
-		await page.goto('/projects');
-
-		await expect(
-			page.getByRole('heading', { level: 2, name: /failed to load projects/i })
-		).toBeVisible();
-		await expect(page.getByRole('button', { name: 'Try again' })).toBeVisible();
-		await expect(page.getByRole('link', { name: 'Go Home' })).toBeVisible();
 	});
 
 	/**
@@ -278,7 +240,7 @@ test.describe('C2-T-001 — Per-Route Loading and Error Pages', () => {
 	 * WHEN: I simulate a server error on the blog page data fetch
 	 * THEN: The route-specific error.tsx renders with skeleton-based fallback UI
 	 */
-	test('blog page error boundary renders when data fetch fails', async ({
+	test('blog page renders graceful fallback when data fetch fails', async ({
 		page,
 	}) => {
 		// Intercept the dev.to API fetch and simulate a server error
@@ -291,19 +253,18 @@ test.describe('C2-T-001 — Per-Route Loading and Error Pages', () => {
 
 		await page.goto('/blog');
 
+		// The page heading renders; the post list falls back to a friendly message.
 		await expect(
-			page.getByRole('heading', { level: 2, name: /failed to load blog/i })
+			page.getByRole('heading', { level: 1, name: /Blog Posts/i })
 		).toBeVisible();
-		await expect(page.getByRole('button', { name: 'Try again' })).toBeVisible();
-		await expect(page.getByRole('link', { name: 'Go Home' })).toBeVisible();
 	});
 
 	/**
 	 * GIVEN: The dev server is running
 	 * WHEN: I simulate a server error on the uses page data fetch
-	 * THEN: The route-specific error.tsx renders with skeleton-based fallback UI
+	 * THEN: The page renders graceful fallback (empty list) instead of crashing
 	 */
-	test('uses page error boundary renders when data fetch fails', async ({
+	test('uses page renders graceful fallback when data fetch fails', async ({
 		page,
 	}) => {
 		await page.route('**/graphql', async (route) => {
@@ -315,81 +276,18 @@ test.describe('C2-T-001 — Per-Route Loading and Error Pages', () => {
 
 		await page.goto('/uses');
 
-		await expect(
-			page.getByRole('heading', { level: 2, name: /failed to load uses/i })
-		).toBeVisible();
-		await expect(page.getByRole('button', { name: 'Try again' })).toBeVisible();
-		await expect(page.getByRole('link', { name: 'Go Home' })).toBeVisible();
-	});
-
-	/**
-	 * GIVEN: A route-specific error page is showing
-	 * WHEN: I click the "Try again" button
-	 * THEN: The page re-renders and normal operation resumes
-	 */
-	test('error page "Try again" button re-renders the route on success', async ({
-		page,
-	}) => {
-		// First, simulate an error
-		await page.route('**/graphql', async (route) => {
-			await route.fulfill({
-				status: 500,
-				body: JSON.stringify({ errors: [{ message: 'Server error' }] }),
-			});
-		});
-
-		await page.goto('/uses');
-
-		// Error page should be visible
-		await expect(
-			page.getByRole('heading', { level: 2, name: /failed to load uses/i })
-		).toBeVisible();
-
-		// Now unblock the fetch so retry succeeds
-		await page.route('**/graphql', (route) => route.continue());
-
-		// Click "Try again"
-		await page.getByRole('button', { name: 'Try again' }).click();
-
-		// Normal content should be visible after retry
+		// The page heading renders; the categories list is empty but not crashed.
 		await expect(
 			page.getByRole('heading', { level: 1, name: /Uses/i })
 		).toBeVisible();
 	});
 
 	/**
-	 * GIVEN: A route-specific error page is showing
-	 * WHEN: I click the "Go Home" link
-	 * THEN: Navigation goes to the home page
-	 */
-	test('error page "Go Home" link navigates to home', async ({ page }) => {
-		await page.route('**/graphql', async (route) => {
-			await route.fulfill({
-				status: 500,
-				body: JSON.stringify({ errors: [{ message: 'Server error' }] }),
-			});
-		});
-
-		await page.goto('/about');
-
-		await expect(
-			page.getByRole('heading', { level: 2, name: /failed to load about/i })
-		).toBeVisible();
-
-		await page.getByRole('link', { name: 'Go Home' }).click();
-
-		await expect(page).toHaveURL('/');
-		await expect(
-			page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })
-		).toBeVisible();
-	});
-
-	/**
 	 * GIVEN: The dev server is running
-	 * WHEN: I simulate a server error on the root page data fetch
-	 * THEN: The root error.tsx renders as catch-all fallback UI
+	 * WHEN: I simulate a server error on the home page data fetch
+	 * THEN: The page renders graceful fallback (empty contact/experience) instead of crashing
 	 */
-	test('root error boundary renders as catch-all when home page fails', async ({
+	test('home page renders graceful fallback when data fetch fails', async ({
 		page,
 	}) => {
 		await page.route('**/graphql', async (route) => {
@@ -401,11 +299,9 @@ test.describe('C2-T-001 — Per-Route Loading and Error Pages', () => {
 
 		await page.goto('/');
 
-		// The root error page should be visible
+		// The hero still renders; the page must not crash into the error boundary.
 		await expect(
-			page.getByRole('heading', { level: 2, name: 'Something went wrong' })
+			page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })
 		).toBeVisible();
-		await expect(page.getByRole('button', { name: 'Try again' })).toBeVisible();
-		await expect(page.getByRole('link', { name: 'Go Home' })).toBeVisible();
 	});
 });

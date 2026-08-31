@@ -28,7 +28,6 @@ test.describe('T-007 — Component Rendering After React 19 Upgrade', () => {
 
 		// Desktop nav links
 		await expect(nav.getByRole('link', { name: 'About me' })).toBeVisible();
-		await expect(nav.getByRole('link', { name: 'Projects' })).toBeVisible();
 		await expect(nav.getByRole('link', { name: 'Blog' })).toBeVisible();
 		await expect(nav.getByRole('link', { name: 'Uses' })).toBeVisible();
 
@@ -51,7 +50,6 @@ test.describe('T-007 — Component Rendering After React 19 Upgrade', () => {
 		// Footer nav links
 		await expect(footer.getByRole('link', { name: 'Home' })).toBeVisible();
 		await expect(footer.getByRole('link', { name: 'About me' })).toBeVisible();
-		await expect(footer.getByRole('link', { name: 'Projects' })).toBeVisible();
 		await expect(footer.getByRole('link', { name: 'Blog' })).toBeVisible();
 		await expect(footer.getByRole('link', { name: 'Uses' })).toBeVisible();
 
@@ -77,7 +75,7 @@ test.describe('T-007 — Component Rendering After React 19 Upgrade', () => {
 		);
 
 		// Inactive links should NOT have the active class
-		await expect(nav.getByRole('link', { name: 'Projects' })).not.toHaveClass(
+		await expect(nav.getByRole('link', { name: 'Blog' })).not.toHaveClass(
 			/bg-stone-300/
 		);
 	});
@@ -141,41 +139,6 @@ test.describe('T-007 — Component Rendering After React 19 Upgrade', () => {
 		// Each card has a title link
 		const titles = page.locator('a[href*="dev.to"]');
 		await expect(titles.first()).toBeVisible();
-	});
-
-	/**
-	 * Component: ProjectCard
-	 * Source page: /projects
-	 * Snapshot: src/components/ProjectCard/__snapshots__/ProjectCard.test.tsx.snap
-	 * Note: ProjectCard renders as a <Link> (not <article>)
-	 */
-	test('ProjectCard renders project name, description, and language badge', async ({
-		page,
-	}) => {
-		await page.goto('/projects');
-
-		// Project cards are <h2> elements with project names
-		const projectH2s = page.locator('h2');
-		await expect(projectH2s.first()).toBeVisible();
-
-		// Each card links to a GitHub repo
-		const repoLinks = page.locator('a[href*="github"]');
-		await expect(repoLinks.first()).toBeVisible();
-	});
-
-	/**
-	 * Component: RecentProjects
-	 * Source page: / (home)
-	 * Snapshot: src/components/RecentProjects/__snapshots__/RecentProjects.test.tsx.snap
-	 */
-	test('RecentProjects renders a grid of project cards on home page', async ({
-		page,
-	}) => {
-		await page.goto('/');
-
-		// RecentProjects section contains h2 elements for project names
-		const recentH2s = page.locator('h2').filter({ hasText: /project-/ });
-		await expect(recentH2s.first()).toBeVisible();
 	});
 
 	/**

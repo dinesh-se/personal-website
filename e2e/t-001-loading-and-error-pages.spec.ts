@@ -18,13 +18,12 @@ test.describe('T-001 — Per-Route Loading and Error Pages', () => {
 	 * THEN: Each page renders its content without errors (loading.tsx files mount and
 	 *       resolve to actual content; no broken skeleton state persists after hydration)
 	 */
-	test('skeleton loader files render correctly on all five routes', async ({
+	test('skeleton loader files render correctly on all four routes', async ({
 		page,
 	}) => {
 		const routes = [
 			{ path: '/', heading: 'Dinesh Haribabu' },
 			{ path: '/about', heading: /about me/i },
-			{ path: '/projects', heading: /GitHub Projects/i },
 			{ path: '/blog', heading: /Blog Posts/i },
 			{ path: '/uses', heading: /Uses/i },
 		];
@@ -48,13 +47,12 @@ test.describe('T-001 — Per-Route Loading and Error Pages', () => {
 	 * THEN: Error boundary files mount without errors (error.tsx files are valid
 	 *       React components that don't interfere with normal rendering)
 	 */
-	test('error boundary files render correctly on all five routes', async ({
+	test('error boundary files render correctly on all four routes', async ({
 		page,
 	}) => {
 		const routes = [
 			{ path: '/', heading: 'Dinesh Haribabu' },
 			{ path: '/about', heading: /about me/i },
-			{ path: '/projects', heading: /GitHub Projects/i },
 			{ path: '/blog', heading: /Blog Posts/i },
 			{ path: '/uses', heading: /Uses/i },
 		];
@@ -83,7 +81,6 @@ test.describe('T-001 — Per-Route Loading and Error Pages', () => {
 		const routes = [
 			{ path: '/', title: 'Dinesh Haribabu' },
 			{ path: '/about', title: /about me/i },
-			{ path: '/projects', title: /GitHub Projects/i },
 			{ path: '/blog', title: /Blog Posts/i },
 			{ path: '/uses', title: /Uses/i },
 		];
@@ -101,7 +98,7 @@ test.describe('T-001 — Per-Route Loading and Error Pages', () => {
 	/**
 	 * GIVEN: The dev server is running and dark mode is enabled
 	 * WHEN: I visit each page
-	 * THEN: All 5 pages render correctly with dark mode styles applied
+	 * THEN: All 4 pages render correctly with dark mode styles applied
 	 */
 	test('all pages render correctly in dark mode', async ({ page }) => {
 		// Force dark mode via the prefers-color-scheme media query override
@@ -110,7 +107,6 @@ test.describe('T-001 — Per-Route Loading and Error Pages', () => {
 		const routes = [
 			{ path: '/', title: 'Dinesh Haribabu' },
 			{ path: '/about', title: /about me/i },
-			{ path: '/projects', title: /GitHub Projects/i },
 			{ path: '/blog', title: /Blog Posts/i },
 			{ path: '/uses', title: /Uses/i },
 		];
@@ -150,9 +146,6 @@ test.describe('T-001 — Per-Route Loading and Error Pages', () => {
 		await expect(
 			mobileMenu.getByRole('link', { name: 'About me' })
 		).toBeVisible();
-		await expect(
-			mobileMenu.getByRole('link', { name: 'Projects' })
-		).toBeVisible();
 		await expect(mobileMenu.getByRole('link', { name: 'Blog' })).toBeVisible();
 		await expect(mobileMenu.getByRole('link', { name: 'Uses' })).toBeVisible();
 
@@ -173,7 +166,6 @@ test.describe('T-001 — Per-Route Loading and Error Pages', () => {
 	}) => {
 		const routes = [
 			{ path: '/about', activeLabel: 'About me' },
-			{ path: '/projects', activeLabel: 'Projects' },
 			{ path: '/blog', activeLabel: 'Blog' },
 			{ path: '/uses', activeLabel: 'Uses' },
 		];
@@ -201,7 +193,6 @@ test.describe('T-001 — Per-Route Loading and Error Pages', () => {
 	}) => {
 		const routes = [
 			{ path: '/about', activeLabel: 'About me' },
-			{ path: '/projects', activeLabel: 'Projects' },
 			{ path: '/blog', activeLabel: 'Blog' },
 			{ path: '/uses', activeLabel: 'Uses' },
 		];

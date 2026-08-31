@@ -4,7 +4,7 @@ import { expect, test } from '@playwright/test';
  * C2-T-003 — generateMetadata Migration
  *
  * Scenarios derived from the task "User test":
- *   1. All 5 pages produce correct page-specific titles via generateMetadata
+ *   1. All 4 pages produce correct page-specific titles via generateMetadata
  *   2. robots.txt is served correctly at /robots.txt
  *   3. sitemap.xml is served correctly at /sitemap.xml
  *   4. All 5 pages render correctly in light mode
@@ -26,7 +26,6 @@ test.describe('C2-T-003 — generateMetadata Migration', () => {
 		const routes = [
 			{ path: '/', title: 'Dinesh Haribabu' },
 			{ path: '/about', title: 'About me — Dinesh Haribabu' },
-			{ path: '/projects', title: 'Projects — Dinesh Haribabu' },
 			{ path: '/blog', title: 'Blog — Dinesh Haribabu' },
 			{ path: '/uses', title: 'Uses — Dinesh Haribabu' },
 		];
@@ -63,7 +62,6 @@ test.describe('C2-T-003 — generateMetadata Migration', () => {
 		const content = await page.content();
 		expect(content).toContain('https://dineshharibabu.in/');
 		expect(content).toContain('/about');
-		expect(content).toContain('/projects');
 		expect(content).toContain('/blog');
 		expect(content).toContain('/uses');
 	});
@@ -81,7 +79,6 @@ test.describe('C2-T-003 — generateMetadata Migration', () => {
 		const routes = [
 			{ path: '/', heading: 'Dinesh Haribabu' },
 			{ path: '/about', heading: /about me/i },
-			{ path: '/projects', heading: /GitHub Projects/i },
 			{ path: '/blog', heading: /Blog Posts/i },
 			{ path: '/uses', heading: /Uses/i },
 		];
@@ -99,7 +96,7 @@ test.describe('C2-T-003 — generateMetadata Migration', () => {
 	/**
 	 * GIVEN: The dev server is running and dark mode is enabled
 	 * WHEN: I visit each route
-	 * THEN: All 5 pages render correctly with dark mode styles applied
+	 * THEN: All 4 pages render correctly with dark mode styles applied
 	 */
 	test('all pages render correctly in dark mode', async ({ page }) => {
 		await page.emulateMedia({ colorScheme: 'dark' });
@@ -107,7 +104,6 @@ test.describe('C2-T-003 — generateMetadata Migration', () => {
 		const routes = [
 			{ path: '/', heading: 'Dinesh Haribabu' },
 			{ path: '/about', heading: /about me/i },
-			{ path: '/projects', heading: /GitHub Projects/i },
 			{ path: '/blog', heading: /Blog Posts/i },
 			{ path: '/uses', heading: /Uses/i },
 		];
@@ -144,11 +140,11 @@ test.describe('C2-T-003 — generateMetadata Migration', () => {
 		await expect(
 			mobileMenu.getByRole('link', { name: 'About me' })
 		).toBeVisible();
-		await expect(
-			mobileMenu.getByRole('link', { name: 'Projects' })
-		).toBeVisible();
 		await expect(mobileMenu.getByRole('link', { name: 'Blog' })).toBeVisible();
 		await expect(mobileMenu.getByRole('link', { name: 'Uses' })).toBeVisible();
+		await expect(
+			mobileMenu.getByRole('link', { name: 'Projects' })
+		).not.toBeVisible();
 
 		await menuButton.click();
 
@@ -165,7 +161,6 @@ test.describe('C2-T-003 — generateMetadata Migration', () => {
 	}) => {
 		const routes = [
 			{ path: '/about', activeLabel: 'About me' },
-			{ path: '/projects', activeLabel: 'Projects' },
 			{ path: '/blog', activeLabel: 'Blog' },
 			{ path: '/uses', activeLabel: 'Uses' },
 		];
@@ -191,7 +186,6 @@ test.describe('C2-T-003 — generateMetadata Migration', () => {
 	}) => {
 		const routes = [
 			{ path: '/about', activeLabel: 'About me' },
-			{ path: '/projects', activeLabel: 'Projects' },
 			{ path: '/blog', activeLabel: 'Blog' },
 			{ path: '/uses', activeLabel: 'Uses' },
 		];

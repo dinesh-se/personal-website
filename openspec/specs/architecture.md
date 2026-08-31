@@ -4,8 +4,8 @@
 
 This is a **single-module Next.js application** with internal module boundaries:
 
-- **`src/app/`** — Page routes and root layout (Next.js App Router). Contains `layout.tsx`, `page.tsx`, and subdirectories for each route (`about/`, `blog/`, `projects/`, `uses/`). Also contains `robots.ts` and `sitemap.ts` for metadata.
-- **`src/components/`** — Reusable UI components. Each component has its own directory with `Component.tsx`, `Component.test.tsx`, `__snapshots__/`, and `index.ts` (barrel export). Components: Header, Footer, NavLinks, Contact, Experience, BlogPostCard, ProjectCard, RecentProjects.
+- **`src/app/`** — Page routes and root layout (Next.js App Router). Contains `layout.tsx`, `page.tsx`, and subdirectories for each route (`about/`, `blog/`, `uses/`). Also contains `robots.ts` and `sitemap.ts` for metadata. (The `projects/` route was removed.)
+- **`src/components/`** — Reusable UI components. Each component has its own directory with `Component.tsx`, `Component.test.tsx`, `__snapshots__/`, and `index.ts` (barrel export). Components: Header, Footer, NavLinks, Contact, Experience, BlogPostCard. (ProjectCard and RecentProjects were removed with the Projects page.)
 - **`src/api/`** — Data fetching layer. `graphql.ts` (Hygraph GraphQL client), `rest.ts` (Dev.to REST fetch). No local API routes.
 - **`src/types/`** — TypeScript type definitions. `index.ts` re-exports all types. Files: `author.ts`, `blog-post.ts`, `uses.ts`, `nav-links.ts`.
 - **`src/styles/`** — Global CSS (`globals.css`) with Tailwind directives and CSS custom properties for theming.
@@ -16,7 +16,7 @@ This is a **single-module Next.js application** with internal module boundaries:
 
 - `src/app/` — Dark mode state initialization in `layout.tsx`, skip navigation link, semantic HTML fixes in all 5 page files (source: `proposal.md`, "Affected Areas").
 - `src/components/Header/` — Dark mode toggle button (client component), mobile menu focus trap and focus restore (source: `proposal.md`, "Affected Areas").
-- `src/components/Footer/`, `NavLinks/`, `Contact/`, `Experience/`, `BlogPostCard/`, `ProjectCard/`, `RecentProjects/` — ARIA labels, focus indicators, semantic markup (source: `proposal.md`, "Affected Areas").
+- `src/components/Footer/`, `NavLinks/`, `Contact/`, `Experience/`, `BlogPostCard/` — ARIA labels, focus indicators, semantic markup (source: `proposal.md`, "Affected Areas"). (ProjectCard and RecentProjects removed with the Projects page.)
 - `src/styles/globals.css` — CSS custom property updates for theme colors, focus indicator styles, skip nav styles (source: `proposal.md`, "Affected Areas").
 - `tailwind.config.ts` — Dark mode strategy change (`media` → `class`), color palette adjustments (source: `proposal.md`, "Affected Areas").
 - `eslint.config.js` — `jsx-a11y` plugin level `recommended` → `strict` (source: `proposal.md`, "Affected Areas").
@@ -31,20 +31,17 @@ This is a **single-module Next.js application** with internal module boundaries:
 │   │   ├── page.tsx            # Home page
 │   │   ├── about/page.tsx      # About page
 │   │   ├── blog/page.tsx       # Blog page
-│   │   ├── projects/page.tsx   # Projects page
 │   │   ├── uses/page.tsx       # Uses page
 │   │   ├── robots.ts           # Robots.txt metadata
 │   │   ├── sitemap.ts          # Sitemap metadata
 │   │   └── favicon.ico         # Favicon
-│   ├── components/             # UI components (8 components)
+│   ├── components/             # UI components (5 components)
 │   │   ├── Header/
 │   │   ├── Footer/
 │   │   ├── NavLinks/
 │   │   ├── Contact/
 │   │   ├── Experience/
-│   │   ├── BlogPostCard/
-│   │   ├── ProjectCard/
-│   │   └── RecentProjects/
+│   │   └── BlogPostCard/
 │   ├── api/                    # Data fetching layer
 │   │   ├── graphql.ts          # Hygraph GraphQL client
 │   │   └── rest.ts             # Dev.to REST client
@@ -72,7 +69,7 @@ This is a **single-module Next.js application** with internal module boundaries:
 
 **Feature impact (proposal: `openspec/changes/current/proposal.md`):**
 
-- **Modified files:** `tailwind.config.ts` (dark mode strategy `media` → `class`, color palette), `src/styles/globals.css` (CSS custom properties, focus indicators, skip nav styles), `src/app/layout.tsx` (dark mode state, skip nav link), all 5 page files (semantic HTML), all 8 component files (ARIA labels, focus management), `eslint.config.js` (jsx-a11y strict)
+- **Modified files:** `tailwind.config.ts` (dark mode strategy `media` → `class`, color palette), `src/styles/globals.css` (CSS custom properties, focus indicators, skip nav styles), `src/app/layout.tsx` (dark mode state, skip nav link), all 5 page files (semantic HTML), all component files (ARIA labels, focus management), `eslint.config.js` (jsx-a11y strict)
 - **New files:** `e2e/a11y-*.spec.ts` — Playwright E2E tests for keyboard navigation, focus states, skip navigation
 - **Modified file:** `.github/workflows/lint-test.yml` — add axe-core CLI step for WCAG audit
 - **New dev dependency:** `axe-core` — CLI accessibility audit for CI pipeline
@@ -90,8 +87,8 @@ This is a **single-module Next.js application** with internal module boundaries:
 
 **Data Sources:**
 
-- **Hygraph (GraphQL):** Profile, experience, projects, uses — fetched via `getUser()`, `getMoreDetails()`, `getRepos()`, `getUses()`.
-- **Dev.to (REST):** Blog posts — fetched via `getBlogPosts()`.
+- **Hygraph (GraphQL):** Profile, experience, uses — fetched via `getUser()`, `getMoreDetails()`, `getUses()`. The GitHub projects query (`getRepos`) was removed with the Projects page.
+- **Dev.to (REST):** Blog posts — fetched via `getBlogPosts()` (cached via `use cache` + `cacheLife('hours')`).
 
 **Feature impact (proposal: `openspec/changes/current/proposal.md`):**
 

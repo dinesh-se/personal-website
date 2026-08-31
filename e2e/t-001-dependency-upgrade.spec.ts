@@ -20,17 +20,6 @@ test.describe('T-001 — Dependency Upgrade: All Pages Render', () => {
 		await expect(page.locator('footer')).toBeVisible();
 	});
 
-	test('should render projects page without runtime errors', async ({
-		page,
-	}) => {
-		await page.goto('/projects');
-		await expect(
-			page.getByRole('heading', { level: 1, name: /GitHub Projects/i })
-		).toBeVisible();
-		await expect(page.getByRole('navigation')).toBeVisible();
-		await expect(page.locator('footer')).toBeVisible();
-	});
-
 	test('should render blog page without runtime errors', async ({ page }) => {
 		await page.goto('/blog');
 		await expect(
@@ -66,22 +55,19 @@ test.describe('T-001 — Dependency Upgrade: All Pages Render', () => {
 		await page
 			.getByRole('navigation')
 			.getByRole('link', { name: 'About me' })
+			.first()
 			.click();
 		await expect(page).toHaveURL('/about');
 		await page
 			.getByRole('navigation')
-			.getByRole('link', { name: 'Projects' })
-			.first()
-			.click();
-		await expect(page).toHaveURL('/projects');
-		await page
-			.getByRole('navigation')
 			.getByRole('link', { name: 'Blog' })
+			.first()
 			.click();
 		await expect(page).toHaveURL('/blog');
 		await page
 			.getByRole('navigation')
 			.getByRole('link', { name: 'Uses' })
+			.first()
 			.click();
 		await expect(page).toHaveURL('/uses');
 

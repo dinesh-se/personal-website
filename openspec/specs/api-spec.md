@@ -19,7 +19,9 @@ This is a **static site with no internal API**. All APIs are external:
 - **Method:** Bearer token in Authorization header
 - **Configured in:** `src/api/graphql.ts`
 - **Env var:** `HYGRAPH_AUTH_TOKEN`
-- **Headers:** `{ authorization: \`Bearer ${process.env.HYGRAPH_AUTH_TOKEN}\` }`
+- **Headers:** `{ authorization: Bearer ${process.env.HYGRAPH_AUTH_TOKEN} }`
+  - The `Bearer ` scheme is required (verified live: Bearer → 200).
+- **Timeout:** `AbortSignal.timeout(10_000)` applied per request
 
 ### Dev.to (REST)
 
@@ -46,9 +48,9 @@ All queries target the same endpoint with different GraphQL operations.
   - `profile.summary`
   - `profile.contactDetail.email, mobileNumber, socialMedia.linkedin, socialMedia.github`
   - `profile.experience.organizations.orgName, title, from, to, orgLogo.url`
-  - `profile.githubRecentProjects.repositories(first: 3, orderBy: UPDATED_AT DESC).nodes.id, name, description, url`
 - **Response shape:** `Author` type (wraps `profile` object)
-- **Used by:** `src/app/page.tsx` (Home)
+- **Used by:** `src/app/page.tsx` (Home) — the GitHub `githubRecentProjects` field was removed with the Projects page
+- **Error handling:** Returns `{ success: false, errorType }` on failure (never throws); page renders graceful fallback
 
 #### Query: ProfileUsers (getMoreDetails)
 
@@ -62,18 +64,6 @@ All queries target the same endpoint with different GraphQL operations.
   - `profile.contactDetail.email, mobileNumber, socialMedia.linkedin, socialMedia.github`
 - **Response shape:** `Author` type
 - **Used by:** `src/app/about/page.tsx` (About)
-
-#### Query: content_profile_githubRecentProjects (getRepos)
-
-- **HTTP Method:** POST
-- **Path:** `/v2/{adminId}/master`
-- **Auth:** Bearer token required
-- **Variables:** `{ id: process.env.HYGRAPH_USER_ID }`
-- **Fields requested:**
-  - `profile.contactDetail.email`
-  - `profile.githubRecentProjects.repositories(first: 10, orderBy: UPDATED_AT DESC).nodes.id, name, description, url, primaryLanguage.name, primaryLanguage.color`
-- **Response shape:** `Author` type
-- **Used by:** `src/app/projects/page.tsx` (Projects)
 
 #### Query: ProfileUsers (getUses)
 
@@ -95,18 +85,21 @@ All queries target the same endpoint with different GraphQL operations.
 - **Auth:** api-key header required
 - **Response shape:** `BlogPost[]` array
 - **Transformation:** Mapped to `BlogPostUI[]` (date formatting, field renaming)
-- **Error handling:** Throws `Error('Failed to fetch blog posts')` if `!res.ok`
-- **Used by:** `src/app/blog/page.tsx` (Blog)
+- **Error handling:** Classified into `network | rate_limit | auth | server | unknown` via `getBlogFetchResult`; never throws
+- **Timeout:** `AbortSignal.timeout(10_000)` applied per request
+- **Caching:** Resolved through `getCachedBlogResult` / `getBlogFeed` (`use cache` + `cacheLife('hours')`), so the upstream Dev.to fetch is shared across visitors instead of repeated per request. The route handler returns `{ success, total, posts }`; the blog page and home strip use the same cached feed.
+- **Used by:** `src/app/api/articles/me/published/route.ts` (route handler), `src/app/blog/page.tsx` (Blog), `src/app/page.tsx` (Home "Latest from the blog")
 
 **Feature impact (proposal: `openspec/changes/current/proposal.md`):** No change. The feature explicitly excludes changing external API integrations. No new endpoints are added. Existing endpoints remain functionally identical; the `graphql-request` library version is not bumped for this feature.
 
 ## 4. Common Error Format
 
-- **REST API:** Throws `Error('Failed to fetch blog posts')` on non-200 response.
-- **GraphQL:** `graphql-request` library throws on GraphQL errors (response-level errors). No custom error formatting.
-- **No unified error handler:** Each API call handles errors independently. Server components propagate errors to Next.js error boundary.
+Both fetch layers classify failures into a shared taxonomy so server components can render graceful fallbacks (never crash the page):
 
-**Feature impact (proposal: `openspec/changes/current/proposal.md`):** No change. The feature does not add new error categories or modify existing error handling paths. The error handling strategy (propagate to Next.js error boundary) remains the same.
+- **REST (Dev.to, `src/api/rest.ts`):** `getBlogFetchResult` returns `{ success: false, errorType }` with `errorType ∈ network | rate_limit | auth | server | unknown`. Never throws.
+- **GraphQL (Hygraph, `src/api/graphql.ts`):** `getUser` / `getMoreDetails` / `getUses` return `{ success: false, errorType }` via `classifyHygraphError` (`network | rate_limit | auth | server | malformed | unknown`). Never throws.
+- **Timeouts:** Both layers apply `AbortSignal.timeout(10_000)`; a timeout classifies as `network`.
+- **Graceful fallback:** Pages (Home, About, Uses) and the blog strip render empty/fallback content on failure rather than propagating to the error boundary.
 
 ## 5. Rate Limits
 

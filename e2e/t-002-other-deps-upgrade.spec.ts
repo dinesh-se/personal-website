@@ -16,8 +16,12 @@ test.describe('T-002 — Upgrade All Other Direct Dependencies', () => {
 		await expect(page.getByRole('link', { name: 'github' })).toBeVisible();
 		await expect(page.getByRole('link', { name: 'email' })).toBeVisible();
 
-		// Tech stack section renders (uses @svgr/webpack for SVG loading)
-		await expect(page.locator('h2')).toContainText(/technologies/i);
+		// Tech stack section renders (uses @svgr/webpack for SVG loading).
+		// The about page also has a "Self-hosted AI stack" h2 callout, so scope
+		// to the technologies heading specifically.
+		await expect(
+			page.getByRole('heading', { name: /Some of my favorite/i })
+		).toBeVisible();
 	});
 
 	test('home page renders Contact component with social icons from react-social-icons', async ({
@@ -42,7 +46,6 @@ test.describe('T-002 — Upgrade All Other Direct Dependencies', () => {
 		const routes = [
 			{ path: '/', title: 'Dinesh Haribabu' },
 			{ path: '/about', title: /about me/i },
-			{ path: '/projects', title: /GitHub Projects/i },
 			{ path: '/blog', title: /Blog Posts/i },
 			{ path: '/uses', title: /Uses/i },
 		];
@@ -71,12 +74,6 @@ test.describe('T-002 — Upgrade All Other Direct Dependencies', () => {
 		await expect(page).toHaveURL('/about');
 		await expect(
 			page.getByRole('heading', { level: 1, name: /about me/i })
-		).toBeVisible();
-
-		await nav.getByRole('link', { name: 'Projects' }).click();
-		await expect(page).toHaveURL('/projects');
-		await expect(
-			page.getByRole('heading', { level: 1, name: /GitHub Projects/i })
 		).toBeVisible();
 
 		await nav.getByRole('link', { name: 'Blog' }).click();
@@ -110,9 +107,10 @@ test.describe('T-002 — Upgrade All Other Direct Dependencies', () => {
 			page.getByRole('link', { name: "Wes Bos's Uses.Tech" })
 		).toBeVisible();
 
-		// Uses data from the fixture should render category titles and items
-		await expect(page.locator('h2')).toContainText(/Development/i);
-		await expect(page.getByText('VS Code')).toBeVisible();
+		// Uses categories render from live Hygraph data (category titles are
+		// content-managed, so assert that at least one category heading renders
+		// rather than a fixture-specific title).
+		await expect(page.getByRole('heading', { level: 2 }).first()).toBeVisible();
 	});
 
 	test('blog page renders content from dev.to API fetch', async ({ page }) => {
@@ -122,23 +120,10 @@ test.describe('T-002 — Upgrade All Other Direct Dependencies', () => {
 			page.getByRole('heading', { level: 1, name: /Blog Posts/i })
 		).toBeVisible();
 
-		// Blog post cards from the dev.to fixture should render
-		await expect(
-			page.getByRole('link', { name: /Building Modern Web Apps/i })
-		).toBeVisible();
-	});
-
-	test('projects page renders project cards', async ({ page }) => {
-		await page.goto('/projects');
-
-		await expect(
-			page.getByRole('heading', { level: 1, name: /GitHub Projects/i })
-		).toBeVisible();
-
-		// Project cards from the Hygraph fixture should render
-		// ProjectCard renders the repo name as a link
-		const projectLinks = page.locator('a[href*="github"]');
-		await expect(projectLinks.first()).toBeVisible();
+		// Blog post cards render from live Dev.to data. Post titles are
+		// content-managed, so assert that at least one post card (a link to
+		// dev.to) renders rather than a fixture-specific title.
+		await expect(page.locator('a[href*="dev.to"]').first()).toBeVisible();
 	});
 
 	test('footer navigation links are functional after dependency upgrade', async ({
@@ -154,9 +139,9 @@ test.describe('T-002 — Upgrade All Other Direct Dependencies', () => {
 			footer.getByRole('link', { name: /No Copyright/i })
 		).toBeVisible();
 
-		// Footer nav links: 5 from NavLinks (Home, About me, Projects, Blog, Uses)
-		// plus 1 "No Copyright" = 6 total
+		// Footer nav links: 4 from NavLinks (Home, About me, Blog, Uses)
+		// plus 1 "No Copyright" = 5 total (Projects link removed)
 		const footerLinks = footer.getByRole('link');
-		await expect(footerLinks).toHaveCount(6);
+		await expect(footerLinks).toHaveCount(5);
 	});
 });

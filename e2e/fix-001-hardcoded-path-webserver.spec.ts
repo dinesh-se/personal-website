@@ -20,7 +20,6 @@ test.describe('Home Page — e2e smoke', () => {
 		await expect(page.locator('nav')).toBeVisible();
 		const nav = page.getByRole('navigation');
 		await expect(nav.getByRole('link', { name: 'About me' })).toBeVisible();
-		await expect(nav.getByRole('link', { name: 'Projects' })).toBeVisible();
 		await expect(nav.getByRole('link', { name: 'Blog' })).toBeVisible();
 		await expect(nav.getByRole('link', { name: 'Uses' })).toBeVisible();
 	});
@@ -38,14 +37,6 @@ test.describe('Home Page — e2e smoke', () => {
 		await expect(
 			page.getByRole('heading', { level: 1, name: /about/i })
 		).toBeVisible();
-	});
-
-	test('should navigate to projects page', async ({ page }) => {
-		await page
-			.getByRole('navigation')
-			.getByRole('link', { name: 'Projects' })
-			.click();
-		await expect(page).toHaveURL('/projects');
 	});
 
 	test('should navigate to blog page', async ({ page }) => {
@@ -146,9 +137,6 @@ test.describe('Nav Active State', () => {
 		await expect(aboutLink).toHaveClass(/bg-stone-300/);
 
 		// Other links should NOT have active state class
-		const projectsLink = nav.getByRole('link', { name: 'Projects' });
-		await expect(projectsLink).not.toHaveClass(/bg-stone-300/);
-
 		const blogLink = nav.getByRole('link', { name: 'Blog' });
 		await expect(blogLink).not.toHaveClass(/bg-stone-300/);
 

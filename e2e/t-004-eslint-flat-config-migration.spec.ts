@@ -27,7 +27,6 @@ test.describe('T-004 — ESLint v8 Flat Config Migration', () => {
 		const routes = [
 			{ path: '/', title: 'Dinesh Haribabu' },
 			{ path: '/about', title: /about me/i },
-			{ path: '/projects', title: /GitHub Projects/i },
 			{ path: '/blog', title: /Blog Posts/i },
 			{ path: '/uses', title: /Uses/i },
 		];
@@ -72,12 +71,6 @@ test.describe('T-004 — ESLint v8 Flat Config Migration', () => {
 		await expect(page).toHaveURL('/about');
 		await expect(
 			page.getByRole('heading', { level: 1, name: /about me/i })
-		).toBeVisible();
-
-		await nav.getByRole('link', { name: 'Projects' }).first().click();
-		await expect(page).toHaveURL('/projects');
-		await expect(
-			page.getByRole('heading', { level: 1, name: /GitHub Projects/i })
 		).toBeVisible();
 
 		await nav.getByRole('link', { name: 'Blog' }).first().click();
