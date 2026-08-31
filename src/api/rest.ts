@@ -9,11 +9,14 @@ export type BlogFetchResult =
 	| { success: true; posts: BlogPostUI[] }
 	| { success: false; errorType: FetchErrorType };
 
+const BLOG_FETCH_TIMEOUT_MS = 10_000;
+
 const getBlogPosts = async (): Promise<BlogPostUI[]> => {
 	const res = await fetch('https://dev.to/api/articles/me/published', {
 		headers: {
 			'api-key': process.env.DEVTO_KEY || '',
 		},
+		signal: AbortSignal.timeout(BLOG_FETCH_TIMEOUT_MS),
 	});
 
 	if (!res.ok) {
