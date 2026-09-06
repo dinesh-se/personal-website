@@ -1,9 +1,9 @@
 import { expect, test } from '@playwright/test';
 
 /**
- * T-007 — Verify all 8 component snapshots reflect correct React 19 rendering.
+ * T-007 — Verify component snapshots reflect correct React 19 rendering.
  *
- * This spec exercises each component on the pages where it renders,
+ * This spec exercises each component on the single-page homepage,
  * confirming the visual output matches what the Jest snapshots capture.
  */
 
@@ -26,10 +26,10 @@ test.describe('T-007 — Component Rendering After React 19 Upgrade', () => {
 		// Logo link
 		await expect(page.getByRole('link', { name: 'Home page' })).toBeVisible();
 
-		// Desktop nav links
-		await expect(nav.getByRole('link', { name: 'About me' })).toBeVisible();
-		await expect(nav.getByRole('link', { name: 'Blog' })).toBeVisible();
-		await expect(nav.getByRole('link', { name: 'Uses' })).toBeVisible();
+		// Desktop nav links (anchor links on the single page)
+		await expect(nav.getByRole('link', { name: 'About' })).toBeVisible();
+		await expect(nav.getByRole('link', { name: 'Writing' })).toBeVisible();
+		await expect(nav.getByRole('link', { name: 'Contact' })).toBeVisible();
 
 		// Mobile menu button (visible only at mobile viewport)
 		await page.setViewportSize({ width: 375, height: 812 });
@@ -49,9 +49,9 @@ test.describe('T-007 — Component Rendering After React 19 Upgrade', () => {
 
 		// Footer nav links
 		await expect(footer.getByRole('link', { name: 'Home' })).toBeVisible();
-		await expect(footer.getByRole('link', { name: 'About me' })).toBeVisible();
-		await expect(footer.getByRole('link', { name: 'Blog' })).toBeVisible();
-		await expect(footer.getByRole('link', { name: 'Uses' })).toBeVisible();
+		await expect(footer.getByRole('link', { name: 'About' })).toBeVisible();
+		await expect(footer.getByRole('link', { name: 'Writing' })).toBeVisible();
+		await expect(footer.getByRole('link', { name: 'Contact' })).toBeVisible();
 
 		// External copyright link
 		await expect(
@@ -63,32 +63,29 @@ test.describe('T-007 — Component Rendering After React 19 Upgrade', () => {
 	 * Component: NavLinks (used in both Header and Footer)
 	 * Source page: / (via Header and Footer)
 	 * Snapshot: src/components/NavLinks/__snapshots__/NavLinks.test.tsx.snap
+	 * Note: on a single-page site all anchor links resolve to '/', so no link
+	 * is "active"; NavLinks renders anchor links without an active state.
 	 */
-	test('NavLinks renders active state on current page', async ({ page }) => {
-		await page.goto('/about');
+	test('NavLinks renders anchor links on the home page', async ({ page }) => {
+		await page.goto('/');
 
 		const nav = page.getByRole('navigation');
 
-		// Active link should have the active class
-		await expect(nav.getByRole('link', { name: 'About me' })).toHaveClass(
-			/bg-stone-300/
-		);
-
-		// Inactive links should NOT have the active class
-		await expect(nav.getByRole('link', { name: 'Blog' })).not.toHaveClass(
-			/bg-stone-300/
-		);
+		// All three anchor links render
+		await expect(nav.getByRole('link', { name: 'About' })).toBeVisible();
+		await expect(nav.getByRole('link', { name: 'Writing' })).toBeVisible();
+		await expect(nav.getByRole('link', { name: 'Contact' })).toBeVisible();
 	});
 
 	/**
 	 * Component: Contact (react-social-icons)
-	 * Source page: /about
+	 * Source page: / (home)
 	 * Snapshot: src/components/Contact/__snapshots__/Contact.test.tsx.snap
 	 */
 	test('Contact component renders social icon links (react-social-icons + React 19)', async ({
 		page,
 	}) => {
-		await page.goto('/about');
+		await page.goto('/');
 
 		// SocialIcon renders <a> elements with aria-labels for each network
 		await expect(page.getByRole('link', { name: 'linkedin' })).toBeVisible();
@@ -97,73 +94,43 @@ test.describe('T-007 — Component Rendering After React 19 Upgrade', () => {
 	});
 
 	/**
-	 * Component: Experience
-	 * Source page: / (home)
-	 * Snapshot: src/components/Experience/__snapshots__/Experience.test.tsx.snap
-	 * Note: Experience renders as a <div> with <h4> (not <section>/<h2>)
-	 */
-	test('Experience renders organization timeline entries', async ({ page }) => {
-		await page.goto('/');
-
-		// Experience section: div with h4 "Experience" (use .first() for strict mode)
-		const experienceSection = page
-			.locator('div')
-			.filter({
-				has: page.locator('h4').filter({ hasText: /experience/i }),
-			})
-			.first();
-		await expect(experienceSection).toBeVisible();
-
-		// Each entry has org name and title
-		const entries = experienceSection.locator('div').filter({
-			has: page.locator('h4').filter({ hasText: /[A-Z]/ }),
-		});
-		await expect(entries.first()).toBeVisible();
-	});
-
-	/**
 	 * Component: BlogPostCard
-	 * Source page: /blog
+	 * Source page: / (Writing section)
 	 * Snapshot: src/components/BlogPostCard/__snapshots__/BlogPostCard.test.tsx.snap
 	 * Note: BlogPostCard renders as a <div> with <h2> (not <article>)
 	 */
 	test('BlogPostCard renders post title, description, and metrics', async ({
 		page,
 	}) => {
-		await page.goto('/blog');
+		await page.goto('/');
 
-		// Blog post cards are <div> elements with <h2> titles
-		const cardH2s = page.locator('h2');
+		// Blog post cards live in the Writing section on the home page
+		const writing = page.locator('#writing');
+		await expect(writing).toBeVisible();
+
+		// Post cards are <div> elements with <h2> titles
+		const cardH2s = writing.locator('h2');
 		await expect(cardH2s.first()).toBeVisible();
 
 		// Each card has a title link
-		const titles = page.locator('a[href*="dev.to"]');
+		const titles = writing.locator('a[href*="dev.to"]');
 		await expect(titles.first()).toBeVisible();
 	});
 
 	/**
-	 * Cross-component: @graphcms/rich-text-react-renderer on /about
-	 * Acceptance criterion: renders correctly on /about page snapshot
+	 * Cross-component: @graphcms/rich-text-react-renderer on /
+	 * Acceptance criterion: renders correctly on the home page About section
 	 */
-	test('About page renders rich text bio via @graphcms/rich-text-react-renderer', async ({
+	test('About section renders rich text bio via @graphcms/rich-text-react-renderer', async ({
 		page,
 	}) => {
-		await page.goto('/about');
+		await page.goto('/');
+
+		const about = page.locator('#about');
+		await expect(about).toBeVisible();
 
 		// The bio content should be rendered as HTML paragraphs
-		await expect(
-			page.getByRole('heading', { level: 1, name: /about me/i })
-		).toBeVisible();
-
-		// Rich text paragraphs should be visible (not raw markdown)
-		const bioContent = page.locator('main').filter({
-			has: page.getByRole('heading', { level: 1, name: /about me/i }),
-		});
-		await expect(bioContent).toBeVisible();
-
-		// Tech stack section should render
-		await expect(
-			page.locator('h2').filter({ hasText: /technologies/i })
-		).toBeVisible();
+		await expect(about.locator('h2').filter({ hasText: /About/i })).toBeVisible();
+		await expect(about.locator('p').first()).toBeVisible();
 	});
 });

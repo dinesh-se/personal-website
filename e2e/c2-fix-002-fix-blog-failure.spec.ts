@@ -4,35 +4,21 @@ import { expect, test } from '@playwright/test';
  * FIX-002 — fix-e2e-blog-failure-playwright-config-and-fetch-mocking
  *
  * Verifies the e2e test infrastructure (webServer on port 3099) and that the
- * blog page renders gracefully. Since #24 the blog page server-renders from a
- * cached feed (`use cache` + cacheLife('hours')); the client-side fallback is
- * kept as a safety net but the primary fetch is server-side, so browser-side
- * route interception of the upstream Dev.to API can no longer drive the page.
- * The fallback logic is verified by unit tests (src/api/__tests__/blog.test.ts).
- *
- * Scenarios (GIVEN/WHEN/THEN transcribed into tests):
- *
- * 1. Graceful render
- *    GIVEN: The site is running on port 3099
- *    WHEN: I visit /blog
- *    THEN: The page renders without console errors — heading and intro text
- *          present, and either posts or the fallback message appear. Never an
- *          empty, broken page.
- *
- * 2. Blog cards render from the live feed
- *    GIVEN: The Dev.to feed returns posts
- *    WHEN: I visit /blog
- *    THEN: At least one post card (a link to dev.to) renders.
+ * home page's blog section renders gracefully. Since #24 the blog feed
+ * server-renders from a cached feed (`use cache` + cacheLife('hours')); the
+ * client-side fallback is kept as a safety net but the primary fetch is
+ * server-side. The fallback logic is verified by unit tests
+ * (src/api/__tests__/blog.test.ts).
  */
 
 test.describe('FIX-002 — Blog e2e: API interception & fallback', () => {
 	/**
 	 * GIVEN: The site is running
-	 * WHEN: I visit /blog
-	 * THEN: The page renders gracefully — heading + intro text present, no
-	 *       console errors, and either posts or the fallback message appear.
+	 * WHEN: I visit /
+	 * THEN: The page renders gracefully — hero visible, no console errors,
+	 *       and the blog section either shows posts or the fallback message.
 	 */
-	test('blog page renders gracefully without crashing', async ({ page }) => {
+	test('home page renders gracefully without crashing', async ({ page }) => {
 		const consoleErrors: string[] = [];
 		page.on('console', (msg) => {
 			if (msg.type() === 'error') {
@@ -40,17 +26,13 @@ test.describe('FIX-002 — Blog e2e: API interception & fallback', () => {
 			}
 		});
 
-		await page.goto('/blog');
+		await page.goto('/');
 
-		// Layout preserved: heading and intro text always render
+		// Hero always renders (layout preserved)
 		await expect(
-			page.getByRole('heading', { level: 1, name: 'Blog Posts' })
+			page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })
 		).toBeVisible();
-		await expect(
-			page.getByText(
-				/I write about web development, software engineering, and other topics/
-			)
-		).toBeVisible();
+		await expect(page.locator('#writing')).toBeVisible();
 
 		// No console errors (graceful, no unhandled rejection / crash)
 		expect(consoleErrors).toEqual([]);
@@ -58,17 +40,17 @@ test.describe('FIX-002 — Blog e2e: API interception & fallback', () => {
 
 	/**
 	 * GIVEN: The Dev.to feed returns posts
-	 * WHEN: I visit /blog
-	 * THEN: At least one post card (a link to dev.to) renders.
+	 * WHEN: I visit /
+	 * THEN: At least one post card (a link to dev.to) renders in the blog section.
 	 */
 	test('renders blog post cards from the live feed', async ({ page }) => {
-		await page.goto('/blog');
+		await page.goto('/');
 
-		await expect(
-			page.getByRole('heading', { level: 1, name: 'Blog Posts' })
-		).toBeVisible();
+		await expect(page.locator('#writing')).toBeVisible();
 
 		// Post cards render as links to dev.to (titles are content-managed)
-		await expect(page.locator('a[href*="dev.to"]').first()).toBeVisible();
+		await expect(
+			page.locator('#writing a[href*="dev.to"]').first()
+		).toBeVisible();
 	});
 });

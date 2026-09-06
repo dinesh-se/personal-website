@@ -21,11 +21,13 @@ describe('Header', () => {
 		render(<Header />);
 
 		// Links appear in both desktop and mobile nav
-		expect(screen.getAllByText('About me').length).toBeGreaterThanOrEqual(1);
-		expect(screen.getAllByText('Blog').length).toBeGreaterThanOrEqual(1);
-		expect(screen.getAllByText('Uses').length).toBeGreaterThanOrEqual(1);
-		// The Projects page has been removed from the site.
-		expect(screen.queryAllByText('Projects').length).toBe(0);
+		expect(screen.getAllByText('About').length).toBeGreaterThanOrEqual(1);
+		expect(screen.getAllByText('Writing').length).toBeGreaterThanOrEqual(1);
+		expect(screen.getAllByText('Contact').length).toBeGreaterThanOrEqual(1);
+		// Removed routes/links must not appear.
+		expect(screen.queryAllByText('Uses').length).toBe(0);
+		expect(screen.queryAllByText('About me').length).toBe(0);
+		expect(screen.queryAllByText('Blog').length).toBe(0);
 	});
 
 	it('renders home page logo link', () => {

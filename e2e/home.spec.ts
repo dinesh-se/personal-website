@@ -9,7 +9,7 @@ test.describe('Home Page', () => {
 		await expect(page).toHaveTitle(/Dinesh Haribabu/);
 	});
 
-	test('should display the greeting', async ({ page }) => {
+	test('should display the hero heading', async ({ page }) => {
 		await expect(
 			page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })
 		).toBeVisible();
@@ -18,40 +18,58 @@ test.describe('Home Page', () => {
 	test('should render the header navigation', async ({ page }) => {
 		await expect(page.locator('nav')).toBeVisible();
 		const nav = page.getByRole('navigation');
-		await expect(nav.getByRole('link', { name: 'About me' })).toBeVisible();
-		await expect(nav.getByRole('link', { name: 'Blog' })).toBeVisible();
-		await expect(nav.getByRole('link', { name: 'Uses' })).toBeVisible();
+		await expect(nav.getByRole('link', { name: 'About' })).toBeVisible();
+		await expect(nav.getByRole('link', { name: 'Writing' })).toBeVisible();
+		await expect(nav.getByRole('link', { name: 'Contact' })).toBeVisible();
 	});
 
 	test('should render the footer', async ({ page }) => {
 		await expect(page.locator('footer')).toBeVisible();
 	});
 
-	test('should navigate to about page', async ({ page }) => {
-		await page
-			.getByRole('navigation')
-			.getByRole('link', { name: 'About me' })
-			.click();
-		await expect(page).toHaveURL('/about');
-		await expect(
-			page.getByRole('heading', { level: 1, name: /about me/i })
-		).toBeVisible();
+	test('should render the About section', async ({ page }) => {
+		await expect(page.locator('#about')).toBeVisible();
 	});
 
-	test('should navigate to blog page', async ({ page }) => {
-		await page
-			.getByRole('navigation')
-			.getByRole('link', { name: 'Blog' })
-			.click();
-		await expect(page).toHaveURL('/blog');
+	test('should render the Blog section with 3 latest posts', async ({
+		page,
+	}) => {
+		const writing = page.locator('#writing');
+		await expect(writing).toBeVisible();
+		await expect(writing.locator('[data-testid="blog-post-card"]')).toHaveCount(
+			3
+		);
 	});
 
-	test('should navigate to uses page', async ({ page }) => {
+	test('should render the Contact section', async ({ page }) => {
+		await expect(page.locator('#contact')).toBeVisible();
+	});
+
+	test('should scroll to About via anchor link', async ({ page }) => {
 		await page
 			.getByRole('navigation')
-			.getByRole('link', { name: 'Uses' })
+			.getByRole('link', { name: 'About' })
+			.first()
 			.click();
-		await expect(page).toHaveURL('/uses');
+		await expect(page.locator('#about')).toBeInViewport();
+	});
+
+	test('should scroll to Writing via anchor link', async ({ page }) => {
+		await page
+			.getByRole('navigation')
+			.getByRole('link', { name: 'Writing' })
+			.first()
+			.click();
+		await expect(page.locator('#writing')).toBeInViewport();
+	});
+
+	test('should scroll to Contact via anchor link', async ({ page }) => {
+		await page
+			.getByRole('navigation')
+			.getByRole('link', { name: 'Contact' })
+			.first()
+			.click();
+		await expect(page.locator('#contact')).toBeInViewport();
 	});
 });
 
@@ -115,27 +133,5 @@ test.describe('Footer Links', () => {
 		await expect(
 			footer.getByRole('link', { name: /No Copyright/i })
 		).toBeVisible();
-	});
-});
-
-test.describe('Nav Active State', () => {
-	test('should show active state on current navigation link', async ({
-		page,
-	}) => {
-		await page.goto('/about');
-
-		// Navigate to the nav
-		const nav = page.getByRole('navigation');
-
-		// 'About me' link should have active state class (bg-stone-300)
-		const aboutLink = nav.getByRole('link', { name: 'About me' });
-		await expect(aboutLink).toHaveClass(/bg-stone-300/);
-
-		// Other links should NOT have active state class
-		const blogLink = nav.getByRole('link', { name: 'Blog' });
-		await expect(blogLink).not.toHaveClass(/bg-stone-300/);
-
-		const usesLink = nav.getByRole('link', { name: 'Uses' });
-		await expect(usesLink).not.toHaveClass(/bg-stone-300/);
 	});
 });

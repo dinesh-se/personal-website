@@ -75,42 +75,18 @@ export function classifyHygraphError(error: unknown): HygraphErrorType {
 	return 'unknown';
 }
 
-const GET_USER = gql`
-	query UserData($id: ID!) {
+const GET_PROFILE = gql`
+	query ProfileData($id: ID!) {
 		profile: profile(where: { id: $id }, stage: PUBLISHED, locales: en) {
+			fullName
 			summary
-			contactDetail {
-				email
-				mobileNumber
-				socialMedia {
-					linkedin
-					github
-				}
-			}
-			experience {
-				organizations {
-					orgName
-					title
-					from
-					to
-					orgLogo {
-						url
-					}
-				}
-			}
-		}
-	}
-`;
-
-const GET_MORE_DETAILS = gql`
-	query ProfileUsers($id: ID!) {
-		profile(where: { id: $id }, stage: PUBLISHED, locales: en) {
-			displayPicture {
-				url
-			}
+			interests
 			moreDetails {
 				raw
 			}
+			displayPicture {
+				url
+			}
 			contactDetail {
 				email
 				mobileNumber
@@ -123,43 +99,9 @@ const GET_MORE_DETAILS = gql`
 	}
 `;
 
-const GET_USES = gql`
-	query ProfileUsers($id: ID!) {
-		profile(where: { id: $id }, stage: PUBLISHED, locales: en) {
-			uses {
-				id
-				title
-				list {
-					id
-					name
-					description
-				}
-			}
-		}
-	}
-`;
-
-export const getUser = async (): Promise<HygraphFetchResult<Author>> => {
+export const getProfile = async (): Promise<HygraphFetchResult<Author>> => {
 	try {
-		const data = await client.request<Author>(GET_USER, hygraphUser);
-		return { success: true, data };
-	} catch (error) {
-		return { success: false, errorType: classifyHygraphError(error) };
-	}
-};
-
-export const getMoreDetails = async (): Promise<HygraphFetchResult<Author>> => {
-	try {
-		const data = await client.request<Author>(GET_MORE_DETAILS, hygraphUser);
-		return { success: true, data };
-	} catch (error) {
-		return { success: false, errorType: classifyHygraphError(error) };
-	}
-};
-
-export const getUses = async (): Promise<HygraphFetchResult<Author>> => {
-	try {
-		const data = await client.request<Author>(GET_USES, hygraphUser);
+		const data = await client.request<Author>(GET_PROFILE, hygraphUser);
 		return { success: true, data };
 	} catch (error) {
 		return { success: false, errorType: classifyHygraphError(error) };

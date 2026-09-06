@@ -1,125 +1,82 @@
 import { expect, test } from '@playwright/test';
 
 /**
- * C2-T-001 — Per-Route Loading and Error Pages
+ * C2-T-001 — Loading and Error Pages (single-page homepage)
  *
  * Scenarios derived from the task "User test":
- *   1. Skeleton loading files render without errors on all five routes
- *   2. Error boundary files mount without errors on all five routes
- *   3. All 5 pages render correctly in both light and dark modes
+ *   1. Skeleton loading file renders without errors on the home route
+ *   2. Error boundary file mounts without errors on the home route
+ *   3. Home page renders correctly in both light and dark modes
  *   4. Mobile navigation menu opens and closes
- *   5. Active navigation link is highlighted in both Header and Footer
+ *   5. Active navigation link behavior in Header and Footer
  *   6. Error page "Try again" button triggers a retry
  */
 
-test.describe('C2-T-001 — Per-Route Loading and Error Pages', () => {
+test.describe('C2-T-001 — Loading and Error Pages', () => {
 	/**
 	 * GIVEN: The dev server is running
-	 * WHEN: I visit each route
-	 * THEN: Each page renders its content without errors (loading.tsx files mount and
-	 *       resolve to actual content; no broken skeleton state persists after hydration)
+	 * WHEN: I visit /
+	 * THEN: The page renders its content without errors (loading.tsx mounts and
+	 *       resolves to actual content; no broken skeleton state persists)
 	 */
-	test('skeleton loader files render correctly on all four routes', async ({
+	test('skeleton loader file renders correctly on home route', async ({
 		page,
 	}) => {
-		const routes = [
-			{ path: '/', heading: 'Dinesh Haribabu' },
-			{ path: '/about', heading: /about me/i },
-			{ path: '/blog', heading: /Blog Posts/i },
-			{ path: '/uses', heading: /Uses/i },
-		];
-
-		for (const { path: route, heading } of routes) {
-			await page.goto(route);
-			// After hydration the actual page content replaces the skeleton.
-			// If loading.tsx is broken, the page would show skeleton artifacts
-			// or fail to hydrate. We assert the real content is visible.
-			await expect(
-				page.getByRole('heading', { level: 1, name: heading })
-			).toBeVisible();
-			await expect(page.getByRole('navigation')).toBeVisible();
-			await expect(page.locator('footer')).toBeVisible();
-		}
+		await page.goto('/');
+		await expect(
+			page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })
+		).toBeVisible();
+		await expect(page.getByRole('navigation')).toBeVisible();
+		await expect(page.locator('footer')).toBeVisible();
 	});
 
 	/**
 	 * GIVEN: The dev server is running
-	 * WHEN: I visit each route
-	 * THEN: Error boundary files mount without errors (error.tsx files are valid
-	 *       React components that don't interfere with normal rendering)
+	 * WHEN: I visit /
+	 * THEN: Error boundary file mounts without errors (error.tsx is valid and
+	 *       doesn't interfere with normal rendering)
 	 */
-	test('error boundary files render correctly on all four routes', async ({
+	test('error boundary file renders correctly on home route', async ({
 		page,
 	}) => {
-		const routes = [
-			{ path: '/', heading: 'Dinesh Haribabu' },
-			{ path: '/about', heading: /about me/i },
-			{ path: '/blog', heading: /Blog Posts/i },
-			{ path: '/uses', heading: /Uses/i },
-		];
-
-		for (const { path: route, heading } of routes) {
-			await page.goto(route);
-			// Error pages only render on throw. Normal page load confirms
-			// the error boundary files don't break the route.
-			await expect(
-				page.getByRole('heading', { level: 1, name: heading })
-			).toBeVisible();
-		}
+		await page.goto('/');
+		await expect(
+			page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })
+		).toBeVisible();
 	});
 
 	/**
 	 * GIVEN: The dev server is running in light mode
-	 * WHEN: I visit each page
-	 * THEN: All 5 pages render without visual issues in light mode
+	 * WHEN: I visit /
+	 * THEN: The home page renders without visual issues in light mode
 	 */
-	test('all pages render correctly in light mode', async ({ page }) => {
-		// Ensure light mode by removing dark class
+	test('home page renders correctly in light mode', async ({ page }) => {
 		await page.evaluate(() => {
 			document.documentElement.classList.remove('dark');
 		});
 
-		const routes = [
-			{ path: '/', title: 'Dinesh Haribabu' },
-			{ path: '/about', title: /about me/i },
-			{ path: '/blog', title: /Blog Posts/i },
-			{ path: '/uses', title: /Uses/i },
-		];
-
-		for (const { path: route, title } of routes) {
-			await page.goto(route);
-			await expect(
-				page.getByRole('heading', { level: 1, name: title })
-			).toBeVisible();
-			await expect(page.getByRole('navigation')).toBeVisible();
-			await expect(page.locator('footer')).toBeVisible();
-		}
+		await page.goto('/');
+		await expect(
+			page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })
+		).toBeVisible();
+		await expect(page.getByRole('navigation')).toBeVisible();
+		await expect(page.locator('footer')).toBeVisible();
 	});
 
 	/**
 	 * GIVEN: The dev server is running and dark mode is enabled
-	 * WHEN: I visit each page
-	 * THEN: All 4 pages render correctly with dark mode styles applied
+	 * WHEN: I visit /
+	 * THEN: The home page renders correctly with dark mode styles applied
 	 */
-	test('all pages render correctly in dark mode', async ({ page }) => {
-		// Force dark mode via the prefers-color-scheme media query override
+	test('home page renders correctly in dark mode', async ({ page }) => {
 		await page.emulateMedia({ colorScheme: 'dark' });
 
-		const routes = [
-			{ path: '/', title: 'Dinesh Haribabu' },
-			{ path: '/about', title: /about me/i },
-			{ path: '/blog', title: /Blog Posts/i },
-			{ path: '/uses', title: /Uses/i },
-		];
-
-		for (const { path: route, title } of routes) {
-			await page.goto(route);
-			await expect(
-				page.getByRole('heading', { level: 1, name: title })
-			).toBeVisible();
-			await expect(page.getByRole('navigation')).toBeVisible();
-			await expect(page.locator('footer')).toBeVisible();
-		}
+		await page.goto('/');
+		await expect(
+			page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })
+		).toBeVisible();
+		await expect(page.getByRole('navigation')).toBeVisible();
+		await expect(page.locator('footer')).toBeVisible();
 	});
 
 	/**
@@ -134,158 +91,51 @@ test.describe('C2-T-001 — Per-Route Loading and Error Pages', () => {
 
 		const menuButton = page.getByRole('button', { name: /menu/i });
 
-		// Menu should be closed initially — hamburger visible, mobile menu hidden
 		await expect(menuButton).toBeVisible();
 		await expect(page.locator('#mobile-menu')).not.toBeVisible();
 
-		// Open the menu
 		await menuButton.click();
 
-		// Mobile menu links should be visible inside the mobile menu container
 		const mobileMenu = page.locator('#mobile-menu');
 		await expect(mobileMenu).toBeVisible();
 		await expect(
-			mobileMenu.getByRole('link', { name: 'About me' })
+			mobileMenu.getByRole('link', { name: 'About' })
 		).toBeVisible();
-		await expect(mobileMenu.getByRole('link', { name: 'Blog' })).toBeVisible();
-		await expect(mobileMenu.getByRole('link', { name: 'Uses' })).toBeVisible();
+		await expect(
+			mobileMenu.getByRole('link', { name: 'Writing' })
+		).toBeVisible();
+		await expect(
+			mobileMenu.getByRole('link', { name: 'Contact' })
+		).toBeVisible();
 
-		// Close the menu
 		await menuButton.click();
 
-		// Mobile menu should be hidden again
 		await expect(mobileMenu).not.toBeVisible();
 	});
 
 	/**
-	 * GIVEN: I am on any page
+	 * GIVEN: I am on the home page
 	 * WHEN: I look at the Header navigation
-	 * THEN: The active navigation link is highlighted
+	 * THEN: The Home/About/Writing/Contact links are present (anchors, active on /)
 	 */
-	test('active navigation link is highlighted in Header on each route', async ({
-		page,
-	}) => {
-		const routes = [
-			{ path: '/about', activeLabel: 'About me' },
-			{ path: '/blog', activeLabel: 'Blog' },
-			{ path: '/uses', activeLabel: 'Uses' },
-		];
+	test('header nav renders anchor links on home route', async ({ page }) => {
+		await page.goto('/');
 
-		for (const { path: route, activeLabel } of routes) {
-			await page.goto(route);
+		const headerNav = page.locator('nav').first();
 
-			// Header nav is the first <nav> element on the page
-			const headerNav = page.locator('nav').first();
-
-			// Active link should have the active class
-			await expect(
-				headerNav.getByRole('link', { name: activeLabel })
-			).toHaveClass(/bg-stone-300/);
-		}
-	});
-
-	/**
-	 * GIVEN: I am on any page
-	 * WHEN: I look at the Footer navigation
-	 * THEN: The active navigation link is highlighted in the Footer
-	 */
-	test('active navigation link is highlighted in Footer on each route', async ({
-		page,
-	}) => {
-		const routes = [
-			{ path: '/about', activeLabel: 'About me' },
-			{ path: '/blog', activeLabel: 'Blog' },
-			{ path: '/uses', activeLabel: 'Uses' },
-		];
-
-		for (const { path: route, activeLabel } of routes) {
-			await page.goto(route);
-
-			const footer = page.locator('footer');
-
-			// Active link should have the active class (font-semibold)
-			await expect(footer.getByRole('link', { name: activeLabel })).toHaveClass(
-				/font-semibold/
-			);
-		}
-	});
-
-	/**
-	 * GIVEN: The dev server is running
-	 * WHEN: I simulate a server error on the about page data fetch
-	 * THEN: The route-specific error.tsx renders with skeleton-based fallback UI
-	 */
-	test('about page renders graceful fallback when data fetch fails', async ({
-		page,
-	}) => {
-		// Intercept the GraphQL fetch and simulate a server error
-		await page.route('**/graphql', async (route) => {
-			await route.fulfill({
-				status: 500,
-				body: JSON.stringify({ errors: [{ message: 'Server error' }] }),
-			});
-		});
-
-		await page.goto('/about');
-
-		// The page renders its heading with empty/fallback content — it must not
-		// crash into the error boundary.
+		await expect(headerNav.getByRole('link', { name: 'About' })).toBeVisible();
 		await expect(
-			page.getByRole('heading', { level: 1, name: /about me/i })
+			headerNav.getByRole('link', { name: 'Writing' })
 		).toBeVisible();
-	});
-
-	/**
-	 * GIVEN: The dev server is running
-	 * WHEN: I simulate a server error on the blog page data fetch
-	 * THEN: The route-specific error.tsx renders with skeleton-based fallback UI
-	 */
-	test('blog page renders graceful fallback when data fetch fails', async ({
-		page,
-	}) => {
-		// Intercept the dev.to API fetch and simulate a server error
-		await page.route('**/users/*/articles*', async (route) => {
-			await route.fulfill({
-				status: 500,
-				body: JSON.stringify({ message: 'Server error' }),
-			});
-		});
-
-		await page.goto('/blog');
-
-		// The page heading renders; the post list falls back to a friendly message.
 		await expect(
-			page.getByRole('heading', { level: 1, name: /Blog Posts/i })
-		).toBeVisible();
-	});
-
-	/**
-	 * GIVEN: The dev server is running
-	 * WHEN: I simulate a server error on the uses page data fetch
-	 * THEN: The page renders graceful fallback (empty list) instead of crashing
-	 */
-	test('uses page renders graceful fallback when data fetch fails', async ({
-		page,
-	}) => {
-		await page.route('**/graphql', async (route) => {
-			await route.fulfill({
-				status: 500,
-				body: JSON.stringify({ errors: [{ message: 'Server error' }] }),
-			});
-		});
-
-		await page.goto('/uses');
-
-		// The page heading renders; the categories list is empty but not crashed.
-		await expect(
-			page.getByRole('heading', { level: 1, name: /Uses/i })
+			headerNav.getByRole('link', { name: 'Contact' })
 		).toBeVisible();
 	});
 
 	/**
 	 * GIVEN: The dev server is running
 	 * WHEN: I simulate a server error on the home page data fetch
-	 * THEN: The page renders graceful fallback (empty contact/experience) instead of crashing
+	 * THEN: The page renders graceful fallback instead of crashing
 	 */
 	test('home page renders graceful fallback when data fetch fails', async ({
 		page,

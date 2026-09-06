@@ -60,21 +60,21 @@ exports[`Header renders correctly 1`] = `
             >
               <a
                 class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
-                href="/about"
+                href="#about"
               >
-                About me
+                About
               </a>
               <a
                 class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
-                href="/blog"
+                href="#writing"
               >
-                Blog
+                Writing
               </a>
               <a
                 class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
-                href="/uses"
+                href="#contact"
               >
-                Uses
+                Contact
               </a>
             </div>
           </div>
@@ -91,21 +91,21 @@ exports[`Header renders correctly 1`] = `
       >
         <a
           class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
-          href="/about"
+          href="#about"
         >
-          About me
+          About
         </a>
         <a
           class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
-          href="/blog"
+          href="#writing"
         >
-          Blog
+          Writing
         </a>
         <a
           class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
-          href="/uses"
+          href="#contact"
         >
-          Uses
+          Contact
         </a>
       </div>
     </div>

@@ -4,13 +4,13 @@ test.describe('T-004 — ESLint v8 Flat Config Migration', () => {
 	/**
 	 * This task migrates ESLint from v8 (.eslintrc.json) to v9 flat config (eslint.config.mjs).
 	 * No user-facing behavior changes — the app renders identically.
-	 * The migration must not introduce runtime errors or break any page.
+	 * The migration must not introduce runtime errors or break the page.
 	 *
 	 * GIVEN: ESLint has been migrated to v9 flat config (eslint.config.mjs exists, .eslintrc.json removed)
-	 * WHEN: I visit all pages
-	 * THEN: All pages load without console errors (migration did not break the app)
+	 * WHEN: I visit the home page
+	 * THEN: The page loads without console errors (migration did not break the app)
 	 */
-	test('all pages load without console errors after ESLint migration', async ({
+	test('home page loads without console errors after ESLint migration', async ({
 		page,
 	}) => {
 		const errors: string[] = [];
@@ -24,29 +24,20 @@ test.describe('T-004 — ESLint v8 Flat Config Migration', () => {
 			}
 		});
 
-		const routes = [
-			{ path: '/', title: 'Dinesh Haribabu' },
-			{ path: '/about', title: /about me/i },
-			{ path: '/blog', title: /Blog Posts/i },
-			{ path: '/uses', title: /Uses/i },
-		];
-
-		for (const { path: route, title } of routes) {
-			await page.goto(route);
-			await expect(
-				page.getByRole('heading', { level: 1, name: title })
-			).toBeVisible();
-		}
+		await page.goto('/');
+		await expect(
+			page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })
+		).toBeVisible();
 
 		expect(errors).toEqual([]);
 	});
 
 	/**
 	 * GIVEN: ESLint flat config is in place (eslint.config.mjs exists)
-	 * WHEN: I navigate through all pages via header navigation
+	 * WHEN: I navigate via anchor links on the home page
 	 * THEN: Navigation works without console errors (migration is transparent to the user)
 	 */
-	test('navigation chain produces zero console errors after migration', async ({
+	test('anchor navigation produces zero console errors after migration', async ({
 		page,
 	}) => {
 		const errors: string[] = [];
@@ -67,23 +58,14 @@ test.describe('T-004 — ESLint v8 Flat Config Migration', () => {
 
 		const nav = page.getByRole('navigation');
 
-		await nav.getByRole('link', { name: 'About me' }).click();
-		await expect(page).toHaveURL('/about');
-		await expect(
-			page.getByRole('heading', { level: 1, name: /about me/i })
-		).toBeVisible();
+		await nav.getByRole('link', { name: 'About' }).first().click();
+		await expect(page.locator('#about')).toBeInViewport();
 
-		await nav.getByRole('link', { name: 'Blog' }).first().click();
-		await expect(page).toHaveURL('/blog');
-		await expect(
-			page.getByRole('heading', { level: 1, name: /Blog Posts/i })
-		).toBeVisible();
+		await nav.getByRole('link', { name: 'Writing' }).first().click();
+		await expect(page.locator('#writing')).toBeInViewport();
 
-		await nav.getByRole('link', { name: 'Uses' }).first().click();
-		await expect(page).toHaveURL('/uses');
-		await expect(
-			page.getByRole('heading', { level: 1, name: /Uses/i })
-		).toBeVisible();
+		await nav.getByRole('link', { name: 'Contact' }).first().click();
+		await expect(page.locator('#contact')).toBeInViewport();
 
 		expect(errors).toEqual([]);
 	});

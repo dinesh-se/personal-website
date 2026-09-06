@@ -18,16 +18,16 @@ const Header = () => {
 	const otherStyleClasses = 'rounded-md px-3 py-2 text-sm font-medium';
 	const links: LinkType[] = [
 		{
-			label: 'About me',
-			href: '/about',
+			label: 'About',
+			href: '#about',
 		},
 		{
-			label: 'Blog',
-			href: '/blog',
+			label: 'Writing',
+			href: '#writing',
 		},
 		{
-			label: 'Uses',
-			href: '/uses',
+			label: 'Contact',
+			href: '#contact',
 		},
 	];
 	const [isMobileMenuOpen, toggleMobileMenuState] = useState(false);

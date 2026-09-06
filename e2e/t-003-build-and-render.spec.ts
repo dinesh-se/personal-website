@@ -1,12 +1,12 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('T-003 — Build Clean & All Pages Render Without Runtime Errors', () => {
+test.describe('T-003 — Build Clean & Home Page Renders Without Runtime Errors', () => {
 	/**
 	 * GIVEN: The dev server is running (build exited with code 0, zero TypeScript errors)
-	 * WHEN: I visit each page
-	 * THEN: Each page loads without console errors
+	 * WHEN: I visit the home page
+	 * THEN: The page loads without console errors
 	 */
-	test('all 4 pages load without runtime/console errors', async ({ page }) => {
+	test('home page loads without runtime/console errors', async ({ page }) => {
 		const errors: string[] = [];
 		const warnings: string[] = [];
 
@@ -20,19 +20,10 @@ test.describe('T-003 — Build Clean & All Pages Render Without Runtime Errors',
 			if (msg.type() === 'warning') warnings.push(msg.text());
 		});
 
-		const routes = [
-			{ path: '/', title: 'Dinesh Haribabu' },
-			{ path: '/about', title: /about me/i },
-			{ path: '/blog', title: /Blog Posts/i },
-			{ path: '/uses', title: /Uses/i },
-		];
-
-		for (const { path: route, title } of routes) {
-			await page.goto(route);
-			await expect(
-				page.getByRole('heading', { level: 1, name: title })
-			).toBeVisible();
-		}
+		await page.goto('/');
+		await expect(
+			page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })
+		).toBeVisible();
 
 		expect(errors).toEqual([]);
 		expect(warnings).toEqual([]);
@@ -40,12 +31,10 @@ test.describe('T-003 — Build Clean & All Pages Render Without Runtime Errors',
 
 	/**
 	 * GIVEN: The dev server is running
-	 * WHEN: I navigate through all pages via header navigation
+	 * WHEN: I navigate through the home page via header anchor links
 	 * THEN: Navigation works without console errors at every step
 	 */
-	test('full navigation chain produces zero console errors', async ({
-		page,
-	}) => {
+	test('anchor navigation produces zero console errors', async ({ page }) => {
 		const errors: string[] = [];
 		page.on('console', (msg) => {
 			if (
@@ -63,88 +52,33 @@ test.describe('T-003 — Build Clean & All Pages Render Without Runtime Errors',
 
 		const nav = page.getByRole('navigation');
 
-		await nav.getByRole('link', { name: 'About me' }).click();
-		await expect(page).toHaveURL('/about');
-		await expect(
-			page.getByRole('heading', { level: 1, name: /about me/i })
-		).toBeVisible();
+		await nav.getByRole('link', { name: 'About' }).first().click();
+		await expect(page.locator('#about')).toBeInViewport();
 
-		await nav.getByRole('link', { name: 'Blog' }).first().click();
-		await expect(page).toHaveURL('/blog');
-		await expect(
-			page.getByRole('heading', { level: 1, name: /Blog Posts/i })
-		).toBeVisible();
+		await nav.getByRole('link', { name: 'Writing' }).first().click();
+		await expect(page.locator('#writing')).toBeInViewport();
 
-		await nav.getByRole('link', { name: 'Uses' }).first().click();
-		await expect(page).toHaveURL('/uses');
-		await expect(
-			page.getByRole('heading', { level: 1, name: /Uses/i })
-		).toBeVisible();
-
-		// Navigate back through the chain
-		await nav.getByRole('link', { name: 'About me' }).first().click();
-		await expect(page).toHaveURL('/about');
+		await nav.getByRole('link', { name: 'Contact' }).first().click();
+		await expect(page.locator('#contact')).toBeInViewport();
 
 		expect(errors).toEqual([]);
 	});
 
 	/**
 	 * GIVEN: The dev server is running
-	 * WHEN: I visit each page and check for structural elements
-	 * THEN: Each page renders its expected content (no silent failures from type issues)
+	 * WHEN: I visit the home page and check for structural elements
+	 * THEN: Each section renders its expected content (no silent failures from type issues)
 	 */
-	test('each page renders expected structural content', async ({ page }) => {
+	test('home page renders expected structural content', async ({ page }) => {
 		await page.goto('/');
 		await expect(
 			page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })
 		).toBeVisible();
 		await expect(page.getByRole('navigation')).toBeVisible();
 		await expect(page.locator('footer')).toBeVisible();
-
-		await page.goto('/about');
-		await expect(
-			page.getByRole('heading', { level: 1, name: /about me/i })
-		).toBeVisible();
-		await expect(page.getByRole('navigation')).toBeVisible();
-		await expect(page.locator('footer')).toBeVisible();
-		// Tech stack section (h2) should be present. The about page also has a
-		// "Self-hosted AI stack" h2 callout, so scope to the technologies heading.
-		await expect(
-			page.getByRole('heading', { name: /Some of my favorite/i })
-		).toBeVisible();
-
-		await page.goto('/blog');
-		await expect(
-			page.getByRole('heading', { level: 1, name: /Blog Posts/i })
-		).toBeVisible();
-		await expect(page.getByRole('navigation')).toBeVisible();
-		await expect(page.locator('footer')).toBeVisible();
-
-		await page.goto('/uses');
-		await expect(
-			page.getByRole('heading', { level: 1, name: /Uses/i })
-		).toBeVisible();
-		await expect(page.getByRole('navigation')).toBeVisible();
-		await expect(page.locator('footer')).toBeVisible();
-		// Intro link to Wes Bos's Uses.Tech
-		await expect(
-			page.getByRole('link', { name: "Wes Bos's Uses.Tech" })
-		).toBeVisible();
-	});
-
-	/**
-	 * GIVEN: The dev server is running
-	 * WHEN: I visit the about page
-	 * THEN: Social icon links render (verifying react-social-icons + React 19 compatibility)
-	 */
-	test('about page social icons render (React 19 PropTypes compatibility)', async ({
-		page,
-	}) => {
-		await page.goto('/about');
-
-		await expect(page.getByRole('link', { name: 'linkedin' })).toBeVisible();
-		await expect(page.getByRole('link', { name: 'github' })).toBeVisible();
-		await expect(page.getByRole('link', { name: 'email' })).toBeVisible();
+		await expect(page.locator('#about')).toBeVisible();
+		await expect(page.locator('#writing')).toBeVisible();
+		await expect(page.locator('#contact')).toBeVisible();
 	});
 
 	/**
@@ -164,36 +98,15 @@ test.describe('T-003 — Build Clean & All Pages Render Without Runtime Errors',
 
 	/**
 	 * GIVEN: The dev server is running
-	 * WHEN: I visit the uses page with data from fixtures
-	 * THEN: Uses categories and items render (verifying graphql-request + Next.js 16 compatibility)
+	 * WHEN: I visit the home page
+	 * THEN: Blog post cards render in the Writing section (verifying dev.to API fetch + Next.js 16 compatibility)
 	 */
-	test('uses page renders graphql data categories and items', async ({
-		page,
-	}) => {
-		await page.goto('/uses');
+	test('blog section renders dev.to data as post cards', async ({ page }) => {
+		await page.goto('/');
 
-		await expect(
-			page.getByRole('heading', { level: 1, name: /Uses/i })
-		).toBeVisible();
-		// Uses categories render from live Hygraph data (content-managed, so
-		// assert at least one category heading renders rather than fixture data).
-		await expect(page.getByRole('heading', { level: 2 }).first()).toBeVisible();
-	});
-
-	/**
-	 * GIVEN: The dev server is running
-	 * WHEN: I visit the blog page with data from fixtures
-	 * THEN: Blog post cards render (verifying dev.to API fetch + Next.js 16 compatibility)
-	 */
-	test('blog page renders dev.to data as post cards', async ({ page }) => {
-		await page.goto('/blog');
-
-		await expect(
-			page.getByRole('heading', { level: 1, name: /Blog Posts/i })
-		).toBeVisible();
+		await expect(page.locator('#writing')).toBeVisible();
 		// Blog post cards render from live Dev.to data (content-managed, so
 		// assert at least one dev.to link renders rather than fixture data).
-		await expect(page.locator('a[href*="dev.to"]').first()).toBeVisible();
+		await expect(page.locator('#writing a[href*="dev.to"]').first()).toBeVisible();
 	});
-
 });

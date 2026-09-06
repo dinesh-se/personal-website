@@ -4,7 +4,7 @@ export function generateMetadata(): Metadata {
 	return {
 		title: 'Dinesh Haribabu',
 		description:
-			'A front-end web developer focused on crafting clean and intuitive interfaces providing better UX.',
+			'Frontend by trade, architect by instinct. I build fast, accessible software — and run my own AI at the edge of what’s next.',
 		authors: {
 			name: 'Dinesh Haribabu',
 			url: 'https://dineshharibabu.in/',

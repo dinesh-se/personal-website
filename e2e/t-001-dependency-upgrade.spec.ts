@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('T-001 — Dependency Upgrade: All Pages Render', () => {
+test.describe('T-001 — Dependency Upgrade: Home Page Renders', () => {
 	test('should render home page without runtime errors', async ({ page }) => {
 		await page.goto('/');
 		await expect(
@@ -11,36 +11,16 @@ test.describe('T-001 — Dependency Upgrade: All Pages Render', () => {
 		await expect(page.locator('footer')).toBeVisible();
 	});
 
-	test('should render about page without runtime errors', async ({ page }) => {
-		await page.goto('/about');
-		await expect(
-			page.getByRole('heading', { level: 1, name: /about me/i })
-		).toBeVisible();
-		await expect(page.getByRole('navigation')).toBeVisible();
-		await expect(page.locator('footer')).toBeVisible();
-	});
-
-	test('should render blog page without runtime errors', async ({ page }) => {
-		await page.goto('/blog');
-		await expect(
-			page.getByRole('heading', { level: 1, name: /Blog Posts/i })
-		).toBeVisible();
-		await expect(page.getByRole('navigation')).toBeVisible();
-		await expect(page.locator('footer')).toBeVisible();
-	});
-
-	test('should render uses page without runtime errors', async ({ page }) => {
-		await page.goto('/uses');
-		await expect(
-			page.getByRole('heading', { level: 1, name: /Uses/i })
-		).toBeVisible();
-		await expect(page.getByRole('navigation')).toBeVisible();
-		await expect(page.locator('footer')).toBeVisible();
-	});
-
-	test('should navigate between all pages without console errors', async ({
+	test('should render all home sections without runtime errors', async ({
 		page,
 	}) => {
+		await page.goto('/');
+		await expect(page.locator('#about')).toBeVisible();
+		await expect(page.locator('#writing')).toBeVisible();
+		await expect(page.locator('#contact')).toBeVisible();
+	});
+
+	test('home page renders without console errors', async ({ page }) => {
 		const errors: string[] = [];
 		page.on('console', (msg) => {
 			if (
@@ -52,24 +32,35 @@ test.describe('T-001 — Dependency Upgrade: All Pages Render', () => {
 		});
 
 		await page.goto('/');
-		await page
-			.getByRole('navigation')
-			.getByRole('link', { name: 'About me' })
-			.first()
-			.click();
-		await expect(page).toHaveURL('/about');
-		await page
-			.getByRole('navigation')
-			.getByRole('link', { name: 'Blog' })
-			.first()
-			.click();
-		await expect(page).toHaveURL('/blog');
-		await page
-			.getByRole('navigation')
-			.getByRole('link', { name: 'Uses' })
-			.first()
-			.click();
-		await expect(page).toHaveURL('/uses');
+		await expect(
+			page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })
+		).toBeVisible();
+
+		expect(errors).toEqual([]);
+	});
+
+	test('anchor navigation works without console errors', async ({ page }) => {
+		const errors: string[] = [];
+		page.on('console', (msg) => {
+			if (
+				msg.type() === 'error' &&
+				!msg.text().includes('Failed to load resource')
+			) {
+				errors.push(msg.text());
+			}
+		});
+
+		await page.goto('/');
+		const nav = page.getByRole('navigation');
+
+		await nav.getByRole('link', { name: 'About' }).first().click();
+		await expect(page.locator('#about')).toBeInViewport();
+
+		await nav.getByRole('link', { name: 'Writing' }).first().click();
+		await expect(page.locator('#writing')).toBeInViewport();
+
+		await nav.getByRole('link', { name: 'Contact' }).first().click();
+		await expect(page.locator('#contact')).toBeInViewport();
 
 		expect(errors).toEqual([]);
 	});

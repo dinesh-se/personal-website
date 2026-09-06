@@ -52,3 +52,6 @@ playwright/.cache/
 
 # pi-kalam: subagent worker exhaust (transcripts/artifacts from spawned workers)
 .pi-subagents/
+
+# planning artifacts (single-page redesign plan — do not commit)
+.plan/

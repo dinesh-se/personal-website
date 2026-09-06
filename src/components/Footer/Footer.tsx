@@ -12,16 +12,16 @@ const Footer = () => {
 			href: '/',
 		},
 		{
-			label: 'About me',
-			href: '/about',
+			label: 'About',
+			href: '#about',
 		},
 		{
-			label: 'Blog',
-			href: '/blog',
+			label: 'Writing',
+			href: '#writing',
 		},
 		{
-			label: 'Uses',
-			href: '/uses',
+			label: 'Contact',
+			href: '#contact',
 		},
 	];
 
