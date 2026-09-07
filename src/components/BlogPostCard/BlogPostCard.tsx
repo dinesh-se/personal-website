@@ -19,18 +19,18 @@ const BlogPostCard: React.FC<BlogPostUI> = ({
 }) => {
 	return (
 		<div
-			className="w-full rounded overflow-hidden shadow-lg p-4 bg-neutral-300 dark:bg-slate-900"
+			className="flex w-full flex-col rounded overflow-hidden shadow-lg p-4 bg-neutral-300 dark:bg-slate-900"
 			data-testid="blog-post-card"
 		>
-			<Link href={url} target="_blank">
+			<Link href={url} target="_blank" className="flex flex-1 flex-col">
 				<h2 className="font-semibold text-xl mb-2">{title}</h2>
 				<p
-					className="text-gray-600 dark:text-gray-300 text-base leading-relaxed"
+					className="text-gray-600 dark:text-gray-300 text-base leading-relaxed flex-1"
 					data-testid="blog-post-body"
 				>
 					{description}
 				</p>
-				<div className="flex flex-row text-gray-500 text-sm mt-4">
+				<div className="mt-auto flex flex-row text-gray-500 text-sm pt-4">
 					<span className="flex gap-4">
 						<span className="flex gap-1 items-center">
 							<HeartIcon className="inline w-4 h-4" />

@@ -95,6 +95,11 @@ const GET_PROFILE = gql`
 					github
 				}
 			}
+			resumeLink
+			metaTitle
+			metaDescription
+			metaAuthorName
+			metaAuthorUrl
 		}
 	}
 `;

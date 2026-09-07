@@ -61,6 +61,8 @@ Profile content (summary, `moreDetails` rich text, interests, contact) is manage
 
 ## Docs
 
+- [`docs/cms-setup.md`](docs/cms-setup.md) — high-level guidance on setting up the CMS and the content expected per section.
+
 Architecture and API contracts are documented under [`openspec/specs/`](openspec/specs/):
 
 - [`api-spec.md`](openspec/specs/api-spec.md)

@@ -12,14 +12,21 @@ import { Contact } from '@components/Contact';
 import { Hero } from '@components/Hero';
 
 export async function generateMetadata(): Promise<Metadata> {
+	// All personal metadata is sourced from the CMS (Hygraph). If the fetch
+	// fails, fall back to empty metadata rather than hardcoding personal
+	// values in the repo.
+	const userResult = await getProfile();
+	const profile = userResult.success ? userResult.data.profile : null;
+
 	return {
-		title: 'Dinesh Haribabu',
-		description:
-			'Frontend by trade, architect by instinct. I build fast, accessible software — and run my own AI at the edge of what’s next.',
-		authors: {
-			name: 'Dinesh Haribabu',
-			url: 'https://dineshharibabu.in/',
-		},
+		title: profile?.metaTitle || '',
+		description: profile?.metaDescription || '',
+		authors: profile?.metaAuthorName
+			? {
+					name: profile.metaAuthorName,
+					url: profile.metaAuthorUrl,
+				}
+			: undefined,
 	};
 }
 
@@ -28,29 +35,35 @@ export default async function Home() {
 
 	// Graceful fallback: if the CMS fetch fails, render the page with empty
 	// values rather than crashing.
+	let name = '';
 	let summary = '';
 	let interests: string[] = [];
 	let displayPictureUrl = '';
 	let moreDetails: RichTextContent = { children: [] };
+	let resumeLink = '';
 	let contact = { linkedin: '', github: '', email: '' };
 
 	const userResult = await getProfile();
 	if (userResult.success) {
 		const {
+			fullName,
 			summary: s,
 			interests: i,
 			displayPicture,
 			moreDetails: md,
+			resumeLink: rl,
 			contactDetail,
 		} = userResult.data.profile;
 		const {
 			email,
 			socialMedia: { linkedin, github },
 		} = contactDetail;
+		name = fullName;
 		summary = s;
 		interests = i ?? [];
 		displayPictureUrl = displayPicture?.url ?? '';
 		moreDetails = md?.raw ?? { children: [] };
+		resumeLink = rl;
 		contact = { linkedin, github, email };
 	}
 
@@ -61,7 +74,11 @@ export default async function Home() {
 
 	return (
 		<div className="mx-auto max-w-5xl px-4 sm:px-6">
-			<Hero displayPictureUrl={displayPictureUrl} summary={summary} />
+			<Hero
+				displayPictureUrl={displayPictureUrl}
+				name={name}
+				summary={summary}
+			/>
 
 			<About moreDetails={moreDetails} interests={interests} />
 
@@ -72,14 +89,16 @@ export default async function Home() {
 					Contact
 				</h2>
 				<div className="mt-8 flex flex-wrap items-center gap-6">
-					<a
-						className="inline-flex items-center rounded-md bg-gradient-to-r from-sky-600 via-indigo-600 to-fuchsia-600 px-4 py-2 text-sm font-semibold text-white shadow transition hover:from-sky-500 hover:via-indigo-500 hover:to-fuchsia-500 focus:ring dark:from-sky-500 dark:via-indigo-500 dark:to-fuchsia-500"
-						href="https://link.dineshharibabu.in/resume"
-						target="_blank"
-						rel="noreferrer"
-					>
-						Download Resume
-					</a>
+					{resumeLink && (
+						<a
+							className="inline-flex items-center rounded-md bg-gradient-to-r from-sky-600 via-indigo-600 to-fuchsia-600 px-4 py-2 text-sm font-semibold text-white shadow transition hover:from-sky-500 hover:via-indigo-500 hover:to-fuchsia-500 focus:ring dark:from-sky-500 dark:via-indigo-500 dark:to-fuchsia-500"
+							href={resumeLink}
+							target="_blank"
+							rel="noreferrer"
+						>
+							Download Resume
+						</a>
+					)}
 					<Contact
 						linkedin={contact.linkedin}
 						github={contact.github}

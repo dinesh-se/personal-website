@@ -11,6 +11,11 @@ interface Profile {
 	contactDetail: ContactDetail;
 	displayPicture: DisplayPicture;
 	moreDetails: MoreDetails;
+	resumeLink: string;
+	metaTitle: string;
+	metaDescription: string;
+	metaAuthorName: string;
+	metaAuthorUrl: string;
 }
 
 interface ContactDetail {

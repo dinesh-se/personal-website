@@ -2,10 +2,11 @@ import Image from 'next/image';
 
 export interface HeroProps {
 	displayPictureUrl: string;
+	name: string;
 	summary: string;
 }
 
-const Hero = ({ displayPictureUrl, summary }: HeroProps) => {
+const Hero = ({ displayPictureUrl, name, summary }: HeroProps) => {
 	return (
 		<section
 			id="hero"
@@ -18,7 +19,7 @@ const Hero = ({ displayPictureUrl, summary }: HeroProps) => {
 				</p>
 				<h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl">
 					<span className="bg-gradient-to-r from-sky-600 via-indigo-600 to-fuchsia-600 bg-clip-text text-transparent dark:from-sky-400 dark:via-indigo-400 dark:to-fuchsia-400">
-						Dinesh Haribabu
+						{name}
 					</span>
 				</h1>
 				<p className="max-w-2xl text-lg leading-relaxed text-stone-600 dark:text-stone-300">
@@ -29,7 +30,7 @@ const Hero = ({ displayPictureUrl, summary }: HeroProps) => {
 				<div className="relative mx-auto h-48 w-48 overflow-hidden rounded-2xl ring-4 ring-stone-200 dark:ring-stone-800 md:h-64 md:w-64">
 					<Image
 						src={displayPictureUrl}
-						alt="Dinesh Haribabu"
+						alt={name}
 						className="object-cover"
 						fill
 						sizes="(max-width: 768px) 12rem, 16rem"
