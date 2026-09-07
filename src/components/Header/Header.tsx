@@ -12,9 +12,9 @@ import { Link as LinkType } from '@types';
 
 const Header = () => {
 	const linkActiveState =
-		'block sm:inline bg-stone-300 text-gray-900 dark:bg-gray-900 dark:text-white';
+		'block sm:inline bg-stone-200 text-stone-900 dark:bg-stone-800 dark:text-stone-50';
 	const linkDefaultState =
-		'block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white';
+		'block sm:inline text-stone-500 hover:bg-stone-100 hover:text-stone-900 dark:text-stone-400 dark:hover:bg-stone-800 dark:hover:text-stone-50';
 	const otherStyleClasses = 'rounded-md px-3 py-2 text-sm font-medium';
 	const links: LinkType[] = [
 		{
@@ -72,14 +72,14 @@ const Header = () => {
 	}, [isMobileMenuOpen]);
 
 	return (
-		<nav className="site-header bg-gray-900 p-4">
+		<nav className="site-header sticky top-0 z-40 border-b border-stone-200/60 bg-white/70 backdrop-blur dark:border-stone-800/60 dark:bg-stone-950/70">
 			<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-				<div className="relative flex h-16 items-center justify-between">
+				<div className="relative flex h-14 items-center justify-between">
 					<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 						<button
 							ref={toggleButtonRef}
 							type="button"
-							className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+							className="relative inline-flex items-center justify-center rounded-md p-2 text-stone-500 hover:bg-stone-100 hover:text-stone-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-stone-400 dark:text-stone-400 dark:hover:bg-stone-800 dark:hover:text-stone-50 dark:focus:ring-stone-600"
 							aria-label={
 								isMobileMenuOpen ? 'Close main menu' : 'Open main menu'
 							}
@@ -108,7 +108,7 @@ const Header = () => {
 					<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
 						<div className="flex flex-1 items-center justify-center sm:justify-start">
 							<Link href="/" aria-label="Home page">
-								<Logo className="svg-icon h-12 sm:h-14 w-12 sm:w-14" />
+								<Logo className="svg-icon h-9 sm:h-10 w-9 sm:w-10" />
 							</Link>
 						</div>
 						<div className="hidden sm:flex sm:items-center sm:flex-auto">
@@ -129,7 +129,7 @@ const Header = () => {
 				ref={mobileMenuRef}
 				className={clsx(
 					{ block: isMobileMenuOpen, hidden: !isMobileMenuOpen },
-					'sm:hidden'
+					'sm:hidden border-t border-stone-200/60 bg-white/95 dark:border-stone-800/60 dark:bg-stone-950/95'
 				)}
 				id="mobile-menu"
 				aria-label="Main navigation"

@@ -73,7 +73,7 @@ export default async function Home() {
 				</h2>
 				<div className="mt-8 flex flex-wrap items-center gap-6">
 					<a
-						className="inline-flex items-center rounded-md bg-stone-900 px-4 py-2 text-sm font-semibold text-stone-50 transition hover:bg-stone-700 focus:ring dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-stone-300"
+						className="inline-flex items-center rounded-md bg-gradient-to-r from-sky-600 via-indigo-600 to-fuchsia-600 px-4 py-2 text-sm font-semibold text-white shadow transition hover:from-sky-500 hover:via-indigo-500 hover:to-fuchsia-500 focus:ring dark:from-sky-500 dark:via-indigo-500 dark:to-fuchsia-500"
 						href="https://link.dineshharibabu.in/resume"
 						target="_blank"
 						rel="noreferrer"

@@ -2,72 +2,37 @@
 
 ## 1. Screen Inventory
 
-No new screens are introduced by this feature. The feature adds a dark mode toggle button to the existing Header and adjusts color palette/typography, but does not add pages, routes, or fundamentally change screen layouts (`proposal.md`, "Out of scope" → "Adding new pages, features, or components"). The existing five screens remain unchanged:
+The site is a **single-page homepage** — the only route is `/` (plus `/_not-found`, the Dev.to proxy API route, `robots.txt`, and `sitemap.xml`). The former `/about`, `/blog`, and `/uses` routes (and their components) were removed in the single-page redesign.
 
 ### Home (`/`) — `src/app/page.tsx`
 
-- **Purpose:** Landing page with greeting, hardcoded subline, and key sections
-- **Layout:** Full-width container (max-w-7xl), centered
+- **Purpose:** Single-page landing with greeting, hardcoded subline, and in-page sections
+- **Layout:** Centered container (max-w-5xl)
 - **Sections:**
-  1. Greeting: "Hello, I am" (text-3xl, no emoji)
-  2. Name: "Dinesh Haribabu" (text-5xl, bold, gradient text)
+  1. Greeting: "Hello, I am" (text-base, uppercase, letter-spaced)
+  2. Name: "Dinesh Haribabu" (text-5xl/6xl, extrabold, **gradient text** via `bg-clip-text text-transparent bg-gradient-to-r from-sky-600 via-indigo-600 to-fuchsia-600`)
   3. Subline: Hardcoded hero text ("Frontend by trade, architect by instinct…")
-  4. Actions: "Download Resume" CTA (gradient button → link.dineshharibabu.in/resume) + Contact social icons (LinkedIn, GitHub, email; GitHub kept)
-  5. Link: "More about me" → `/about`
-  6. Latest from the blog: up to 3 BlogPostCard items (grid); "View all posts →" link to `/blog` shown only when total > 3
-  7. Experience: Full-width organization timeline (Experience component, resume button removed from card)
-- **Data source:** Hygraph (getUser query) + Dev.to (cached getBlogFeed)
+  4. Display picture: **square with rounded corners** (`rounded-2xl`), ring border
+  5. About: rich-text bio (`moreDetails`) + Interests callout
+  6. Writing: up to 3 BlogPostCard items (grid); "View all posts on Dev.to →" link shown only when total > 3
+  7. Contact: "Download Resume" CTA (gradient button → link.dineshharibabu.in/resume) + Contact social icons (LinkedIn, GitHub, email; GitHub kept)
+- **Data source:** Hygraph (`getProfile` query) + Dev.to (cached `getBlogFeed`)
 - **Caching:** `use cache` + `cacheLife('days')`
-- **Note:** The Hygraph `summary` field is no longer rendered on home; the hero subline is hardcoded (CMS sync pending).
-
-### About (`/about`) — `src/app/about/page.tsx`
-
-- **Purpose:** Detailed bio with tech stack showcase
-- **Layout:** Two-column on desktop (bio + image), single column on mobile
-- **Sections:**
-  1. Heading: "A little more about me!" (text-3xl)
-  2. Bio: Rich text content from Hygraph (RichText component with custom p and code renderers)
-  3. Display picture: 360x360 image with rounded corners and rotation (next/image)
-  4. Contact: LinkedIn, GitHub, email buttons
-  5. Self-hosted AI stack callout: Code-managed section with factual copy and link to the `strix-halo-llm-stack` repo
-  6. Tech stack section: Gray background, centered logo grid (React, Angular, TypeScript, RxJS, Next.js, Tailwind CSS, Hygraph, Storybook, Cypress)
-- **Data source:** Hygraph (getMoreDetails query)
-- **Caching:** `use cache` + `cacheLife('days')`
-
-### Blog (`/blog`) — `src/app/blog/page.tsx`
-
-- **Purpose:** Display published Dev.to articles
-- **Layout:** Centered grid (sm:mx-16, md:mx-24, lg:mx-32), 1-column
-- **Sections:**
-  1. Heading: "Blog Posts" (text-3xl)
-  2. Intro text: "I write about web development..." with link to dev.to
-  3. Blog post cards: List of BlogPostCard components (title, description, date, reactions, comments, views)
-- **Data source:** Dev.to REST API via server-side cached `getBlogFeed` (`use cache` + `cacheLife('hours')`); BlogContent keeps its client-side `/api/articles/me/published` fallback for graceful degradation
-- **Route handler:** `/api/articles/me/published` resolves the cached result and returns `{ success, total, posts }`
-
-### Uses (`/uses`) — `src/app/uses/page.tsx`
-
-- **Purpose:** Developer tools and tech stack list
-- **Layout:** Two-column (title left, list right) per category
-- **Sections:**
-  1. Heading: "Uses" (text-3xl)
-  2. Intro text: Reference to Wes Bos's Uses.Tech project with link
-  3. Categories: Each Uses category (id, title) with list of items (name, description)
-- **Data source:** Hygraph (getUses query)
-- **Revalidation:** 600s ISR
+- **Note:** The Hygraph `summary` field is no longer rendered on home; the hero subline is hardcoded.
 
 ## 2. Navigation Map
 
-No new routes or navigation connections are introduced. All existing navigation remains unchanged:
+Navigation is **in-page anchor links** only (no routes). Clicking a top-nav link scrolls smoothly to the target section (`scroll-behavior: smooth` with `scroll-margin-top` offset for the sticky header).
 
 ### Header Navigation (`src/components/Header/Header.tsx`)
 
-- **Desktop:** Horizontal link list (About me, Blog, Uses) + logo
+- **Desktop:** Horizontal link list (About / Writing / Contact) + logo
 - **Mobile:** Hamburger menu button → dropdown with same links
-- **Note:** The Projects link was removed with the Projects page.
-- **Active state:** `pathname === href` → `bg-stone-300 dark:bg-gray-900`
-- **Default state:** `hover:text-black dark:hover:bg-gray-700 dark:hover:text-white`
-- **Mobile menu:** Toggled via `useState(false)`, controlled by `isMobileMenuOpen`
+- **Style:** Transparent/blended header (`bg-white/70 dark:bg-stone-950/70` + backdrop blur, sticky top), slim `h-14`, theme-aware link colors (stone-500 in light, stone-400 in dark)
+- **Logo:** Theme-aware fill via `--logo-filter` (dark in light mode, light in dark mode) for contrast against both themes
+- **Active state:** `pathname === href` → `bg-stone-200 text-stone-900 dark:bg-stone-800 dark:text-stone-50`
+- **Default state:** `text-stone-500 hover:bg-stone-100 hover:text-stone-900 dark:text-stone-400 dark:hover:bg-stone-800 dark:hover:text-stone-50`
+- **Mobile menu:** Toggled via `useState(false)`, controlled by `isMobileMenuOpen`, with focus trap and Escape-to-close
 
 ### Footer Navigation (`src/components/Footer/Footer.tsx`)
 
@@ -84,31 +49,32 @@ No new routes or navigation connections are introduced. All existing navigation 
 
 ## 3. Component Library
 
-No new components are introduced. Seven of eight existing components remain unchanged in structure; the Header component gains a dark mode toggle button and focus trap for the mobile menu.
+Components are scoped to the single-page layout. Experience, ProjectCard, RecentProjects, and the old multi-page route components were removed.
 
 ### Layout Components
 
-- **Header:** Top navigation bar (bg-gray-900, h-16), responsive mobile menu
+- **Header:** Slim transparent/sticky top bar (`bg-white/70 dark:bg-stone-950/70` + backdrop blur, `h-14`), responsive mobile menu with focus trap
 - **Footer:** Bottom bar with nav links and copyright link (border-top, flex row on desktop)
 
 ### Navigation Components
 
-- **NavLinks:** Reusable link list with active state highlighting
+- **NavLinks:** Reusable in-page anchor link list with active state highlighting
 - **Contact:** Social media buttons (LinkedIn, GitHub, email) using react-social-icons
 
 ### Content Components
 
-- **Experience:** Organization timeline (orgName, title, from/to, orgLogo; resume button removed from card)
-- **BlogPostCard:** Blog post preview (title, description, date, reactions, comments, views); reused on the home "Latest from the blog" strip
-- **ProjectCard:** Removed (Projects page deleted)
-- **RecentProjects:** Removed (Recent Works section deleted)
+- **Hero:** Greeting, gradient name, hardcoded subline, square display picture (`rounded-2xl`)
+- **About:** Rich-text bio (`moreDetails`) + Interests callout
+- **BlogPostCard:** Blog post preview (title, description, **compact date**, reactions, comments, views); reused on the "Latest from the blog" strip. The date renders as a right-aligned `<time>` element (e.g. "1 Apr 2023") — no "Published at:" label.
 
 ### Styling
 
-- **Dark mode:** `prefers-color-scheme: dark` media query + Tailwind `dark:` variants. **Feature changes:** strategy from `media` to `class` — root `<html>` toggled via `class="dark"` by Header component.
+- **Dark mode:** `prefers-color-scheme: dark` media query + Tailwind `dark:` variants (`media` strategy, unchanged)
 - **CSS custom properties:** `--primary-color`, `--foreground-rgb`, `--background-start-rgb`, `--background-end-rgb`, `--logo-filter`, `--social-icon-fill`
+- **Gradients:** Hero name (`bg-clip-text text-transparent bg-gradient-to-r from-sky-600 via-indigo-600 to-fuchsia-600`) and Download Resume button use the same sky→indigo→fuchsia gradient
+- **Smooth scroll:** `html { scroll-behavior: smooth }` in `globals.css`; anchored sections get `scroll-margin-top: 4.5rem` to offset the sticky header
 - **Responsive breakpoints:** sm (640px), lg (1024px)
-- **Typography:** Tailwind utility classes (text-3xl, text-5xl, font-bold, etc.)
+- **Typography:** Tailwind utility classes (text-3xl, text-5xl, font-extrabold, etc.)
 - **Layout:** Flexbox and CSS Grid (flex, grid, grid-cols-1/2/3)
 
 ## 4. Screen Specs
@@ -117,20 +83,20 @@ No new components are introduced. Seven of eight existing components remain unch
 
 - **Mobile (< 640px):** Single column, hamburger menu, stacked layout
 - **Tablet (640px - 1024px):** 2-column grids, horizontal nav, side-by-side sections
-- **Desktop (> 1024px):** 3-column grids, horizontal nav, max-w-7xl container
+- **Desktop (> 1024px):** 3-column grids, horizontal nav, max-w-5xl centered container
 
 ### Interactions
 
 - **Mobile menu:** Toggle open/close with hamburger/close icons
 - **Nav active state:** Highlighted when pathname matches href
 - **Hover states:** All links have hover color changes
-- **Image hover:** About page display picture has md:rotate-3 transform
+- **Smooth scrolling:** Anchor nav links scroll smoothly to in-page sections (`scroll-behavior: smooth`), disabled under `prefers-reduced-motion`
 
 ### Accessibility
 
 - **ARIA labels:** Logo has `aria-label="Home page"`, mobile menu button has `aria-controls` and `aria-expanded`
 - **Screen readers:** "Open main menu" label (sr-only), social icons have aria-labels
-- **Focus management:** Focus ring on mobile menu button (focus:ring-2)
+- **Focus management:** Focus ring on mobile menu button (focus:ring-2); focus trap + Escape-to-close in the mobile menu
 - **Semantic HTML:** nav, main, footer, section, h1-h2 hierarchy
 
 ## 5. Form Validations
@@ -139,12 +105,12 @@ No forms exist in this application. The Contact component renders social media b
 
 ## 6. Responsive Breakpoints
 
-No new breakpoints are introduced. The existing Tailwind breakpoint configuration remains unchanged. **Feature changes:** `tailwind.config.ts` dark mode strategy from `media` to `class` (affects Tailwind config but not breakpoints).
+No new breakpoints are introduced. The existing Tailwind breakpoint configuration remains unchanged (dark mode stays on the `media` strategy).
 
 | Breakpoint | Size              | Usage                                                   |
 | ---------- | ----------------- | ------------------------------------------------------- |
 | **Mobile** | < 640px (default) | Single-column layouts, hamburger menu, stacked sections |
 | **sm**     | ≥ 640px           | 2-column grids, horizontal navigation                   |
-| **lg**     | ≥ 1024px          | 3-column grids, max-w-7xl centered container            |
+| **lg**     | ≥ 1024px          | 3-column grids, max-w-5xl centered container            |
 
-These breakpoints are defined in `tailwind.config.ts` and applied across all five pages. The feature modifies `tailwind.config.ts` only for the dark mode strategy (`media` → `class`) and color palette adjustments — no new breakpoint-dependent layouts are introduced (`proposal.md`, "Out of scope" → "Adding new pages, features, or components").
+These breakpoints are defined in `tailwind.config.ts` and applied across the single-page layout.

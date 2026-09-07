@@ -45,9 +45,16 @@ const BlogPostCard: React.FC<BlogPostUI> = ({
 							{pageViewsCount}
 						</span>
 					</span>
-					<span className="ml-4">
-						Published at: {date.toLocaleDateString('en-IN')}
-					</span>
+					<time
+						dateTime={date.toISOString()}
+						className="ml-auto text-xs font-medium uppercase tracking-wide text-gray-400 dark:text-gray-500"
+					>
+						{date.toLocaleDateString('en-IN', {
+							day: 'numeric',
+							month: 'short',
+							year: 'numeric',
+						})}
+					</time>
 				</div>
 			</Link>
 		</div>
