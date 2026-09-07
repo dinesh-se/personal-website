@@ -1,20 +1,29 @@
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 
+import { getProfile } from '@api/graphql';
+
 import { Footer } from '@components/Footer';
 import { Header } from '@components/Header';
 
 import '@styles/globals.css';
 
-export function generateMetadata(): Metadata {
+export async function generateMetadata(): Promise<Metadata> {
+	// Root-layout metadata (site title, description, author) is sourced from
+	// the CMS. If the fetch fails, fall back to empty metadata rather than
+	// hardcoding personal values in the repo.
+	const userResult = await getProfile();
+	const profile = userResult.success ? userResult.data.profile : null;
+
 	return {
-		title: 'Dinesh Haribabu',
-		description:
-			'A front-end web developer focused on crafting clean and intuitive interfaces providing better UX.',
-		authors: {
-			name: 'Dinesh Haribabu',
-			url: 'https://dineshharibabu.in/',
-		},
+		title: profile?.metaTitle || '',
+		description: profile?.metaDescription || '',
+		authors: profile?.metaAuthorName
+			? {
+					name: profile.metaAuthorName,
+					url: profile.metaAuthorUrl,
+				}
+			: undefined,
 	};
 }
 
