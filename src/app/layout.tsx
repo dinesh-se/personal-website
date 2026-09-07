@@ -9,6 +9,8 @@ import { Header } from '@components/Header';
 import '@styles/globals.css';
 
 export async function generateMetadata(): Promise<Metadata> {
+	'use cache';
+
 	// Root-layout metadata (site title, description, author) is sourced from
 	// the CMS. If the fetch fails, fall back to empty metadata rather than
 	// hardcoding personal values in the repo.
