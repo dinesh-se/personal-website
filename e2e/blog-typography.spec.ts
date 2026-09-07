@@ -1,26 +1,15 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('T-007: Blog Page Typography and Spacing', () => {
+test.describe('T-007: Blog Section Typography and Spacing', () => {
 	test.beforeEach(async ({ page }) => {
-		await page.goto('/blog');
-		await page.waitForSelector('h1', { state: 'visible' });
+		await page.goto('/');
+		await page.locator('#writing').waitFor({ state: 'visible' });
 	});
 
-	test('AC-1: blog post body text has line-height >= 1.5', async ({ page }) => {
-		// Check intro paragraph (always present)
-		const introLineHeight = await page
-			.locator('main > p')
-			.first()
-			.evaluate((el) => {
-				const style = getComputedStyle(el);
-				const lh = parseFloat(style.lineHeight);
-				const fs = parseFloat(style.fontSize);
-				return lh / fs;
-			});
-		expect(introLineHeight).toBeGreaterThanOrEqual(1.5);
-
-		// Check blog post body text if cards are rendered
-		const bodyTexts = page.locator('[data-testid="blog-post-body"]');
+	test('AC-1: blog section body text has line-height >= 1.5', async ({
+		page,
+	}) => {
+		const bodyTexts = page.locator('#writing [data-testid="blog-post-body"]');
 		const count = await bodyTexts.count();
 		if (count > 0) {
 			for (let i = 0; i < count; i++) {
@@ -41,24 +30,14 @@ test.describe('T-007: Blog Page Typography and Spacing', () => {
 	test('AC-2: blog post letter-spacing is appropriate (no tighter than default)', async ({
 		page,
 	}) => {
-		// Check intro paragraph
-		const introLetterSpacing = await page
-			.locator('main > p')
-			.first()
-			.evaluate((el) => {
-				const style = getComputedStyle(el);
-				return parseFloat(style.letterSpacing);
-			});
-		expect(introLetterSpacing).toBeGreaterThanOrEqual(0);
-
-		// Check blog post body text if cards are rendered
-		const bodyTexts = page.locator('[data-testid="blog-post-body"]');
+		const bodyTexts = page.locator('#writing [data-testid="blog-post-body"]');
 		const count = await bodyTexts.count();
 		if (count > 0) {
 			for (let i = 0; i < count; i++) {
 				const letterSpacing = await bodyTexts.nth(i).evaluate((el) => {
 					const style = getComputedStyle(el);
-					return parseFloat(style.letterSpacing);
+					const raw = style.letterSpacing;
+					return raw === 'normal' ? 0 : parseFloat(raw);
 				});
 				expect(
 					letterSpacing,
@@ -71,14 +50,12 @@ test.describe('T-007: Blog Page Typography and Spacing', () => {
 	test('AC-3: spacing between blog post cards uses consistent Tailwind spacing values', async ({
 		page,
 	}) => {
-		const grid = page.locator('[data-testid="blog-post-grid"]');
+		const grid = page.locator('#writing [data-testid="blog-post-grid"]');
 		await grid.waitFor({ state: 'visible', timeout: 10000 });
 
-		// Check the grid has a gap-* class with a Tailwind spacing value
 		const gridClass = await grid.getAttribute('class');
 		expect(gridClass).toMatch(/gap-(4|6|8|10|12|16|20)/);
 
-		// Check computed gap is consistent (non-zero)
 		const gapValue = await grid.evaluate((el) => {
 			const style = getComputedStyle(el);
 			const rowGap = parseFloat(style.rowGap);
@@ -88,60 +65,48 @@ test.describe('T-007: Blog Page Typography and Spacing', () => {
 		expect(gapValue.rowGap).toBeGreaterThan(0);
 		expect(gapValue.columnGap).toBeGreaterThanOrEqual(0);
 
-		// If cards exist, verify their padding uses Tailwind values
-		const cards = page.locator('[data-testid="blog-post-card"]');
+		const cards = page.locator('#writing [data-testid="blog-post-card"]');
 		const cardCount = await cards.count();
 		if (cardCount > 0) {
 			const padding = await cards.first().evaluate((el) => {
 				const style = getComputedStyle(el);
 				return {
 					paddingTop: parseFloat(style.paddingTop),
-					paddingRight: parseFloat(style.paddingRight),
 					paddingBottom: parseFloat(style.paddingBottom),
-					paddingLeft: parseFloat(style.paddingLeft),
 				};
 			});
-			// Tailwind p-4 = 16px on all sides; any consistent Tailwind padding is valid
 			expect(padding.paddingTop).toBeGreaterThan(0);
 			expect(padding.paddingBottom).toBeGreaterThan(0);
 		}
 	});
 
-	test('AC-4: blog page section spacing uses Tailwind utilities (no ad-hoc pixels)', async ({
+	test('AC-4: blog section spacing uses Tailwind utilities (no ad-hoc pixels)', async ({
 		page,
 	}) => {
-		// Check the grid container uses Tailwind spacing utilities
-		const grid = page.locator('[data-testid="blog-post-grid"]');
+		const grid = page.locator('#writing [data-testid="blog-post-grid"]');
 		const gridClass = await grid.getAttribute('class');
 
-		// Should have py-* or pt-*/pb-* utilities
-		expect(gridClass).toMatch(/(?:pt|pb|py)-\d+/);
-
-		// Should NOT have inline-style-like pixel values in classes
-		expect(gridClass).not.toMatch(/(?:p|pt|pb|pl|pr|px|py)-\d+px/);
+		expect(gridClass).toMatch(/(?:mt|pt|pb|py)-\d+/);
+		expect(gridClass).not.toMatch(/(?:m|p|mt|pt|pb|pl|pr|px|py)-\d+px/);
 		expect(gridClass).not.toMatch(/gap-\d+px/);
 
-		// Check main element uses Tailwind spacing
 		const mainEl = page.locator('main');
 		const mainClass = await mainEl.getAttribute('class');
 		expect(mainClass).toMatch(/p-\d+/);
 		expect(mainClass).not.toMatch(/p-\d+px/);
 	});
 
-	test('AC-6: blog page layout is not visually disrupted (scrollHeight stable)', async ({
+	test('AC-6: home page layout is not visually disrupted (scrollHeight stable)', async ({
 		page,
 	}) => {
-		// Wait for page to fully settle
 		await page.waitForLoadState('networkidle');
 		await page.waitForTimeout(500);
 
 		const scrollHeight1 = await page.evaluate(() => document.body.scrollHeight);
 		expect(scrollHeight1).toBeGreaterThan(0);
 
-		// Wait a bit more and check again for stability
 		await page.waitForTimeout(500);
 		const scrollHeight2 = await page.evaluate(() => document.body.scrollHeight);
-
 		expect(scrollHeight2).toBe(scrollHeight1);
 	});
 
@@ -151,11 +116,9 @@ test.describe('T-007: Blog Page Typography and Spacing', () => {
 		await page.waitForLoadState('networkidle');
 		await page.waitForTimeout(500);
 
-		const cards = page.locator('[data-testid="blog-post-card"]');
+		const cards = page.locator('#writing [data-testid="blog-post-card"]');
 		const count = await cards.count();
 
-		// If no cards (API failure), that's an infra issue, not a typography issue
-		// But we still verify the page structure is correct
 		if (count > 0) {
 			for (let i = 0; i < count; i++) {
 				const card = cards.nth(i);
@@ -170,8 +133,7 @@ test.describe('T-007: Blog Page Typography and Spacing', () => {
 			}
 		}
 
-		// Verify the grid container is visible regardless
-		const grid = page.locator('[data-testid="blog-post-grid"]');
+		const grid = page.locator('#writing [data-testid="blog-post-grid"]');
 		await expect(grid).toBeVisible();
 	});
 });

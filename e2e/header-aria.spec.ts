@@ -75,7 +75,7 @@ test.describe('Header ARIA Labels', () => {
 
 	test('nav links have visible text content', async ({ page }) => {
 		const headerNav = page.locator('nav.bg-gray-900');
-		const expectedLinks = ['About me', 'Projects', 'Blog', 'Uses'];
+		const expectedLinks = ['About', 'Writing', 'Contact'];
 		for (const label of expectedLinks) {
 			const link = headerNav.getByRole('link', { name: label });
 			await expect(link).toBeVisible();

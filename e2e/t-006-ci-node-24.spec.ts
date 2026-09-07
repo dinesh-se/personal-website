@@ -63,7 +63,7 @@ test.describe('T-006 — Update CI Workflow to Node 24', () => {
 		});
 	});
 
-	test('all pages render without runtime errors on Node 24', async ({
+	test('home page renders without runtime errors on Node 24', async ({
 		page,
 	}) => {
 		const errors: string[] = [];
@@ -76,25 +76,15 @@ test.describe('T-006 — Update CI Workflow to Node 24', () => {
 			}
 		});
 
-		const routes = [
-			{ path: '/', title: 'Dinesh Haribabu' },
-			{ path: '/about', title: /about me/i },
-			{ path: '/projects', title: /GitHub Projects/i },
-			{ path: '/blog', title: /Blog Posts/i },
-			{ path: '/uses', title: /Uses/i },
-		];
-
-		for (const { path: route, title } of routes) {
-			await page.goto(route);
-			await expect(
-				page.getByRole('heading', { level: 1, name: title })
-			).toBeVisible();
-		}
+		await page.goto('/');
+		await expect(
+			page.getByRole('heading', { level: 1, name: 'Dinesh Haribabu' })
+		).toBeVisible();
 
 		expect(errors).toEqual([]);
 	});
 
-	test('navigation chain works on Node 24', async ({ page }) => {
+	test('anchor navigation works on Node 24', async ({ page }) => {
 		const errors: string[] = [];
 
 		page.on('console', (msg) => {
@@ -111,17 +101,14 @@ test.describe('T-006 — Update CI Workflow to Node 24', () => {
 
 		const nav = page.getByRole('navigation');
 
-		await nav.getByRole('link', { name: 'About me' }).click();
-		await expect(page).toHaveURL('/about');
+		await nav.getByRole('link', { name: 'About' }).first().click();
+		await expect(page.locator('#about')).toBeInViewport();
 
-		await nav.getByRole('link', { name: 'Projects' }).first().click();
-		await expect(page).toHaveURL('/projects');
+		await nav.getByRole('link', { name: 'Writing' }).first().click();
+		await expect(page.locator('#writing')).toBeInViewport();
 
-		await nav.getByRole('link', { name: 'Blog' }).click();
-		await expect(page).toHaveURL('/blog');
-
-		await nav.getByRole('link', { name: 'Uses' }).click();
-		await expect(page).toHaveURL('/uses');
+		await nav.getByRole('link', { name: 'Contact' }).first().click();
+		await expect(page.locator('#contact')).toBeInViewport();
 
 		expect(errors).toEqual([]);
 	});

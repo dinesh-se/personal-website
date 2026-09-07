@@ -173,7 +173,7 @@ _Source: `openspec/changes/current/proposal.md` (Feature Brief); `openspec/specs
 | Rich text a11y        | Ensure `/about` rich text renderer produces semantic HTML                                  | proposal.md §Acceptance Criteria #8     |
 | ESLint                | Tighten `jsx-a11y` from `recommended` to `strict`                                          | proposal.md §Feature Scope              |
 | Accessibility testing | axe-core CLI in CI, new Playwright E2E a11y tests                                          | proposal.md §Feature Scope              |
-| Component scope       | All 5 pages (/, /about, /projects, /blog, /uses) and 8 components                          | proposal.md §Affected Areas             |
+| Component scope       | All 4 pages (/, /about, /blog, /uses) and remaining components (Projects page removed)   | proposal.md §Affected Areas             |
 
 ### Out of Scope
 

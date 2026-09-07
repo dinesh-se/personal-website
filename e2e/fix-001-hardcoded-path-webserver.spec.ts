@@ -19,49 +19,40 @@ test.describe('Home Page — e2e smoke', () => {
 	test('should render the header navigation', async ({ page }) => {
 		await expect(page.locator('nav')).toBeVisible();
 		const nav = page.getByRole('navigation');
-		await expect(nav.getByRole('link', { name: 'About me' })).toBeVisible();
-		await expect(nav.getByRole('link', { name: 'Projects' })).toBeVisible();
-		await expect(nav.getByRole('link', { name: 'Blog' })).toBeVisible();
-		await expect(nav.getByRole('link', { name: 'Uses' })).toBeVisible();
+		await expect(nav.getByRole('link', { name: 'About' })).toBeVisible();
+		await expect(nav.getByRole('link', { name: 'Writing' })).toBeVisible();
+		await expect(nav.getByRole('link', { name: 'Contact' })).toBeVisible();
 	});
 
 	test('should render the footer', async ({ page }) => {
 		await expect(page.locator('footer')).toBeVisible();
 	});
 
-	test('should navigate to about page', async ({ page }) => {
+	test('should scroll to About section via anchor', async ({ page }) => {
 		await page
 			.getByRole('navigation')
-			.getByRole('link', { name: 'About me' })
+			.getByRole('link', { name: 'About' })
+			.first()
 			.click();
-		await expect(page).toHaveURL('/about');
-		await expect(
-			page.getByRole('heading', { level: 1, name: /about/i })
-		).toBeVisible();
+		await expect(page.locator('#about')).toBeInViewport();
 	});
 
-	test('should navigate to projects page', async ({ page }) => {
+	test('should scroll to Writing section via anchor', async ({ page }) => {
 		await page
 			.getByRole('navigation')
-			.getByRole('link', { name: 'Projects' })
+			.getByRole('link', { name: 'Writing' })
+			.first()
 			.click();
-		await expect(page).toHaveURL('/projects');
+		await expect(page.locator('#writing')).toBeInViewport();
 	});
 
-	test('should navigate to blog page', async ({ page }) => {
+	test('should scroll to Contact section via anchor', async ({ page }) => {
 		await page
 			.getByRole('navigation')
-			.getByRole('link', { name: 'Blog' })
+			.getByRole('link', { name: 'Contact' })
+			.first()
 			.click();
-		await expect(page).toHaveURL('/blog');
-	});
-
-	test('should navigate to uses page', async ({ page }) => {
-		await page
-			.getByRole('navigation')
-			.getByRole('link', { name: 'Uses' })
-			.click();
-		await expect(page).toHaveURL('/uses');
+		await expect(page.locator('#contact')).toBeInViewport();
 	});
 });
 
@@ -74,16 +65,13 @@ test.describe('Mobile Menu', () => {
 		const menuButton = page.getByRole('button', { name: /menu/i });
 		await expect(menuButton).toBeVisible();
 
-		// Menu should be closed initially (hidden class present)
 		await expect(page.locator('#mobile-menu')).toHaveClass(/hidden/);
 
-		// Open menu
 		await menuButton.click();
 		await expect(page.locator('#mobile-menu')).not.toHaveClass(
 			/(^|\s)hidden(\s|$)/
 		);
 
-		// Close menu
 		await menuButton.click();
 		await expect(page.locator('#mobile-menu')).toHaveClass(
 			/(^|\s)hidden(\s|$)/
@@ -99,16 +87,12 @@ test.describe('Dark Mode', () => {
 	test('should respect system preference', async ({ page }) => {
 		await page.goto('/');
 
-		// Verify page renders in light mode
 		const body = page.locator('body');
 		await expect(body).toBeVisible();
 
-		// Emulate dark mode system preference
 		await page.emulateMedia({ colorScheme: 'dark' });
 		await page.reload();
 
-		// Verify dark mode CSS custom properties are applied
-		// --foreground-rgb switches to #ffffff in dark mode (defined in globals.css media query)
 		const foregroundColor = await page.evaluate(() =>
 			getComputedStyle(document.documentElement)
 				.getPropertyValue('--foreground-rgb')
@@ -125,34 +109,8 @@ test.describe('Footer Links', () => {
 		const footer = page.locator('footer');
 		await expect(footer).toBeVisible();
 
-		// Check for No Copyright link
 		await expect(
 			footer.getByRole('link', { name: /No Copyright/i })
 		).toBeVisible();
-	});
-});
-
-test.describe('Nav Active State', () => {
-	test('should show active state on current navigation link', async ({
-		page,
-	}) => {
-		await page.goto('/about');
-
-		// Navigate to the nav
-		const nav = page.getByRole('navigation');
-
-		// 'About me' link should have active state class (bg-stone-300)
-		const aboutLink = nav.getByRole('link', { name: 'About me' });
-		await expect(aboutLink).toHaveClass(/bg-stone-300/);
-
-		// Other links should NOT have active state class
-		const projectsLink = nav.getByRole('link', { name: 'Projects' });
-		await expect(projectsLink).not.toHaveClass(/bg-stone-300/);
-
-		const blogLink = nav.getByRole('link', { name: 'Blog' });
-		await expect(blogLink).not.toHaveClass(/bg-stone-300/);
-
-		const usesLink = nav.getByRole('link', { name: 'Uses' });
-		await expect(usesLink).not.toHaveClass(/bg-stone-300/);
 	});
 });

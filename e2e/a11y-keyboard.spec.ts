@@ -8,14 +8,11 @@ test.describe('Keyboard Navigation', () => {
 		await expect(skipLink).toBeVisible();
 	});
 
-	test('all pages are keyboard accessible', async ({ page }) => {
-		const pages = ['/', '/about', '/projects', '/blog', '/uses'];
-		for (const path of pages) {
-			await page.goto(path);
-			await page.keyboard.press('Tab');
-			await page.keyboard.press('Tab');
-			await page.keyboard.press('Tab');
-			await expect(page.locator(':focus')).toBeVisible();
-		}
+	test('home page is keyboard accessible', async ({ page }) => {
+		await page.goto('/');
+		await page.keyboard.press('Tab');
+		await page.keyboard.press('Tab');
+		await page.keyboard.press('Tab');
+		await expect(page.locator(':focus')).toBeVisible();
 	});
 });

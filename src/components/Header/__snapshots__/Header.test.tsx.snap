@@ -3,13 +3,13 @@
 exports[`Header renders correctly 1`] = `
 <div>
   <nav
-    class="site-header bg-gray-900 p-4"
+    class="site-header sticky top-0 z-40 border-b border-stone-200/60 bg-white/70 backdrop-blur dark:border-stone-800/60 dark:bg-stone-950/70"
   >
     <div
       class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8"
     >
       <div
-        class="relative flex h-16 items-center justify-between"
+        class="relative flex h-14 items-center justify-between"
       >
         <div
           class="absolute inset-y-0 left-0 flex items-center sm:hidden"
@@ -18,7 +18,7 @@ exports[`Header renders correctly 1`] = `
             aria-controls="mobile-menu"
             aria-expanded="false"
             aria-label="Open main menu"
-            class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            class="relative inline-flex items-center justify-center rounded-md p-2 text-stone-500 hover:bg-stone-100 hover:text-stone-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-stone-400 dark:text-stone-400 dark:hover:bg-stone-800 dark:hover:text-stone-50 dark:focus:ring-stone-600"
             type="button"
           >
             <span
@@ -48,7 +48,7 @@ exports[`Header renders correctly 1`] = `
               href="/"
             >
               <svg
-                class="svg-icon h-12 sm:h-14 w-12 sm:w-14"
+                class="svg-icon h-9 sm:h-10 w-9 sm:w-10"
               />
             </a>
           </div>
@@ -59,28 +59,22 @@ exports[`Header renders correctly 1`] = `
               class="flex space-x-4"
             >
               <a
-                class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
-                href="/about"
+                class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-stone-500 hover:bg-stone-100 hover:text-stone-900 dark:text-stone-400 dark:hover:bg-stone-800 dark:hover:text-stone-50"
+                href="#about"
               >
-                About me
+                About
               </a>
               <a
-                class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
-                href="/projects"
+                class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-stone-500 hover:bg-stone-100 hover:text-stone-900 dark:text-stone-400 dark:hover:bg-stone-800 dark:hover:text-stone-50"
+                href="#writing"
               >
-                Projects
+                Writing
               </a>
               <a
-                class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
-                href="/blog"
+                class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-stone-500 hover:bg-stone-100 hover:text-stone-900 dark:text-stone-400 dark:hover:bg-stone-800 dark:hover:text-stone-50"
+                href="#contact"
               >
-                Blog
-              </a>
-              <a
-                class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
-                href="/uses"
-              >
-                Uses
+                Contact
               </a>
             </div>
           </div>
@@ -89,35 +83,29 @@ exports[`Header renders correctly 1`] = `
     </div>
     <div
       aria-label="Main navigation"
-      class="hidden sm:hidden"
+      class="hidden sm:hidden border-t border-stone-200/60 bg-white/95 dark:border-stone-800/60 dark:bg-stone-950/95"
       id="mobile-menu"
     >
       <div
         class="space-y-1 px-2 pb-3 pt-2"
       >
         <a
-          class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
-          href="/about"
+          class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-stone-500 hover:bg-stone-100 hover:text-stone-900 dark:text-stone-400 dark:hover:bg-stone-800 dark:hover:text-stone-50"
+          href="#about"
         >
-          About me
+          About
         </a>
         <a
-          class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
-          href="/projects"
+          class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-stone-500 hover:bg-stone-100 hover:text-stone-900 dark:text-stone-400 dark:hover:bg-stone-800 dark:hover:text-stone-50"
+          href="#writing"
         >
-          Projects
+          Writing
         </a>
         <a
-          class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
-          href="/blog"
+          class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-stone-500 hover:bg-stone-100 hover:text-stone-900 dark:text-stone-400 dark:hover:bg-stone-800 dark:hover:text-stone-50"
+          href="#contact"
         >
-          Blog
-        </a>
-        <a
-          class="rounded-md px-3 py-2 text-sm font-medium block sm:inline text-gray-400 hover:bg-gray-700 hover:text-white"
-          href="/uses"
-        >
-          Uses
+          Contact
         </a>
       </div>
     </div>
